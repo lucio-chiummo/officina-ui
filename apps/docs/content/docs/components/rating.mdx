@@ -1,0 +1,25 @@
+---
+title: Rating
+description: Star rating input with half-step precision and read-only mode.
+---
+
+import { RatingDemo } from '@/components/demos/rating-demo';
+
+`Rating` captures or displays a star score, with optional half steps.
+
+## Example
+
+<Demo>
+  <RatingDemo />
+</Demo>
+
+```tsx
+import { Rating } from '@officina/ui';
+
+<Rating value={value} onChange={setValue} precision={0.5} />
+<Rating value={4} readOnly />
+```
+
+## API
+
+<PropsTable name="Rating" />

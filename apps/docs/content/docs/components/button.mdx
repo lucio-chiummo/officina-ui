@@ -1,0 +1,38 @@
+---
+title: Button
+description: Trigger actions with seven token-driven variants, six sizes, and a built-in loading state.
+---
+
+import { ButtonVariants, ButtonSizes } from '@/components/demos/button-demo';
+
+`Button` is the primary action trigger. It maps to a native `<button>` and
+forwards all standard attributes.
+
+## Variants
+
+<Demo>
+  <ButtonVariants />
+</Demo>
+
+```tsx
+import { Button } from '@officina/ui';
+
+<Button variant="primary">Primary</Button>
+<Button variant="danger">Danger</Button>
+```
+
+## Sizes and states
+
+<Demo>
+  <ButtonSizes />
+</Demo>
+
+```tsx
+<Button size="sm">Small</Button>
+<Button isLoading>Loading</Button>
+<Button disabled>Disabled</Button>
+```
+
+## API
+
+<PropsTable name="Button" />

@@ -1,0 +1,6 @@
+node_modules
+dist
+out
+.next
+apps/docs/.source
+pnpm-lock.yaml

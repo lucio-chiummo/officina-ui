@@ -1,0 +1,19 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+    "installation",
+    "theming",
+    "style-library",
+    "features",
+    "components",
+    "guide",
+    "sdk",
+    "integrations",
+    "modules",
+    "templates",
+    "deploying",
+    "faq",
+    "llms"
+  ]
+}

@@ -1,0 +1,47 @@
+---
+title: Dev guidelines
+description: 'These rules define how application code should be written in Officina. For'
+---
+
+These rules define how application code should be written in Officina. For
+automation-specific guidance, see [AI agent guidelines](/docs/guide/ai-agents).
+
+## TypeScript
+
+- **No `any`.** Use `unknown` and narrow.
+- **No `// @ts-ignore`.** Use `// @ts-expect-error <reason>` only when typing
+  a third-party gap.
+- **Discriminated unions** for state machines.
+- **Branded IDs** (`type UserId = string & { readonly __brand: 'UserId' }`).
+- **Zod is the source of truth.** Types derived via `z.infer`.
+
+## React
+
+- **Function components only.** No classes.
+- **Memo discipline.** Don't reach for `useMemo` / `useCallback` / `memo`
+  until the profiler shows a problem. Document the justification.
+- **Effects are last resort.** Prefer derived state, event handlers, or
+  TanStack Query.
+
+## Feature structure
+
+- **Forms** go through `Form` + `Field` primitives; never call `register`
+  directly in a feature component.
+- **One file per query/mutation**, colocated under `features/<x>/api/`.
+- **Errors:** one class: `AppError` with `{ code, message, fieldErrors? }`.
+- **Permissions:** `resource:action` strings; gate UI with `<Can perm="..." />`.
+- **A11y:** semantic HTML first, every form field labelled, axe-clean,
+  reduced-motion respected.
+- **Comments:** comment **why**, not what. Skip headers on tests/stories/barrels.
+
+## Quality gates
+
+- [ ] `pnpm typecheck` with zero errors and no unexplained `@ts-expect-error`.
+- [ ] `pnpm lint` with zero errors and zero warnings.
+- [ ] `pnpm test` when shared logic changed.
+- [ ] `pnpm test:e2e` when buyer workflows changed.
+- [ ] `pnpm docs:build` when documentation changed.
+- [ ] `pnpm build` before release branches.
+- [ ] axe violations 0.
+- [ ] Manual keyboard pass on changed pages.
+- [ ] Conventional commit plus clean history.

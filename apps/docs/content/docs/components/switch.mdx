@@ -1,0 +1,28 @@
+---
+title: Switch
+description: Accessible on/off toggle with label and description, controlled or uncontrolled.
+---
+
+import { SwitchDemo } from '@/components/demos/switch-demo';
+
+`Switch` toggles a boolean setting. It manages focus and `aria-checked` for you.
+
+## Example
+
+<Demo>
+  <SwitchDemo />
+</Demo>
+
+```tsx
+import { Switch } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [on, setOn] = useState(true);
+  return <Switch checked={on} onChange={setOn} label="Email notifications" />;
+}
+```
+
+## API
+
+<PropsTable name="Switch" />

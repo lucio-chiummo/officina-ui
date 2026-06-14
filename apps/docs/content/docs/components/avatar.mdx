@@ -1,0 +1,25 @@
+---
+title: Avatar
+description: User and entity avatars with initials fallback across four sizes.
+---
+
+import { AvatarSizes } from '@/components/demos/avatar-demo';
+
+`Avatar` renders a user image, falling back to initials when no `src` is set.
+
+## Example
+
+<Demo>
+  <AvatarSizes />
+</Demo>
+
+```tsx
+import { Avatar } from '@officina/ui';
+
+<Avatar src="/me.jpg" alt="Ada" size="md" />
+<Avatar initials="AL" size="lg" />
+```
+
+## API
+
+<PropsTable name="Avatar" />

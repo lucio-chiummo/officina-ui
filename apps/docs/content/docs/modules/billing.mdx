@@ -1,0 +1,32 @@
+---
+title: Billing
+description: 'Side-nav layout under /billing/. Schemas are Stripe-shaped so wiring real'
+---
+
+Side-nav layout under `/billing/*`. Schemas are Stripe-shaped so wiring real
+Stripe should take less than a day (PLAN.md §9.7).
+
+## Pages
+
+- **Overview** — current plan, seat usage, next-invoice highlight.
+- **Plans** — three-card grid (Starter / Pro / Business). Switching shows
+  proration preview before confirming via ConfirmDialog.
+- **Invoices** — paid / open / void table, click-to-download invoice PDF
+  (mock backend returns a text/pdf blob).
+- **Payment methods** — list seeded cards, add by last4 (demo), remove.
+- **Usage** — three Recharts BarCharts (API calls, seats, storage GB)
+  over 30 days.
+
+## Hooks
+
+`usePlans`, `useSubscription`, `useInvoices`, `usePaymentMethods`, `useUsage`,
+`usePlanChangePreviewMutation`, `useChangePlanMutation`. Plus
+`downloadInvoicePdf(invoice)` helper.
+
+## Stripe wiring (sketch)
+
+1. Replace `src/mocks/handlers/billing.ts` calls in your real backend.
+2. Map `Plan.id` to your Stripe Price IDs.
+3. Implement `subscription/preview` against Stripe's
+   `subscriptions.update({ proration_behavior: 'create_prorations', preview: true })`.
+4. Replace `downloadInvoicePdf` with Stripe's hosted invoice URL.

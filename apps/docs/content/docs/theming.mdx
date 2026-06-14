@@ -1,0 +1,36 @@
+---
+title: Theming
+description: Officina UI is driven by CSS custom properties — override a few tokens to rebrand the entire system.
+---
+
+Every Officina component reads its colors, radii, and motion from CSS custom
+properties defined in `tokens.css`. There are no hardcoded hex values inside
+components, so theming is a matter of overriding variables.
+
+## Override tokens
+
+Set the variables you want to change on `:root` (or any scope) after importing
+the defaults:
+
+```css
+:root {
+  --color-accent: #6d28d9;
+  --color-accent-hover: #7c3aed;
+  --radius-lg: 0.75rem;
+}
+```
+
+## Common token groups
+
+| Group  | Examples                                                                 |
+| ------ | ------------------------------------------------------------------------ |
+| Color  | `--color-bg-base`, `--color-fg-base`, `--color-accent`, `--color-danger` |
+| Border | `--color-border`, `--color-border-strong`                                |
+| Radius | `--radius-sm`, `--radius-md`, `--radius-lg`                              |
+| Motion | `--motion-fast`, `--ease-standard`                                       |
+
+## Dark mode
+
+Officina ships paired light/dark presets (`officina-light`, `officina-dark`).
+Toggle them by swapping the token values on a `data-theme` scope, or use the
+template's `ThemeProvider` which manages this for you.

@@ -1,0 +1,4 @@
+{
+  "title": "Guide",
+  "pages": ["intro", "install", "architecture", "customization", "dev-guidelines", "ai-agents"]
+}

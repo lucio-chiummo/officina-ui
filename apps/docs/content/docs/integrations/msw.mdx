@@ -1,0 +1,22 @@
+---
+title: MSW Integration
+description: 'Use @officina/mocks for browser demos and Node tests.'
+---
+
+Use `@officina/mocks` for browser demos and Node tests.
+
+```ts
+import { createOfficinaBrowserWorker } from '@officina/mocks/browser';
+
+await createOfficinaBrowserWorker(['users', 'teams', 'billing']).start({
+  onUnhandledRequest: 'bypass',
+});
+```
+
+Selected handlers keep consumer demos small:
+
+```ts
+import { handlersFor } from '@officina/mocks/handlers';
+
+export const handlers = handlersFor(['users']);
+```

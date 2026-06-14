@@ -1,0 +1,25 @@
+---
+title: Skeleton
+description: Placeholder shapes for loading states — blocks and multi-line text.
+---
+
+import { SkeletonShapes } from '@/components/demos/skeleton-demo';
+
+`Skeleton` reserves layout space while content loads.
+
+## Example
+
+<Demo>
+  <SkeletonShapes />
+</Demo>
+
+```tsx
+import { Skeleton } from '@officina/ui';
+
+<Skeleton height={32} width="60%" />
+<Skeleton variant="text" lines={3} />
+```
+
+## API
+
+<PropsTable name="Skeleton" />

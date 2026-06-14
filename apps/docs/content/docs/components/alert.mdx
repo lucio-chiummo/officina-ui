@@ -1,0 +1,25 @@
+---
+title: Alert
+description: Inline messages in four semantic variants with optional dismiss.
+---
+
+import { AlertVariants } from '@/components/demos/alert-demo';
+
+`Alert` surfaces contextual feedback inline, scoped to a region of the page.
+
+## Example
+
+<Demo>
+  <AlertVariants />
+</Demo>
+
+```tsx
+import { Alert } from '@officina/ui';
+
+<Alert variant="success">Your changes were saved.</Alert>
+<Alert variant="danger" dismissible>Payment failed.</Alert>
+```
+
+## API
+
+<PropsTable name="Alert" />

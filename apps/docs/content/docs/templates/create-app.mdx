@@ -1,0 +1,31 @@
+---
+title: create-officina
+description: 'create-officina scaffolds an SDK-consuming starter.'
+---
+
+`create-officina` scaffolds an SDK-consuming starter.
+
+```bash
+npx create-officina my-admin
+```
+
+The generated app includes:
+
+- `@officina/ui`
+- `@officina/core`
+- `@officina/features`
+- `@officina/mocks`
+- local provider setup
+- selected vertical data
+- `.env.example`
+
+The release pipeline validates both sides of the scaffold:
+
+- `pnpm verify:create-app` runs the CLI into a temporary generated app and
+  checks token replacement, selected vertical pruning, SDK imports, and private
+  alias boundaries.
+- `pnpm pack:create-app` packs the CLI and checks the tarball includes the bin,
+  template, manifest, README, and public publish metadata.
+
+Use the full source template when a buyer wants complete ownership of every
+feature file. Use the SDK starter when a buyer wants package updates.

@@ -1,0 +1,25 @@
+---
+title: StatusDot
+description: Minimal tone-coded status dot with optional pulse.
+---
+
+import { StatusDotTones } from '@/components/demos/statusdot-demo';
+
+`StatusDot` is a compact, label-free status indicator.
+
+## Example
+
+<Demo>
+  <StatusDotTones />
+</Demo>
+
+```tsx
+import { StatusDot } from '@officina/ui';
+
+<StatusDot tone="success" pulse />
+<StatusDot tone="danger" />
+```
+
+## API
+
+<PropsTable name="StatusDot" />

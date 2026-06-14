@@ -1,0 +1,18 @@
+---
+title: LocatorJS Integration
+description: 'LocatorJS is a development-only tool for jumping from rendered UI to source.'
+---
+
+LocatorJS is a development-only tool for jumping from rendered UI to source.
+
+```ts
+react({
+  babel: {
+    plugins:
+      mode === 'development' ? [['@locator/babel-jsx/dist/index.js', { env: 'development' }]] : [],
+  },
+});
+```
+
+Use it while working in the template app. Keep source-location metadata out of
+SDK package builds and production builds.

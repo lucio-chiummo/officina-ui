@@ -1,0 +1,26 @@
+---
+title: TanStack Integration
+description: 'Officina uses TanStack libraries with clear responsibility boundaries.'
+---
+
+Officina uses TanStack libraries with clear responsibility boundaries.
+
+| Library         | Responsibility                     |
+| --------------- | ---------------------------------- |
+| TanStack Router | Consumer app routes and URL state  |
+| TanStack Query  | Server-state fetching and caching  |
+| TanStack Table  | Table state and column definitions |
+
+SDK feature modules accept adapters and render views; they do not own consumer
+routes.
+
+```tsx
+import { createApiClient } from '@officina/core/api';
+import { UsersView } from '@officina/features/users';
+
+const apiClient = createApiClient({ baseUrl: '/api' });
+
+export function UsersRoute() {
+  return <UsersView apiClient={apiClient} />;
+}
+```

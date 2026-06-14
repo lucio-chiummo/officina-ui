@@ -1,0 +1,28 @@
+---
+title: EmptyState
+description: Placeholder for empty collections with title, copy, and action.
+---
+
+import { EmptyStateDemo } from '@/components/demos/emptystate-demo';
+
+`EmptyState` fills empty lists and tables with guidance and a next step.
+
+## Example
+
+<Demo>
+  <EmptyStateDemo />
+</Demo>
+
+```tsx
+import { EmptyState } from '@officina/ui';
+
+<EmptyState
+  title="No results found"
+  description="Try adjusting your filters."
+  action={<Button>Clear filters</Button>}
+/>;
+```
+
+## API
+
+<PropsTable name="EmptyState" />

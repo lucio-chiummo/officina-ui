@@ -1,0 +1,44 @@
+---
+title: Publishing
+description: 'The recommended publishing path is monorepo first.'
+---
+
+The recommended publishing path is **monorepo first**.
+
+Do not detach packages into a separate repository yet. The template app is still
+the strongest integration test for the SDK packages.
+
+## Release flow
+
+1. Build packages.
+2. Validate export maps and generated files.
+3. Add a Changeset.
+4. Version packages.
+5. Publish the SDK packages and `create-officina`.
+
+```bash
+pnpm build:packages
+pnpm pack:packages
+pnpm pack:create-app
+pnpm changeset
+pnpm version:packages
+pnpm release
+```
+
+`pack:packages` validates the scoped SDK package tarballs. `pack:create-app`
+validates the scaffold CLI tarball, including the bin entry, template files,
+template manifest, README, and publish metadata.
+
+## Repository Strategy
+
+Keep packages in this repo until:
+
+- package APIs are stable
+- docs import only `@officina/*`
+- a clean consumer fixture builds from packed packages
+- no package imports template `src`
+- `create-officina` packs a complete CLI and template tarball
+- package releases can happen without touching app internals
+
+Detach later only if package release cadence becomes meaningfully different from
+template release cadence.

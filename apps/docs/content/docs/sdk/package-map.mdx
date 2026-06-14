@@ -1,0 +1,34 @@
+---
+title: Package Map
+description: 'Only package exports are public API. Do not import files from inside dist or'
+---
+
+Only package exports are public API. Do not import files from inside `dist` or
+from the template app source.
+
+| Import                        | Use for                        |
+| ----------------------------- | ------------------------------ |
+| `@officina/ui`                | React primitives               |
+| `@officina/ui/styles.css`     | tokens plus base SDK UI styles |
+| `@officina/ui/tokens.css`     | design token variables only    |
+| `@officina/core`              | core barrel exports            |
+| `@officina/core/api`          | API client and `AppError`      |
+| `@officina/core/exports`      | export helper types            |
+| `@officina/core/filters`      | filter types and helpers       |
+| `@officina/core/format`       | formatting utilities           |
+| `@officina/core/rbac`         | permission resolver helpers    |
+| `@officina/core/theme`        | theme token utilities          |
+| `@officina/features`          | feature package barrel         |
+| `@officina/features/adapters` | shared feature adapter types   |
+| `@officina/features/users`    | users schema, API hook, view   |
+| `@officina/features/teams`    | teams schema, API hook, view   |
+| `@officina/features/billing`  | billing schema, API hook, view |
+| `@officina/mocks`             | mock package barrel            |
+| `@officina/mocks/handlers`    | grouped MSW handlers           |
+| `@officina/mocks/fixtures`    | demo fixture data              |
+| `@officina/mocks/browser`     | browser worker factory         |
+| `@officina/mocks/server`      | Node test server factory       |
+
+Internal files, `dist` files, and implementation-only helper modules are not
+public API. If a subpath is not listed here and is not present in the package
+`exports` map, consumers should treat it as private.

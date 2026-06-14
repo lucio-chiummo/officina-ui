@@ -1,0 +1,25 @@
+---
+title: AI Agent Guidelines for SDK Consumers
+description: 'When asking an AI agent to build against the SDK:'
+---
+
+When asking an AI agent to build against the SDK:
+
+1. Import package entrypoints only.
+2. Use `@officina/ui` before creating local UI.
+3. Use `@officina/core/api` for API clients and `@officina/core/rbac` for
+   permissions.
+4. Keep routes in the consumer app and pass adapters into feature modules.
+5. Use `@officina/mocks` for demo or test data.
+6. Verify with `pnpm typecheck`, `pnpm lint`, `pnpm build`, and package-specific
+   checks.
+
+Prompt:
+
+```txt
+Build this feature using Officina SDK packages.
+Do not import template src files.
+Use @officina/ui for primitives, @officina/core for logic, and @officina/features for reusable feature views.
+Consumer routes own routing and pass adapters into SDK features.
+Run typecheck and package build before handoff.
+```

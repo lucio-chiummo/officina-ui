@@ -1,0 +1,25 @@
+---
+title: StatusLabel
+description: Labeled status pill with tone, optional dot, and pulse.
+---
+
+import { StatusLabelTones } from '@/components/demos/statuslabel-demo';
+
+`StatusLabel` pairs a tone-coded dot with a text status.
+
+## Example
+
+<Demo>
+  <StatusLabelTones />
+</Demo>
+
+```tsx
+import { StatusLabel } from '@officina/ui';
+
+<StatusLabel tone="success" pulse>Online</StatusLabel>
+<StatusLabel tone="danger" variant="soft">Offline</StatusLabel>
+```
+
+## API
+
+<PropsTable name="StatusLabel" />

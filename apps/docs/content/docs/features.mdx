@@ -1,0 +1,113 @@
+---
+title: Features and Library Stack
+description: 'Officina is an app template and a component library. This page explains what'
+---
+
+Officina is an app template and a component library. This page explains what
+is included, where the main feature areas live, and which upstream libraries are
+used when you extend the product.
+
+## Product Features
+
+| Feature             | Where it lives                                                           | How to extend it                                                                                   |
+| ------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| Authentication      | `src/features/auth`, `src/routes/login.tsx`, `src/routes/verify-2fa.tsx` | Add provider-specific logic in `src/lib/auth/providers`, keep route guards in `_authenticated.tsx` |
+| Users and RBAC      | `src/features/users`, `src/lib/rbac`                                     | Add fields to schemas first, then table columns, detail panels, and mock handlers                  |
+| Teams               | `src/features/teams`                                                     | Reuse member lists, invite sheets, transfer ownership, and role checks                             |
+| Billing             | `src/features/billing*`, `src/routes/_authenticated/billing/*`           | Keep plan, invoice, usage, and payment method APIs isolated by route/module                        |
+| Dashboards          | `src/features/*-dashboard`, `src/features/vertical-demos`                | Build with `PageBody`, `StatCard`, chart primitives, and feature-local data                        |
+| Products and orders | `src/features/products`, `src/features/orders-*`                         | Keep catalog forms and order detail state inside feature modules                                   |
+| Communication       | `src/features/mail`, `src/features/chat`, `src/features/notifications`   | Use avatar, badge, feed, notification, and empty-state primitives                                  |
+| Settings            | `src/features/settings-*`                                                | Preserve the shared settings layout and token-based styling                                        |
+| Documentation       | `apps/docs`, `/style-library`, `/primitives`                             | Add buyer docs in VitePress, app-facing docs in the Style Library route                            |
+
+## Core Libraries
+
+| Library         | Used for                                              | Project entry points                           | Docs                                                                              |
+| --------------- | ----------------------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------- |
+| React           | Component model, hooks, rendering                     | `src/main.tsx`, feature components             | [React docs](https://react.dev/reference/react)                                   |
+| Vite            | Dev server, production build, PWA build pipeline      | `vite.config.ts`                               | [Vite guide](https://vite.dev/guide/)                                             |
+| Tailwind CSS    | Utility styling plus token-backed classes             | `src/styles`, `vite.config.ts`                 | [Tailwind with Vite](https://tailwindcss.com/docs/installation/using-vite)        |
+| TanStack Router | File-based routing, layout routes, typed links        | `src/routes`, `src/routeTree.gen.ts`           | [TanStack Router](https://tanstack.com/router/latest/docs/overview)               |
+| TanStack Query  | Server-state fetching, caching, mutations             | `src/features/*/api`                           | [TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview) |
+| TanStack Table  | Headless tables and column models                     | `DataTable`, table feature modules             | [TanStack Table](https://tanstack.com/table/latest/docs/framework/react/overview) |
+| React Hook Form | Form state, submission, validation integration        | `src/features/*/components/*Form*`             | [React Hook Form](https://www.react-hook-form.com/)                               |
+| Zod             | Runtime schemas and TypeScript-friendly validation    | `src/features/*/schemas`, route search schemas | [Zod docs](https://zod.dev/packages/zod)                                          |
+| Zustand         | Client state stores                                   | `src/stores`, feature stores                   | [Zustand docs](https://zustand.docs.pmnd.rs/getting-started/introduction)         |
+| MSW             | Browser and test API mocking                          | `src/mocks`                                    | [MSW docs](https://mswjs.io/docs)                                                 |
+| Vitest          | Unit and integration tests                            | `*.test.ts`, `*.test.tsx`, `vitest.config.ts`  | [Vitest docs](https://vitest.dev/)                                                |
+| Playwright      | End-to-end browser tests                              | `e2e`, `playwright.config.ts`                  | [Playwright docs](https://playwright.dev/)                                        |
+| LocatorJS       | Click rendered UI and jump to source while developing | `vite.config.ts` development Babel plugin      | [LocatorJS](https://www.locatorjs.com/)                                           |
+
+## LocatorJS Workflow
+
+LocatorJS is enabled only in development through the React plugin config:
+
+```ts
+react({
+  babel: {
+    plugins:
+      mode === 'development' ? [['@locator/babel-jsx/dist/index.js', { env: 'development' }]] : [],
+  },
+});
+```
+
+Use it when you are browsing the local app and want to jump from visible UI to
+the component that rendered it.
+
+1. Start the app with `pnpm dev`.
+2. Install the LocatorJS browser extension from the official site.
+3. Open the local app.
+4. Option-click a visible component.
+5. Open the source file in your editor and make the change.
+
+Keep LocatorJS development-only. Do not add source-location metadata to
+production builds.
+
+## TanStack Workflow
+
+TanStack Router owns the route tree, Query owns server state, and Table owns
+table state. Keep those responsibilities separate:
+
+```tsx
+// Route: parse URL/search and render feature module.
+export const Route = createFileRoute('/_authenticated/users/')({
+  validateSearch: UserRouteSearchSchema,
+  component: UsersRoute,
+});
+
+// Feature API: fetch and cache server data.
+export function useUsers(params) {
+  return useQuery({
+    queryKey: ['users', params],
+    queryFn: () => getUsers(params),
+  });
+}
+
+// Table UI: render data with column definitions.
+export function UsersTable({ rows, columns }) {
+  const table = useReactTable({
+    data: rows,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  return <DataTable table={table} />;
+}
+```
+
+## Extension Rules
+
+1. Add or change schemas before changing screens.
+2. Keep routes thin and move behavior into feature modules.
+3. Use TanStack Query for server state; use Zustand only for client preferences.
+4. Use primitive components before creating feature-specific UI.
+5. Add MSW handlers for every new API path so demos and tests keep working.
+6. Add Playwright coverage for important buyer workflows.
+
+## AI-Assisted Development
+
+Use [AI agent guidelines](/docs/guide/ai-agents) when asking an assistant to modify
+the template. The page explains which files to inspect, where new code belongs,
+which libraries to choose, and which verification commands to run before handing
+work back.

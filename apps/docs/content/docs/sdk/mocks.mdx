@@ -1,0 +1,25 @@
+---
+title: Mock API
+description: 'Use @officina/mocks to run SDK demos without a live backend.'
+---
+
+Use `@officina/mocks` to run SDK demos without a live backend.
+
+## Browser
+
+```ts
+import { createOfficinaBrowserWorker } from '@officina/mocks/browser';
+
+await createOfficinaBrowserWorker(['users', 'teams', 'billing']).start();
+```
+
+## Node Tests
+
+```ts
+import { createOfficinaMockServer } from '@officina/mocks/server';
+
+const server = createOfficinaMockServer(['users']);
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+```

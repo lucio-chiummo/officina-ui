@@ -1,0 +1,4 @@
+{
+  "title": "Modules",
+  "pages": ["auth", "dashboard", "users", "teams", "settings", "billing", "notifications"]
+}

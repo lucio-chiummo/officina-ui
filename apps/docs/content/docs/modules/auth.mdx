@@ -1,0 +1,47 @@
+---
+title: Auth module
+description: 'Six routes implementing the full sign-in surface (PLAN.md §9.1):'
+---
+
+Six routes implementing the full sign-in surface (PLAN.md §9.1):
+
+- `/login`
+- `/register`
+- `/forgot-password`
+- `/reset-password?token=…`
+- `/verify-2fa?challenge=…`
+- `/magic-link?token=…`
+
+Authenticated traffic is gated by `_authenticated` which redirects to
+`/login?redirect=…` when no session is present.
+
+## Schemas
+
+`LoginSchema`, `RegisterSchema`, `ForgotPasswordSchema`, `ResetPasswordSchema`
+(cross-field match), `Verify2FASchema` (six-digit code), `MagicLinkSchema`.
+
+`LoginResponseSchema` is a discriminated union on `requires2fa`.
+
+## Mutations
+
+`useLoginMutation`, `useRegisterMutation`, `useForgotPasswordMutation`,
+`useResetPasswordMutation`, `useVerify2FAMutation`, `useMagicLinkSendMutation`,
+`useMagicLinkVerifyMutation`, `useLogoutMutation`.
+
+Each parses through `safeParse` and writes the resulting `Session` into
+`useSessionStore`.
+
+## Session model
+
+Access token (15 min, in memory) + refresh token (7 days, simulated httpOnly
+cookie via MSW). `setAuthTokenProvider(getAccessToken)` is wired in
+`src/main.tsx` so all authenticated requests carry `Authorization: Bearer …`.
+
+## Demo accounts
+
+| Email                       | Password         | 2FA      |
+| --------------------------- | ---------------- | -------- |
+| `admin@officina-admin.dev`  | `Demo!Password1` | enabled  |
+| `member@officina-admin.dev` | `Demo!Password1` | disabled |
+
+The 2FA demo accepts code `123456` or the user's recovery code.

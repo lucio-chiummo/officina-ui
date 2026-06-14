@@ -1,0 +1,73 @@
+---
+title: SDK Installation
+description: 'Install the packages needed by your app:'
+---
+
+Install the packages needed by your app:
+
+```bash
+pnpm add @officina/ui @officina/core @officina/features @officina/mocks
+```
+
+Install the peer stack used by the first SDK surface:
+
+```bash
+pnpm add react react-dom @tanstack/react-query @tanstack/react-table zod msw
+```
+
+Import UI CSS once:
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+```
+
+The token import must come before `styles.css`. Import both once in your app
+entry, usually `src/main.tsx`, `src/App.tsx`, or the root layout.
+
+## Minimal Vite Setup
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+
+import { Button, Card, CardContent, CardHeader, CardTitle } from '@officina/ui';
+import { createRoot } from 'react-dom/client';
+
+function App() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Officina</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Open dashboard</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+createRoot(document.getElementById('root')!).render(<App />);
+```
+
+## Peer Dependencies
+
+| Package                 | Used by                         |
+| ----------------------- | ------------------------------- |
+| `react`, `react-dom`    | UI primitives and feature views |
+| `@tanstack/react-query` | Feature package data fetching   |
+| `@tanstack/react-table` | `DataTable` and feature tables  |
+| `zod`                   | Feature schemas and validation  |
+| `msw`                   | Demo and test API handlers      |
+
+Use `create-officina` when you want the scaffold to wire this for you:
+
+```bash
+npx create-officina my-admin
+```
+
+## Next Docs
+
+- [UI package](/docs/sdk/ui)
+- [Component API](/docs/components)
+- [Mock API usage](/docs/sdk/mocks)

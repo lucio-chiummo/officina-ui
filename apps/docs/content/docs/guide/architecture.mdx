@@ -1,0 +1,59 @@
+---
+title: Architecture
+description: 'hooks, components, tests, and stories.'
+---
+
+```
+React 19 (SPA, Vite)
+  └─ TanStack Router (file-based, Zod search params, beforeLoad guards)
+      └─ Feature modules (auth, users, billing, settings, …)
+          ├─ React Hook Form + Zod
+          ├─ TanStack Query
+          ├─ Zustand client slices
+          └─ @officina/ui primitives + our wrappers
+  └─ API adapter layer (src/lib/api/*)
+      ├─ ky instance (single fetch entry point)
+      ├─ Zod safeParse at the network boundary
+      └─ AppError normalization
+  └─ MSW handlers (dev / test) — drop-in for the real API
+```
+
+## Key rules
+
+- Feature modules are vertical slices. A feature owns its routes, schemas,
+  hooks, components, tests, and stories.
+- The API adapter is the **only** place `fetch` / `ky` lives. UI code never
+  calls the network directly.
+- Server state → TanStack Query. Client state (theme, sidebar, palette) → Zustand.
+  URL state (table filters, pagination, search) → TanStack Router search params.
+- Zod is the source of truth for entity shapes. Types are derived: `type X = z.infer<typeof XSchema>`.
+
+## Folder layout
+
+```
+src/
+  routes/                    # TanStack Router file-based routes
+  features/                  # vertical slices
+    auth/
+    dashboard/
+    users/
+    teams/
+    billing/
+    settings/
+    notifications/
+  components/
+    primitives/              # @officina/ui wrappers + DataTable + Form
+    layouts/                 # AppShell / AuthShell / BlankShell
+    feedback/                # Toaster, CommandPalette
+  lib/
+    api/                     # ky + AppError + safeParse
+    auth/
+    rbac/
+    theme/
+    format/
+    utils/
+    test/
+  mocks/                     # MSW handlers + fixtures
+  stores/                    # Zustand client slices
+  styles/                    # globals + tokens
+```

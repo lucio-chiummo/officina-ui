@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "jsx": "react-jsx",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "baseUrl": ".",
+    "paths": {
+      "@stores/theme.store": ["./src/shims/theme-store.ts"],
+      "@primitives": ["./src/components/primitives"],
+      "@primitives/*": ["./src/components/primitives/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

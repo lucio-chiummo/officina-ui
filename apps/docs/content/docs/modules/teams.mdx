@@ -1,0 +1,21 @@
+---
+title: Teams
+description: 'delete via ConfirmDialog with slug-typed confirmation.'
+---
+
+## Pages
+
+- `/teams` — list with create-team drawer (slug regex validated).
+- `/teams/$teamId` — members list, invite Sheet, transfer-ownership Sheet,
+  delete via ConfirmDialog with slug-typed confirmation.
+
+## Hooks
+
+`useTeams`, `useTeam`, `useCreateTeamMutation`, `useInviteMemberMutation`,
+`useTransferOwnershipMutation`, `useDeleteTeamMutation`.
+
+## Schemas
+
+`TeamSchema`, `TeamWithMembersSchema`, `TeamMemberSchema`, `TeamRoleSchema`
+(`owner` / `admin` / `member`), `CreateTeamSchema`, `InviteMemberSchema`,
+`TransferOwnershipSchema`.

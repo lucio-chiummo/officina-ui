@@ -1,0 +1,27 @@
+---
+title: SDK Overview
+description: 'Officina now has a first SDK foundation. The app remains the commercial'
+---
+
+Officina now has a first SDK foundation. The app remains the commercial
+template and integration demo, while reusable surfaces are exposed through
+workspace packages.
+
+## Packages
+
+| Package              | Purpose                                      | First public surface                                     |
+| -------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| `@officina/ui`       | Token CSS and React primitives               | `Button`, `Badge`, `Card`, `Tabs`, `DataTable`, `Dialog` |
+| `@officina/core`     | App-agnostic logic and types                 | API client, filters, RBAC, theme, export, format helpers |
+| `@officina/features` | Adapter-driven feature modules               | Users, teams, billing                                    |
+| `@officina/mocks`    | MSW fixtures and handlers for SDK consumers  | browser worker, Node server, selected feature handlers   |
+| `create-officina`    | Consumer app scaffold and full template path | SDK package imports plus local provider setup            |
+
+This is the first extraction pass. It creates stable package entrypoints and
+keeps the full app intact while deeper feature extraction continues.
+
+## Readiness
+
+The SDK is ready for local workspace validation and docs examples. It is not yet
+ready for a public npm release until more app primitives and feature modules are
+fully migrated behind package boundaries.

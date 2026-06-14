@@ -1,0 +1,110 @@
+---
+title: AI agent guidelines
+description: 'Use this page when an AI coding agent, code-generation assistant, or external'
+---
+
+Use this page when an AI coding agent, code-generation assistant, or external
+automation extends Officina. The goal is simple: keep generated work aligned
+with the template's architecture, visual system, and quality gates.
+
+## Prime the agent
+
+Before writing code, give the agent the task plus these source files:
+
+| Context              | Files to inspect                                                                 |
+| -------------------- | -------------------------------------------------------------------------------- |
+| App shell/navigation | `src/components/layouts/AppShell.tsx`, `src/components/layouts/AdminSidebar.tsx` |
+| Routes               | `src/routes`, `src/routeTree.gen.ts`                                             |
+| Feature patterns     | `src/features/users`, `src/features/settings-*`, `src/features/products`         |
+| Primitives           | `src/components/primitives`, `src/routes/_authenticated/primitives.tsx`          |
+| Styling tokens       | `src/styles`, `src/features/style-library`                                       |
+| Mock API             | `src/mocks`                                                                      |
+| Tests                | `src/**/*.test.tsx`, `e2e`, `playwright.config.ts`                               |
+
+Ask the agent to identify the closest existing pattern before creating new
+folders, components, hooks, or state.
+
+## Coding rules
+
+1. Keep routes thin. Routes parse params/search and render feature modules.
+2. Put domain behavior in `src/features/<feature>`.
+3. Use existing primitives before creating feature-specific UI.
+4. Use semantic tokens and primitive variants; avoid raw one-off colors.
+5. Use TanStack Query for server state and Zustand only for client preferences.
+6. Put schemas at the boundary with Zod, then derive TypeScript types.
+7. Use React Hook Form through the template's form primitives.
+8. Add MSW handlers for new API paths.
+9. Include loading, empty, error, and success states for user-facing workflows.
+10. Preserve keyboard navigation, labels, focus rings, and reduced-motion support.
+
+## Library choices
+
+| Need                      | Use                                                                                       | Avoid                                                |
+| ------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Routing                   | [TanStack Router](https://tanstack.com/router/latest/docs/overview)                       | Manual route registries                              |
+| Server data               | [TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview)         | `useEffect` fetch loops                              |
+| Tables                    | [TanStack Table](https://tanstack.com/table/latest/docs/framework/react/overview)         | Hard-coded table state for complex resources         |
+| Forms                     | [React Hook Form](https://www.react-hook-form.com/) + [Zod](https://zod.dev/packages/zod) | Unvalidated local-only form state                    |
+| Local UI state            | [Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction)                      | Global stores for server data                        |
+| Mock APIs                 | [MSW](https://mswjs.io/docs)                                                              | Feature demos that depend on a live backend          |
+| UI-to-source development  | [LocatorJS](https://www.locatorjs.com/)                                                   | Guessing component ownership from screenshots        |
+| Unit and integration test | [Vitest](https://vitest.dev/)                                                             | Untested shared helpers                              |
+| Browser workflow test     | [Playwright](https://playwright.dev/)                                                     | Only testing components for buyer-critical workflows |
+
+## Component instructions
+
+When generating UI, tell the agent to use this order:
+
+1. Search `src/components/primitives` for a matching primitive.
+2. Search feature modules for an existing page pattern.
+3. Compose the screen with `PageBody`, `PageHeader`, cards, tables, forms, and
+   feedback primitives.
+4. Add only the smallest new component needed for the feature.
+5. Keep component props typed, explicit, and close to the component.
+
+Do not create a second design system inside a feature folder. New reusable UI
+belongs in primitives only when at least two feature areas need it.
+
+## Styling instructions
+
+Use token-backed styles:
+
+```tsx
+<div className="border border-[var(--color-border)] bg-[var(--color-bg-base)] text-[var(--color-fg-base)]" />
+```
+
+Prefer existing primitive variants for buttons, badges, tabs, cards, inputs,
+tables, dialogs, and sheets. Check light mode, dark mode, compact widths, and
+long labels before considering the work complete.
+
+## Data instructions
+
+For new server-backed features:
+
+1. Define the schema.
+2. Add API functions and query keys.
+3. Add MSW handlers and fixtures.
+4. Build the feature view.
+5. Add tests around parsing, mutation feedback, and important user paths.
+
+```tsx
+export function useCustomers(params: CustomerSearch) {
+  return useQuery({
+    queryKey: ['customers', params],
+    queryFn: () => getCustomers(params),
+  });
+}
+```
+
+## Verification prompt
+
+End every AI-agent task with this checklist:
+
+- `pnpm typecheck`
+- `pnpm lint`
+- `pnpm test` when shared behavior changed
+- `pnpm test:e2e` when a buyer workflow changed
+- `pnpm docs:build` when docs changed
+- `pnpm build` before release branches
+
+The final response should list changed files, tests run, and any remaining risk.

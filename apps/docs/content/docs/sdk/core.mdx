@@ -1,0 +1,20 @@
+---
+title: Core Package
+description: '@officina/core contains app-agnostic logic.'
+---
+
+`@officina/core` contains app-agnostic logic.
+
+```ts
+import { createApiClient } from '@officina/core/api';
+import { createPermissionResolver } from '@officina/core/rbac';
+
+export const apiClient = createApiClient({
+  baseUrl: '/api',
+  getAuthToken: () => localStorage.getItem('token'),
+});
+
+export const permissions = createPermissionResolver(['users:read', 'billing:read']);
+```
+
+Core should stay free of app routes, app stores, and app-specific i18n setup.

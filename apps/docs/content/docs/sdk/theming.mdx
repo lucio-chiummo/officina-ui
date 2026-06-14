@@ -1,0 +1,33 @@
+---
+title: Theming and CSS
+description: 'Import all SDK UI styles:'
+---
+
+Import all SDK UI styles:
+
+```tsx
+import '@officina/ui/styles.css';
+```
+
+Or import only design tokens:
+
+```tsx
+import '@officina/ui/tokens.css';
+```
+
+Wrap rendered UI in `officina-ui` when you want the package font and focus defaults:
+
+```tsx
+<main className="officina-ui">
+  <App />
+</main>
+```
+
+Override tokens in your app CSS:
+
+```css
+:root {
+  --color-accent: #2563eb;
+  --radius-md: 0.375rem;
+}
+```

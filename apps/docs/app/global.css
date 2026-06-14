@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* Officina design tokens — power the live component demos. */
+@import '@officina/ui/tokens.css';
+@import '@officina/ui/styles.css';
+
+/* Tailwind v4 does not scan node_modules by default. Register the fumadocs UI
+   and the Officina component bundles so their utility classes are generated. */
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+@source '../../../packages/ui/dist/**/*.js';
+
+/* ── Officina Light / Officina Dark as the docs site theme ──
+   Re-point fumadocs' `--color-fd-*` chrome variables at the Officina design
+   tokens so the whole site (nav, sidebar, cards, prose) renders in the same
+   palette as the admin template — not fumadocs' default neutral. A single
+   `:root` block covers both modes: the referenced `--color-*` tokens already
+   switch under `.dark`, and this unlayered rule overrides fumadocs' layered
+   `@theme` defaults regardless of source order. */
+:root {
+  --color-fd-background: var(--color-bg-subtle);
+  --color-fd-foreground: var(--color-fg-base);
+  --color-fd-muted: var(--color-bg-muted);
+  --color-fd-muted-foreground: var(--color-fg-muted);
+  --color-fd-popover: var(--color-bg-base);
+  --color-fd-popover-foreground: var(--color-fg-base);
+  --color-fd-card: var(--color-bg-base);
+  --color-fd-card-foreground: var(--color-fg-base);
+  --color-fd-border: var(--color-border);
+  --color-fd-primary: var(--color-accent);
+  --color-fd-primary-foreground: var(--color-accent-contrast);
+  --color-fd-secondary: var(--color-bg-muted);
+  --color-fd-secondary-foreground: var(--color-fg-base);
+  --color-fd-accent: var(--color-bg-muted);
+  --color-fd-accent-foreground: var(--color-fg-base);
+  --color-fd-ring: var(--color-accent);
+  --color-fd-info: var(--color-info);
+  --color-fd-warning: var(--color-warning);
+  --color-fd-error: var(--color-danger);
+  --color-fd-success: var(--color-success);
+}

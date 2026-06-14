@@ -1,0 +1,75 @@
+---
+title: Deploying
+description: 'Officina is a pure SPA — any static host works.'
+---
+
+Officina is a pure SPA — any static host works.
+
+## Build
+
+```bash
+pnpm build
+# → dist/
+```
+
+`dist/index.html` is your entry, hashed assets next to it.
+
+## SPA fallback
+
+You **must** route every unknown path back to `index.html` so the
+TanStack Router can take over. Examples:
+
+### Netlify
+
+`netlify.toml`:
+
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+### Vercel
+
+`vercel.json`:
+
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+
+### Cloudflare Pages
+
+Set the build output directory to `dist`. Add a `_redirects` file with:
+
+```
+/*  /index.html  200
+```
+
+### Nginx
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+## Environment
+
+| Variable            | Purpose                                                     |
+| ------------------- | ----------------------------------------------------------- |
+| `VITE_API_BASE_URL` | Real backend base URL. Default: `http://localhost:3000/api` |
+| `VITE_USE_MOCK`     | `true` to keep MSW running in production (demo deploys).    |
+
+For a public demo (using MSW in the browser), set `VITE_USE_MOCK=true` and
+ensure `public/mockServiceWorker.js` ships with the build.
+
+## Bundle size budget
+
+- Initial JS (gzip): &lt; 220 KB.
+- Largest single chunk (gzip): &lt; 90 KB.
+- LCP on dashboard route: &lt; 1.8s on simulated 4G.
+
+`pnpm bundle-size` runs the budget check (Phase 13 hardening).

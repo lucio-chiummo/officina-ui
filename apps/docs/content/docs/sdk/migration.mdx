@@ -1,0 +1,20 @@
+---
+title: Migration from Template to SDK
+description: 'Use this path when a project starts from the full Officina template and wants'
+---
+
+Use this path when a project starts from the full Officina template and wants
+to consume packages over time.
+
+1. Keep the template app working as the integration demo.
+2. Import `@officina/ui/styles.css` once.
+3. Replace local primitive imports with `@officina/ui` only for components
+   already exported by the package.
+4. Move shared filter, RBAC, theme, API, export, and format logic to
+   `@officina/core`.
+5. Convert feature routes to consumer-owned routes that render SDK feature
+   views with adapters.
+6. Use `@officina/mocks` for dev/test handlers instead of app-only mock files.
+
+Do not import private package internals or template `src` files from consumer
+apps.

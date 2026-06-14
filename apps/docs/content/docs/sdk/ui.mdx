@@ -1,0 +1,147 @@
+---
+title: UI Package
+description: '@officina/ui exposes the first stable SDK primitive set. It is the package'
+---
+
+`@officina/ui` exposes the first stable SDK primitive set. It is the package
+consumers install when they want Officina styling without copying the full
+template source.
+
+## Install
+
+```bash
+pnpm add @officina/ui react react-dom @tanstack/react-table
+```
+
+Import CSS once:
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+```
+
+`tokens.css` must load before `styles.css` so component styles can read the
+semantic variables.
+
+## First Component
+
+```tsx
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from '@officina/ui';
+
+export function WorkspaceCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Workspace</CardTitle>
+      </CardHeader>
+      <CardContent className="grid gap-3">
+        <Badge tone="success">Active</Badge>
+        <Button>Invite member</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Stable Primitive Groups
+
+| Group      | Exports                                                                                                               | Examples                                                                                                     |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Actions    | `Button` with `primary`, `secondary`, `outline`, `ghost`, `soft`, `danger`, `success` variants plus sizes and loading | [Button](/docs/components)                                                                                   |
+| Status     | `Badge` with status tones, sizes, and dot state                                                                       | [Badge](/docs/components)                                                                                    |
+| Surfaces   | `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`                                     | [Card](/docs/components)                                                                                     |
+| Forms      | `Form`, `Field`, `Input`, `Select`, `Switch`                                                                          | [Forms](/docs/components), [Input](/docs/components), [Select](/docs/components), [Switch](/docs/components) |
+| Navigation | `Tabs` with `underline` and `pills` variants                                                                          | [Tabs](/docs/components)                                                                                     |
+| Data       | `Table`, `TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell`, `DataTable`                                | [Table](/docs/components)                                                                                    |
+| Overlay    | `Dialog`, `LoadingOverlay`                                                                                            | [Dialog](/docs/components)                                                                                   |
+| Fields     | `IconButton`, `FormControl`, `FormLabel`, `FormHelperText`, `FormError`, `useFormControl`                             | [IconButton](/docs/components), [FormControl](/docs/components)                                              |
+| Detail     | `PropertyList`, `PropertyItem`, `MetadataList`, `StatusLabel`, `StatusDot`, `CopyField`, `Meter`                      | [Data summary](/docs/components)                                                                             |
+| Feedback   | `InlineNotice`                                                                                                        | [Data summary](/docs/components)                                                                             |
+| Keyboard   | `Kbd`, `Shortcut`                                                                                                     | [Premium](/docs/components)                                                                                  |
+| Premium    | `GradientText`, `SpotlightCard`, `BorderBeam`, `BentoGrid`, `BentoCard`, `Ripple` (reduced-motion aware)              | [Premium](/docs/components)                                                                                  |
+
+## Form Recipe
+
+```tsx
+import { Button, Field, Form, Input, Select, Switch } from '@officina/ui';
+
+export function SettingsForm() {
+  return (
+    <Form onSubmit={(event) => event.preventDefault()}>
+      <Field>
+        Workspace name
+        <Input name="workspace" defaultValue="Acme Operations" />
+      </Field>
+      <Field>
+        Plan
+        <Select name="plan" defaultValue="growth">
+          <option value="starter">Starter</option>
+          <option value="growth">Growth</option>
+          <option value="enterprise">Enterprise</option>
+        </Select>
+      </Field>
+      <Switch label="Weekly reports" defaultChecked />
+      <Button type="submit">Save changes</Button>
+    </Form>
+  );
+}
+```
+
+## DataTable Recipe
+
+```tsx
+import { Badge, DataTable } from '@officina/ui';
+import type { ColumnDef } from '@tanstack/react-table';
+
+type User = {
+  email: string;
+  name: string;
+  status: 'Active' | 'Invited';
+};
+
+const columns: Array<ColumnDef<User>> = [
+  { accessorKey: 'name', header: 'Name' },
+  { accessorKey: 'email', header: 'Email' },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: ({ row }) => (
+      <Badge tone={row.original.status === 'Active' ? 'success' : 'warning'}>
+        {row.original.status}
+      </Badge>
+    ),
+  },
+];
+
+export function UsersTable({ users }: { users: User[] }) {
+  return <DataTable columns={columns} data={users} />;
+}
+```
+
+## API Reference
+
+Every primitive has a live demo and an auto-generated props table on its own
+page. A few common starting points:
+
+| Area     | Components                                                                                                            |
+| -------- | --------------------------------------------------------------------------------------------------------------------- |
+| Actions  | [Button](/docs/components/button), [IconButton](/docs/components/iconbutton)                                          |
+| Status   | [Badge](/docs/components/badge), [StatusDot](/docs/components/statusdot), [StatusLabel](/docs/components/statuslabel) |
+| Surfaces | [Card](/docs/components/card)                                                                                         |
+| Forms    | [Form](/docs/components/form), [Field](/docs/components/field)                                                        |
+| Input    | [Input](/docs/components/input), [Select](/docs/components/select), [Switch](/docs/components/switch)                 |
+| Data     | [Table](/docs/components/table), [DataTable](/docs/components/datatable)                                              |
+| Overlays | [Modal](/docs/components/modal), [ConfirmDialog](/docs/components/confirmdialog)                                      |
+
+## Ownership Rule
+
+The UI package owns visual primitives and token CSS. Apps and feature packages
+own route state, server state, validation schemas, mutations, and business copy.
+If a primitive needs TanStack Router, Zustand, app-specific i18n, or generated
+route trees, keep it in the template until it can be adapter-driven.
+
+## Template vs SDK
+
+Use `@officina/ui` in consumer apps. Use `@/components/primitives` only while
+customizing the full source template. The [Primitive examples](/docs/components)
+page marks which primitives are SDK-stable and which are source-only.

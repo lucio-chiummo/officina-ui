@@ -1,0 +1,27 @@
+---
+title: Notifications + Command palette
+description: '/notifications page with filter chips (all / unread / mentions / billing /'
+---
+
+## Notifications
+
+`/notifications` page with filter chips (all / unread / mentions / billing /
+system), per-row mark-read + archive actions, mark-all action in header.
+`NotificationBell` lives in the dashboard topbar with a live unread badge
+that polls every 30 seconds (`refetchInterval` on `useUnreadCount`).
+
+### Hooks
+
+`useNotifications(filter)`, `useUnreadCount` (30s poll),
+`useMarkReadMutation`, `useMarkAllReadMutation`, `useArchiveMutation`.
+
+## Command palette
+
+`AppCommandPalette` is mounted lazily in `_authenticated` so the chunk only
+loads after sign-in. Open with **⌘K** / **Ctrl-K**. Default commands:
+
+- **Navigate** — Dashboard, Users, Teams, Billing, Settings, Notifications.
+- **Appearance** — switch to light / dark / system theme.
+- **Account** — sign out.
+
+Add commands by editing `src/components/feedback/AppCommandPalette.tsx`.

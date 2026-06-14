@@ -1,0 +1,32 @@
+---
+title: Customization
+description: 'The full guide lives in docs/CUSTOMIZATION.md'
+---
+
+The full guide lives in [`docs/CUSTOMIZATION.md`](https://github.com/lucio-chiummo/officina-ui/blob/main/docs/CUSTOMIZATION.md)
+in the repo. Highlights:
+
+## 1. Theme tokens
+
+Edit `src/styles/tokens.css`. Light + dark scopes via `:root` and `.dark`.
+Brand color is overridable at runtime via Settings → Appearance.
+
+## 2. Path aliases
+
+| Alias           | Maps to                       |
+| --------------- | ----------------------------- |
+| `@/*`           | `src/*`                       |
+| `@primitives/*` | `src/components/primitives/*` |
+| `@features/*`   | `src/features/*`              |
+| `@lib/*`        | `src/lib/*`                   |
+| `@stores/*`     | `src/stores/*`                |
+| `@mocks/*`      | `src/mocks/*`                 |
+| `@test/*`       | `src/lib/test/*`              |
+
+## 3. Renaming the project
+
+```bash
+sed -i '' 's/officina-admin/your-project/g' package.json README.md
+```
+
+Then update repo URL, license, and brand string in `src/App.tsx`.

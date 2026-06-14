@@ -1,0 +1,24 @@
+---
+title: Breadcrumb
+description: Hierarchical navigation trail from an items array.
+---
+
+import { BreadcrumbDemo } from '@/components/demos/breadcrumb-demo';
+
+`Breadcrumb` shows the path to the current page and lets users jump back.
+
+## Example
+
+<Demo>
+  <BreadcrumbDemo />
+</Demo>
+
+```tsx
+import { Breadcrumb } from '@officina/ui';
+
+<Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Projects' }]} />;
+```
+
+## API
+
+<PropsTable name="Breadcrumb" />

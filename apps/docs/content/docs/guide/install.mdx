@@ -1,0 +1,50 @@
+---
+title: Install
+description: 'Then open http://localhost:5173.'
+---
+
+## Prerequisites
+
+- Node 22 (`nvm use` in the repo)
+- pnpm 10
+
+## Steps
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Then open http://localhost:5173.
+
+All UI primitives ship in `@officina/ui` (MIT), so there is no separate
+component kit to download — the template runs as-is after `pnpm install`.
+
+The dev server boots MSW automatically — log in with one of the seeded users:
+
+| Email                       | Password         | Notes       |
+| --------------------------- | ---------------- | ----------- |
+| `admin@officina-admin.dev`  | `Demo!Password1` | 2FA enabled |
+| `member@officina-admin.dev` | `Demo!Password1` | no 2FA      |
+
+The 2FA demo accepts `123456` as the verification code.
+
+## Scripts
+
+| Command          | Purpose                                            |
+| ---------------- | -------------------------------------------------- |
+| `pnpm dev`       | Vite dev server                                    |
+| `pnpm build`     | Production build (tsc + vite)                      |
+| `pnpm typecheck` | TS project references, no emit                     |
+| `pnpm lint`      | ESLint flat config, zero warnings                  |
+| `pnpm test`      | Vitest run + coverage                              |
+| `pnpm test:e2e`  | Playwright across Chromium / Firefox / WebKit      |
+| `pnpm storybook` | Storybook 8 (Vite builder)                         |
+| `pnpm docs:dev`  | This documentation site                            |
+| `pnpm knip`      | Dead-code detection                                |
+| `pnpm ci`        | Full local matrix (typecheck/lint/test/build/knip) |
+
+## Hitting a real API
+
+Set `VITE_USE_MOCK=false` in `.env` (or your hosting provider) to disable MSW and
+point to a real backend via `VITE_API_BASE_URL`.

@@ -1,0 +1,25 @@
+---
+title: Dashboard module
+description: 'Lives at /authenticated/dashboard. Five live sections backed by MSW'
+---
+
+Lives at `/_authenticated/dashboard`. Five live sections backed by MSW
+(PLAN.md §9.2):
+
+- **KpiStrip** — 4 stat cards (MRR, Active users, Churn, NPS) with delta
+  indicators and inline SVG sparklines.
+- **RevenueChart** — Recharts area chart with 7 / 30 / 90-day window
+  selector, gradient fill, currency-formatted Y axis.
+- **TopCustomers** — mini-table sorted by MRR with status badges.
+- **ActivityFeed** — `useInfiniteQuery` + cursor pagination (10 per page).
+- **OnboardingChecklist** — Zustand-persisted state, dismissible.
+
+## Hooks
+
+`useKpis`, `useRevenue`, `useTopCustomers`, `useActivityFeed`. Each
+parses through `safeParse(Schema, json)`.
+
+## Format helpers
+
+`formatCurrency`, `formatNumber`, `formatPercent`, `formatRelativeTime`,
+`formatKpi` — all `Intl`-based (PLAN.md §6.11).

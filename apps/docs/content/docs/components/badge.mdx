@@ -1,0 +1,25 @@
+---
+title: Badge
+description: Compact status and category labels with six semantic tones and an optional dot.
+---
+
+import { BadgeTones } from '@/components/demos/badge-demo';
+
+`Badge` labels status, counts, and categories inline.
+
+## Tones
+
+<Demo>
+  <BadgeTones />
+</Demo>
+
+```tsx
+import { Badge } from '@officina/ui';
+
+<Badge tone="success">Active</Badge>
+<Badge tone="danger" dot>Failed</Badge>
+```
+
+## API
+
+<PropsTable name="Badge" />

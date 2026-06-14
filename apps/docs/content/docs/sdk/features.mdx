@@ -1,0 +1,27 @@
+---
+title: Feature Package
+description: '@officina/features exposes adapter-driven feature modules.'
+---
+
+`@officina/features` exposes adapter-driven feature modules.
+
+```tsx
+import { createApiClient } from '@officina/core/api';
+import { UsersView } from '@officina/features/users';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+const apiClient = createApiClient({ baseUrl: '/api' });
+
+export function UsersRoute() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <UsersView apiClient={apiClient} />
+    </QueryClientProvider>
+  );
+}
+```
+
+The first feature package includes users, teams, and billing. Consumer apps own
+their routes and pass adapters into feature views instead of importing template
+routes.

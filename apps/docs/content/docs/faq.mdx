@@ -1,0 +1,65 @@
+---
+title: FAQ
+description: 'Admin surfaces are rarely SEO-sensitive, and SSR adds bundler / runtime /'
+---
+
+## Why no Next.js / Remix?
+
+Admin surfaces are rarely SEO-sensitive, and SSR adds bundler / runtime /
+hosting complexity buyers don't need. The MSW-in-browser demo story doesn't
+work cleanly with server frameworks. ADR 0001 has the long-form rationale.
+
+## Can I add SSR later?
+
+Feature modules are framework-agnostic enough — port the router layer and
+the API adapter stays identical. The plan does not officially support it.
+
+## How do I wire a real backend?
+
+Set `VITE_USE_MOCK=false` and `VITE_API_BASE_URL`. The `ky` instance in
+`src/lib/api/client.ts` is the single fetch entry point — no other file
+calls the network.
+
+## How do I add a feature module?
+
+Vertical slice under `src/features/<module>/`. Required artifacts:
+`api/`, `hooks/`, `schemas/`, `components/`, `tests/`, public `index.ts`.
+Routes go under `src/routes/_authenticated/<module>/`. PLAN.md §9 has
+the per-module spec.
+
+## How do I customize permissions?
+
+Edit `src/lib/rbac/matrix.ts`. The mock backend mirrors it via
+`x-mock-role` header in handlers/users.ts — point your real backend's
+RBAC layer at the same permission strings.
+
+## How do I add a Storybook story?
+
+```tsx
+// MyThing.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { MyThing } from './MyThing';
+
+const meta: Meta<typeof MyThing> = { title: 'Things/MyThing', component: MyThing };
+export default meta;
+export const Default: StoryObj<typeof MyThing> = {
+  args: {
+    /* … */
+  },
+};
+```
+
+`pnpm storybook` runs the workshop. Chromatic visual regression is wired
+via `chromatic.config.json` (Phase 13 hardening).
+
+## License?
+
+Two layers: the `@officina/ui` component library is **MIT-licensed** and free to
+use, including commercially. The full Officina admin **template** (routes, auth,
+feature modules, mocks, tooling) is sold under a separate commercial license. No
+Tailwind Plus or third-party component license is required for either.
+
+## Where do I report bugs / ask for features?
+
+GitHub Discussions for feature requests; private Discord channel for
+buyer-only support; GitHub Issues for security and bugs.

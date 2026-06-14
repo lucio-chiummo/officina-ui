@@ -1,0 +1,16 @@
+{
+  "title": "SDK",
+  "pages": [
+    "index",
+    "installation",
+    "package-map",
+    "publishing",
+    "ui",
+    "core",
+    "features",
+    "mocks",
+    "theming",
+    "migration",
+    "ai-agents"
+  ]
+}

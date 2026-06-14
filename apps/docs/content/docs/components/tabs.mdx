@@ -1,0 +1,29 @@
+---
+title: Tabs
+description: Accessible tabbed panels driven by an items array.
+---
+
+import { TabsDemo } from '@/components/demos/tabs-demo';
+
+`Tabs` switches between panels from a declarative `items` array.
+
+## Example
+
+<Demo>
+  <TabsDemo />
+</Demo>
+
+```tsx
+import { Tabs } from '@officina/ui';
+
+<Tabs
+  items={[
+    { label: 'Overview', content: <Overview /> },
+    { label: 'Usage', content: <Usage /> },
+  ]}
+/>;
+```
+
+## API
+
+<PropsTable name="Tabs" />

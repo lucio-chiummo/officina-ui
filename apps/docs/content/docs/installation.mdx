@@ -1,0 +1,44 @@
+---
+title: Installation
+description: Add Officina UI to a React project and import the token stylesheet.
+---
+
+## Install
+
+```bash
+pnpm add @officina/ui
+```
+
+`@officina/ui` ships ESM with full TypeScript types. React 19 is a peer
+dependency.
+
+## Import the tokens
+
+Officina components are styled entirely through CSS custom properties. Import the
+token stylesheet once at your app root:
+
+```ts
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+```
+
+## Use a component
+
+```tsx
+import { Button } from '@officina/ui';
+
+export function Example() {
+  return <Button variant="primary">Get started</Button>;
+}
+```
+
+## Scaffold a full app
+
+To start from a complete admin template instead of wiring things yourself:
+
+```bash
+pnpm create officina
+```
+
+This scaffolds an app with routing, auth, billing, theming, and the full
+component set already integrated.

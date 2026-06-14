@@ -1,0 +1,46 @@
+---
+title: Users + RBAC
+description: 'filters, status badges, last-active relative time, drawer-based create'
+---
+
+## Pages
+
+- `/users` — paginated list with debounced URL-synced search, role/status
+  filters, status badges, last-active relative time, drawer-based create
+  (`users:write` required).
+- `/users/$userId` — detail with `DescriptionList`, edit drawer (UserForm),
+  delete via ConfirmDialog with email-typed confirmation.
+- `/settings/roles` — read-only role × permission matrix.
+
+## RBAC
+
+12 permissions (`resource:action` strings):
+
+```
+users:read, users:write, users:delete
+teams:read, teams:write, teams:delete
+billing:read, billing:manage
+roles:manage, settings:manage
+webhooks:manage, apikeys:manage
+```
+
+Roles: `owner` (all) → `admin` (most write) → `member` (read-only) → `viewer`
+(narrowest).
+
+```tsx
+import { Can, usePermission } from '@lib/rbac';
+
+<Can perm="users:write">
+  <Button>Invite</Button>
+</Can>;
+
+const canDelete = usePermission('users:delete');
+```
+
+The mock backend mirrors the matrix — pass `x-mock-role: member` in tests
+to reproduce realistic 403 paths (Phase 6 tests do exactly this).
+
+## Hooks
+
+`useUsers(params)`, `useUser(id)`, `useCreateUserMutation`,
+`useUpdateUserMutation`, `useDeleteUserMutation`. 250 deterministic seed users.

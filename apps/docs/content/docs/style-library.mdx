@@ -1,0 +1,130 @@
+---
+title: Style Library
+description: "Officina's style library is the contract between the SDK packages, the full"
+---
+
+Officina's style library is the contract between the SDK packages, the full
+source template, feature modules, and primitive components. Use SDK package
+imports for consumer apps. Use `src/*` files only when customizing the full
+template source.
+
+## What Lives Here
+
+| Area                 | Purpose                                                                        | Public or template surface                       |
+| -------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------ |
+| SDK UI               | Package primitives, token CSS, and package-safe component examples             | `@officina/ui`, `@officina/ui/styles.css`        |
+| SDK core             | API client, filters, RBAC, theme helpers, formatting, and export utilities     | `@officina/core/*`                               |
+| SDK features         | Adapter-driven users, teams, and billing feature modules                       | `@officina/features/users`, `/teams`, `/billing` |
+| SDK mocks            | MSW handlers, browser/server helpers, and fixtures                             | `@officina/mocks/*`                              |
+| Full source template | App shell, authenticated routes, richer primitives, and commercial app modules | `src/*`                                          |
+| Live reference       | Buyer-facing documentation and live primitive checks                           | `/style-library`, `/primitives`                  |
+
+## Design Rules
+
+1. Use semantic tokens instead of raw palette classes.
+2. Import consumer UI from `@officina/ui`.
+3. Import consumer feature modules from `@officina/features/*`.
+4. Use `@/components/primitives` only inside the full source template.
+5. Show loading, empty, error, disabled, and success states for admin workflows.
+6. Verify light mode, dark mode, compact density, and long labels before shipping.
+
+## SDK Install Recipe
+
+```bash
+pnpm add @officina/ui @officina/core @officina/features @officina/mocks
+pnpm add @tanstack/react-query @tanstack/react-table react react-dom
+```
+
+## SDK Feature Recipe
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+
+import { createApiClient } from '@officina/core/api';
+import { UsersView } from '@officina/features/users';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const apiClient = createApiClient({ baseUrl: '/api' });
+const queryClient = new QueryClient();
+
+export function UsersPage() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <UsersView apiClient={apiClient} />
+    </QueryClientProvider>
+  );
+}
+```
+
+## SDK UI Recipe
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from '@officina/ui';
+
+export function AccountCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Acme Inc.</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Badge tone="success">Active</Badge>
+        <Button type="button">Open account</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Full Source Template Recipe
+
+Use this only when editing the commercial template app itself.
+
+```tsx
+import { PageBody, PageHeader, PageSection } from '@/components/primitives';
+
+export function CustomersPage() {
+  return (
+    <PageBody>
+      <PageHeader title="Customers" description="Accounts, ownership, and lifecycle state." />
+      <PageSection title="Lifecycle">
+        {/* Data table, cards, filters, or form sections */}
+      </PageSection>
+    </PageBody>
+  );
+}
+```
+
+## Theme Recipe
+
+```css
+:root {
+  --color-bg-base: #ffffff;
+  --color-fg-base: #09090b;
+  --color-accent: #4f46e5;
+}
+
+.dark {
+  --color-bg-base: #09090b;
+  --color-fg-base: #fafafa;
+}
+```
+
+## Where To Go Next
+
+- [Component Overview](/docs/components)
+- [Component API](/docs/components)
+- [Button examples](/docs/components)
+- [Badge examples](/docs/components)
+- [DataTable examples](/docs/components)
+- [Features and Library Stack](/docs/features)
+- [AI agent guidelines](/docs/guide/ai-agents)
+- [Foundations](/docs/components)
+- [Forms](/docs/components)
+- [Filters](/docs/components)
+- [Charts](/docs/components)
+- [Advanced Workflows](/docs/components)

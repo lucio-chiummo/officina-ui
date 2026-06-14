@@ -1,0 +1,25 @@
+---
+title: Chip
+description: Interactive, removable chips in five tones and three variants.
+---
+
+import { ChipTones } from '@/components/demos/chip-demo';
+
+`Chip` represents filters, selections, and removable tokens.
+
+## Example
+
+<Demo>
+  <ChipTones />
+</Demo>
+
+```tsx
+import { Chip } from '@officina/ui';
+
+<Chip tone="success" variant="solid">Success</Chip>
+<Chip tone="danger" onRemove={() => remove(id)}>Removable</Chip>
+```
+
+## API
+
+<PropsTable name="Chip" />

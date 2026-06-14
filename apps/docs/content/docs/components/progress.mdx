@@ -1,0 +1,25 @@
+---
+title: Progress
+description: Determinate progress bar with tones, sizes, and value label.
+---
+
+import { ProgressVariants } from '@/components/demos/progress-demo';
+
+`Progress` shows determinate completion from 0 to `max`.
+
+## Example
+
+<Demo>
+  <ProgressVariants />
+</Demo>
+
+```tsx
+import { Progress } from '@officina/ui';
+
+<Progress value={30} label="Uploading" showValue />
+<Progress value={80} variant="success" />
+```
+
+## API
+
+<PropsTable name="Progress" />
