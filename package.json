@@ -13,9 +13,13 @@
     "dev:docs": "pnpm --filter @officina/ui build && pnpm --filter @officina/docs dev",
     "typecheck": "pnpm --filter @officina/ui typecheck",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "changeset": "changeset",
+    "version:packages": "changeset version",
+    "release": "pnpm build:ui && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
     "prettier": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "typescript": "^5.6.0"
