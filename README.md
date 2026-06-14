@@ -3,7 +3,7 @@
 The complete Officina React component library — 250+ primitives, token-driven
 theming, and composable components, shipped as a single install.
 
-- **Package:** `@officina/ui` (MIT)
+- **Package:** `@officina/ui` (Apache-2.0)
 - **Docs:** live demos + API reference for every component (`apps/docs`)
 
 ## Install
@@ -61,4 +61,4 @@ pnpm dev:docs      # run the docs site against the built library
 
 ## License
 
-MIT © Lucio Chiummo
+Apache-2.0 © Lucio Chiummo

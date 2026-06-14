@@ -2,7 +2,7 @@
   "name": "@officina/ui",
   "version": "0.1.0",
   "description": "Officina UI — the most complete open-source React component library. 250+ primitives, token CSS, and reusable components.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "type": "module",
   "sideEffects": [
     "./dist/styles.css",
