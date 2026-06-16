@@ -4344,8 +4344,22 @@
         "description": "Visible label above the field."
       },
       {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
         "name": "placeholder",
         "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "required",
+        "type": "boolean",
         "required": false,
         "defaultValue": null,
         "description": ""
@@ -4963,6 +4977,13 @@
         "description": ""
       },
       {
+        "name": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Marks the field invalid for validation styling and `aria-invalid`."
+      },
+      {
         "name": "max",
         "type": "number",
         "required": false,
@@ -4977,6 +4998,13 @@
         "description": "Minimum allowed value."
       },
       {
+        "name": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Form field name, for native form submission / form libraries."
+      },
+      {
         "name": "placeholder",
         "type": "string",
         "required": false,
@@ -4989,6 +5017,13 @@
         "required": false,
         "defaultValue": null,
         "description": "Number of decimal places to enforce."
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       },
       {
         "name": "showSteppers",
@@ -5394,6 +5429,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Mark the field invalid for validation styling."
       },
       {
         "name": "label",

@@ -1,5 +1,5 @@
 ---
-"@officina/ui": minor
+'@officina/ui': minor
 ---
 
 Improve form-control prop coverage and expose the full hooks set.
