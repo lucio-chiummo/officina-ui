@@ -144,31 +144,37 @@ export function CopyButtonDemo() {
 
 export function ActionMenuDemo() {
   return (
-    <ActionMenu
-      label="Record actions"
-      sections={[
-        {
-          items: [
-            { label: 'Edit', icon: <Pencil /> },
-            { label: 'Duplicate', icon: <Copy /> },
-          ],
-        },
-        { items: [{ label: 'Delete', icon: <Trash2 />, danger: true }] },
-      ]}
-    />
+    <div className="border-fd-border flex w-full max-w-xs items-center justify-between rounded-md border px-3 py-2">
+      <span className="text-sm font-medium">Q3 report.pdf</span>
+      <ActionMenu
+        label="Record actions"
+        sections={[
+          {
+            items: [
+              { label: 'Edit', icon: <Pencil /> },
+              { label: 'Duplicate', icon: <Copy /> },
+            ],
+          },
+          { items: [{ label: 'Delete', icon: <Trash2 />, danger: true }] },
+        ]}
+      />
+    </div>
   );
 }
 
 export function RowActionsDemo() {
   return (
-    <RowActions
-      max={2}
-      actions={[
-        { label: 'Edit', icon: <Pencil />, onClick: () => {} },
-        { label: 'Archive', icon: <Archive />, onClick: () => {} },
-        { label: 'Delete', icon: <Trash2 />, danger: true },
-      ]}
-    />
+    <div className="border-fd-border flex w-full max-w-xs items-center justify-between rounded-md border px-3 py-2">
+      <span className="text-sm font-medium">Ada Lovelace</span>
+      <RowActions
+        max={2}
+        actions={[
+          { label: 'Edit', icon: <Pencil />, onClick: () => {} },
+          { label: 'Archive', icon: <Archive />, onClick: () => {} },
+          { label: 'Delete', icon: <Trash2 />, danger: true },
+        ]}
+      />
+    </div>
   );
 }
 

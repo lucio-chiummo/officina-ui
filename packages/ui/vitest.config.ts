@@ -5,8 +5,8 @@ import { defineConfig } from 'vitest/config';
 
 const r = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
-// Mirrors the alias map in tsup.config.ts / tsconfig.json so ported tests
-// resolve the same way they do in the source admin-template repo.
+// Mirrors the alias map in tsup.config.ts / tsconfig.json so tests resolve
+// the same way the build does.
 const alias: Record<string, string> = {
   '@stores/theme.store': r('src/shims/theme-store.ts'),
   '@primitives': r('src/components/primitives'),

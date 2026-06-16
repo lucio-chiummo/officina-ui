@@ -31,7 +31,7 @@ export function TreeView({ nodes, defaultExpandedIds = [], onSelect, className }
     });
 
   return (
-    <ul role="tree" className={cn('text-sm', className)}>
+    <ul role="tree" className={cn('list-none text-sm', className)}>
       {nodes.map((node) => (
         <TreeItem
           key={node.id}
@@ -84,7 +84,7 @@ function TreeItem({
         <span className="text-[var(--color-fg-muted)]">{node.label}</span>
       </button>
       {hasChildren && isOpen ? (
-        <ul role="group">
+        <ul role="group" className="list-none">
           {node.children!.map((child) => (
             <TreeItem
               key={child.id}
