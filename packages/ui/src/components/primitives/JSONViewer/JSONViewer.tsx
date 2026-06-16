@@ -31,7 +31,7 @@ function renderValue(value: unknown, name?: string, defaultExpanded = true): Rea
     : Object.entries(value as Record<string, unknown>);
   return (
     <details open={defaultExpanded} className="pl-3">
-      <summary className="cursor-pointer text-[var(--color-fg-muted)] select-none">
+      <summary className="cursor-pointer select-none text-[var(--color-fg-muted)]">
         <Key name={name} />
         {Array.isArray(value) ? `Array(${entries.length})` : `Object(${entries.length})`}
       </summary>

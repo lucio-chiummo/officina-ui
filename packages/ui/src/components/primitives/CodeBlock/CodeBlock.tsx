@@ -39,7 +39,7 @@ export function CodeBlock({
               // eslint-disable-next-line react/no-array-index-key -- Prism returns positional token arrays.
               <div key={i} {...getLineProps({ line })}>
                 {showLineNumbers ? (
-                  <span className="mr-4 text-[var(--color-fg-subtle)] select-none">{i + 1}</span>
+                  <span className="mr-4 select-none text-[var(--color-fg-subtle)]">{i + 1}</span>
                 ) : null}
                 {line.map((token, key) => (
                   // eslint-disable-next-line react/no-array-index-key -- Prism tokens have no stable ids.

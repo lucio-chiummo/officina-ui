@@ -147,7 +147,7 @@ export function Window({
       >
         <div
           className={cn(
-            'flex h-10 shrink-0 items-center justify-between gap-2 border-b border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-3 select-none',
+            'flex h-10 shrink-0 select-none items-center justify-between gap-2 border-b border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-3',
             !maximized && 'cursor-move',
           )}
           onPointerDown={startDrag('move')}
@@ -167,7 +167,7 @@ export function Window({
                 onPointerDown={(e) => {
                   e.stopPropagation();
                 }}
-                className="rounded p-1 text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+                className="focus-visible:ring-[var(--color-accent)]/40 rounded p-1 text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2"
               >
                 {maximized ? (
                   <Minimize2 className="size-3.5" />
@@ -183,7 +183,7 @@ export function Window({
               onPointerDown={(e) => {
                 e.stopPropagation();
               }}
-              className="rounded p-1 text-[var(--color-fg-muted)] hover:bg-[var(--color-danger)]/10 hover:text-[var(--color-danger)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+              className="hover:bg-[var(--color-danger)]/10 focus-visible:ring-[var(--color-accent)]/40 rounded p-1 text-[var(--color-fg-muted)] hover:text-[var(--color-danger)] focus-visible:outline-none focus-visible:ring-2"
             >
               <X className="size-3.5" />
             </button>
@@ -194,7 +194,7 @@ export function Window({
           <div
             aria-hidden="true"
             onPointerDown={startDrag('resize')}
-            className="absolute right-0 bottom-0 h-4 w-4 cursor-nwse-resize"
+            className="absolute bottom-0 right-0 h-4 w-4 cursor-nwse-resize"
             style={{
               background:
                 'linear-gradient(135deg, transparent 50%, var(--color-border-strong) 50%)',

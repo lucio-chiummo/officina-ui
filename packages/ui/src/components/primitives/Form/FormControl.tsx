@@ -115,7 +115,7 @@ export function FormLabel({ className, children, required, htmlFor, ...props }: 
       {...props}
       {...(target ? { htmlFor: target } : {})}
       className={cn(
-        'flex items-center gap-1 text-sm font-medium text-[var(--color-fg-base)] select-none',
+        'flex select-none items-center gap-1 text-sm font-medium text-[var(--color-fg-base)]',
         ctx?.disabled && 'opacity-60',
         className,
       )}

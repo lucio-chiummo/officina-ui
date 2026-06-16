@@ -80,7 +80,7 @@ export function Switch({
       <div className="min-w-0">
         <Label
           {...(id !== undefined ? { htmlFor: id } : {})}
-          className="block cursor-pointer text-sm font-medium text-[var(--color-fg-base)] select-none"
+          className="block cursor-pointer select-none text-sm font-medium text-[var(--color-fg-base)]"
         >
           {label}
         </Label>

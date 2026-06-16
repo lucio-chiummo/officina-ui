@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a problem with a component or the docs site
+labels: [bug]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component (or page) is affected?
+      placeholder: e.g. DataGrid
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: A minimal code sample or steps that reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "@officina/ui version"
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true

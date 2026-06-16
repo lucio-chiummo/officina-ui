@@ -53,7 +53,7 @@ export function Slider({
         min={min}
         max={max}
         step={step}
-        className="relative flex h-5 w-full touch-none items-center select-none"
+        className="relative flex h-5 w-full touch-none select-none items-center"
       >
         <RadixSlider.Track className="relative h-1 grow rounded-full bg-[var(--color-bg-muted)]">
           <RadixSlider.Range className="absolute h-full rounded-full bg-[var(--color-accent)]" />
@@ -63,7 +63,7 @@ export function Slider({
             // eslint-disable-next-line react/no-array-index-key -- thumb count is fixed by parent state
             key={i}
             aria-label={label ? `${label} thumb ${String(i + 1)}` : 'Slider thumb'}
-            className="block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 focus-visible:outline-none"
+            className="focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2"
           />
         ))}
       </RadixSlider.Root>

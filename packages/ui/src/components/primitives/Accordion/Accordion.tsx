@@ -41,7 +41,7 @@ export function Accordion({
                 className={cn(
                   'overflow-hidden rounded-md border border-transparent transition-[background-color,border-color,box-shadow] duration-[var(--motion-base)] ease-[var(--ease-standard)]',
                   open
-                    ? 'border-[var(--color-border)] bg-[var(--color-bg-muted)]/45 shadow-[var(--shadow-xs)]'
+                    ? 'bg-[var(--color-bg-muted)]/45 border-[var(--color-border)] shadow-[var(--shadow-xs)]'
                     : 'hover:bg-[var(--color-bg-muted)]/55',
                 )}
               >
@@ -71,7 +71,7 @@ export function Accordion({
                 >
                   <DisclosurePanel
                     static
-                    className="border-t border-[var(--color-border)] px-4 pt-3 pb-4 text-sm leading-6 text-[var(--color-fg-muted)]"
+                    className="border-t border-[var(--color-border)] px-4 pb-4 pt-3 text-sm leading-6 text-[var(--color-fg-muted)]"
                   >
                     {item.content}
                   </DisclosurePanel>
@@ -98,7 +98,7 @@ export function Accordion({
               className={cn(
                 'overflow-hidden rounded-md border border-transparent transition-[background-color,border-color,box-shadow] duration-[var(--motion-base)] ease-[var(--ease-standard)]',
                 open
-                  ? 'border-[var(--color-border)] bg-[var(--color-bg-muted)]/45 shadow-[var(--shadow-xs)]'
+                  ? 'bg-[var(--color-bg-muted)]/45 border-[var(--color-border)] shadow-[var(--shadow-xs)]'
                   : 'hover:bg-[var(--color-bg-muted)]/55',
               )}
             >
@@ -137,7 +137,7 @@ export function Accordion({
               >
                 <DisclosurePanel
                   static
-                  className="border-t border-[var(--color-border)] px-4 pt-3 pb-4 text-sm leading-6 text-[var(--color-fg-muted)]"
+                  className="border-t border-[var(--color-border)] px-4 pb-4 pt-3 text-sm leading-6 text-[var(--color-fg-muted)]"
                 >
                   {item.content}
                 </DisclosurePanel>

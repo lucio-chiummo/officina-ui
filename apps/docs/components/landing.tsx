@@ -75,7 +75,15 @@ const componentNames = [
   'AIPrompt',
 ];
 
-function LiveStat({ value, suffix = '', label }: { value: number; suffix?: string; label: string }) {
+function LiveStat({
+  value,
+  suffix = '',
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  label: string;
+}) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -96,11 +104,11 @@ function LiveStat({ value, suffix = '', label }: { value: number; suffix?: strin
 
 function Hero() {
   return (
-    <section className="flex flex-col items-center px-4 pt-20 pb-16 text-center">
+    <section className="flex flex-col items-center px-4 pb-16 pt-20 text-center">
       <Badge variant="accent" dot>
         Open source · 250+ components
       </Badge>
-      <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-5xl">
+      <h1 className="mt-5 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
         The most complete{' '}
         <GradientText as="span" animate>
           open-source
@@ -152,7 +160,7 @@ function Hero() {
 
 function StatsRow() {
   return (
-    <section className="border-fd-border border-t border-b">
+    <section className="border-fd-border border-b border-t">
       <div className="mx-auto grid max-w-2xl grid-cols-3 gap-6 px-4 py-10">
         <LiveStat value={250} suffix="+" label="Components" />
         <LiveStat value={34} label="Hooks" />
@@ -170,13 +178,13 @@ function Showcase() {
           Everything your product needs, already built
         </h2>
         <p className="text-fd-muted-foreground mx-auto mt-2 max-w-xl text-center text-sm">
-          A sample of the 250+ primitives — forms, data, feedback, navigation, and AI surfaces,
-          all sharing the same design tokens.
+          A sample of the 250+ primitives — forms, data, feedback, navigation, and AI surfaces, all
+          sharing the same design tokens.
         </p>
 
         <BentoGrid columns={3} className="mt-10">
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Forms
             </p>
             <div className="mt-4 flex flex-col gap-3">
@@ -186,7 +194,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Data
             </p>
             <StatCard
@@ -200,7 +208,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Feedback
             </p>
             <div className="mt-4 flex items-center gap-4">
@@ -217,7 +225,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard colSpan={2}>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Navigation
             </p>
             <Tabs
@@ -253,14 +261,14 @@ function Showcase() {
           </BentoCard>
 
           <SpotlightCard className="flex flex-col justify-center">
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Hover me
             </p>
             <p className="mt-2 text-sm font-medium">Cursor-tracking glow, zero JS config.</p>
           </SpotlightCard>
 
           <BentoCard colSpan={3}>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               AI surfaces
             </p>
             <AIPrompt
@@ -297,8 +305,8 @@ function FinalCta() {
         Ready to build with <GradientText as="span">Officina UI</GradientText>?
       </h2>
       <p className="text-fd-muted-foreground mx-auto mt-2 max-w-md text-sm">
-        Install the package, drop in the tokens, and start composing — every component ships
-        with live, editable examples.
+        Install the package, drop in the tokens, and start composing — every component ships with
+        live, editable examples.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
         <CtaLink href="/docs">Read the docs</CtaLink>

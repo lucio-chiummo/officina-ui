@@ -23,7 +23,7 @@ export const PrimitiveLink = forwardRef<HTMLAnchorElement, PrimitiveLinkProps>(f
       target={nextTarget}
       {...props}
       className={cn(
-        'inline-flex min-w-0 items-center gap-1 rounded-sm font-medium underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none',
+        'inline-flex min-w-0 items-center gap-1 rounded-sm font-medium underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]',
         muted
           ? 'text-[var(--color-fg-muted)] hover:text-[var(--color-fg-base)]'
           : 'text-[var(--color-accent-fg)] hover:underline',

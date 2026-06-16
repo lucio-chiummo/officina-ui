@@ -107,7 +107,7 @@ export function NotificationCenter({
       >
         <Bell className="size-5" />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 flex size-4 items-center justify-center rounded-full bg-[var(--color-accent)] text-[10px] leading-none font-bold text-[var(--color-accent-contrast)]">
+          <span className="absolute right-1 top-1 flex size-4 items-center justify-center rounded-full bg-[var(--color-accent)] text-[10px] font-bold leading-none text-[var(--color-accent-contrast)]">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
@@ -187,12 +187,12 @@ export function NotificationCenter({
                           <div className="relative mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg-muted)] text-[var(--color-fg-muted)]">
                             {n.icon ?? <Bell className="size-4" />}
                             {n.unread && (
-                              <span className="absolute -top-0.5 -right-0.5 size-2 rounded-full bg-[var(--color-accent)] ring-2 ring-[var(--color-bg-base)]" />
+                              <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-[var(--color-accent)] ring-2 ring-[var(--color-bg-base)]" />
                             )}
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-start justify-between gap-2">
-                              <p className="text-sm leading-snug font-medium text-[var(--color-fg-base)]">
+                              <p className="text-sm font-medium leading-snug text-[var(--color-fg-base)]">
                                 {n.title}
                               </p>
                               {n.timestamp && (

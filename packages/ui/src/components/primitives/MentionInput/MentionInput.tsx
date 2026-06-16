@@ -61,10 +61,10 @@ export function MentionInput({ value, onChange, options, placeholder }: MentionI
             setActiveIndex(0);
           }
         }}
-        className="min-h-24 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15"
+        className="focus:ring-3 focus:ring-[var(--color-accent)]/15 min-h-24 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm outline-none focus:border-[var(--color-accent)]"
       />
       {active ? (
-        <div className="absolute top-full left-0 z-[9997] mt-1 w-56 rounded-[var(--radius-md)] border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-1 shadow-[var(--shadow-xl)] transition-opacity duration-[var(--motion-base)] ease-[var(--ease-emphasized)]">
+        <div className="absolute left-0 top-full z-[9997] mt-1 w-56 rounded-[var(--radius-md)] border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-1 shadow-[var(--shadow-xl)] transition-opacity duration-[var(--motion-base)] ease-[var(--ease-emphasized)]">
           {matches.length === 0 ? (
             <p className="px-2 py-2 text-xs text-[var(--color-fg-subtle)]">No matches</p>
           ) : null}

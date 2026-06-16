@@ -42,7 +42,7 @@ export const ListItemButton = forwardRef<HTMLButtonElement, ListItemButtonProps>
         type={type}
         {...props}
         className={cn(
-          'flex w-full min-w-0 items-center gap-3 rounded-md px-2.5 py-2 text-left text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none',
+          'flex w-full min-w-0 items-center gap-3 rounded-md px-2.5 py-2 text-left text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]',
           selected
             ? 'bg-[var(--color-accent-muted)] text-[var(--color-accent-fg)]'
             : 'text-[var(--color-fg-base)] hover:bg-[var(--color-bg-muted)]',
@@ -103,7 +103,7 @@ export function ListSubheader({ className, ...props }: ComponentPropsWithoutRef<
     <li
       {...props}
       className={cn(
-        'px-2.5 py-1 text-[10px] font-semibold tracking-wide text-[var(--color-fg-subtle)] uppercase',
+        'px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[var(--color-fg-subtle)]',
         className,
       )}
     />

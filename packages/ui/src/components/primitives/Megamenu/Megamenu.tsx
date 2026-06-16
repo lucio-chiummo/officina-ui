@@ -34,7 +34,7 @@ export function Megamenu({ trigger, columns, footer, className }: MegamenuProps)
             // eslint-disable-next-line react/no-array-index-key -- column order is the prop order
             <div key={i}>
               {col.heading ? (
-                <div className="mb-2 text-xs font-semibold tracking-wider text-[var(--color-fg-muted)] uppercase">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-fg-muted)]">
                   {col.heading}
                 </div>
               ) : null}
