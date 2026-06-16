@@ -1,11 +1,15 @@
 ---
 title: Select
-description: 'Select — live example and API reference.'
+description: Styled wrapper around the native HTML select element for simple single-choice menus.
 ---
 
 import { SelectDemo } from '@/components/demos/inputs-demo';
 
-Import `Select` from `@officina/ui`.
+`Select` is a thin, styled wrapper around the native `<select>` element, so it
+accepts the same props (`value`, `onChange`, `disabled`, `name`) and standard
+`<option>` children. Reach for it for simple, native single-choice menus where
+the OS picker is acceptable; for searchable or richly rendered options use
+[`Combobox`](/docs/components/combobox) instead.
 
 ## Example
 
@@ -15,6 +19,18 @@ Import `Select` from `@officina/ui`.
 
 ```tsx
 import { Select } from '@officina/ui';
+import { useState } from 'react';
+
+function CountrySelect() {
+  const [value, setValue] = useState('us');
+  return (
+    <Select value={value} onChange={(e) => setValue(e.target.value)}>
+      <option value="us">United States</option>
+      <option value="it">Italy</option>
+      <option value="jp">Japan</option>
+    </Select>
+  );
+}
 ```
 
 ## API

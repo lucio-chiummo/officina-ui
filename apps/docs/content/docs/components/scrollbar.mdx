@@ -1,11 +1,16 @@
 ---
 title: Scrollbar
-description: 'Scrollbar — live example and API reference.'
+description: Themed custom scrollbar overlay that auto-hides and follows light/dark mode.
 ---
 
 import { ScrollbarDemo } from '@/components/demos/misc-demo';
 
-Import `Scrollbar` from `@officina/ui`.
+`Scrollbar` wraps scrollable content with a consistent, custom-styled overlay
+scrollbar instead of the native one. The bar auto-hides when the pointer leaves
+the area and automatically matches the active light or dark theme. Give the
+wrapper a constrained height (or width) so its content actually overflows.
+Built on `overlayscrollbars-react` — make sure
+`overlayscrollbars/overlayscrollbars.css` is imported once at your app entry.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `Scrollbar` from `@officina/ui`.
 
 ```tsx
 import { Scrollbar } from '@officina/ui';
+
+<Scrollbar className="h-64">
+  <div className="space-y-2">{/* long content */}</div>
+</Scrollbar>;
 ```
 
 ## API

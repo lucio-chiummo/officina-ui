@@ -1,11 +1,15 @@
 ---
 title: Container
-description: 'Container — live example and API reference.'
+description: Centers page content with a max-width and responsive horizontal padding.
 ---
 
 import { ContainerDemo } from '@/components/demos/misc-demo';
 
-Import `Container` from `@officina/ui`.
+`Container` constrains content to a comfortable width and centers it
+horizontally, with responsive side padding built in. Pick a max-width with the
+`size` prop (`sm`, `md`, `lg`, `xl` default, `2xl`, or `full` for none). Wrap
+page bodies and section content in it so layouts stay aligned to the same
+measure across breakpoints.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `Container` from `@officina/ui`.
 
 ```tsx
 import { Container } from '@officina/ui';
+
+<Container size="lg">
+  <h1>Dashboard</h1>
+  {/* page content */}
+</Container>;
 ```
 
 ## API

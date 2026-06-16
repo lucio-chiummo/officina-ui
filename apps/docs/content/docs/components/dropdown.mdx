@@ -1,11 +1,16 @@
 ---
 title: Dropdown
-description: 'Dropdown — live example and API reference.'
+description: A trigger-anchored menu of grouped items with icons, shortcuts, and links.
 ---
 
 import { DropdownDemo } from '@/components/demos/navigation-demo';
 
-Import `Dropdown` from `@officina/ui`.
+`Dropdown` is the low-level menu primitive the other menus build on. Pass any
+`trigger` element and a list of `sections`, each an optional `heading` plus
+items with `label`, `icon`, `shortcut`, `danger`, and `onClick`/`href`. The
+panel anchors to the trigger and aligns to `start` or `end`. Built on Headless
+UI, so keyboard navigation, focus management, and outside-click dismissal come
+for free.
 
 ## Example
 
@@ -14,7 +19,20 @@ Import `Dropdown` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Dropdown } from '@officina/ui';
+import { Dropdown, Button } from '@officina/ui';
+
+<Dropdown
+  trigger={<Button variant="secondary">Options</Button>}
+  align="end"
+  sections={[
+    {
+      items: [
+        { label: 'Rename', onClick: rename },
+        { label: 'Delete', danger: true, onClick: remove },
+      ],
+    },
+  ]}
+/>;
 ```
 
 ## API

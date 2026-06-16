@@ -1,11 +1,15 @@
 ---
 title: DonutChart
-description: 'DonutChart — live example and API reference.'
+description: Donut chart showing category shares of a whole with a hollow centre for a summary metric.
 ---
 
 import { DonutChartDemo } from '@/components/demos/charts-demo';
 
-Import `DonutChart` from `@officina/ui`.
+`DonutChart` is a `PieChart` with a hollow centre — the same proportional
+breakdown of a whole, with room in the middle for a total or key metric. Pass
+`data` as an array of objects, then point `nameKey` at the label field and
+`valueKey` at the numeric field. It renders client-side via ECharts, so give it
+a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `DonutChart` from `@officina/ui`.
 
 ```tsx
 import { DonutChart } from '@officina/ui';
+
+const data = [
+  { segment: 'Enterprise', value: 42 },
+  { segment: 'Growth', value: 31 },
+  { segment: 'Starter', value: 18 },
+];
+
+<DonutChart data={data} nameKey="segment" valueKey="value" height={280} />;
 ```
 
 ## API

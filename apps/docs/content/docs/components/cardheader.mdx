@@ -1,11 +1,14 @@
 ---
 title: CardHeader
-description: 'CardHeader — live example and API reference.'
+description: Top row of a Card holding the title/description and any header actions.
 ---
 
 import { CardHeaderDemo } from '@/components/demos/composed-demo';
 
-Import `CardHeader` from `@officina/ui`.
+`CardHeader` is the top section of a `Card`. It lays its children out in a row
+with space between them, so a `CardTitle`/`CardDescription` block sits on the
+left while an action button or menu sits on the right, with padding below to
+separate it from the content. Place it as the first child of a `Card`.
 
 ## Example
 
@@ -14,7 +17,19 @@ Import `CardHeader` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CardHeader } from '@officina/ui';
+import { Card, CardHeader, CardTitle, CardDescription, Button } from '@officina/ui';
+
+<Card>
+  <CardHeader>
+    <div>
+      <CardTitle>Acme Operations</CardTitle>
+      <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
+    </div>
+    <Button size="sm" variant="soft">
+      Manage
+    </Button>
+  </CardHeader>
+</Card>;
 ```
 
 ## API

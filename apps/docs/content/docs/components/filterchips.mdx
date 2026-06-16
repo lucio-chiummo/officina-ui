@@ -1,11 +1,15 @@
 ---
 title: FilterChips
-description: 'FilterChips — live example and API reference.'
+description: Renders active filters as removable chips with an optional clear-all button.
 ---
 
 import { FilterChipsDemo } from '@/components/demos/filters-demo';
 
-Import `FilterChips` from `@officina/ui`.
+`FilterChips` displays the currently applied filters as a row of removable
+chips, each calling its own `onRemove` when dismissed, plus an optional
+"Clear all" button when you pass `onClearAll`. It renders nothing when there are
+no active chips. Feed it the `chips` array from a `useFilters` store (this is
+what `FilterBar` shows above the add-filter control).
 
 ## Example
 
@@ -14,7 +18,12 @@ Import `FilterChips` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FilterChips } from '@officina/ui';
+import { FilterChips, useFilters } from '@officina/ui';
+
+function ActiveFilters() {
+  const filters = useFilters({ mode: 'client', fields });
+  return <FilterChips chips={filters.chips} onClearAll={filters.clear} />;
+}
 ```
 
 ## API

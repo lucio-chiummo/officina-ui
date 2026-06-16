@@ -1,11 +1,19 @@
 ---
 title: OnboardingTour
-description: 'OnboardingTour — live example and API reference.'
+description: Step-by-step spotlight walkthrough that highlights real DOM elements, via driver.js.
 ---
 
 import { OnboardingTourDemo } from '@/components/demos/navigation-demo';
 
-Import `OnboardingTour` from `@officina/ui`.
+`OnboardingTour` drives a guided tour over your actual UI: each step targets
+a CSS selector and highlights that element with a popover and dimmed
+backdrop, built on `driver.js`. It renders no visible markup of its own —
+mount it anywhere and control it with `run`. Use it for first-run product
+tours or feature announcements that need to point at specific buttons or
+panels rather than show a generic modal.
+
+Toggle `run` to `true` to start the tour; flipping it back to `false` tears it
+down. `onClose` fires when the user finishes or dismisses it.
 
 ## Example
 
@@ -15,6 +23,30 @@ Import `OnboardingTour` from `@officina/ui`.
 
 ```tsx
 import { OnboardingTour } from '@officina/ui';
+import { useState } from 'react';
+
+function ProductTour() {
+  const [run, setRun] = useState(false);
+  return (
+    <>
+      <button onClick={() => setRun(true)}>Show me around</button>
+      <OnboardingTour
+        run={run}
+        onClose={() => setRun(false)}
+        steps={[
+          {
+            element: '#sidebar',
+            popover: { title: 'Navigation', description: 'Switch workspaces here.' },
+          },
+          {
+            element: '#invite-button',
+            popover: { title: 'Invite teammates', description: 'Add people to your team.' },
+          },
+        ]}
+      />
+    </>
+  );
+}
 ```
 
 ## API

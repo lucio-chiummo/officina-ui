@@ -5,7 +5,11 @@ description: 'Dense label/value rows for detail panels and settings summaries.'
 
 import { PropertyListDemo } from '@/components/demos/data-display-demo';
 
-Import `PropertyList` from `@officina/ui`.
+`PropertyList` renders dense label/value rows as a `<dl>` for detail panels and
+settings summaries. Feed it an `items` array of `{ label, value }`, or pass
+`PropertyItem` children when a value needs custom markup. Control the layout with
+`orientation` (`horizontal` puts label and value side by side, `vertical` stacks
+them), toggle `divided` rules, and set the label column width with `labelWidth`.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `PropertyList` from `@officina/ui`.
 
 ```tsx
 import { PropertyList } from '@officina/ui';
+
+<PropertyList
+  items={[
+    { label: 'Workspace', value: 'Acme Operations' },
+    { label: 'Plan', value: 'Growth' },
+    { label: 'Owner', value: 'ada@acme.test' },
+  ]}
+/>;
 ```
 
 ## API

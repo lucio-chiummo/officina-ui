@@ -1,11 +1,15 @@
 ---
 title: ImagePreview
-description: 'Single image preview tile with remove and retry actions plus uploading/error'
+description: Image thumbnail tile with remove/retry actions and uploading and error overlays.
 ---
 
 import { ImagePreviewDemo } from '@/components/demos/misc-demo';
 
-Import `ImagePreview` from `@officina/ui`.
+`ImagePreview` is a square thumbnail tile for files being uploaded — it shows the
+image plus optional remove and retry controls, and overlays a progress or error
+state. Pass the `src` and an optional `name`; drive the overlay with `status`
+(`'idle' | 'uploading' | 'error'`) and `progress`. It is transport-free, so you
+own the object URL and wire `onRemove`/`onRetry` yourself.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `ImagePreview` from `@officina/ui`.
 
 ```tsx
 import { ImagePreview } from '@officina/ui';
+
+<ImagePreview
+  src={objectUrl}
+  name="avatar.png"
+  status="uploading"
+  progress={64}
+  onRemove={() => removeFile(id)}
+  onRetry={() => retryUpload(id)}
+/>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: List
-description: 'List — live example and API reference.'
+description: Vertical container for stacked rows — the root of the List composition.
 ---
 
 import { ListDemo } from '@/components/demos/data-display-demo';
 
-Import `List` from `@officina/ui`.
+`List` is the styled `<ul>` that wraps a stack of `ListItem` rows. It owns the
+shared spacing and surface — pass `variant="outlined"` or `"soft"` for a bordered
+or filled container, and `dense` to tighten the row gap. Fill it with `ListItem`,
+`ListSubheader`, and `ListDivider` children to build navigation menus, settings
+panels, and entity lists.
 
 ## Example
 
@@ -14,7 +18,16 @@ Import `List` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { List } from '@officina/ui';
+import { List, ListItem, ListItemButton } from '@officina/ui';
+
+<List variant="outlined">
+  <ListItem>
+    <ListItemButton selected>Dashboard</ListItemButton>
+  </ListItem>
+  <ListItem>
+    <ListItemButton>Settings</ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

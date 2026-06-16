@@ -1,11 +1,15 @@
 ---
 title: NotificationCard
-description: 'NotificationCard — live example and API reference.'
+description: Single notification row with title, icon, metadata, and unread indicator.
 ---
 
 import { NotificationCardDemo } from '@/components/demos/feedback-demo';
 
-Import `NotificationCard` from `@officina/ui`.
+`NotificationCard` renders one notification as a self-contained `<article>` with
+a `title` and optional `description`, leading `icon` (defaults to a bell),
+trailing `meta` such as a timestamp, and `actions`. Set `unread` to add an
+emphasis dot. Use it on its own or as the row inside a `NotificationCenter`
+list.
 
 ## Example
 
@@ -15,6 +19,13 @@ Import `NotificationCard` from `@officina/ui`.
 
 ```tsx
 import { NotificationCard } from '@officina/ui';
+
+<NotificationCard
+  title="Deploy succeeded"
+  description="web-app shipped to production."
+  meta="2m ago"
+  unread
+/>;
 ```
 
 ## API

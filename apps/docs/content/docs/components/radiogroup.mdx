@@ -1,11 +1,15 @@
 ---
 title: RadioGroup
-description: 'RadioGroup — live example and API reference.'
+description: Single-choice radio selector driven by an options array, with plain or card layouts.
 ---
 
 import { RadioGroupDemo } from '@/components/demos/inputs-demo';
 
-Import `RadioGroup` from `@officina/ui`.
+`RadioGroup` is a controlled single-choice input built from an `options` array,
+where each option carries a `value`, `label`, and optional `description` and
+`icon`. Use it whenever the user must pick exactly one value from a small,
+visible set. Lay options out with `orientation` (`'vertical'` or `'horizontal'`)
+and switch between `'plain'` radios and selectable `'card'` tiles via `variant`.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `RadioGroup` from `@officina/ui`.
 
 ```tsx
 import { RadioGroup } from '@officina/ui';
+import { useState } from 'react';
+
+function PlanPicker() {
+  const [plan, setPlan] = useState('free');
+  return (
+    <RadioGroup
+      value={plan}
+      onChange={setPlan}
+      orientation="horizontal"
+      options={[
+        { value: 'free', label: 'Free', description: 'For getting started' },
+        { value: 'pro', label: 'Pro', description: 'For growing teams' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

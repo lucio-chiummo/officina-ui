@@ -1,11 +1,15 @@
 ---
 title: PinInput
-description: 'PinInput — live example and API reference.'
+description: Segmented one-time-code input with one cell per character and a blinking caret.
 ---
 
 import { PinInputDemo } from '@/components/demos/inputs-demo';
 
-Import `PinInput` from `@officina/ui`.
+`PinInput` renders a row of single-character cells for entering OTP and
+verification codes. It is controlled — `value` holds the full string and
+`onChange` fires as each character is typed or pasted. Set `length` for the
+number of cells (defaults to 6). Built on `input-otp`, it handles caret movement
+and paste across cells automatically.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `PinInput` from `@officina/ui`.
 
 ```tsx
 import { PinInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [code, setCode] = useState('');
+  return <PinInput value={code} onChange={setCode} length={6} />;
+}
 ```
 
 ## API

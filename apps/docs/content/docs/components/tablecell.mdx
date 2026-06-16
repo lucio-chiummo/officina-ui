@@ -1,11 +1,14 @@
 ---
 title: TableCell
-description: 'TableCell — live example and API reference.'
+description: A <td> data cell for a composed Table, with consistent padding and vertical alignment.
 ---
 
 import { TableCellDemo } from '@/components/demos/composed-demo';
 
-Import `TableCell` from `@officina/ui`.
+`TableCell` is a data cell (`<td>`) for a hand-composed `Table`. It applies the
+standard cell padding and vertical alignment so columns line up. Use one per
+column inside each `TableRow` in your `TableBody`; pass `colSpan`, `className`,
+or any `<td>` attribute as needed.
 
 ## Example
 
@@ -14,7 +17,14 @@ Import `TableCell` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableCell } from '@officina/ui';
+import { TableBody, TableRow, TableCell } from '@officina/ui';
+
+<TableBody>
+  <TableRow>
+    <TableCell>Ada Lovelace</TableCell>
+    <TableCell className="text-right">$250.00</TableCell>
+  </TableRow>
+</TableBody>;
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: AIPrompt
-description: 'Prompt input surface for AI features: suggestion chips, multiline input with'
+description: Prompt input for AI features — suggestion chips, Cmd+Enter submit, busy/stop, output slot.
 ---
 
 import { AIPromptDemo } from '@/components/demos/inputs-demo';
 
-Import `AIPrompt` from `@officina/ui`.
+`AIPrompt` is a ready-made prompt surface for AI features: a multiline input
+that submits on Cmd/Ctrl+Enter, optional `suggestions` chips, a `busy` state
+that swaps the send button for a stop affordance (`onStop`), and an `output`
+slot for the rendered response. It is transport-free — wire your own model call
+in `onSubmit`, which receives the prompt text. Add a `hint` for footer notes
+like the model name.
 
 ## Example
 
@@ -15,6 +20,26 @@ Import `AIPrompt` from `@officina/ui`.
 
 ```tsx
 import { AIPrompt } from '@officina/ui';
+import { useState } from 'react';
+
+function Assistant() {
+  const [busy, setBusy] = useState(false);
+  const [output, setOutput] = useState<React.ReactNode>(null);
+  return (
+    <AIPrompt
+      busy={busy}
+      onStop={() => setBusy(false)}
+      suggestions={['Summarize this report', 'Draft a follow-up email']}
+      hint="gpt-style model"
+      output={output ?? undefined}
+      onSubmit={async (prompt) => {
+        setBusy(true);
+        setOutput(await runModel(prompt));
+        setBusy(false);
+      }}
+    />
+  );
+}
 ```
 
 ## API

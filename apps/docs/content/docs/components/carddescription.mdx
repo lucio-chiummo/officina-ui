@@ -1,11 +1,13 @@
 ---
 title: CardDescription
-description: 'CardDescription — live example and API reference.'
+description: Muted supporting line under a CardTitle, rendered as a styled paragraph.
 ---
 
 import { CardDescriptionDemo } from '@/components/demos/composed-demo';
 
-Import `CardDescription` from `@officina/ui`.
+`CardDescription` is the small, muted supporting line that sits under a
+`CardTitle` — a styled `<p>` for a subtitle, status, or one-line summary. Place
+it inside a `CardHeader` next to the title.
 
 ## Example
 
@@ -14,7 +16,16 @@ Import `CardDescription` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CardDescription } from '@officina/ui';
+import { Card, CardHeader, CardTitle, CardDescription } from '@officina/ui';
+
+<Card>
+  <CardHeader>
+    <div>
+      <CardTitle>Acme Operations</CardTitle>
+      <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
+    </div>
+  </CardHeader>
+</Card>;
 ```
 
 ## API

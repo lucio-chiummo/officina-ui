@@ -1,11 +1,14 @@
 ---
 title: CodeBlock
-description: 'CodeBlock — live example and API reference.'
+description: Syntax-highlighted code block with optional line numbers and a copy button.
 ---
 
 import { CodeBlockDemo } from '@/components/demos/data-display-demo';
 
-Import `CodeBlock` from `@officina/ui`.
+`CodeBlock` renders a `code` string with Prism syntax highlighting for the given
+`language`. Toggle the line-number gutter with `showLineNumbers`, keep or hide the
+built-in copy button with `showCopy`, and cap the height with `maxHeight` to make
+long snippets scroll. Use it for docs, examples, and API payloads.
 
 ## Example
 
@@ -15,6 +18,12 @@ Import `CodeBlock` from `@officina/ui`.
 
 ```tsx
 import { CodeBlock } from '@officina/ui';
+
+function Snippet() {
+  return (
+    <CodeBlock language="tsx" showLineNumbers code={`function hello() {\n  return 'world';\n}`} />
+  );
+}
 ```
 
 ## API

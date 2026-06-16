@@ -1,11 +1,15 @@
 ---
 title: PageSection
-description: 'PageSection — live example and API reference.'
+description: Bordered content block with an optional title, description, and actions header.
 ---
 
 import { PageSectionDemo } from '@/components/demos/composed-demo';
 
-Import `PageSection` from `@officina/ui`.
+`PageSection` groups related content into a bordered, padded card with an
+optional header. Provide a `title` and `description` for the heading, and an
+`actions` slot for controls aligned to the right; the header is omitted entirely
+when none are given. Stack several sections inside a
+[`PageBody`](/docs/components/pagebody) to break a page into clear regions.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `PageSection` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { PageSection } from '@officina/ui';
+import { PageSection, Button } from '@officina/ui';
+
+<PageSection
+  title="Team members"
+  description="People with access to this workspace"
+  actions={<Button size="sm">Invite</Button>}
+>
+  {/* table or list */}
+</PageSection>;
 ```
 
 ## API

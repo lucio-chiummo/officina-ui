@@ -1,11 +1,16 @@
 ---
 title: Meter
-description: 'Usage/quota meter for dashboards — single fill or stacked segments. Uses the'
+description: Usage/quota bar for dashboards — a single fill or stacked segments with a legend.
 ---
 
 import { MeterDemo } from '@/components/demos/feedback-demo';
 
-Import `Meter` from `@officina/ui`.
+`Meter` shows how much of a bounded quantity is in use — storage, seats,
+budget. Pass `value`/`max` for a single fill, or `segments` to stack several
+typed portions (e.g. storage used by images vs. documents) inside the same
+track. It renders with the native `meter` ARIA role, so screen readers report
+the current value automatically — distinct from `Progress`, which represents
+an ongoing operation rather than a static quantity.
 
 ## Example
 
@@ -15,6 +20,20 @@ Import `Meter` from `@officina/ui`.
 
 ```tsx
 import { Meter } from '@officina/ui';
+
+<Meter value={68} max={100} tone="accent" label="Seats used" valueLabel="17 of 25" />
+
+<Meter
+  max={100}
+  label="Storage"
+  valueLabel="76 of 100 GB"
+  showLegend
+  segments={[
+    { value: 42, tone: 'accent', label: 'Images' },
+    { value: 23, tone: 'info', label: 'Documents' },
+    { value: 11, tone: 'warning', label: 'Other' },
+  ]}
+/>
 ```
 
 ## API

@@ -1,11 +1,14 @@
 ---
 title: QRCode
-description: 'QRCode — live example and API reference.'
+description: Renders a string as a scannable QR code SVG with configurable size and accessible label.
 ---
 
 import { QRCodeDemo } from '@/components/demos/misc-demo';
 
-Import `QRCode` from `@officina/ui`.
+`QRCode` encodes any string — a URL, token, or contact payload — into a crisp,
+scannable SVG QR code framed in a bordered tile. Pass the `value` to encode, set
+`size` for the module dimension in pixels, and give a `label` describing the code
+for screen readers. It forwards any other `div` props and merges `className`.
 
 ## Example
 
@@ -15,6 +18,8 @@ Import `QRCode` from `@officina/ui`.
 
 ```tsx
 import { QRCode } from '@officina/ui';
+
+<QRCode value="https://officina.dev" size={160} label="Link to officina.dev" />;
 ```
 
 ## API

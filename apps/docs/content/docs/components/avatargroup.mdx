@@ -1,11 +1,15 @@
 ---
 title: AvatarGroup
-description: 'AvatarGroup — live example and API reference.'
+description: Overlapping row of Avatar children that collapses overflow into a +N chip.
 ---
 
 import { AvatarGroupDemo } from '@/components/demos/composed-demo';
 
-Import `AvatarGroup` from `@officina/ui`.
+`AvatarGroup` overlaps a row of `Avatar` children with ring separators and shows
+the first `max` of them (default 4), collapsing any extras into a trailing `+N`
+chip. Use it when you have the avatars as JSX children; reach for `AvatarStack`
+instead when you have an array of avatar data. Setting `size` applies a matching
+overlap ring to the group.
 
 ## Example
 
@@ -14,7 +18,14 @@ Import `AvatarGroup` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { AvatarGroup } from '@officina/ui';
+import { AvatarGroup, Avatar } from '@officina/ui';
+
+<AvatarGroup max={3}>
+  <Avatar name="Ada Lovelace" />
+  <Avatar name="Alan Turing" />
+  <Avatar name="Grace Hopper" />
+  <Avatar name="Katherine Johnson" />
+</AvatarGroup>;
 ```
 
 ## API

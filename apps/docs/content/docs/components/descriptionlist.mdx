@@ -1,11 +1,15 @@
 ---
 title: DescriptionList
-description: 'DescriptionList — live example and API reference.'
+description: Data-driven term/value rows rendered as a semantic dl, inline or stacked.
 ---
 
 import { DescriptionListDemo } from '@/components/demos/data-display-demo';
 
-Import `DescriptionList` from `@officina/ui`.
+`DescriptionList` renders an array of `term`/`detail` pairs as a semantic
+`<dl>` with a top and bottom rule on each row. Pass `layout="inline"` (the
+default) to set the term in a fixed-width column beside its value, or
+`layout="stacked"` to put the term above the value. Reach for it on detail and
+summary screens where the data is a known set of fields.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `DescriptionList` from `@officina/ui`.
 
 ```tsx
 import { DescriptionList } from '@officina/ui';
+
+<DescriptionList
+  items={[
+    { term: 'Plan', detail: 'Pro' },
+    { term: 'Seats', detail: '24 / 50' },
+    { term: 'Renewal', detail: 'May 11, 2026' },
+  ]}
+/>;
 ```
 
 ## API

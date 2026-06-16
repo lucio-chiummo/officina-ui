@@ -1,11 +1,14 @@
 ---
 title: ImageLightbox
-description: 'ImageLightbox — live example and API reference.'
+description: Full-screen modal gallery for viewing images with navigation between slides.
 ---
 
 import { ImageLightboxDemo } from '@/components/demos/misc-demo';
 
-Import `ImageLightbox` from `@officina/ui`.
+`ImageLightbox` opens a full-screen, navigable overlay for viewing images at
+size — wrap it around a thumbnail grid so clicking a photo opens the gallery.
+It is controlled: drive `open` from your state, supply the `slides` array, set
+`startIndex` for which one opens first, and reset `open` in `onClose`.
 
 ## Example
 
@@ -15,6 +18,22 @@ Import `ImageLightbox` from `@officina/ui`.
 
 ```tsx
 import { ImageLightbox } from '@officina/ui';
+import { useState } from 'react';
+
+function Gallery() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>View photos</button>
+      <ImageLightbox
+        open={open}
+        onClose={() => setOpen(false)}
+        startIndex={0}
+        slides={[{ src: '/photos/1.jpg' }, { src: '/photos/2.jpg' }]}
+      />
+    </>
+  );
+}
 ```
 
 ## API

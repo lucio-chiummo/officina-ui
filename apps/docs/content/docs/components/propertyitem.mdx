@@ -1,11 +1,14 @@
 ---
 title: PropertyItem
-description: 'PropertyItem — live example and API reference.'
+description: A single label/value row for a PropertyList, for custom value markup.
 ---
 
 import { PropertyItemDemo } from '@/components/demos/composed-demo';
 
-Import `PropertyItem` from `@officina/ui`.
+`PropertyItem` is one row of a `PropertyList`. Use it as a child instead of the
+list's `items` prop when a value needs richer markup than a string — a `Badge`, a
+link, an avatar. Pass the row `label` and put the value in `children`; it inherits
+`orientation`, `labelWidth`, and `divided` from the parent list.
 
 ## Example
 
@@ -14,7 +17,15 @@ Import `PropertyItem` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { PropertyItem } from '@officina/ui';
+import { PropertyList, PropertyItem, Badge } from '@officina/ui';
+
+<PropertyList>
+  <PropertyItem label="Workspace">Acme Operations</PropertyItem>
+  <PropertyItem label="Plan">
+    <Badge tone="success">Growth</Badge>
+  </PropertyItem>
+  <PropertyItem label="Owner">ada@acme.test</PropertyItem>
+</PropertyList>;
 ```
 
 ## API

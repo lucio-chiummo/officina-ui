@@ -1,11 +1,17 @@
 ---
 title: MultiColumnCombobox
-description: 'Combobox whose popup is a small table — search across all columns, render'
+description: Combobox whose popup is a small table — search across columns and pick structured rows.
 ---
 
 import { MultiColumnComboboxDemo } from '@/components/demos/inputs-demo';
 
-Import `MultiColumnCombobox` from `@officina/ui`.
+`MultiColumnCombobox` renders its dropdown as a small table, so each option is a
+structured row with several columns. Use it for picking entities identified by
+more than one field — SKU + name + stock, or employee + department + role. You
+define `columns` (each with a `key` and `header`) and pass `items` (objects with
+an `id` plus a string per column key); typing searches across every column. It
+is controlled by the selected row `id`, and `displayKey` chooses which column
+shows in the input once selected.
 
 ## Example
 
@@ -15,6 +21,28 @@ Import `MultiColumnCombobox` from `@officina/ui`.
 
 ```tsx
 import { MultiColumnCombobox } from '@officina/ui';
+import { useState } from 'react';
+
+function ProductPicker() {
+  const [value, setValue] = useState<string | null>(null);
+  return (
+    <MultiColumnCombobox
+      value={value}
+      onChange={setValue}
+      displayKey="name"
+      placeholder="Search products…"
+      columns={[
+        { key: 'sku', header: 'SKU' },
+        { key: 'name', header: 'Name' },
+        { key: 'stock', header: 'Stock' },
+      ]}
+      items={[
+        { id: '1', sku: 'AB-100', name: 'Widget', stock: '42' },
+        { id: '2', sku: 'AB-200', name: 'Gadget', stock: '7' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

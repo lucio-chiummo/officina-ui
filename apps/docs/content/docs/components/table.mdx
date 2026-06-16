@@ -1,11 +1,17 @@
 ---
 title: Table
-description: 'Table — live example and API reference.'
+description: Styled HTML table root you compose with the Table parts to build a static, hand-built table.
 ---
 
 import { TableDemo } from '@/components/demos/tables-demo';
 
-Import `Table` from `@officina/ui`.
+`Table` is the styled root element of Officina's low-level table primitives — it
+renders a real HTML `<table>` with sensible borders, typography, and spacing.
+Compose it by hand with `TableHeader`, `TableBody`, `TableRow`, `TableHead`, and
+`TableCell` when you want full control over markup and have a small, static
+dataset. For sorting, filtering, pagination, or large data, reach for
+`DataTable` or `DataGrid` instead. Every part forwards its ref and accepts the
+standard attributes of the underlying element.
 
 ## Example
 
@@ -14,7 +20,26 @@ Import `Table` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Table } from '@officina/ui';
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@officina/ui';
+
+function InvoicesTable() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Invoice</TableHead>
+          <TableHead>Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>#1024</TableCell>
+          <TableCell>$250.00</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+}
 ```
 
 ## API

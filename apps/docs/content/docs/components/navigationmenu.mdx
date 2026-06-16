@@ -1,11 +1,15 @@
 ---
 title: NavigationMenu
-description: 'NavigationMenu — live example and API reference.'
+description: A horizontal site nav where items are plain links or triggers that open rich dropdown panels.
 ---
 
 import { NavigationMenuDemo } from '@/components/demos/navigation-demo';
 
-Import `NavigationMenu` from `@officina/ui`.
+`NavigationMenu` is a horizontal top-level navigation bar built on Radix. Each
+entry in `items` is either a simple link (`href`) or, when given `content`, a
+trigger that opens a dropdown panel holding arbitrary JSX — featured links,
+descriptions, or promos. Radix handles the keyboard navigation, focus, and
+hover-intent timing. Use it for primary site or app navigation in a header.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `NavigationMenu` from `@officina/ui`.
 
 ```tsx
 import { NavigationMenu } from '@officina/ui';
+
+<NavigationMenu
+  items={[
+    { label: 'Home', href: '/' },
+    { label: 'Products', content: <ProductsPanel /> },
+    { label: 'Pricing', href: '/pricing' },
+  ]}
+/>;
 ```
 
 ## API

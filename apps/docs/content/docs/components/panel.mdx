@@ -1,11 +1,15 @@
 ---
 title: Panel
-description: 'Panel — live example and API reference.'
+description: A single resizable region inside ResizablePanels, with per-panel scroll control.
 ---
 
 import { ResizablePanelsDemo } from '@/components/demos/misc-demo';
 
-Import `Panel` from `@officina/ui`.
+`Panel` is one region within a [`ResizablePanels`](/docs/components/resizablepanels)
+group. Size it with `defaultSize`, `minSize`, and `maxSize` (percentages), and
+control its own overflow with the `scroll` prop (`hidden` default, `auto`, `x`,
+or `y`). Separate adjacent panels with a
+[`PanelHandle`](/docs/components/panelhandle) so users can drag the boundary.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `Panel` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Panel } from '@officina/ui';
+import { ResizablePanels, Panel, PanelHandle } from '@officina/ui';
+
+<ResizablePanels direction="horizontal">
+  <Panel defaultSize={40} minSize={20} scroll="y">
+    Navigation
+  </Panel>
+  <PanelHandle />
+  <Panel>Content</Panel>
+</ResizablePanels>;
 ```
 
 ## API

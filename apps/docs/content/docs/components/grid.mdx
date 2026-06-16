@@ -1,11 +1,16 @@
 ---
 title: Grid
-description: 'Grid — live example and API reference.'
+description: CSS grid layout with a fixed column count or auto-responsive columns by min cell width.
 ---
 
 import { GridDemo } from '@/components/demos/misc-demo';
 
-Import `Grid` from `@officina/ui`.
+`Grid` arranges children in a CSS grid. Give it a fixed `columns` count for a
+predictable layout, or set `minChildWidth` (in pixels) for an auto-responsive
+grid that fits as many equal columns as will hold cells of at least that width —
+`minChildWidth` overrides `columns`. Spacing between cells uses the same `gap`
+scale as `Stack`. Use it for card galleries, dashboards, and any equal-column
+layout.
 
 ## Example
 
@@ -15,6 +20,12 @@ Import `Grid` from `@officina/ui`.
 
 ```tsx
 import { Grid } from '@officina/ui';
+
+<Grid minChildWidth={220} gap={4}>
+  <Card />
+  <Card />
+  <Card />
+</Grid>;
 ```
 
 ## API

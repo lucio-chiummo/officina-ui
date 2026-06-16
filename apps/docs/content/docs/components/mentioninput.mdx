@@ -1,11 +1,20 @@
 ---
 title: MentionInput
-description: 'MentionInput — live example and API reference.'
+description: Multi-line text input with @-mention autocomplete for tagging people or entities.
 ---
 
 import { MentionInputDemo } from '@/components/demos/inputs-demo';
 
-Import `MentionInput` from `@officina/ui`.
+`MentionInput` is a textarea that detects when the user types `@` and opens an
+inline autocomplete of candidates. Picking one inserts a structured mention
+token (`@[Label](id)`) into the text, so you keep both a human-readable label and
+a stable id you can resolve later. Reach for it in comment boxes, chat
+composers, task descriptions, or anywhere users need to reference teammates or
+records inline. Navigate the suggestion list with the arrow keys, commit with
+`Enter`, and dismiss with `Escape`.
+
+The value is a plain string you own, so `MentionInput` is fully controlled —
+pass `value` and `onChange` and store the text in your own state.
 
 ## Example
 
@@ -15,7 +24,26 @@ Import `MentionInput` from `@officina/ui`.
 
 ```tsx
 import { MentionInput } from '@officina/ui';
+import { useState } from 'react';
+
+function CommentBox() {
+  const [value, setValue] = useState('');
+  return (
+    <MentionInput
+      value={value}
+      onChange={setValue}
+      placeholder="Write a comment… use @ to mention someone"
+      options={[
+        { id: '1', label: 'Lucio' },
+        { id: '2', label: 'Officina Bot' },
+      ]}
+    />
+  );
+}
 ```
+
+Each committed mention is encoded in the text as `@[label](id)`. Parse that
+pattern on submit to extract the referenced ids before sending to your backend.
 
 ## API
 

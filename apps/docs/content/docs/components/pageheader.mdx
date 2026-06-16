@@ -1,11 +1,15 @@
 ---
 title: PageHeader
-description: 'PageHeader — live example and API reference.'
+description: Page heading with title, optional description, breadcrumbs, and right-aligned actions.
 ---
 
 import { PageHeaderDemo } from '@/components/demos/composed-demo';
 
-Import `PageHeader` from `@officina/ui`.
+`PageHeader` renders the top of a page: a required `title` heading, an optional
+`description`, a `breadcrumbs` trail above the title, and an `actions` slot
+pinned to the right for buttons. It handles the spacing and responsive wrapping
+so every screen's header looks consistent. Pair it with
+[`PageBody`](/docs/components/pagebody) for the content below.
 
 ## Example
 
@@ -14,7 +18,14 @@ Import `PageHeader` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { PageHeader } from '@officina/ui';
+import { PageHeader, Button } from '@officina/ui';
+
+<PageHeader
+  title="Invoices"
+  description="Manage and export billing documents"
+  breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Invoices' }]}
+  actions={<Button>New invoice</Button>}
+/>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: Paper
-description: 'Paper — live example and API reference.'
+description: Surface container with configurable elevation (shadow) and border variant.
 ---
 
 import { PaperDemo } from '@/components/demos/misc-demo';
 
-Import `Paper` from `@officina/ui`.
+`Paper` is a styled surface for grouping content onto a card-like background. The
+`variant` prop sets its edge treatment (`outlined` default, `elevated`, or
+`subtle`), and `elevation` (`0`–`3`) sets the shadow depth. Use it as the base
+for cards, popovers, and panels when you want a consistent surface without
+wiring up borders and shadows by hand.
 
 ## Example
 
@@ -15,6 +19,10 @@ Import `Paper` from `@officina/ui`.
 
 ```tsx
 import { Paper } from '@officina/ui';
+
+<Paper variant="elevated" elevation={2} className="p-4">
+  Card content
+</Paper>;
 ```
 
 ## API

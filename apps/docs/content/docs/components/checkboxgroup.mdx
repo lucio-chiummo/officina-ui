@@ -1,11 +1,15 @@
 ---
 title: CheckboxGroup
-description: 'CheckboxGroup — live example and API reference.'
+description: Controlled multi-select of checkboxes backed by an array of selected values.
 ---
 
 import { CheckboxGroupDemo } from '@/components/demos/inputs-demo';
 
-Import `CheckboxGroup` from `@officina/ui`.
+`CheckboxGroup` renders a set of `options` as checkboxes and tracks which are
+selected as a `string[]`. It is controlled — `value` is the array of selected
+values and `onChange` fires with the next array whenever a box toggles. Stack
+them vertically or horizontally with `orientation`, disable the whole set with
+`disabled`, and flag validation state with `invalid`.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `CheckboxGroup` from `@officina/ui`.
 
 ```tsx
 import { CheckboxGroup } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState<string[]>(['email']);
+  return (
+    <CheckboxGroup
+      value={value}
+      onChange={setValue}
+      options={[
+        { value: 'email', label: 'Email' },
+        { value: 'sms', label: 'SMS' },
+        { value: 'push', label: 'Push' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

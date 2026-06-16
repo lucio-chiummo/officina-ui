@@ -1,11 +1,13 @@
 ---
 title: CardTitle
-description: 'CardTitle — live example and API reference.'
+description: The heading of a Card, rendered as a styled semantic h3.
 ---
 
 import { CardTitleDemo } from '@/components/demos/composed-demo';
 
-Import `CardTitle` from `@officina/ui`.
+`CardTitle` is the card's heading — a semantic `<h3>` with the right size and
+weight for a card surface. Put it inside a `CardHeader`, typically above a
+`CardDescription`. Pass the heading text as children.
 
 ## Example
 
@@ -14,7 +16,16 @@ Import `CardTitle` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CardTitle } from '@officina/ui';
+import { Card, CardHeader, CardTitle, CardDescription } from '@officina/ui';
+
+<Card>
+  <CardHeader>
+    <div>
+      <CardTitle>Acme Operations</CardTitle>
+      <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
+    </div>
+  </CardHeader>
+</Card>;
 ```
 
 ## API

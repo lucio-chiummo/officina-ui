@@ -138,7 +138,7 @@ function ChartFrame({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-base)] p-4',
+        'w-full overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-base)] p-4',
         className,
       )}
       style={{ height }}

@@ -1,11 +1,16 @@
 ---
 title: Portal
-description: 'Portal — live example and API reference.'
+description: Renders children into another DOM node, with SSR-safe hydration.
 ---
 
 import { PortalDemo } from '@/components/demos/overlays-demo';
 
-Import `Portal` from `@officina/ui`.
+`Portal` renders its children into a different part of the DOM — `document.body`
+by default, or any node you pass as `container`. Use it to escape `overflow:
+hidden` or stacking-context clipping when building overlays. It is hydration-safe
+(it renders inline until mounted) and accepts `disabled` to render in place
+without portaling. The library's overlays use it internally; reach for it when
+hand-rolling your own.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `Portal` from `@officina/ui`.
 
 ```tsx
 import { Portal } from '@officina/ui';
+
+<Portal>
+  <div className="fixed inset-0 z-50">{/* overlay content */}</div>
+</Portal>;
 ```
 
 ## API

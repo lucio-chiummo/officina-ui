@@ -1,11 +1,15 @@
 ---
 title: Carousel
-description: 'Carousel — live example and API reference.'
+description: Swipeable, looping slide carousel with optional arrow and dot navigation.
 ---
 
 import { CarouselDemo } from '@/components/demos/data-display-demo';
 
-Import `Carousel` from `@officina/ui`.
+`Carousel` renders each child as a slide in a touch- and drag-friendly track
+(built on Embla), with looping enabled by default. Show or hide the prev/next
+arrows and the dot pagination with `showArrows` and `showDots`, and pass Embla
+`options` to tweak alignment, looping, or drag behavior. Use it for image
+galleries, onboarding steps, or feature highlights.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `Carousel` from `@officina/ui`.
 
 ```tsx
 import { Carousel } from '@officina/ui';
+
+function Gallery() {
+  return (
+    <Carousel options={{ align: 'start' }} showArrows showDots>
+      {[<img key="1" src="/a.jpg" alt="First" />, <img key="2" src="/b.jpg" alt="Second" />]}
+    </Carousel>
+  );
+}
 ```
 
 ## API

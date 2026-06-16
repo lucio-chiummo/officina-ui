@@ -1,11 +1,16 @@
 ---
 title: MultiViewCalendar
-description: 'Inline calendar showing multiple months side by side. Unlike DatePicker this'
+description: Inline calendar showing multiple months side by side for single-date or range selection.
 ---
 
 import { MultiViewCalendarDemo } from '@/components/demos/inputs-demo';
 
-Import `MultiViewCalendar` from `@officina/ui`.
+`MultiViewCalendar` renders several months side by side directly in the page —
+unlike [`DatePicker`](/docs/components/datepicker), there is no popover. Reach
+for it in range dashboards, booking flows, and availability views. It is
+controlled, and `mode` switches between `'single'` (`value` is a `Date`) and
+`'range'` (`value` is a `DateRange`); set `months` for how many months to show
+(defaults to `2`).
 
 ## Example
 
@@ -15,6 +20,12 @@ Import `MultiViewCalendar` from `@officina/ui`.
 
 ```tsx
 import { MultiViewCalendar } from '@officina/ui';
+import { useState } from 'react';
+
+function AvailabilityCalendar() {
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  return <MultiViewCalendar months={2} value={date} onChange={setDate} />;
+}
 ```
 
 ## API

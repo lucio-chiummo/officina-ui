@@ -1,11 +1,14 @@
 ---
 title: SignaturePad
-description: 'SignaturePad — live example and API reference.'
+description: Canvas where users draw a signature, emitted as a PNG data URL on every stroke.
 ---
 
 import { SignaturePadDemo } from '@/components/demos/inputs-demo';
 
-Import `SignaturePad` from `@officina/ui`.
+`SignaturePad` is a pointer-driven canvas for capturing a hand-drawn signature
+or sketch. As the user draws, `onChange` fires with the current canvas content
+as a PNG data URL, which you can store or submit. A clear button resets the
+canvas; relabel it with `clearLabel`.
 
 ## Example
 
@@ -15,6 +18,12 @@ Import `SignaturePad` from `@officina/ui`.
 
 ```tsx
 import { SignaturePad } from '@officina/ui';
+import { useState } from 'react';
+
+function ConsentSignature() {
+  const [signature, setSignature] = useState('');
+  return <SignaturePad onChange={setSignature} clearLabel="Reset" />;
+}
 ```
 
 ## API

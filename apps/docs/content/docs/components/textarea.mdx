@@ -1,11 +1,15 @@
 ---
 title: Textarea
-description: 'Textarea — live example and API reference.'
+description: Styled multi-line text input that forwards a ref and accepts all native textarea props.
 ---
 
 import { TextareaDemo } from '@/components/demos/inputs-demo';
 
-Import `Textarea` from `@officina/ui`.
+`Textarea` is the multi-line counterpart to `Input`. It wraps the native
+`<textarea>`, forwards its ref, and spreads every standard attribute, adding the
+library's focus, disabled, and invalid styling. It has a sensible minimum height
+and resizes vertically; reach for `TextareaAutosize` if you want it to grow with
+its content instead.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `Textarea` from `@officina/ui`.
 
 ```tsx
 import { Textarea } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState('');
+  return (
+    <Textarea
+      rows={4}
+      placeholder="Add a note…"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
 ```
 
 ## API

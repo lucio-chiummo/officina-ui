@@ -1,11 +1,15 @@
 ---
 title: ColumnsToggle
-description: 'ColumnsToggle — live example and API reference.'
+description: Popover with checkboxes to show or hide each hideable column of a TanStack table instance.
 ---
 
 import { ColumnsToggleDemo } from '@/components/demos/tables-demo';
 
-Import `ColumnsToggle` from `@officina/ui`.
+`ColumnsToggle` is a "Columns" button that opens a popover listing every
+hideable column of a TanStack Table instance, each with a checkbox to show or
+hide it. Pass it the `table` object you get from `useReactTable`; it reads the
+column visibility state and calls `toggleVisibility` for you. Drop it into a
+`TableToolbar` `columnsToggle` slot or anywhere beside a table.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `ColumnsToggle` from `@officina/ui`.
 
 ```tsx
 import { ColumnsToggle } from '@officina/ui';
+import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
+
+function Toolbar({ data, columns }) {
+  const table = useReactTable({ data, columns, getCoreRowModel: getCoreRowModel() });
+  return <ColumnsToggle table={table} label="Columns" />;
+}
 ```
 
 ## API

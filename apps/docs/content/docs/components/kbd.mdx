@@ -1,11 +1,14 @@
 ---
 title: Kbd
-description: 'Kbd — live example and API reference.'
+description: Styled keyboard key badge that renders a single key cap.
 ---
 
 import { KbdDemo } from '@/components/demos/data-display-demo';
 
-Import `Kbd` from `@officina/ui`.
+`Kbd` renders a styled `<kbd>` element for a single keyboard key, like `Cmd` or
+`K`. It passes through all native `<kbd>` props, so compose several inline to show
+a combo. For platform-aware combos that map `mod` to `⌘`/`Ctrl` automatically,
+use `Shortcut`, which is built on `Kbd`.
 
 ## Example
 
@@ -15,6 +18,14 @@ Import `Kbd` from `@officina/ui`.
 
 ```tsx
 import { Kbd } from '@officina/ui';
+
+function Hint() {
+  return (
+    <span>
+      Open search with <Kbd>Cmd</Kbd> <Kbd>K</Kbd>
+    </span>
+  );
+}
 ```
 
 ## API

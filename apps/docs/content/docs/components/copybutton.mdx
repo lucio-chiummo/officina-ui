@@ -1,11 +1,15 @@
 ---
 title: CopyButton
-description: 'CopyButton — live example and API reference.'
+description: Copies a string to the clipboard and shows a brief confirmation state.
 ---
 
 import { CopyButtonDemo } from '@/components/demos/buttons-demo';
 
-Import `CopyButton` from `@officina/ui`.
+`CopyButton` writes its `value` to the clipboard on click, then swaps its icon
+and label to a confirmation (`copiedLabel`) for about a second before reverting.
+Use it next to API keys, share links, code snippets, or IDs. If the clipboard
+write fails it raises a toast; it forwards `Button` props except `onClick`,
+which it owns.
 
 ## Example
 
@@ -15,6 +19,8 @@ Import `CopyButton` from `@officina/ui`.
 
 ```tsx
 import { CopyButton } from '@officina/ui';
+
+<CopyButton value="sk_live_8f2c…" copyLabel="Copy key" copiedLabel="Copied!" />;
 ```
 
 ## API

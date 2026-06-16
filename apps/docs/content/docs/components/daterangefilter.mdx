@@ -1,11 +1,16 @@
 ---
 title: DateRangeFilter
-description: 'DateRangeFilter — live example and API reference.'
+description: Date-range filter whose trigger shows the picked from–to span and opens a range calendar.
 ---
 
 import { DateRangeFilterDemo } from '@/components/demos/filters-demo';
 
-Import `DateRangeFilter` from `@officina/ui`.
+`DateRangeFilter` filters by a date span. Its trigger shows the selected
+`from`–`to` range (or the `label`/`placeholder` when empty) and opens a
+lazy-loaded range calendar in a popover. It is controlled via `value` (a
+`{ from, to }` `DateRange`) and `onChange`; pass `onClear` to expose a clear
+control, or `inline` to render the calendar without the popover. Use it for
+"created between" or "due between" filters.
 
 ## Example
 
@@ -15,6 +20,20 @@ Import `DateRangeFilter` from `@officina/ui`.
 
 ```tsx
 import { DateRangeFilter } from '@officina/ui';
+import { useState } from 'react';
+import type { DateRange } from 'react-day-picker';
+
+function CreatedFilter() {
+  const [range, setRange] = useState<DateRange>({ from: undefined, to: undefined });
+  return (
+    <DateRangeFilter
+      label="Created"
+      value={range}
+      onChange={setRange}
+      onClear={() => setRange({ from: undefined, to: undefined })}
+    />
+  );
+}
 ```
 
 ## API

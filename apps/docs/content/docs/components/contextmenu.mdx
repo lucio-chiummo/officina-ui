@@ -1,11 +1,15 @@
 ---
 title: ContextMenu
-description: 'ContextMenu — live example and API reference.'
+description: Right-click menu that opens at the cursor over a target region.
 ---
 
 import { ContextMenuDemo } from '@/components/demos/overlays-demo';
 
-Import `ContextMenu` from `@officina/ui`.
+`ContextMenu` wraps a region and opens a `role="menu"` at the cursor on
+right-click. Pass `items` as a flat list of entries — each with a `label` and
+optional `icon`, `disabled`, `danger`, and `onClick`. The menu stays within the
+viewport and closes on `Escape` or an outside click. Use it for per-row or
+per-element actions where a right-click is the natural gesture.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `ContextMenu` from `@officina/ui`.
 
 ```tsx
 import { ContextMenu } from '@officina/ui';
+
+<ContextMenu
+  items={[
+    { label: 'Rename', onClick: () => rename(id) },
+    { label: 'Delete', danger: true, onClick: () => remove(id) },
+  ]}
+>
+  <div className="rounded border p-4">Right-click this card</div>
+</ContextMenu>;
 ```
 
 ## API

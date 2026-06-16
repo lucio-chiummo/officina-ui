@@ -1,11 +1,16 @@
 ---
 title: SavedViews
-description: 'SavedViews — live example and API reference.'
+description: Save, switch, share, and persist named filter presets ("views") for a filtered table.
 ---
 
 import { SavedViewsDemo } from '@/components/demos/tables-demo';
 
-Import `SavedViews` from `@officina/ui`.
+`SavedViews` lets users capture the current filter state as a named view, switch
+between saved presets, and share them by URL. In its primary mode it reads the
+live filter state from `FiltersProvider` and serializes it under `urlKey`,
+persisting views to `localStorage` by default (override with a `storage`
+adapter). Render it inside a filter bar so people can return to a configuration
+in one click.
 
 ## Example
 
@@ -14,7 +19,11 @@ Import `SavedViews` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { SavedViews } from '@officina/ui';
+import { FiltersProvider, SavedViews } from '@officina/ui';
+
+<FiltersProvider value={filters}>
+  <SavedViews urlKey="status" onShare={(url) => navigator.clipboard.writeText(url)} />
+</FiltersProvider>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: MetadataList
-description: 'Compact key/value metadata grid with muted labels, optional leading icons,'
+description: Compact key/value metadata grid with optional icons and inline copy buttons.
 ---
 
 import { MetadataListDemo } from '@/components/demos/data-display-demo';
 
-Import `MetadataList` from `@officina/ui`.
+`MetadataList` lays out an `items` array of metadata entries in a responsive
+grid (set `columns` to 1, 2, or 3). Each entry has a muted `label` and `value`,
+plus an optional leading `icon` and a `copyValue` that adds an inline
+copy-to-clipboard button. Use it for resource metadata — IDs, timestamps,
+contacts — where some values are worth copying.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `MetadataList` from `@officina/ui`.
 
 ```tsx
 import { MetadataList } from '@officina/ui';
+import { KeyRound, Mail } from 'lucide-react';
+
+<MetadataList
+  columns={2}
+  items={[
+    { label: 'Workspace ID', value: 'ws_8f21', icon: <KeyRound />, copyValue: 'ws_8f21' },
+    { label: 'Primary contact', value: 'ada@acme.test', icon: <Mail /> },
+  ]}
+/>;
 ```
 
 ## API
