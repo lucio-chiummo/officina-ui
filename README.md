@@ -4,7 +4,9 @@ The complete Officina React component library — 250+ primitives, token-driven
 theming, and composable components, shipped as a single install.
 
 - **Package:** `@officina/ui` (Apache-2.0)
-- **Docs:** live demos + API reference for every component (`apps/docs`)
+- **Docs:** live demos + API reference for every component — browse the source
+  at [`apps/docs`](./apps/docs); deploy it (e.g. to Vercel) to get a public URL
+  and add it to the repo's "Website" field so it shows next to the repo name
 
 ## Install
 
