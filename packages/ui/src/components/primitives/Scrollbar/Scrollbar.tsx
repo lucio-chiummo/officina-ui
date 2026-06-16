@@ -1,6 +1,6 @@
 import { cn } from '@lib/utils/cn';
 import { useThemeStore } from '@stores/theme.store';
-// CSS must be imported in the app entry: import 'overlayscrollbars/overlayscrollbars.css'
+// overlayscrollbars.css ships via styles.css — see packages/ui/src/styles.css.
 import {
   OverlayScrollbarsComponent,
   type OverlayScrollbarsComponentProps,

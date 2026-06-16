@@ -220,27 +220,51 @@ export function CommandPaletteDemo() {
 }
 
 export function ScrollSpyDemo() {
+  const items = [
+    { id: 'scrollspy-atoms', label: 'Primitive Basics' },
+    { id: 'scrollspy-forms', label: 'Form Inputs' },
+    { id: 'scrollspy-overlays', label: 'Overlays' },
+    { id: 'scrollspy-charts', label: 'Charts' },
+  ];
   return (
-    <ScrollSpy
-      items={[
-        { id: 'atoms', label: 'Primitive Basics' },
-        { id: 'forms', label: 'Form Inputs' },
-        { id: 'overlays', label: 'Overlays' },
-        { id: 'charts', label: 'Charts' },
-      ]}
-    />
+    <div className="grid w-full grid-cols-[140px_1fr] gap-4">
+      <ScrollSpy items={items} containerId="scrollspy-demo-viewport" />
+      <div
+        id="scrollspy-demo-viewport"
+        className="border-fd-border text-fd-muted-foreground h-40 space-y-16 overflow-y-auto rounded-md border p-3 text-sm"
+      >
+        <p id="scrollspy-atoms">Primitive Basics — buttons, inputs, badges.</p>
+        <p id="scrollspy-forms">Form Inputs — selects, checkboxes, switches.</p>
+        <p id="scrollspy-overlays">Overlays — dialogs, popovers, tooltips.</p>
+        <p id="scrollspy-charts">Charts — bar, line, and pie visualizations.</p>
+      </div>
+    </div>
   );
 }
 
 export function TreeViewDemo() {
   return (
     <TreeView
+      defaultExpandedIds={['forms', 'overlays']}
       nodes={[
         {
           id: 'forms',
           label: 'Forms',
-          children: [{ id: 'combobox', label: 'Combobox' }],
+          children: [
+            { id: 'combobox', label: 'Combobox' },
+            { id: 'select', label: 'Select' },
+            { id: 'switch', label: 'Switch' },
+          ],
         },
+        {
+          id: 'overlays',
+          label: 'Overlays',
+          children: [
+            { id: 'dialog', label: 'Dialog' },
+            { id: 'popover', label: 'Popover' },
+          ],
+        },
+        { id: 'charts', label: 'Charts' },
       ]}
     />
   );

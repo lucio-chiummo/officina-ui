@@ -242,6 +242,7 @@ export function InfiniteScrollDemo() {
 export function VirtualListDemo() {
   return (
     <VirtualList
+      className="w-full"
       items={Array.from({ length: 100 }, (_, i) => `Virtual row ${i + 1}`)}
       height={180}
       renderItem={(item) => (
@@ -253,7 +254,7 @@ export function VirtualListDemo() {
 
 export function CarouselDemo() {
   return (
-    <Carousel>
+    <Carousel className="w-full">
       {[
         <div
           key="one"
