@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 .officina-ui {
   color: var(--color-fg-base);

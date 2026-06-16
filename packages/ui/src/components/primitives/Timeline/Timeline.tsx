@@ -29,7 +29,7 @@ const TONE_DOT: Record<string, string> = {
 export function Timeline({ items, orientation = 'vertical', className }: TimelineProps) {
   if (orientation === 'horizontal') {
     return (
-      <ol className={cn('flex items-center gap-2 overflow-x-auto', className)}>
+      <ol className={cn('flex list-none items-center gap-2 overflow-x-auto', className)}>
         {items.map((item, i) => (
           <li key={item.id} className="flex shrink-0 items-center gap-2">
             <div className="flex flex-col items-center">
@@ -53,7 +53,7 @@ export function Timeline({ items, orientation = 'vertical', className }: Timelin
   }
 
   return (
-    <ol className={cn('relative flex flex-col gap-4 ps-7', className)}>
+    <ol className={cn('relative flex list-none flex-col gap-4 ps-7', className)}>
       <span
         aria-hidden="true"
         className="absolute inset-y-0 start-[11px] w-px bg-[var(--color-bg-muted)]"

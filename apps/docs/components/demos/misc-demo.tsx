@@ -326,8 +326,8 @@ export function PrimitiveLinkDemo() {
   return (
     <Stack direction="row" align="center" wrap>
       <PrimitiveLink href="/docs">Internal link</PrimitiveLink>
-      <PrimitiveLink href="https://mui.com/components/" external>
-        MUI components
+      <PrimitiveLink href="https://github.com/lucio-chiummo/officina-ui" external>
+        External link
       </PrimitiveLink>
     </Stack>
   );

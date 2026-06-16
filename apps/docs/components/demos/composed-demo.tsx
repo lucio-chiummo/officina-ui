@@ -57,7 +57,32 @@ import {
 } from '@officina/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Home, Settings } from 'lucide-react';
-import { type ComponentProps, useState } from 'react';
+import { type ComponentProps, type ReactNode, useState } from 'react';
+
+// --- shared highlight wrapper ----------------------------------------------
+// Several primitives only make sense rendered together (CardHeader needs a
+// Card, TableCell needs a TableRow, ...), so their docs pages share one
+// composed example. HighlightTarget rings + labels the slice of that example
+// each page is actually documenting, so siblings read as distinct pages.
+function HighlightTarget({
+  active,
+  label,
+  children,
+}: {
+  active: boolean;
+  label: string;
+  children: ReactNode;
+}) {
+  if (!active) return children;
+  return (
+    <div className="relative rounded-[var(--radius-md)] ring-2 ring-[var(--color-accent)] ring-offset-2 ring-offset-[var(--color-bg-base)]">
+      <span className="absolute bottom-full left-2 mb-1 rounded-full bg-[var(--color-accent)] px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap text-[var(--color-accent-contrast)]">
+        {label}
+      </span>
+      {children}
+    </div>
+  );
+}
 
 // --- shared sample data ----------------------------------------------------
 
@@ -83,48 +108,78 @@ const filterFields = [
 
 // --- Card parts ------------------------------------------------------------
 
-function ComposedCard() {
+function ComposedCard({
+  highlight,
+}: {
+  highlight?: 'header' | 'title' | 'description' | 'content' | 'footer';
+}) {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Acme Operations</CardTitle>
-        <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-fd-muted-foreground text-sm">
-          Compose header, title, description, content, and footer to build a card surface.
-        </p>
-      </CardContent>
-      <CardFooter>
-        <Button size="sm" variant="soft">
-          Manage
-        </Button>
-      </CardFooter>
+      <HighlightTarget active={highlight === 'header'} label="CardHeader">
+        <CardHeader>
+          <HighlightTarget active={highlight === 'title'} label="CardTitle">
+            <CardTitle>Acme Operations</CardTitle>
+          </HighlightTarget>
+          <HighlightTarget active={highlight === 'description'} label="CardDescription">
+            <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
+          </HighlightTarget>
+        </CardHeader>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'content'} label="CardContent">
+        <CardContent>
+          <p className="text-fd-muted-foreground text-sm">
+            Compose header, title, description, content, and footer to build a card surface.
+          </p>
+        </CardContent>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'footer'} label="CardFooter">
+        <CardFooter>
+          <Button size="sm" variant="soft">
+            Manage
+          </Button>
+        </CardFooter>
+      </HighlightTarget>
     </Card>
   );
 }
 
-export const CardHeaderDemo = ComposedCard;
-export const CardTitleDemo = ComposedCard;
-export const CardDescriptionDemo = ComposedCard;
-export const CardContentDemo = ComposedCard;
-export const CardFooterDemo = ComposedCard;
+export const CardHeaderDemo = () => <ComposedCard highlight="header" />;
+export const CardTitleDemo = () => <ComposedCard highlight="title" />;
+export const CardDescriptionDemo = () => <ComposedCard highlight="description" />;
+export const CardContentDemo = () => <ComposedCard highlight="content" />;
+export const CardFooterDemo = () => <ComposedCard highlight="footer" />;
 
 // --- List parts ------------------------------------------------------------
 
-function ComposedList() {
+function ComposedList({
+  highlight,
+}: {
+  highlight?: 'item' | 'button' | 'content' | 'decorator' | 'subheader' | 'divider';
+}) {
   return (
     <List variant="outlined">
-      <ListSubheader>Navigation</ListSubheader>
-      <ListItem>
-        <ListItemButton selected>
-          <ListItemDecorator>
-            <Home className="size-4" />
-          </ListItemDecorator>
-          <ListItemContent title="Dashboard" description="Overview and KPIs" />
-        </ListItemButton>
-      </ListItem>
-      <ListDivider />
+      <HighlightTarget active={highlight === 'subheader'} label="ListSubheader">
+        <ListSubheader>Navigation</ListSubheader>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'item'} label="ListItem">
+        <ListItem>
+          <HighlightTarget active={highlight === 'button'} label="ListItemButton">
+            <ListItemButton selected>
+              <HighlightTarget active={highlight === 'decorator'} label="ListItemDecorator">
+                <ListItemDecorator>
+                  <Home className="size-4" />
+                </ListItemDecorator>
+              </HighlightTarget>
+              <HighlightTarget active={highlight === 'content'} label="ListItemContent">
+                <ListItemContent title="Dashboard" description="Overview and KPIs" />
+              </HighlightTarget>
+            </ListItemButton>
+          </HighlightTarget>
+        </ListItem>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'divider'} label="ListDivider">
+        <ListDivider />
+      </HighlightTarget>
       <ListItem>
         <ListItemButton>
           <ListItemDecorator>
@@ -137,12 +192,12 @@ function ComposedList() {
   );
 }
 
-export const ListItemDemo = ComposedList;
-export const ListItemButtonDemo = ComposedList;
-export const ListItemContentDemo = ComposedList;
-export const ListItemDecoratorDemo = ComposedList;
-export const ListSubheaderDemo = ComposedList;
-export const ListDividerDemo = ComposedList;
+export const ListItemDemo = () => <ComposedList highlight="item" />;
+export const ListItemButtonDemo = () => <ComposedList highlight="button" />;
+export const ListItemContentDemo = () => <ComposedList highlight="content" />;
+export const ListItemDecoratorDemo = () => <ComposedList highlight="decorator" />;
+export const ListSubheaderDemo = () => <ComposedList highlight="subheader" />;
+export const ListDividerDemo = () => <ComposedList highlight="divider" />;
 
 export function ImageListItemDemo() {
   return (
@@ -161,112 +216,152 @@ export function ImageListItemDemo() {
 
 // --- Table parts -----------------------------------------------------------
 
-function ComposedTable() {
+function ComposedTable({
+  highlight,
+}: {
+  highlight?: 'body' | 'caption' | 'cell' | 'footer' | 'head' | 'header' | 'row';
+}) {
   return (
     <Table>
-      <TableCaption>Active customers this cycle.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Customer</TableHead>
-          <TableHead>Plan</TableHead>
-          <TableHead className="text-right">Seats</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {customers.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell>{row.name}</TableCell>
-            <TableCell>{row.plan}</TableCell>
-            <TableCell className="text-right">{row.seats}</TableCell>
+      <HighlightTarget active={highlight === 'caption'} label="TableCaption">
+        <TableCaption>Active customers this cycle.</TableCaption>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'header'} label="TableHeader">
+        <TableHeader>
+          <TableRow>
+            <HighlightTarget active={highlight === 'head'} label="TableHead">
+              <TableHead>Customer</TableHead>
+            </HighlightTarget>
+            <TableHead>Plan</TableHead>
+            <TableHead className="text-right">Seats</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={2}>Total</TableCell>
-          <TableCell className="text-right">
-            {customers.reduce((sum, row) => sum + row.seats, 0)}
-          </TableCell>
-        </TableRow>
-      </TableFooter>
+        </TableHeader>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'body'} label="TableBody">
+        <TableBody>
+          {customers.map((row, index) => (
+            <HighlightTarget
+              key={row.id}
+              active={index === 0 && highlight === 'row'}
+              label="TableRow"
+            >
+              <TableRow>
+                <HighlightTarget active={index === 0 && highlight === 'cell'} label="TableCell">
+                  <TableCell>{row.name}</TableCell>
+                </HighlightTarget>
+                <TableCell>{row.plan}</TableCell>
+                <TableCell className="text-right">{row.seats}</TableCell>
+              </TableRow>
+            </HighlightTarget>
+          ))}
+        </TableBody>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'footer'} label="TableFooter">
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={2}>Total</TableCell>
+            <TableCell className="text-right">
+              {customers.reduce((sum, row) => sum + row.seats, 0)}
+            </TableCell>
+          </TableRow>
+        </TableFooter>
+      </HighlightTarget>
     </Table>
   );
 }
 
-export const TableBodyDemo = ComposedTable;
-export const TableCaptionDemo = ComposedTable;
-export const TableCellDemo = ComposedTable;
-export const TableFooterDemo = ComposedTable;
-export const TableHeadDemo = ComposedTable;
-export const TableHeaderDemo = ComposedTable;
-export const TableRowDemo = ComposedTable;
+export const TableBodyDemo = () => <ComposedTable highlight="body" />;
+export const TableCaptionDemo = () => <ComposedTable highlight="caption" />;
+export const TableCellDemo = () => <ComposedTable highlight="cell" />;
+export const TableFooterDemo = () => <ComposedTable highlight="footer" />;
+export const TableHeadDemo = () => <ComposedTable highlight="head" />;
+export const TableHeaderDemo = () => <ComposedTable highlight="header" />;
+export const TableRowDemo = () => <ComposedTable highlight="row" />;
 
 export function SkeletonRowDemo() {
-  return <SkeletonRow rows={4} />;
+  return <SkeletonRow rows={4} className="w-full" />;
 }
 
 // --- Page parts ------------------------------------------------------------
 
-function ComposedPage() {
+function ComposedPage({ highlight }: { highlight?: 'header' | 'body' | 'section' }) {
   return (
     <div className="w-full">
-      <PageHeader
-        title="Customers"
-        description="Manage workspaces and their plans."
-        breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Customers' }]}
-        actions={<Button size="sm">New customer</Button>}
-      />
-      <PageBody>
-        <PageSection title="Overview" description="Key metrics for the current cycle.">
-          <p className="text-fd-muted-foreground text-sm">Section content goes here.</p>
-        </PageSection>
-      </PageBody>
+      <HighlightTarget active={highlight === 'header'} label="PageHeader">
+        <PageHeader
+          title="Customers"
+          description="Manage workspaces and their plans."
+          breadcrumbs={[{ label: 'Home', href: '#' }, { label: 'Customers' }]}
+          actions={<Button size="sm">New customer</Button>}
+        />
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'body'} label="PageBody">
+        <PageBody>
+          <HighlightTarget active={highlight === 'section'} label="PageSection">
+            <PageSection title="Overview" description="Key metrics for the current cycle.">
+              <p className="text-fd-muted-foreground text-sm">Section content goes here.</p>
+            </PageSection>
+          </HighlightTarget>
+        </PageBody>
+      </HighlightTarget>
     </div>
   );
 }
 
-export const PageHeaderDemo = ComposedPage;
-export const PageBodyDemo = ComposedPage;
-export const PageSectionDemo = ComposedPage;
+export const PageHeaderDemo = () => <ComposedPage highlight="header" />;
+export const PageBodyDemo = () => <ComposedPage highlight="body" />;
+export const PageSectionDemo = () => <ComposedPage highlight="section" />;
 
 // --- AppBar parts ----------------------------------------------------------
 
-function ComposedAppBar() {
+function ComposedAppBar({ highlight }: { highlight?: 'section' | 'title' }) {
   return (
     <AppBar>
-      <AppBarSection>
-        <AppBarTitle>Officina Admin</AppBarTitle>
-      </AppBarSection>
-      <AppBarSection>
-        <Button size="sm" variant="soft">
-          Settings
-        </Button>
-      </AppBarSection>
+      <HighlightTarget active={highlight === 'section'} label="AppBarSection">
+        <AppBarSection>
+          <HighlightTarget active={highlight === 'title'} label="AppBarTitle">
+            <AppBarTitle>Officina Admin</AppBarTitle>
+          </HighlightTarget>
+        </AppBarSection>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'section'} label="AppBarSection">
+        <AppBarSection>
+          <Button size="sm" variant="soft">
+            Settings
+          </Button>
+        </AppBarSection>
+      </HighlightTarget>
     </AppBar>
   );
 }
 
-export const AppBarSectionDemo = ComposedAppBar;
-export const AppBarTitleDemo = ComposedAppBar;
+export const AppBarSectionDemo = () => <ComposedAppBar highlight="section" />;
+export const AppBarTitleDemo = () => <ComposedAppBar highlight="title" />;
 
 // --- Form parts ------------------------------------------------------------
 
-function ComposedField() {
+function ComposedField({ highlight }: { highlight?: 'label' | 'helper' | 'error' }) {
   return (
     <div className="grid w-full gap-1.5">
-      <FormLabel htmlFor="workspace" required>
-        Workspace name
-      </FormLabel>
+      <HighlightTarget active={highlight === 'label'} label="FormLabel">
+        <FormLabel htmlFor="workspace" required>
+          Workspace name
+        </FormLabel>
+      </HighlightTarget>
       <Input id="workspace" defaultValue="Acme Operations" aria-invalid />
-      <FormHelperText>Shown to everyone on the team.</FormHelperText>
-      <FormError>Workspace name is already taken.</FormError>
+      <HighlightTarget active={highlight === 'helper'} label="FormHelperText">
+        <FormHelperText>Shown to everyone on the team.</FormHelperText>
+      </HighlightTarget>
+      <HighlightTarget active={highlight === 'error'} label="FormError">
+        <FormError>Workspace name is already taken.</FormError>
+      </HighlightTarget>
     </div>
   );
 }
 
-export const FormLabelDemo = ComposedField;
-export const FormHelperTextDemo = ComposedField;
-export const FormErrorDemo = ComposedField;
+export const FormLabelDemo = () => <ComposedField highlight="label" />;
+export const FormHelperTextDemo = () => <ComposedField highlight="helper" />;
+export const FormErrorDemo = () => <ComposedField highlight="error" />;
 
 // --- Misc parts ------------------------------------------------------------
 
@@ -396,13 +491,28 @@ export function ImageCropperDemo() {
 
 export function SearchFilterDemo() {
   const [value, setValue] = useState('');
+  const results = customers.filter((row) => row.name.toLowerCase().includes(value.toLowerCase()));
   return (
-    <SearchFilter
-      value={value}
-      onChange={setValue}
-      placeholder="Search customers"
-      debounceMs={300}
-    />
+    <div className="w-full space-y-3">
+      <SearchFilter
+        value={value}
+        onChange={setValue}
+        placeholder="Search customers"
+        debounceMs={300}
+      />
+      <List>
+        {results.map((row) => (
+          <ListItem key={row.id}>
+            <ListItemContent title={row.name} description={row.plan} />
+          </ListItem>
+        ))}
+        {results.length === 0 ? (
+          <ListItem>
+            <ListItemContent title="No matches" />
+          </ListItem>
+        ) : null}
+      </List>
+    </div>
   );
 }
 
