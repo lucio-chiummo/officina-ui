@@ -1,11 +1,15 @@
 ---
 title: Megamenu
-description: 'Megamenu — live example and API reference.'
+description: A wide dropdown panel that lays out grouped link columns with descriptions and icons.
 ---
 
 import { MegamenuDemo } from '@/components/demos/navigation-demo';
 
-Import `Megamenu` from `@officina/ui`.
+`Megamenu` is a large navigation panel that opens from a text `trigger` and lays
+its links out in `columns`. Each column has an optional `heading` and a list of
+items with a `label`, `href`, and optional `description` and `icon` — ideal for
+surfacing a whole product or category area at once. Add a `footer` for a
+call-to-action row beneath the columns. Built on Headless UI `Popover`.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `Megamenu` from `@officina/ui`.
 
 ```tsx
 import { Megamenu } from '@officina/ui';
+
+<Megamenu
+  trigger="Products"
+  columns={[
+    {
+      heading: 'Platform',
+      items: [
+        { label: 'Analytics', href: '/analytics', description: 'Dashboards and reports' },
+        { label: 'Automation', href: '/automation', description: 'Workflows and rules' },
+      ],
+    },
+  ]}
+/>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: AspectRatio
-description: 'AspectRatio — live example and API reference.'
+description: Constrains content to a fixed width-to-height ratio, clipping overflow.
 ---
 
 import { AspectRatioDemo } from '@/components/demos/misc-demo';
 
-Import `AspectRatio` from `@officina/ui`.
+`AspectRatio` locks its child to a given proportion via the `ratio` prop (width
+÷ height, e.g. `16 / 9`), so the box keeps that shape as it scales with its
+container. It rounds and clips overflow, making it ideal for responsive images,
+video embeds, and media thumbnails that must not jump or distort while loading.
+Built on Radix's AspectRatio primitive.
 
 ## Example
 
@@ -15,6 +19,10 @@ Import `AspectRatio` from `@officina/ui`.
 
 ```tsx
 import { AspectRatio } from '@officina/ui';
+
+<AspectRatio ratio={16 / 9}>
+  <img src="/cover.jpg" alt="Cover" className="size-full object-cover" />
+</AspectRatio>;
 ```
 
 ## API

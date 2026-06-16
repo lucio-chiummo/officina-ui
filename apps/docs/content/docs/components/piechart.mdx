@@ -1,11 +1,15 @@
 ---
 title: PieChart
-description: 'PieChart — live example and API reference.'
+description: Pie chart showing how a few categories divide a single whole as proportional slices.
 ---
 
 import { PieChartDemo } from '@/components/demos/charts-demo';
 
-Import `PieChart` from `@officina/ui`.
+`PieChart` shows how a single total breaks down into proportional slices — best
+for a handful of categories whose share of the whole is the story, like revenue
+by plan tier. Pass `data` as an array of objects, then point `nameKey` at the
+label field and `valueKey` at the numeric field. It renders client-side via
+ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `PieChart` from `@officina/ui`.
 
 ```tsx
 import { PieChart } from '@officina/ui';
+
+const data = [
+  { segment: 'Enterprise', value: 42 },
+  { segment: 'Growth', value: 31 },
+  { segment: 'Starter', value: 18 },
+];
+
+<PieChart data={data} nameKey="segment" valueKey="value" height={280} />;
 ```
 
 ## API

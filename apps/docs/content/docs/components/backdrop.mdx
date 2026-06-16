@@ -1,11 +1,15 @@
 ---
 title: Backdrop
-description: 'Backdrop — live example and API reference.'
+description: Dimmed full-screen overlay behind modal content, with an optional blur.
 ---
 
 import { BackdropDemo } from '@/components/demos/overlays-demo';
 
-Import `Backdrop` from `@officina/ui`.
+`Backdrop` is the dimming layer that sits behind dialogs and custom overlays. It
+is a fixed, full-screen, `aria-hidden` div that renders only while `open` is
+true; set `blur` to frost the content behind it. Built-in overlays like `Modal`
+already include one — reach for `Backdrop` directly when composing your own
+overlay. It forwards `onClick` and other div props so you can dismiss on click.
 
 ## Example
 
@@ -15,6 +19,8 @@ Import `Backdrop` from `@officina/ui`.
 
 ```tsx
 import { Backdrop } from '@officina/ui';
+
+<Backdrop open={isOpen} blur onClick={() => setOpen(false)} />;
 ```
 
 ## API

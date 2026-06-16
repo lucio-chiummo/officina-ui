@@ -1,11 +1,16 @@
 ---
 title: ToggleGroup
-description: 'ToggleGroup — live example and API reference.'
+description: A segmented control for single- or multi-select choices from a set of options.
 ---
 
 import { ToggleGroupDemo } from '@/components/demos/buttons-demo';
 
-Import `ToggleGroup` from `@officina/ui`.
+`ToggleGroup` renders a row of options as a connected segmented control. Set
+`type="single"` for an exclusive choice (like a view switcher, exposed as a
+`radiogroup`) or `type="multiple"` to toggle any number of options on. It is
+controlled: `value` is a single value in single mode and an array in multiple
+mode, and `onChange` returns the next selection. Each option can carry an `icon`
+and be individually `disabled`.
 
 ## Example
 
@@ -15,6 +20,23 @@ Import `ToggleGroup` from `@officina/ui`.
 
 ```tsx
 import { ToggleGroup } from '@officina/ui';
+import { useState } from 'react';
+
+function ViewSwitcher() {
+  const [view, setView] = useState('grid');
+  return (
+    <ToggleGroup
+      type="single"
+      value={view}
+      onChange={setView}
+      ariaLabel="View"
+      options={[
+        { value: 'grid', label: 'Grid' },
+        { value: 'list', label: 'List' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

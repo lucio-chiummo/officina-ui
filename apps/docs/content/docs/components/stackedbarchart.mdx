@@ -1,11 +1,16 @@
 ---
 title: StackedBarChart
-description: 'StackedBarChart — live example and API reference.'
+description: Stacked bar chart showing how parts add up to a total across categories.
 ---
 
 import { StackedBarChartDemo } from '@/components/demos/charts-demo';
 
-Import `StackedBarChart` from `@officina/ui`.
+`StackedBarChart` stacks each series on top of the previous one within a
+category, so the full bar shows the total while the segments show how each part
+contributes. Use it for part-to-whole breakdowns across categories, like
+revenue by source per month. Pass `data` as row objects, set `xKey` to the
+category field, and list the stacked measures in `series`. It renders
+client-side via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +20,22 @@ Import `StackedBarChart` from `@officina/ui`.
 
 ```tsx
 import { StackedBarChart } from '@officina/ui';
+
+const data = [
+  { month: 'Jan', revenue: 4200, costs: 2200 },
+  { month: 'Feb', revenue: 5300, costs: 2600 },
+  { month: 'Mar', revenue: 6100, costs: 2800 },
+];
+
+<StackedBarChart
+  data={data}
+  xKey="month"
+  series={[
+    { dataKey: 'revenue', name: 'Revenue' },
+    { dataKey: 'costs', name: 'Costs' },
+  ]}
+  height={280}
+/>;
 ```
 
 ## API

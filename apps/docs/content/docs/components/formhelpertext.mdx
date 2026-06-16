@@ -1,11 +1,14 @@
 ---
 title: FormHelperText
-description: 'FormHelperText — live example and API reference.'
+description: Helper/description text for a FormControl, linked via aria-describedby with tone options.
 ---
 
 import { FormHelperTextDemo } from '@/components/demos/composed-demo';
 
-Import `FormHelperText` from `@officina/ui`.
+`FormHelperText` renders the small description under a control. Inside a
+`FormControl` it adopts the control's description id so it is linked through
+`aria-describedby`. Use the `tone` prop (`muted`, `success`, or `danger`) to
+match the message to the field's state.
 
 ## Example
 
@@ -14,7 +17,13 @@ Import `FormHelperText` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormHelperText } from '@officina/ui';
+import { FormControl, FormLabel, FormHelperText, Input } from '@officina/ui';
+
+<FormControl>
+  <FormLabel>API key</FormLabel>
+  <Input />
+  <FormHelperText tone="muted">Find this in your account settings.</FormHelperText>
+</FormControl>;
 ```
 
 ## API

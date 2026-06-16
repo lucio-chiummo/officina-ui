@@ -1,11 +1,15 @@
 ---
 title: ColorPicker
-description: 'ColorPicker — live example and API reference.'
+description: Controlled hex color input with a preset palette and a native color field.
 ---
 
 import { ColorPickerDemo } from '@/components/demos/inputs-demo';
 
-Import `ColorPicker` from `@officina/ui`.
+`ColorPicker` is a controlled color input: `value` is a hex string and
+`onChange` is called with the new hex. It opens a popover showing quick-select
+swatches plus a native color field for arbitrary values. Override the swatches
+with `presets` (a default palette is used otherwise) and add a `label` above the
+field.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `ColorPicker` from `@officina/ui`.
 
 ```tsx
 import { ColorPicker } from '@officina/ui';
+import { useState } from 'react';
+
+function AccentPicker() {
+  const [color, setColor] = useState('#6366f1');
+  return (
+    <ColorPicker
+      label="Accent"
+      value={color}
+      onChange={setColor}
+      presets={['#6366f1', '#0ea5e9', '#16a34a', '#e11d48']}
+    />
+  );
+}
 ```
 
 ## API

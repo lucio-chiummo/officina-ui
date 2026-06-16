@@ -1,11 +1,15 @@
 ---
 title: PrimitiveLink
-description: 'PrimitiveLink — live example and API reference.'
+description: Styled anchor with accent/muted tones and safe external-link handling.
 ---
 
 import { PrimitiveLinkDemo } from '@/components/demos/misc-demo';
 
-Import `PrimitiveLink` from `@officina/ui`.
+`PrimitiveLink` is a styled `<a>` with consistent focus rings and accent
+coloring. Set `muted` for a quieter foreground tone, or `external` to open in a
+new tab — which also adds safe `rel` attributes and an external-link icon
+automatically. It truncates long labels and accepts any standard anchor prop, so
+it works as a drop-in for inline links and CTAs.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `PrimitiveLink` from `@officina/ui`.
 
 ```tsx
 import { PrimitiveLink } from '@officina/ui';
+
+<PrimitiveLink href="/pricing">View pricing</PrimitiveLink>
+<PrimitiveLink href="https://example.com" external muted>
+  Docs
+</PrimitiveLink>
 ```
 
 ## API

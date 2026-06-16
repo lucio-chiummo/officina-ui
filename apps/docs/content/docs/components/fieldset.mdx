@@ -1,11 +1,14 @@
 ---
 title: Fieldset
-description: 'Fieldset — live example and API reference.'
+description: Bordered group of related fields with a legend, description, and built-in grid layout.
 ---
 
 import { FieldsetDemo } from '@/components/demos/forms-demo';
 
-Import `Fieldset` from `@officina/ui`.
+`Fieldset` groups related fields inside a bordered `<fieldset>` with an optional
+`legend` and `description`. It lays its children out with a `FormGrid`, so the
+`columns` prop controls how many fields sit per row. Use it to break a long form
+into labeled sections like "Billing address" or "Notification settings".
 
 ## Example
 
@@ -14,7 +17,16 @@ Import `Fieldset` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Fieldset } from '@officina/ui';
+import { Fieldset, Field, Input } from '@officina/ui';
+
+<Fieldset legend="Contact" description="How we reach you." columns={2}>
+  <Field label="Name">
+    <Input />
+  </Field>
+  <Field label="Region">
+    <Input />
+  </Field>
+</Fieldset>;
 ```
 
 ## API

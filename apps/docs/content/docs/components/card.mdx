@@ -1,11 +1,14 @@
 ---
 title: Card
-description: 'Card — live example and API reference.'
+description: Bordered, padded surface — the container you compose card sections into.
 ---
 
 import { CardDemo } from '@/components/demos/data-display-demo';
 
-Import `Card` from `@officina/ui`.
+`Card` is the base surface for grouped content — a rounded, bordered box with a
+subtle shadow and an adjustable `padding` scale (`none`, `sm`, `md`, `lg`). Drop
+any content inside, or compose it with `CardHeader`, `CardTitle`,
+`CardDescription`, `CardContent`, and `CardFooter` for a structured layout.
 
 ## Example
 
@@ -14,7 +17,14 @@ Import `Card` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Card } from '@officina/ui';
+import { Card, CardHeader, CardTitle, CardContent } from '@officina/ui';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Revenue</CardTitle>
+  </CardHeader>
+  <CardContent>$24.8k this month</CardContent>
+</Card>;
 ```
 
 ## API

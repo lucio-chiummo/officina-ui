@@ -1,11 +1,15 @@
 ---
 title: ImageList
-description: 'ImageList — live example and API reference.'
+description: Responsive CSS-grid container that arranges image tiles into evenly spaced columns.
 ---
 
 import { ImageListDemo } from '@/components/demos/misc-demo';
 
-Import `ImageList` from `@officina/ui`.
+`ImageList` is a thin grid wrapper for laying out image tiles (typically
+`ImageListItem`) into evenly spaced columns — use it for galleries, media
+pickers, and thumbnail grids. Set `cols` for the number of columns and `gap` for
+the pixel spacing between tiles; it forwards any other `div` props and merges
+`className`.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `ImageList` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ImageList } from '@officina/ui';
+import { ImageList, ImageListItem } from '@officina/ui';
+
+<ImageList cols={3} gap={8}>
+  {photos.map((photo) => (
+    <ImageListItem key={photo.id} caption={photo.title}>
+      <img src={photo.src} alt={photo.title} />
+    </ImageListItem>
+  ))}
+</ImageList>;
 ```
 
 ## API

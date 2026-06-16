@@ -1,11 +1,16 @@
 ---
 title: ConfirmDialog
-description: 'ConfirmDialog — live example and API reference.'
+description: Confirmation dialog for destructive actions, with optional type-to-confirm.
 ---
 
 import { ConfirmDialogDemo } from '@/components/demos/overlays-demo';
 
-Import `ConfirmDialog` from `@officina/ui`.
+`ConfirmDialog` is a focused modal for confirming a single action before it
+runs — typically a destructive one. It shows a `title` and `description`, a
+cancel and a confirm button, and calls `onConfirm` or `onClose` accordingly. Set
+`destructive` to style the confirm button as a danger action, and `typeToConfirm`
+to require the user to type a phrase (such as a resource name) before confirm is
+enabled. It is portaled, traps focus, and dismisses on `Escape` or backdrop click.
 
 ## Example
 
@@ -15,6 +20,17 @@ Import `ConfirmDialog` from `@officina/ui`.
 
 ```tsx
 import { ConfirmDialog } from '@officina/ui';
+
+<ConfirmDialog
+  open={open}
+  onClose={() => setOpen(false)}
+  onConfirm={deleteProject}
+  title="Delete project?"
+  description="This permanently removes the project and its data."
+  confirmLabel="Delete"
+  destructive
+  typeToConfirm="my-project"
+/>;
 ```
 
 ## API

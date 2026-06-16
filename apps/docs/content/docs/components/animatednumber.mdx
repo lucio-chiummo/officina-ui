@@ -1,11 +1,16 @@
 ---
 title: AnimatedNumber
-description: 'Count-up number that animates from its previous value to the next. Snaps'
+description: Number that smoothly counts from its previous value to the next, with custom formatting.
 ---
 
 import { AnimatedNumberDemo } from '@/components/demos/misc-demo';
 
-Import `AnimatedNumber` from `@officina/ui`.
+`AnimatedNumber` tweens the displayed number from its previous `value` to the
+new one whenever `value` changes, giving stats and counters a polished count-up
+effect. Control the tween length with `duration` (seconds) and the displayed
+format with a `format` function (defaults to locale integer formatting). It
+snaps instantly when the user prefers reduced motion and exposes the value to
+screen readers. Ideal for dashboards and KPI cards.
 
 ## Example
 
@@ -15,6 +20,8 @@ Import `AnimatedNumber` from `@officina/ui`.
 
 ```tsx
 import { AnimatedNumber } from '@officina/ui';
+
+<AnimatedNumber value={revenue} format={(n) => `$${Math.round(n).toLocaleString()}`} />;
 ```
 
 ## API

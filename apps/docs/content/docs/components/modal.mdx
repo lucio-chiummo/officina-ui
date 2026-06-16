@@ -1,11 +1,15 @@
 ---
 title: Modal
-description: 'Modal — live example and API reference.'
+description: Centered, focus-trapping dialog overlay with backdrop, title, and dismiss handling.
 ---
 
 import { ModalDemo } from '@/components/demos/overlays-demo';
 
-Import `Modal` from `@officina/ui`.
+`Modal` is a portaled, centered dialog for focused tasks that should block the
+rest of the page — confirmations, forms, detail views. It renders a dimmed
+backdrop, sets `role="dialog"` with `aria-modal`, and dismisses on `Escape`,
+backdrop click, or the close button. It is controlled: drive `open` from your
+own state and clear it in `onClose`.
 
 ## Example
 
@@ -15,6 +19,24 @@ Import `Modal` from `@officina/ui`.
 
 ```tsx
 import { Modal } from '@officina/ui';
+import { useState } from 'react';
+
+function EditDialog() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Edit</button>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Edit profile"
+        description="Update your account details."
+      >
+        {/* form fields */}
+      </Modal>
+    </>
+  );
+}
 ```
 
 ## API

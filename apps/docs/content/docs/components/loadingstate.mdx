@@ -1,11 +1,14 @@
 ---
 title: LoadingState
-description: 'LoadingState — live example and API reference.'
+description: Inline spinner with a label for panels and empty regions that are loading.
 ---
 
 import { LoadingStateDemo } from '@/components/demos/feedback-demo';
 
-Import `LoadingState` from `@officina/ui`.
+`LoadingState` is a minimal inline indicator — a spinner next to a `label` —
+for showing that a panel or section is loading. It announces itself with
+`role="status"` and `aria-live="polite"`. Use it where you want a quiet,
+in-flow loading cue rather than an overlay; the `label` defaults to `'Loading…'`.
 
 ## Example
 
@@ -15,6 +18,10 @@ Import `LoadingState` from `@officina/ui`.
 
 ```tsx
 import { LoadingState } from '@officina/ui';
+
+{
+  isLoading ? <LoadingState label="Fetching results…" /> : <Results />;
+}
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: Masonry
-description: 'Masonry — live example and API reference.'
+description: CSS column masonry layout that packs variable-height items into balanced columns.
 ---
 
 import { MasonryDemo } from '@/components/demos/misc-demo';
 
-Import `Masonry` from `@officina/ui`.
+`Masonry` arranges children into vertical columns using CSS multi-column layout,
+so items of different heights pack tightly without leaving large gaps — the
+Pinterest-style layout. Set the number of `columns` and the `gap` (in pixels)
+between them. Wrap each child in a [`MasonryItem`](/docs/components/masonryitem)
+so it doesn't split across a column break. Best for image galleries and card
+feeds with uneven content heights.
 
 ## Example
 
@@ -14,7 +19,15 @@ Import `Masonry` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Masonry } from '@officina/ui';
+import { Masonry, MasonryItem } from '@officina/ui';
+
+<Masonry columns={3} gap={12}>
+  {photos.map((photo) => (
+    <MasonryItem key={photo.id}>
+      <img src={photo.url} alt={photo.alt} />
+    </MasonryItem>
+  ))}
+</Masonry>;
 ```
 
 ## API

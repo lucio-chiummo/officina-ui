@@ -1,11 +1,15 @@
 ---
 title: Slider
-description: 'Slider — live example and API reference.'
+description: Controlled single-thumb slider for picking a numeric value within a min/max range.
 ---
 
 import { SliderDemo } from '@/components/demos/inputs-demo';
 
-Import `Slider` from `@officina/ui`.
+`Slider` lets the user pick a number by dragging a thumb along a track. It is
+controlled: `value` is a one-entry array and `onValueChange` returns the updated
+array as the thumb moves. Constrain the range with `min`, `max`, and `step`, add
+a `label`, and pass `formatValue` to render the displayed number (e.g. as a
+percentage or currency). The thumb is keyboard-adjustable with the arrow keys.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `Slider` from `@officina/ui`.
 
 ```tsx
 import { Slider } from '@officina/ui';
+import { useState } from 'react';
+
+function VolumeSlider() {
+  const [value, setValue] = useState([40]);
+  return (
+    <Slider
+      label="Volume"
+      value={value}
+      onValueChange={setValue}
+      min={0}
+      max={100}
+      step={5}
+      formatValue={(n) => `${n}%`}
+    />
+  );
+}
 ```
 
 ## API

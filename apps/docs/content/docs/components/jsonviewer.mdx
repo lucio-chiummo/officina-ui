@@ -1,11 +1,14 @@
 ---
 title: JSONViewer
-description: 'JSONViewer — live example and API reference.'
+description: Render any JSON value as a syntax-highlighted, collapsible tree.
 ---
 
 import { JSONViewerDemo } from '@/components/demos/data-display-demo';
 
-Import `JSONViewer` from `@officina/ui`.
+`JSONViewer` takes any `value` and renders it as an interactive tree with
+syntax-highlighted keys and values; objects and arrays are collapsible nodes.
+Set `defaultExpanded` to `false` to start collapsed. Use it for inspecting API
+responses, config, or debug payloads in admin tools and dev panels.
 
 ## Example
 
@@ -15,6 +18,10 @@ Import `JSONViewer` from `@officina/ui`.
 
 ```tsx
 import { JSONViewer } from '@officina/ui';
+
+function ResponseInspector({ data }) {
+  return <JSONViewer value={data} defaultExpanded />;
+}
 ```
 
 ## API

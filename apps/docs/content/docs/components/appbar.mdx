@@ -1,11 +1,15 @@
 ---
 title: AppBar
-description: 'AppBar — live example and API reference.'
+description: A top application header bar with configurable positioning and color tone.
 ---
 
 import { AppBarDemo } from '@/components/demos/navigation-demo';
 
-Import `AppBar` from `@officina/ui`.
+`AppBar` is the top header bar of an app or page. It renders a `<header>` and
+forwards native attributes, so you compose its contents freely — typically an
+`AppBarTitle` plus one or more `AppBarSection`s for actions. `position` switches
+between `static`, `sticky`, and `fixed`, and `tone` picks the `base`, `subtle`,
+or `accent` color scheme.
 
 ## Example
 
@@ -14,7 +18,16 @@ Import `AppBar` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { AppBar } from '@officina/ui';
+import { AppBar, AppBarTitle, AppBarSection, IconButton } from '@officina/ui';
+import { Bell, Settings } from 'lucide-react';
+
+<AppBar position="sticky">
+  <AppBarTitle>Officina</AppBarTitle>
+  <AppBarSection>
+    <IconButton icon={<Bell />} aria-label="Notifications" variant="ghost" />
+    <IconButton icon={<Settings />} aria-label="Settings" variant="ghost" />
+  </AppBarSection>
+</AppBar>;
 ```
 
 ## API

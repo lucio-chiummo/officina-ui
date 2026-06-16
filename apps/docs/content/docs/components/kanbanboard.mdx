@@ -1,11 +1,15 @@
 ---
 title: KanbanBoard
-description: 'KanbanBoard — live example and API reference.'
+description: Drag-and-drop board with fixed-width columns for moving cards between lists.
 ---
 
 import { KanbanBoardDemo } from '@/components/demos/data-display-demo';
 
-Import `KanbanBoard` from `@officina/ui`.
+`KanbanBoard` renders cards in fixed-width columns and lets users drag cards
+within and across columns (powered by dnd-kit). State is controlled: you own the
+`columns` and `cards` arrays, and `onMoveCard(cardId, columnId)` fires when a drag
+ends so you can persist the new column. Each card references its list via
+`columnId`. Use it for task boards, pipelines, or any status-based workflow.
 
 ## Example
 
@@ -15,6 +19,26 @@ Import `KanbanBoard` from `@officina/ui`.
 
 ```tsx
 import { KanbanBoard } from '@officina/ui';
+import { useState } from 'react';
+
+function Board() {
+  const [cards, setCards] = useState([
+    { id: 'task-1', columnId: 'todo', content: 'Draft spec' },
+    { id: 'task-2', columnId: 'done', content: 'Ship release' },
+  ]);
+  return (
+    <KanbanBoard
+      columns={[
+        { id: 'todo', title: 'Todo' },
+        { id: 'done', title: 'Done' },
+      ]}
+      cards={cards}
+      onMoveCard={(cardId, columnId) =>
+        setCards((prev) => prev.map((c) => (c.id === cardId ? { ...c, columnId } : c)))
+      }
+    />
+  );
+}
 ```
 
 ## API

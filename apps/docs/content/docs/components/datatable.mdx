@@ -1,11 +1,17 @@
 ---
 title: DataTable
-description: 'DataTable — live example and API reference.'
+description: Data-driven table built on TanStack Table with sorting, pagination, selection, and empty states.
 ---
 
 import { DataTableDemo } from '@/components/demos/tables-demo';
 
-Import `DataTable` from `@officina/ui`.
+`DataTable` is the high-level, data-driven table. Unlike the raw `Table`
+primitives (which you assemble row by row), you hand it `data` and TanStack
+Table `columns` and it renders the rows for you — with built-in sorting,
+optional pagination (`pageSize`), row selection (`enableRowSelection`), loading
+skeletons (`isLoading`), empty states, and a toolbar/export slot. Reach for it
+whenever the dataset is dynamic or large; use the `Table` primitives only for
+small, fully hand-controlled markup.
 
 ## Example
 
@@ -15,6 +21,26 @@ Import `DataTable` from `@officina/ui`.
 
 ```tsx
 import { DataTable } from '@officina/ui';
+import type { ColumnDef } from '@tanstack/react-table';
+
+type User = { id: string; name: string; role: string };
+
+const columns: ColumnDef<User>[] = [
+  { accessorKey: 'name', header: 'Name' },
+  { accessorKey: 'role', header: 'Role' },
+];
+
+function UsersTable({ users }: { users: User[] }) {
+  return (
+    <DataTable
+      data={users}
+      columns={columns}
+      pageSize={10}
+      enableRowSelection
+      onRowSelectionChange={(rows) => console.log(rows)}
+    />
+  );
+}
 ```
 
 ## API

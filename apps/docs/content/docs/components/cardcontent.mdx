@@ -1,11 +1,13 @@
 ---
 title: CardContent
-description: 'CardContent — live example and API reference.'
+description: The main body region of a Card that holds its primary content.
 ---
 
 import { CardContentDemo } from '@/components/demos/composed-demo';
 
-Import `CardContent` from `@officina/ui`.
+`CardContent` is the body region of a `Card` — an unstyled wrapper that marks
+the main content between the header and footer. Put your primary content (text,
+fields, charts) here so the card's sections read in a predictable order.
 
 ## Example
 
@@ -14,7 +16,16 @@ Import `CardContent` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CardContent } from '@officina/ui';
+import { Card, CardHeader, CardTitle, CardContent } from '@officina/ui';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Acme Operations</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p>Compose header, content, and footer to build a card surface.</p>
+  </CardContent>
+</Card>;
 ```
 
 ## API

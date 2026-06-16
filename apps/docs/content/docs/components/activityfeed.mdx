@@ -1,11 +1,15 @@
 ---
 title: ActivityFeed
-description: 'ActivityFeed — live example and API reference.'
+description: Chronological feed of who did what and when, with actor avatars and timestamps.
 ---
 
 import { ActivityFeedDemo } from '@/components/demos/data-display-demo';
 
-Import `ActivityFeed` from `@officina/ui`.
+`ActivityFeed` renders a list of activity entries, each pairing an `actor` (whose
+initials become an avatar fallback) with an `action`, an optional `target`, and a
+`timestamp`. Reach for it on dashboards, audit trails, or record detail pages to
+show recent changes. Pass an `empty` node to control what shows when there is no
+activity.
 
 ## Example
 
@@ -15,6 +19,23 @@ Import `ActivityFeed` from `@officina/ui`.
 
 ```tsx
 import { ActivityFeed } from '@officina/ui';
+
+function RecentActivity() {
+  return (
+    <ActivityFeed
+      items={[
+        {
+          id: '1',
+          actor: 'Ada Lovelace',
+          action: 'closed the issue',
+          target: 'OFF-218',
+          timestamp: '2m ago',
+        },
+      ]}
+      empty="No activity yet"
+    />
+  );
+}
 ```
 
 ## API

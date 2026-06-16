@@ -1,11 +1,15 @@
 ---
 title: BottomNavigation
-description: 'BottomNavigation — live example and API reference.'
+description: A mobile-style bottom bar of icon-and-label destinations with a controlled active value.
 ---
 
 import { BottomNavigationDemo } from '@/components/demos/navigation-demo';
 
-Import `BottomNavigation` from `@officina/ui`.
+`BottomNavigation` renders a row of equal-width destinations, each an optional
+`icon` over a `label`, for the bottom bar of a mobile-style layout. It is
+controlled: `value` marks the active destination (flagged with `aria-current`)
+and `onChange` fires with the selected item's `value`. Keep it to a handful of
+top-level views.
 
 ## Example
 
@@ -15,6 +19,23 @@ Import `BottomNavigation` from `@officina/ui`.
 
 ```tsx
 import { BottomNavigation } from '@officina/ui';
+import { Home, Search, User } from 'lucide-react';
+import { useState } from 'react';
+
+function MobileNav() {
+  const [tab, setTab] = useState('home');
+  return (
+    <BottomNavigation
+      value={tab}
+      onChange={setTab}
+      items={[
+        { value: 'home', label: 'Home', icon: <Home /> },
+        { value: 'search', label: 'Search', icon: <Search /> },
+        { value: 'profile', label: 'Profile', icon: <User /> },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: VirtualList
-description: 'VirtualList — live example and API reference.'
+description: Virtualized list that renders only visible rows for large datasets.
 ---
 
 import { VirtualListDemo } from '@/components/demos/data-display-demo';
 
-Import `VirtualList` from `@officina/ui`.
+`VirtualList` renders only the rows currently in view (powered by TanStack
+Virtual), so it stays fast with thousands of `items`. Provide a `renderItem`
+function and a fixed viewport `height`; tune `estimateSize` to your row height for
+smoother scrolling before measurement. Reach for it when a plain mapped list would
+mount too many DOM nodes.
 
 ## Example
 
@@ -15,6 +19,18 @@ Import `VirtualList` from `@officina/ui`.
 
 ```tsx
 import { VirtualList } from '@officina/ui';
+
+function BigList() {
+  const items = Array.from({ length: 10000 }, (_, i) => `Row ${i + 1}`);
+  return (
+    <VirtualList
+      items={items}
+      height={360}
+      estimateSize={44}
+      renderItem={(item) => <div className="px-3 py-2">{item}</div>}
+    />
+  );
+}
 ```
 
 ## API

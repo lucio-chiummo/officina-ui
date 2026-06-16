@@ -1,11 +1,16 @@
 ---
 title: RadarChart
-description: 'RadarChart — live example and API reference.'
+description: Radar chart comparing several entities across shared metric axes radiating from a centre.
 ---
 
 import { RadarChartDemo } from '@/components/demos/charts-demo';
 
-Import `RadarChart` from `@officina/ui`.
+`RadarChart` plots each entity as a polygon over shared axes that radiate from a
+centre, making it easy to compare multi-metric profiles at a glance — like
+scoring channels across reach, activation, and retention. Pass the axis names in
+`categories` and one entry per polygon in `series`, where each `data` array
+lines up positionally with `categories`. It renders client-side via ECharts, so
+give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +20,15 @@ Import `RadarChart` from `@officina/ui`.
 
 ```tsx
 import { RadarChart } from '@officina/ui';
+
+<RadarChart
+  categories={['Reach', 'Activation', 'Revenue', 'Retention']}
+  series={[
+    { name: 'Organic', data: [90, 78, 62, 84] },
+    { name: 'Paid', data: [74, 65, 80, 58] },
+  ]}
+  height={280}
+/>;
 ```
 
 ## API

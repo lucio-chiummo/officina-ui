@@ -1,11 +1,14 @@
 ---
 title: FormLabel
-description: 'FormLabel — live example and API reference.'
+description: Label for a FormControl that auto-links to its control and shows a required indicator.
 ---
 
 import { FormLabelDemo } from '@/components/demos/composed-demo';
 
-Import `FormLabel` from `@officina/ui`.
+`FormLabel` is the `<label>` for a `FormControl`. Inside one it inherits the
+control's id (so `htmlFor` points at the right input) and its `required` flag,
+rendering a `*` indicator when the field is required. You can also pass `htmlFor`
+or `required` explicitly to use it standalone.
 
 ## Example
 
@@ -14,7 +17,12 @@ Import `FormLabel` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormLabel } from '@officina/ui';
+import { FormControl, FormLabel, Input } from '@officina/ui';
+
+<FormControl required>
+  <FormLabel>Workspace name</FormLabel>
+  <Input />
+</FormControl>;
 ```
 
 ## API

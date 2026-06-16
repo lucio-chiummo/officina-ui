@@ -1,11 +1,15 @@
 ---
 title: SpotlightCard
-description: 'Surface with a radial glow that follows the cursor — the signature premium'
+description: Card surface with a radial glow that tracks the cursor on hover.
 ---
 
 import { SpotlightCardDemo } from '@/components/demos/misc-demo';
 
-Import `SpotlightCard` from `@officina/ui`.
+`SpotlightCard` is a bordered surface with a soft radial glow that follows the
+cursor while hovering — the signature hover used by Linear/Vercel-style
+dashboards. Tune the effect with `glowColor`, `radius` (px), and `intensity`
+(peak opacity, `0`–`1`). It's pointer-driven only, so it adds no ambient motion
+and stays calm when idle. Use it for clickable cards and dashboard tiles.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `SpotlightCard` from `@officina/ui`.
 
 ```tsx
 import { SpotlightCard } from '@officina/ui';
+
+<SpotlightCard radius={300} intensity={0.15}>
+  <h3>Analytics</h3>
+  <p>Track usage in real time.</p>
+</SpotlightCard>;
 ```
 
 ## API

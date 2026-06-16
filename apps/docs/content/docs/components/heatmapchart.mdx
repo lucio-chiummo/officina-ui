@@ -1,11 +1,15 @@
 ---
 title: HeatmapChart
-description: 'HeatmapChart — live example and API reference.'
+description: Heatmap charting a value across two categorical axes via colour intensity in a grid.
 ---
 
 import { HeatmapChartDemo } from '@/components/demos/charts-demo';
 
-Import `HeatmapChart` from `@officina/ui`.
+`HeatmapChart` lays a value out on a grid and encodes its magnitude as colour
+intensity, surfacing patterns across two categorical axes — like activity by day
+and hour. Pass `data` as `[xIndex, yIndex, value]` tuples whose indexes line up
+with the `xLabels` (columns) and `yLabels` (rows) arrays. It renders client-side
+via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,16 @@ Import `HeatmapChart` from `@officina/ui`.
 
 ```tsx
 import { HeatmapChart } from '@officina/ui';
+
+// [xIndex, yIndex, value]
+const data = [
+  [0, 0, 5],
+  [1, 0, 7],
+  [0, 1, 2],
+  [1, 1, 9],
+];
+
+<HeatmapChart data={data} xLabels={['Mon', 'Tue']} yLabels={['AM', 'PM']} height={280} />;
 ```
 
 ## API

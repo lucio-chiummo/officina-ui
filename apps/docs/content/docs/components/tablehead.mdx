@@ -1,11 +1,14 @@
 ---
 title: TableHead
-description: 'TableHead — live example and API reference.'
+description: A <th> column-header cell for a composed Table, styled as small uppercase muted text.
 ---
 
 import { TableHeadDemo } from '@/components/demos/composed-demo';
 
-Import `TableHead` from `@officina/ui`.
+`TableHead` is a header cell (`<th>`) for a hand-composed `Table`. It renders
+the column label in small, uppercase, muted text, left-aligned by default. Use
+one per column inside the `TableRow` of your `TableHeader`. Do not confuse it
+with `TableHeader`, which is the `<thead>` section that wraps these cells.
 
 ## Example
 
@@ -14,7 +17,14 @@ Import `TableHead` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableHead } from '@officina/ui';
+import { TableHeader, TableRow, TableHead } from '@officina/ui';
+
+<TableHeader>
+  <TableRow>
+    <TableHead>Name</TableHead>
+    <TableHead className="text-right">Amount</TableHead>
+  </TableRow>
+</TableHeader>;
 ```
 
 ## API

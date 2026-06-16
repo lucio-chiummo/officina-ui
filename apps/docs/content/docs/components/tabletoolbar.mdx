@@ -1,11 +1,15 @@
 ---
 title: TableToolbar
-description: 'TableToolbar — live example and API reference.'
+description: Toolbar bar above a table with slots for search, filters, bulk actions, and a columns toggle.
 ---
 
 import { TableToolbarDemo } from '@/components/demos/tables-demo';
 
-Import `TableToolbar` from `@officina/ui`.
+`TableToolbar` is the control strip you place above a table. It lays out a
+built-in search box on the left (via the `search` config), `filters` next to it,
+and pins `bulkActions`, a `columnsToggle`, and any `rightSlot` content to the
+right edge — collapsing to a stacked layout on small screens. Use it to give
+`DataTable`/`DataGrid` or a hand-built `Table` a consistent header of controls.
 
 ## Example
 
@@ -14,7 +18,18 @@ Import `TableToolbar` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableToolbar } from '@officina/ui';
+import { TableToolbar, Button } from '@officina/ui';
+import { useState } from 'react';
+
+function ListToolbar() {
+  const [query, setQuery] = useState('');
+  return (
+    <TableToolbar
+      search={{ value: query, onChange: setQuery, placeholder: 'Search users…' }}
+      rightSlot={<Button size="sm">New user</Button>}
+    />
+  );
+}
 ```
 
 ## API

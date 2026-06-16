@@ -1,11 +1,14 @@
 ---
 title: SearchFilter
-description: 'SearchFilter — live example and API reference.'
+description: Debounced search box preset for filtering tables and lists by free text.
 ---
 
 import { SearchFilterDemo } from '@/components/demos/composed-demo';
 
-Import `SearchFilter` from `@officina/ui`.
+`SearchFilter` is a thin wrapper around `SearchInput` purpose-built for
+filter bars: it reports every keystroke through `onChange` (so the input
+stays responsive) while also exposing a separate `onDebouncedChange` you can
+wire to an actual query or API call, avoiding a request per keystroke.
 
 ## Example
 
@@ -15,6 +18,20 @@ Import `SearchFilter` from `@officina/ui`.
 
 ```tsx
 import { SearchFilter } from '@officina/ui';
+import { useState } from 'react';
+
+function CustomersFilterBar() {
+  const [value, setValue] = useState('');
+  return (
+    <SearchFilter
+      value={value}
+      onChange={setValue}
+      onDebouncedChange={(query) => console.log('fetch with', query)}
+      debounceMs={300}
+      placeholder="Search customers"
+    />
+  );
+}
 ```
 
 ## API

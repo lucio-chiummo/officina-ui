@@ -1,11 +1,15 @@
 ---
 title: SearchInput
-description: 'SearchInput — live example and API reference.'
+description: Search field with a leading icon, clear button, and a debounced change callback.
 ---
 
 import { SearchInputDemo } from '@/components/demos/inputs-demo';
 
-Import `SearchInput` from `@officina/ui`.
+`SearchInput` is a controlled text field with a leading search icon and a clear
+(×) button that appears once there is a value. Beyond the immediate `onChange`,
+it offers `onDebouncedChange` that fires after `debounceMs` (default 200ms) of
+inactivity — wire your actual query there to avoid firing a request on every
+keystroke. Disable the clear button with `showClear={false}`.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `SearchInput` from `@officina/ui`.
 
 ```tsx
 import { SearchInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [query, setQuery] = useState('');
+  return (
+    <SearchInput
+      value={query}
+      onChange={setQuery}
+      onDebouncedChange={(q) => runSearch(q)}
+      placeholder="Search…"
+    />
+  );
+}
 ```
 
 ## API

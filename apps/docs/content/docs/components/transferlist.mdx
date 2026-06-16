@@ -1,11 +1,15 @@
 ---
 title: TransferList
-description: 'TransferList — live example and API reference.'
+description: Dual-pane picker for moving items between an available and a selected list.
 ---
 
 import { TransferListDemo } from '@/components/demos/data-display-demo';
 
-Import `TransferList` from `@officina/ui`.
+`TransferList` shows two panes — available on the left, selected on the right —
+and lets users check items and move them between panes with the arrow buttons.
+It is controlled: `value` holds the ids of selected items and `onChange` fires
+with the next selection. Rename the panes with `availableLabel` and
+`selectedLabel`. Use it for assigning permissions, members, or tags.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `TransferList` from `@officina/ui`.
 
 ```tsx
 import { TransferList } from '@officina/ui';
+import { useState } from 'react';
+
+function Permissions() {
+  const [value, setValue] = useState<string[]>(['read']);
+  return (
+    <TransferList
+      items={[
+        { value: 'read', label: 'Read' },
+        { value: 'write', label: 'Write' },
+        { value: 'delete', label: 'Delete' },
+      ]}
+      value={value}
+      onChange={setValue}
+    />
+  );
+}
 ```
 
 ## API

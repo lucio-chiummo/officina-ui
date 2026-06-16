@@ -1,11 +1,16 @@
 ---
 title: GanttChart
-description: 'GanttChart — live example and API reference.'
+description: Gantt chart laying out tasks as horizontal bars across a shared timeline by start and end date.
 ---
 
 import { GanttChartDemo } from '@/components/demos/charts-demo';
 
-Import `GanttChart` from `@officina/ui`.
+`GanttChart` lays out scheduled work as horizontal bars on a shared timeline,
+showing how tasks overlap and sequence — handy for project phases and roadmaps.
+Pass `items`, each with an `id`, `label`, and `start`/`end` `Date` objects (and
+an optional `color`); the timeline scale is derived from the earliest start and
+latest end. It is rendered with plain HTML/CSS, so no chart canvas or explicit
+height is needed.
 
 ## Example
 
@@ -15,6 +20,23 @@ Import `GanttChart` from `@officina/ui`.
 
 ```tsx
 import { GanttChart } from '@officina/ui';
+
+<GanttChart
+  items={[
+    {
+      id: 'phase-1',
+      label: 'Feature completion',
+      start: new Date('2026-06-15'),
+      end: new Date('2026-06-19'),
+    },
+    {
+      id: 'phase-2',
+      label: 'Launch QA',
+      start: new Date('2026-06-18'),
+      end: new Date('2026-06-23'),
+    },
+  ]}
+/>;
 ```
 
 ## API

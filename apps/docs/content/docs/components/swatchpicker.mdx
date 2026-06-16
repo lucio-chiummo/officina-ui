@@ -1,11 +1,15 @@
 ---
 title: SwatchPicker
-description: 'Controlled color/accent preset selector. Domain-neutral — the app wires'
+description: Controlled preset selector that picks one swatch from a fixed palette, with optional custom.
 ---
 
 import { SwatchPickerDemo } from '@/components/demos/inputs-demo';
 
-Import `SwatchPicker` from `@officina/ui`.
+`SwatchPicker` presents a fixed palette of `swatches` and lets the user pick
+one; it is controlled via `value`/`onChange`. It is domain-neutral — wire it to
+whatever the swatch values represent in your app, such as a brand accent color.
+Each swatch is a string or a `{ value, label }` object; set `allowCustom` to add
+a free-form entry and `size` (`'sm' | 'md'`) to scale the chips.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `SwatchPicker` from `@officina/ui`.
 
 ```tsx
 import { SwatchPicker } from '@officina/ui';
+import { useState } from 'react';
+
+function AccentSwatches() {
+  const [accent, setAccent] = useState('#3858e9');
+  return (
+    <SwatchPicker
+      value={accent}
+      onChange={setAccent}
+      allowCustom
+      swatches={['#3858e9', '#7c3aed', '#0ea5e9', '#16a34a', '#e11d48']}
+    />
+  );
+}
 ```
 
 ## API

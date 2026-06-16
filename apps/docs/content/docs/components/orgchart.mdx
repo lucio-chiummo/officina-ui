@@ -1,11 +1,15 @@
 ---
 title: OrgChart
-description: 'OrgChart — live example and API reference.'
+description: Render a top-down organizational hierarchy of node cards with connecting lines.
 ---
 
 import { OrgChartDemo } from '@/components/demos/data-display-demo';
 
-Import `OrgChart` from `@officina/ui`.
+`OrgChart` draws a static, top-down tree of cards — pass a single recursive
+`node` whose `children` branch out below it. Each node takes a `label` and
+optional `description`. Use it for reporting structures, team layouts, or any
+parent/child hierarchy you want to display at a glance. For an interactive,
+expand/collapse hierarchy in a grid, see `TreeList` instead.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `OrgChart` from `@officina/ui`.
 
 ```tsx
 import { OrgChart } from '@officina/ui';
+
+function Reporting() {
+  return (
+    <OrgChart
+      node={{
+        id: 'ceo',
+        label: 'Ada Lovelace',
+        description: 'CEO',
+        children: [
+          { id: 'eng', label: 'Grace Hopper', description: 'VP Engineering' },
+          { id: 'sales', label: 'Alan Turing', description: 'VP Sales' },
+        ],
+      }}
+    />
+  );
+}
 ```
 
 ## API

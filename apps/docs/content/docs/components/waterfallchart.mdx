@@ -1,11 +1,16 @@
 ---
 title: WaterfallChart
-description: 'WaterfallChart — live example and API reference.'
+description: Waterfall chart showing how sequential increases and decreases bridge a start to an end total.
 ---
 
 import { WaterfallChartDemo } from '@/components/demos/charts-demo';
 
-Import `WaterfallChart` from `@officina/ui`.
+`WaterfallChart` shows how a starting value reaches an ending value through a
+sequence of positive and negative steps — ideal for bridging figures like
+opening to closing revenue. Pass `data` as `{ name, value }` steps; use a
+negative `value` for a decrease and set `type: 'total'` to anchor a running-total
+bar. It renders client-side via ECharts, so give it a `height` (defaults to
+`280`).
 
 ## Example
 
@@ -15,6 +20,16 @@ Import `WaterfallChart` from `@officina/ui`.
 
 ```tsx
 import { WaterfallChart } from '@officina/ui';
+
+const data = [
+  { name: 'Start', value: 24000, type: 'total' },
+  { name: 'Expansion', value: 4200 },
+  { name: 'Churn', value: -1400 },
+  { name: 'New', value: 3300 },
+  { name: 'End', value: 30100, type: 'total' },
+];
+
+<WaterfallChart data={data} height={280} />;
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: Popover
-description: 'Popover — live example and API reference.'
+description: Click-triggered floating panel anchored to a trigger, with smart positioning and dismiss.
 ---
 
 import { PopoverDemo } from '@/components/demos/overlays-demo';
 
-Import `Popover` from `@officina/ui`.
+`Popover` opens a floating panel when its `trigger` is clicked, positioned next
+to the trigger with auto-flip and collision handling. Use it for menus, filters,
+and small contextual forms. It is portaled and dismisses on `Escape` or outside
+click. Works uncontrolled (`defaultOpen`) or controlled (`open`/`onOpenChange`);
+set `modal` to trap focus and switch to `role="dialog"`. Pass a function as
+children to receive a `close` callback.
 
 ## Example
 
@@ -15,6 +20,15 @@ Import `Popover` from `@officina/ui`.
 
 ```tsx
 import { Popover } from '@officina/ui';
+
+<Popover trigger={<button>Options</button>} side="bottom" align="end">
+  {({ close }) => (
+    <div className="p-2">
+      <button onClick={close}>Rename</button>
+      <button onClick={close}>Delete</button>
+    </div>
+  )}
+</Popover>;
 ```
 
 ## API

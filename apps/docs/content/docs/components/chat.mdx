@@ -1,11 +1,16 @@
 ---
 title: Chat
-description: 'Chat — live example and API reference.'
+description: Conversation thread with bubbles, auto-scroll, and a built-in message composer.
 ---
 
 import { ChatDemo } from '@/components/demos/data-display-demo';
 
-Import `Chat` from `@officina/ui`.
+`Chat` renders a scrolling thread of message bubbles plus a composer with a send
+button. It is controlled: pass the `messages` array and an `onSend(content)`
+handler that appends the new message — the component only tracks the draft text.
+Each message carries a `sender` (`'user'` or `'other'`), so bubbles align to the
+correct side. The view auto-scrolls to the latest message, Enter sends while
+Shift+Enter adds a line, and `typingIndicator` shows an animated "typing" state.
 
 ## Example
 
@@ -15,6 +20,30 @@ Import `Chat` from `@officina/ui`.
 
 ```tsx
 import { Chat } from '@officina/ui';
+import { useState } from 'react';
+
+function Conversation() {
+  const [messages, setMessages] = useState([
+    { id: '1', content: 'Hey there!', sender: 'other', senderName: 'Bot', timestamp: new Date() },
+  ]);
+  return (
+    <Chat
+      messages={messages}
+      onSend={(content) =>
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            content,
+            sender: 'user',
+            status: 'sent',
+            timestamp: new Date(),
+          },
+        ])
+      }
+    />
+  );
+}
 ```
 
 ## API

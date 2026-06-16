@@ -1,11 +1,14 @@
 ---
 title: ListItemDecorator
-description: 'ListItemDecorator — live example and API reference.'
+description: Fixed-size leading slot for an icon or avatar in a list row.
 ---
 
 import { ListItemDecoratorDemo } from '@/components/demos/composed-demo';
 
-Import `ListItemDecorator` from `@officina/ui`.
+`ListItemDecorator` is the leading visual slot of a row — a fixed 32px box with a
+muted background that holds an icon, avatar, or status dot. It keeps every row's
+decoration aligned to the same size regardless of content. Place it before a
+`ListItemContent` inside a `ListItemButton`.
 
 ## Example
 
@@ -14,7 +17,19 @@ Import `ListItemDecorator` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListItemDecorator } from '@officina/ui';
+import { List, ListItem, ListItemButton, ListItemContent, ListItemDecorator } from '@officina/ui';
+import { Home } from 'lucide-react';
+
+<List>
+  <ListItem>
+    <ListItemButton>
+      <ListItemDecorator>
+        <Home className="size-4" />
+      </ListItemDecorator>
+      <ListItemContent title="Dashboard" description="Overview and KPIs" />
+    </ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

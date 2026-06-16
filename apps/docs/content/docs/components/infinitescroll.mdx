@@ -1,11 +1,15 @@
 ---
 title: InfiniteScroll
-description: 'InfiniteScroll — live example and API reference.'
+description: Loads the next page automatically as a sentinel scrolls into view.
 ---
 
 import { InfiniteScrollDemo } from '@/components/demos/data-display-demo';
 
-Import `InfiniteScroll` from `@officina/ui`.
+`InfiniteScroll` watches a sentinel at the bottom of its `children` with an
+IntersectionObserver and calls `onLoadMore` shortly before the user reaches the
+end, as long as `hasMore` is true. Set `isLoading` while a fetch is in flight to
+suppress duplicate calls, and customize the `loader` and `end` nodes. You own and
+append the data yourself. Use it for feeds, search results, or any paginated API.
 
 ## Example
 
@@ -15,6 +19,21 @@ Import `InfiniteScroll` from `@officina/ui`.
 
 ```tsx
 import { InfiniteScroll } from '@officina/ui';
+
+function Feed({ items, hasMore, isLoading, loadMore }) {
+  return (
+    <InfiniteScroll
+      hasMore={hasMore}
+      isLoading={isLoading}
+      onLoadMore={loadMore}
+      end="You're all caught up"
+    >
+      {items.map((item) => (
+        <div key={item.id}>{item.title}</div>
+      ))}
+    </InfiniteScroll>
+  );
+}
 ```
 
 ## API

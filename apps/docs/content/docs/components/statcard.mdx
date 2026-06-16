@@ -1,11 +1,15 @@
 ---
 title: StatCard
-description: 'StatCard — live example and API reference.'
+description: Single KPI tile with value, trend delta, and an optional sparkline.
 ---
 
 import { StatCardDemo } from '@/components/demos/data-display-demo';
 
-Import `StatCard` from `@officina/ui`.
+`StatCard` is a self-contained KPI tile: a `label`, a prominent `value`, and an
+optional `delta` whose sign drives the up/down colour and arrow (with a
+`deltaLabel` caption like "vs last month"). Add an `icon`, a muted `hint`, or a
+`sparkline` array for an inline trend. Drop several into a grid to build a
+dashboard summary row.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `StatCard` from `@officina/ui`.
 
 ```tsx
 import { StatCard } from '@officina/ui';
+
+<StatCard
+  label="MRR"
+  value="$24.8k"
+  delta={12.4}
+  deltaLabel="vs last month"
+  sparkline={[12, 18, 14, 22, 28, 34, 42]}
+/>;
 ```
 
 ## API

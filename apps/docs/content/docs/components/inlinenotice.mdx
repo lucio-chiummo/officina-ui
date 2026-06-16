@@ -1,11 +1,15 @@
 ---
 title: InlineNotice
-description: 'Compact single-row feedback for forms and settings panels — lighter than'
+description: Compact single-row inline message with a tone icon, lighter than Alert.
 ---
 
 import { InlineNoticeDemo } from '@/components/demos/feedback-demo';
 
-Import `InlineNotice` from `@officina/ui`.
+`InlineNotice` is a lightweight one-line message for forms and settings panels —
+quieter than `Alert`, with just a tone-coloured icon and text and no border or
+fill. Set `tone` to `'info'` (default), `'success'`, `'warning'`, `'danger'`, or
+`'neutral'`; add a trailing `action`, or make it `dismissible` with an
+`onDismiss` handler.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `InlineNotice` from `@officina/ui`.
 
 ```tsx
 import { InlineNotice } from '@officina/ui';
+
+<InlineNotice tone="info">Changes are saved automatically.</InlineNotice>
+<InlineNotice tone="warning" dismissible onDismiss={hide}>
+  Your trial ends in 3 days.
+</InlineNotice>
 ```
 
 ## API

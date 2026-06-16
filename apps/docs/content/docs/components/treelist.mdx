@@ -5,7 +5,13 @@ description: 'Hierarchical data grid — rows expand/collapse in place while sta
 
 import { TreeListDemo } from '@/components/demos/data-display-demo';
 
-Import `TreeList` from `@officina/ui`.
+`TreeList` is a multi-column data grid for hierarchical rows: each row can have
+`children`, and the first column gets a chevron to expand or collapse branches in
+place while the other columns stay aligned. Use it for file trees, BOMs, nested
+categories, or org data you want to scan as a table. Define `columns` (with
+optional per-cell `render`), pass nested `rows`, and seed initial state with
+`defaultExpandAll` or `defaultExpandedIds`. Row clicks fire `onRowClick`, and
+`selectedId` highlights the active row.
 
 ## Example
 
@@ -15,6 +21,26 @@ Import `TreeList` from `@officina/ui`.
 
 ```tsx
 import { TreeList } from '@officina/ui';
+
+function FileTree() {
+  return (
+    <TreeList
+      defaultExpandAll
+      columns={[
+        { key: 'name', header: 'Name' },
+        { key: 'size', header: 'Size', align: 'right' },
+      ]}
+      rows={[
+        {
+          id: 'src',
+          name: 'src',
+          size: '—',
+          children: [{ id: 'app', name: 'app.tsx', size: '4 KB' }],
+        },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: Tooltip
-description: 'Tooltip — live example and API reference.'
+description: Hover- and focus-triggered label that floats beside an element, with delay and arrow.
 ---
 
 import { TooltipDemo } from '@/components/demos/overlays-demo';
 
-Import `Tooltip` from `@officina/ui`.
+`Tooltip` shows a short, non-interactive label when the user hovers or focuses
+its child element. It opens after a short `delayMs`, portals the label with an
+arrow pointing at the trigger, sets `role="tooltip"`, and closes on mouse leave,
+blur, or `Escape`. Wrap exactly one focusable element and pass the label via
+`content`. Use it for icon-button hints and terse explanations — not for
+clickable content.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `Tooltip` from `@officina/ui`.
 
 ```tsx
 import { Tooltip } from '@officina/ui';
+
+<Tooltip content="Archive" side="top">
+  <button aria-label="Archive">📁</button>
+</Tooltip>;
 ```
 
 ## API

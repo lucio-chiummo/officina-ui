@@ -1,11 +1,15 @@
 ---
 title: Drawer
-description: 'Drawer — live example and API reference.'
+description: Right-edge sliding panel for create and edit flows, with focus trap and dismiss.
 ---
 
 import { DrawerDemo } from '@/components/demos/overlays-demo';
 
-Import `Drawer` from `@officina/ui`.
+`Drawer` is a portaled panel that slides in from the right edge — ideal for
+create/edit forms and detail views that need more room than a `Modal` but
+should keep the user oriented to the page behind. It traps focus, dims the page
+with a backdrop, and dismisses on `Escape` or backdrop click. Controlled via
+`open`/`onClose`; pick a `width` of `'sm'`, `'md'` (default), or `'lg'`.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `Drawer` from `@officina/ui`.
 
 ```tsx
 import { Drawer } from '@officina/ui';
+import { useState } from 'react';
+
+function EditPanel() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Drawer
+      open={open}
+      onClose={() => setOpen(false)}
+      title="Edit user"
+      description="Changes save when you submit."
+      width="md"
+    >
+      {/* form fields */}
+    </Drawer>
+  );
+}
 ```
 
 ## API

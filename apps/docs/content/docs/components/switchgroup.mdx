@@ -1,11 +1,15 @@
 ---
 title: SwitchGroup
-description: 'SwitchGroup — live example and API reference.'
+description: Stacked rows of labeled switches for settings panels, tracked as an array of on values.
 ---
 
 import { SwitchGroupDemo } from '@/components/demos/inputs-demo';
 
-Import `SwitchGroup` from `@officina/ui`.
+`SwitchGroup` renders a list of `options` as labeled switch rows, ideal for
+preference and settings panels. It is controlled — `value` is the array of values
+currently switched on and `onChange` fires with the next array on every toggle.
+Each option can carry a `description`, and by default the rows sit in a bordered,
+divided panel (`bordered`, on by default).
 
 ## Example
 
@@ -15,6 +19,21 @@ Import `SwitchGroup` from `@officina/ui`.
 
 ```tsx
 import { SwitchGroup } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState<string[]>(['marketing']);
+  return (
+    <SwitchGroup
+      value={value}
+      onChange={setValue}
+      options={[
+        { value: 'marketing', label: 'Marketing emails', description: 'Product news and offers.' },
+        { value: 'security', label: 'Security alerts' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

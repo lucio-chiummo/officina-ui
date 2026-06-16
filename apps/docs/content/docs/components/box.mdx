@@ -1,11 +1,16 @@
 ---
 title: Box
-description: 'Box — live example and API reference.'
+description: Minimal polymorphic div with min-width:0 and an `as` prop for layout building blocks.
 ---
 
 import { BoxDemo } from '@/components/demos/misc-demo';
 
-Import `Box` from `@officina/ui`.
+`Box` is the lowest-level layout primitive — a `div` with `min-w-0` already
+applied (so flex and grid children can shrink and truncate correctly) and no
+other styling. Use it as a neutral styling target you hang `className` on, or
+render it as any element with the `as` prop (`section`, `aside`, `nav`, …).
+Reach for it when you want a plain container without the spacing opinions of
+`Stack` or `Container`.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `Box` from `@officina/ui`.
 
 ```tsx
 import { Box } from '@officina/ui';
+
+<Box as="section" className="rounded-lg border p-4">
+  Content
+</Box>;
 ```
 
 ## API

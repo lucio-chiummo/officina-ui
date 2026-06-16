@@ -1,11 +1,15 @@
 ---
 title: Sheet
-description: 'Sheet — live example and API reference.'
+description: Bottom sheet on mobile that becomes a centered dialog on desktop.
 ---
 
 import { SheetDemo } from '@/components/demos/overlays-demo';
 
-Import `Sheet` from `@officina/ui`.
+`Sheet` is a responsive dialog: it slides up from the bottom edge on mobile and
+renders as a centered modal on wider screens. Reach for it for short forms and
+confirmations that want more breathing room than `ConfirmDialog`. It is
+portaled, traps focus, and dismisses on `Escape` or backdrop click. Controlled
+via `open`/`onClose`, with a required `title`.
 
 ## Example
 
@@ -15,6 +19,16 @@ Import `Sheet` from `@officina/ui`.
 
 ```tsx
 import { Sheet } from '@officina/ui';
+import { useState } from 'react';
+
+function ShareSheet() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Sheet open={open} onClose={() => setOpen(false)} title="Share link">
+      {/* sheet body */}
+    </Sheet>
+  );
+}
 ```
 
 ## API

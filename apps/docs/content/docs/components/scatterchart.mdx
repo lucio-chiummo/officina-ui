@@ -1,11 +1,15 @@
 ---
 title: ScatterChart
-description: 'ScatterChart — live example and API reference.'
+description: Scatter/bubble chart plotting points by x and y to reveal correlation, with optional size.
 ---
 
 import { ScatterChartDemo } from '@/components/demos/charts-demo';
 
-Import `ScatterChart` from `@officina/ui`.
+`ScatterChart` plots each record as a point positioned by its `x` and `y`
+values, revealing correlation, clusters, and outliers between two measures. Give
+each point an optional `name` and a `size` to turn it into a bubble chart
+encoding a third dimension. Set `xLabel`/`yLabel` for the axis titles. It
+renders client-side via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `ScatterChart` from `@officina/ui`.
 
 ```tsx
 import { ScatterChart } from '@officina/ui';
+
+const data = [
+  { name: 'Starter', x: 12, y: 260, size: 10 },
+  { name: 'Growth', x: 35, y: 980, size: 18 },
+  { name: 'Enterprise', x: 72, y: 4200, size: 26 },
+];
+
+<ScatterChart data={data} xLabel="Sessions" yLabel="Revenue" height={280} />;
 ```
 
 ## API

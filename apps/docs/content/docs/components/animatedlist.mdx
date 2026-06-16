@@ -1,11 +1,16 @@
 ---
 title: AnimatedList
-description: 'List that animates items in and out as the array changes — premium feel for'
+description: Renders a list that animates items in, out, and on reorder as the array changes.
 ---
 
 import { AnimatedListDemo } from '@/components/demos/misc-demo';
 
-Import `AnimatedList` from `@officina/ui`.
+`AnimatedList` renders an array of `items` and animates each entry as the array
+changes — fading and sliding items in on add, out on remove, and smoothly
+relayouting on reorder. Provide `getKey` for a stable identity per item,
+`renderItem` to draw each one, and tune the cascade with `stagger`. It honors
+reduced motion (relying on the app-level `MotionConfig reducedMotion="user"`).
+Great for notifications, activity feeds, and live search results.
 
 ## Example
 
@@ -15,6 +20,12 @@ Import `AnimatedList` from `@officina/ui`.
 
 ```tsx
 import { AnimatedList } from '@officina/ui';
+
+<AnimatedList
+  items={notifications}
+  getKey={(n) => n.id}
+  renderItem={(n) => <NotificationCard {...n} />}
+/>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: Input
-description: 'Input — live example and API reference.'
+description: Styled single-line text input that forwards a ref and accepts all native input props.
 ---
 
 import { InputDemo } from '@/components/demos/inputs-demo';
 
-Import `Input` from `@officina/ui`.
+`Input` is the base text field the rest of the library is built on. It is a thin
+wrapper over the native `<input>` — it forwards its ref and spreads every
+standard attribute (`type`, `value`, `placeholder`, `disabled`, etc.) — adding
+focus, disabled, and invalid styling. Set `aria-invalid` (which `Field` and
+`FormControl` do for you) to switch it to the error state.
 
 ## Example
 
@@ -15,6 +19,19 @@ Import `Input` from `@officina/ui`.
 
 ```tsx
 import { Input } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState('');
+  return (
+    <Input
+      type="email"
+      placeholder="you@example.com"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
 ```
 
 ## API

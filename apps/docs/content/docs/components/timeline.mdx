@@ -1,11 +1,15 @@
 ---
 title: Timeline
-description: 'Timeline — live example and API reference.'
+description: Render a chronological sequence of events as a vertical or horizontal timeline.
 ---
 
 import { TimelineDemo } from '@/components/demos/data-display-demo';
 
-Import `Timeline` from `@officina/ui`.
+`Timeline` lays out an ordered list of events with connecting lines and status
+dots — use it for audit logs, release histories, order tracking, or any "what
+happened when" view. Pass an array of `items`, each with a `title` and optional
+`description`, `timestamp`, and `tone` (which colors the dot). Switch between a
+stacked vertical layout and a scrollable horizontal strip with `orientation`.
 
 ## Example
 
@@ -15,6 +19,17 @@ Import `Timeline` from `@officina/ui`.
 
 ```tsx
 import { Timeline } from '@officina/ui';
+
+function ReleaseHistory() {
+  return (
+    <Timeline
+      items={[
+        { id: 'planned', title: 'Planned', description: 'Spec approved', timestamp: 'Mon' },
+        { id: 'built', title: 'Built', description: 'Merged to main', tone: 'success' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

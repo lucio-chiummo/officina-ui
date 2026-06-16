@@ -1,11 +1,16 @@
 ---
 title: CodeEditor
-description: 'CodeEditor — live example and API reference.'
+description: Syntax-highlighted code editor (CodeMirror) with language modes, themes, and line numbers.
 ---
 
 import { CodeEditorDemo } from '@/components/demos/composed-demo';
 
-Import `CodeEditor` from `@officina/ui`.
+`CodeEditor` is a CodeMirror-based editor with syntax highlighting. It is
+controlled by `value`/`onChange`. Set `language` (`'javascript'`,
+`'typescript'`, `'python'`, `'css'`, `'html'`, `'json'`, or `'markdown'`) for
+the right highlighting, and `theme` (`'light'`, `'dark'`, or `'auto'` to follow
+the app theme). Control the viewport with `height`/`minHeight`, toggle
+`lineNumbers`, and set `readOnly` for display-only snippets.
 
 ## Example
 
@@ -15,6 +20,20 @@ Import `CodeEditor` from `@officina/ui`.
 
 ```tsx
 import { CodeEditor } from '@officina/ui';
+import { useState } from 'react';
+
+function SnippetEditor() {
+  const [value, setValue] = useState('const greet = (name) => `Hi, ${name}`;\n');
+  return (
+    <CodeEditor
+      value={value}
+      onChange={setValue}
+      language="typescript"
+      theme="auto"
+      height="180px"
+    />
+  );
+}
 ```
 
 ## API
