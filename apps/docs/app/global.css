@@ -14,7 +14,7 @@
 /* ── Officina Light / Officina Dark as the docs site theme ──
    Re-point fumadocs' `--color-fd-*` chrome variables at the Officina design
    tokens so the whole site (nav, sidebar, cards, prose) renders in the same
-   palette as the admin template — not fumadocs' default neutral. A single
+   Officina palette — not fumadocs' default neutral. A single
    `:root` block covers both modes: the referenced `--color-*` tokens already
    switch under `.dark`, and this unlayered rule overrides fumadocs' layered
    `@theme` defaults regardless of source order. */
