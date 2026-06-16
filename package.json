@@ -12,6 +12,7 @@
     "build:docs": "pnpm --filter @officina/docs build",
     "dev:docs": "pnpm --filter @officina/ui build && pnpm --filter @officina/docs dev",
     "typecheck": "pnpm --filter @officina/ui typecheck",
+    "test": "pnpm --filter @officina/ui test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "changeset": "changeset",
