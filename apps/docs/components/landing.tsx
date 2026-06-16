@@ -102,58 +102,107 @@ function LiveStat({
   );
 }
 
+function HeroGlow() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div
+        className="absolute left-1/2 top-[-12rem] h-[36rem] w-[56rem] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
+        style={{
+          background:
+            'radial-gradient(circle, var(--color-accent) 0%, rgb(217 70 239 / 0.55) 45%, transparent 75%)',
+        }}
+      />
+      <div
+        className="absolute right-[-8rem] top-20 h-72 w-72 rounded-full opacity-30 blur-3xl"
+        style={{ background: 'radial-gradient(circle, rgb(34 211 238 / 0.8) 0%, transparent 70%)' }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, var(--color-fg-base) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+          maskImage: 'linear-gradient(to bottom, black, transparent 85%)',
+        }}
+      />
+      <div className="from-fd-background absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section className="flex flex-col items-center px-4 pb-16 pt-20 text-center">
+    <section className="relative isolate flex flex-col items-center overflow-hidden px-4 pb-16 pt-24 text-center">
+      <HeroGlow />
       <Badge variant="accent" dot>
         Open source · 250+ components
       </Badge>
-      <h1 className="mt-5 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
+      <h1 className="mt-6 max-w-4xl text-balance text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
         The most complete{' '}
         <GradientText as="span" animate>
           open-source
         </GradientText>{' '}
         React component library
       </h1>
-      <p className="text-fd-muted-foreground mt-4 max-w-xl text-balance">
+      <p className="text-fd-muted-foreground mt-5 max-w-xl text-balance text-lg">
         Officina UI ships forms, data grids, overlays, charts, scheduling, and AI surfaces —
         token-driven, accessible, and fully typed.
       </p>
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
         <CtaLink href="/docs">Get started</CtaLink>
         <CtaLink href="/docs/components/button" variant="secondary">
           Browse components
         </CtaLink>
       </div>
 
-      <BorderBeam duration={10} className="mt-14 w-full max-w-md text-left">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <AvatarStack avatars={team} size="sm" max={4} />
-            <div>
-              <p className="text-sm font-semibold">Acme Workspace</p>
-              <p className="text-fd-muted-foreground text-xs">4 members online</p>
+      <div className="relative mt-16 w-full max-w-lg">
+        <div
+          aria-hidden="true"
+          className="absolute -inset-6 -z-10 rounded-[2rem] opacity-60 blur-2xl"
+          style={{
+            background:
+              'radial-gradient(circle, var(--color-accent) 0%, rgb(217 70 239 / 0.35) 60%, transparent 80%)',
+          }}
+        />
+        <Badge
+          variant="success"
+          size="sm"
+          dot
+          className="absolute -right-4 -top-4 z-10 rotate-3 shadow-[var(--shadow-lg)]"
+        >
+          +12.4% this week
+        </Badge>
+        <BorderBeam
+          duration={6}
+          className="w-full text-left shadow-[var(--shadow-xl)] backdrop-blur-sm"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <AvatarStack avatars={team} size="sm" max={4} />
+              <div>
+                <p className="text-sm font-semibold">Acme Workspace</p>
+                <p className="text-fd-muted-foreground text-xs">4 members online</p>
+              </div>
+            </div>
+            <Badge variant="success" size="sm" dot>
+              Live
+            </Badge>
+          </div>
+          <div className="mt-4 space-y-4">
+            <Progress value={72} label="Sprint progress" showValue size="sm" />
+            <div className="flex items-center justify-between gap-3">
+              <CircularProgress value={86} size={56} thickness={5} label="Uptime" />
+              <StatCard
+                className="w-44 border-none p-0 shadow-none"
+                label="Revenue"
+                value="$48.2k"
+                delta={12.4}
+                deltaLabel="vs last week"
+                sparkline={[8, 12, 9, 14, 18, 16, 22]}
+              />
             </div>
           </div>
-          <Badge variant="success" size="sm" dot>
-            Live
-          </Badge>
-        </div>
-        <div className="mt-4 space-y-4">
-          <Progress value={72} label="Sprint progress" showValue size="sm" />
-          <div className="flex items-center justify-between gap-3">
-            <CircularProgress value={86} size={56} thickness={5} label="Uptime" />
-            <StatCard
-              className="w-44 border-none p-0 shadow-none"
-              label="Revenue"
-              value="$48.2k"
-              delta={12.4}
-              deltaLabel="vs last week"
-              sparkline={[8, 12, 9, 14, 18, 16, 22]}
-            />
-          </div>
-        </div>
-      </BorderBeam>
+        </BorderBeam>
+      </div>
     </section>
   );
 }
