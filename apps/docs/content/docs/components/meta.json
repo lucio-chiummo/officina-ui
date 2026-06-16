@@ -255,6 +255,7 @@
     "motionpreset",
     "---Utilities---",
     "nossr",
-    "copyfield"
+    "copyfield",
+    "topprogressbar"
   ]
 }

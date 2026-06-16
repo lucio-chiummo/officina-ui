@@ -28,6 +28,13 @@ type ExportToolbarProps<T extends object> = {
 
 const iconClassName = 'size-4';
 
+const defaultFormatLabels: Record<ExportFormat, string> = {
+  csv: 'CSV',
+  xlsx: 'Excel',
+  json: 'JSON',
+  pdf: 'PDF',
+};
+
 export function ExportToolbar<T extends object>({
   data,
   filename,
@@ -56,7 +63,7 @@ export function ExportToolbar<T extends object>({
       trigger={
         <Button size="sm" variant="secondary" disabled={disabled}>
           <Download className="size-4" aria-hidden="true" />
-          {t('dataTable.export')}
+          {t('dataTable.export', 'Export')}
         </Button>
       }
       sections={[
@@ -64,7 +71,7 @@ export function ExportToolbar<T extends object>({
           items: formats.map((format) => ({
             disabled,
             icon: icons[format],
-            label: t(`dataTable.exportFormats.${format}`),
+            label: t(`dataTable.exportFormats.${format}`, defaultFormatLabels[format]),
             onClick: handlers[format],
           })),
         },
