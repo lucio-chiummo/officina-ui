@@ -1,13 +1,27 @@
+import type { FocusEventHandler } from 'react';
+
 import { cn } from '@lib/utils/cn';
 import { useDropzone, type DropzoneOptions } from 'react-dropzone';
 
-type FileUploadProps = Omit<DropzoneOptions, 'onDrop'> & {
+export type FileUploadProps = Omit<DropzoneOptions, 'onDrop'> & {
   onFiles: (files: File[]) => void;
   activeLabel?: string;
   ariaLabel?: string;
   hint?: string;
   label?: string;
   className?: string;
+  /** Element id, applied to the focusable drop zone. */
+  id?: string;
+  /** Form field name, applied to the underlying file input. */
+  name?: string;
+  /** Marks the underlying file input as required for native form validation. */
+  required?: boolean;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Id(s) of element(s) describing the field (helper/error text). */
+  'aria-describedby'?: string;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
 };
 
 export function FileUpload({
@@ -17,6 +31,13 @@ export function FileUpload({
   hint,
   label = 'Click or drag files to upload',
   className,
+  id,
+  name,
+  required,
+  invalid,
+  'aria-describedby': ariaDescribedBy,
+  onBlur,
+  onFocus,
   ...dropzone
 }: FileUploadProps) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -26,16 +47,19 @@ export function FileUpload({
 
   return (
     <>
-      <input {...getInputProps({ 'aria-label': ariaLabel })} />
+      <input {...getInputProps({ name, required, 'aria-label': ariaLabel })} />
       <div
-        {...getRootProps()}
+        {...getRootProps({ onBlur, onFocus })}
+        id={id}
         role="button"
         aria-label={ariaLabel}
+        aria-describedby={ariaDescribedBy}
         className={cn(
           'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-8 text-center transition-colors',
           isDragActive
             ? 'border-[var(--color-accent)] bg-[var(--color-accent-subtle)]'
             : 'border-[var(--color-border-strong)] bg-[var(--color-bg-base)] hover:border-[var(--color-border-strong)]',
+          invalid && 'border-[var(--color-danger)]',
           className,
         )}
       >

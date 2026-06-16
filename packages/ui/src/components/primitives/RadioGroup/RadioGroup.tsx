@@ -1,8 +1,9 @@
-import type { ReactNode } from 'react';
+import type { FocusEventHandler, ReactElement, ReactNode, Ref } from 'react';
 
 import { Radio, RadioGroup as HeadlessRadioGroup } from '@headlessui/react';
 import { cn } from '@lib/utils/cn';
 import { CheckCircle2 } from 'lucide-react';
+import { forwardRef } from 'react';
 
 export type RadioOption<T = string> = {
   value: T;
@@ -24,23 +25,45 @@ export type RadioGroupProps<T = string> = {
   /** Plain radios or selectable cards. */
   variant?: 'plain' | 'card';
   name?: string;
+  /** Element id, e.g. for wiring to a `FormControl` / external `<label>`. */
+  id?: string;
+  /** Marks the field as required for validation styling and `aria-required`. */
+  required?: boolean;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
   className?: string;
+  onBlur?: FocusEventHandler<HTMLElement>;
+  onFocus?: FocusEventHandler<HTMLElement>;
 };
 
-export function RadioGroup<T = string>({
-  options,
-  value,
-  onChange,
-  orientation = 'vertical',
-  variant = 'plain',
-  name,
-  className,
-}: RadioGroupProps<T>) {
+function RadioGroupInner<T = string>(
+  {
+    options,
+    value,
+    onChange,
+    orientation = 'vertical',
+    variant = 'plain',
+    name,
+    id,
+    required,
+    invalid,
+    className,
+    onBlur,
+    onFocus,
+  }: RadioGroupProps<T>,
+  ref: Ref<HTMLElement>,
+) {
   return (
     <HeadlessRadioGroup
+      ref={ref}
       value={value}
       onChange={onChange}
       {...(name ? { name } : {})}
+      {...(id !== undefined ? { id } : {})}
+      {...(required !== undefined ? { 'aria-required': required } : {})}
+      {...(invalid !== undefined ? { 'aria-invalid': invalid } : {})}
+      {...(onBlur !== undefined ? { onBlur } : {})}
+      {...(onFocus !== undefined ? { onFocus } : {})}
       className={cn(
         'flex gap-2',
         orientation === 'vertical' ? 'flex-col' : 'flex-row flex-wrap',
@@ -81,3 +104,10 @@ export function RadioGroup<T = string>({
     </HeadlessRadioGroup>
   );
 }
+
+const ForwardedRadioGroup = forwardRef(RadioGroupInner);
+ForwardedRadioGroup.displayName = 'RadioGroup';
+
+export const RadioGroup = ForwardedRadioGroup as <T = string>(
+  props: RadioGroupProps<T> & { ref?: Ref<HTMLElement> },
+) => ReactElement;

@@ -27,6 +27,7 @@ export type MaskedInputProps = {
   id?: string;
   name?: string;
   onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   className?: string;
   /** Accessible name when no visible label is present. */
   'aria-label'?: string;
@@ -71,6 +72,7 @@ export const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(functi
     id: idProp,
     name,
     onBlur,
+    onFocus,
     className,
     'aria-label': ariaLabel,
     'aria-describedby': ariaDescribedby,
@@ -100,6 +102,7 @@ export const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(functi
         value={value}
         onChange={handleChange}
         onBlur={onBlur}
+        onFocus={onFocus}
         placeholder={placeholder ?? mask.replace(/9/g, '0').replace(/a/g, 'A').replace(/\*/g, '#')}
         disabled={Boolean(disabled)}
         required={required}

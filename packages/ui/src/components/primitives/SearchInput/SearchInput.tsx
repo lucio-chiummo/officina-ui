@@ -16,6 +16,8 @@ export type SearchInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onCh
   showClear?: boolean;
   /** Accessible label for the clear button. */
   clearLabel?: string;
+  /** Mark the field invalid for validation styling. */
+  invalid?: boolean;
 };
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(function SearchInput(
@@ -27,6 +29,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
     showClear = true,
     clearLabel = 'Clear',
     className,
+    invalid,
     ...props
   },
   ref,
@@ -43,7 +46,12 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
         data-density-control="input"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="focus:ring-[var(--color-accent)]/20 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pl-9 pr-9 text-sm text-[var(--color-fg-base)] outline-none transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2"
+        aria-invalid={invalid ? true : undefined}
+        className={cn(
+          'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pl-9 pr-9 text-sm text-[var(--color-fg-base)] outline-none transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20',
+          invalid &&
+            'border-[var(--color-danger)] focus:border-[var(--color-danger)] focus:ring-[var(--color-danger)]/20',
+        )}
         {...props}
       />
       {showClear && value ? (

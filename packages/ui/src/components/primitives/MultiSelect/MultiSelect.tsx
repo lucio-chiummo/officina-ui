@@ -1,7 +1,16 @@
 import { cn } from '@lib/utils/cn';
 import { Check, ChevronDown } from 'lucide-react';
 import { matchSorter } from 'match-sorter';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FocusEventHandler,
+  type ReactElement,
+  type Ref,
+} from 'react';
 
 import type { ComboboxOption } from '../Combobox';
 
@@ -30,23 +39,42 @@ export type MultiSelectProps<T = string> = {
   size?: 'sm' | 'md';
   disabled?: boolean;
   className?: string;
+  /** Element id, applied to the trigger button. */
+  id?: string;
+  /** Form field name, for native form submission / form libraries. */
+  name?: string;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Id(s) of element(s) describing the field (helper/error text). */
+  'aria-describedby'?: string;
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
+  onFocus?: FocusEventHandler<HTMLButtonElement>;
 };
 
-export function MultiSelect<T = string>({
-  options,
-  value,
-  onChange,
-  placeholder,
-  emptyMessage = 'No results',
-  maxBadgeCount = 3,
-  chipsClassName,
-  showSelectAll,
-  selectAllLabel = 'Select all',
-  clearAllLabel = 'Clear all',
-  size = 'md',
-  disabled,
-  className,
-}: MultiSelectProps<T>) {
+function MultiSelectInner<T = string>(
+  {
+    options,
+    value,
+    onChange,
+    placeholder,
+    emptyMessage = 'No results',
+    maxBadgeCount = 3,
+    chipsClassName,
+    showSelectAll,
+    selectAllLabel = 'Select all',
+    clearAllLabel = 'Clear all',
+    size = 'md',
+    disabled,
+    className,
+    id,
+    name,
+    invalid,
+    'aria-describedby': ariaDescribedBy,
+    onBlur,
+    onFocus,
+  }: MultiSelectProps<T>,
+  ref: Ref<HTMLButtonElement>,
+) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -77,9 +105,15 @@ export function MultiSelect<T = string>({
   return (
     <div ref={rootRef} className={cn('relative', className)}>
       <button
+        ref={ref}
+        id={id}
+        name={name}
         type="button"
         disabled={disabled}
         aria-expanded={open}
+        aria-describedby={ariaDescribedBy}
+        onBlur={onBlur}
+        onFocus={onFocus}
         onClick={() => setOpen((next) => !next)}
         onKeyDown={(event) => {
           if (event.key === 'ArrowDown') {
@@ -105,6 +139,7 @@ export function MultiSelect<T = string>({
           'flex min-h-9 w-full items-center gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-2 text-left',
           'transition-[border-color,box-shadow,background-color] duration-[var(--motion-fast)] ease-[var(--ease-standard)]',
           'focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:border-[var(--color-accent)] focus:outline-none disabled:opacity-50',
+          invalid && 'border-[var(--color-danger)]',
           size === 'sm' && 'min-h-8 text-xs',
         )}
       >
@@ -187,3 +222,10 @@ export function MultiSelect<T = string>({
     </div>
   );
 }
+
+const ForwardedMultiSelect = forwardRef(MultiSelectInner);
+ForwardedMultiSelect.displayName = 'MultiSelect';
+
+export const MultiSelect = ForwardedMultiSelect as <T = string>(
+  props: MultiSelectProps<T> & { ref?: Ref<HTMLButtonElement> },
+) => ReactElement;

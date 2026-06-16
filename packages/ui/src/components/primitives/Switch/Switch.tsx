@@ -1,5 +1,6 @@
 import { Switch as HuiSwitch, Field, Label, Description } from '@headlessui/react';
 import { cn } from '@lib/utils/cn';
+import { forwardRef, type FocusEventHandler } from 'react';
 
 export type SwitchProps = {
   /** Controlled on/off state. */
@@ -10,6 +11,12 @@ export type SwitchProps = {
   onChange?: (checked: boolean) => void;
   /** Disable interaction and dim the control. */
   disabled?: boolean;
+  /** Marks the field as required for validation styling and `aria-required`. */
+  required?: boolean;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Form field name, for native form submission / form libraries. */
+  name?: string;
   /** Visible label rendered beside the switch. */
   label?: string;
   /** Secondary helper text under the label. */
@@ -21,26 +28,41 @@ export type SwitchProps = {
   'aria-label'?: string;
   /** Id of an external element labelling the switch. */
   'aria-labelledby'?: string;
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
+  onFocus?: FocusEventHandler<HTMLButtonElement>;
 };
 
-export function Switch({
-  checked,
-  defaultChecked,
-  onChange,
-  disabled,
-  label,
-  description,
-  className,
-  id,
-  'aria-label': ariaLabel,
-  'aria-labelledby': ariaLabelledby,
-}: SwitchProps) {
+export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
+  {
+    checked,
+    defaultChecked,
+    onChange,
+    disabled,
+    required,
+    invalid,
+    name,
+    label,
+    description,
+    className,
+    id,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+    onBlur,
+    onFocus,
+  },
+  ref,
+) {
   const switchProps = {
     ...(id !== undefined ? { id } : {}),
+    ...(name !== undefined ? { name } : {}),
     ...(checked !== undefined ? { checked } : {}),
     ...(defaultChecked !== undefined ? { defaultChecked } : {}),
     ...(onChange !== undefined ? { onChange } : {}),
     ...(disabled !== undefined ? { disabled } : {}),
+    ...(required !== undefined ? { 'aria-required': required } : {}),
+    ...(invalid !== undefined ? { 'aria-invalid': invalid } : {}),
+    ...(onBlur !== undefined ? { onBlur } : {}),
+    ...(onFocus !== undefined ? { onFocus } : {}),
     ...(ariaLabelledby !== undefined
       ? { 'aria-labelledby': ariaLabelledby }
       : ariaLabel !== undefined
@@ -50,6 +72,7 @@ export function Switch({
 
   const control = (
     <HuiSwitch
+      ref={ref}
       {...switchProps}
       className={cn(
         'group relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full',
@@ -57,6 +80,7 @@ export function Switch({
         'transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)]',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2',
         'data-[checked]:bg-[var(--color-accent)]',
+        'aria-[invalid=true]:outline aria-[invalid=true]:outline-[var(--color-danger)]',
         'disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
@@ -92,4 +116,4 @@ export function Switch({
       </div>
     </Field>
   );
-}
+});
