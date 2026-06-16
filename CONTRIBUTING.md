@@ -14,12 +14,13 @@ pnpm dev:docs      # run the docs site against the built library
 
 ```bash
 pnpm format:check  # prettier --check .
+pnpm lint
 pnpm typecheck
 pnpm test
 pnpm build
 ```
 
-All four run in CI and must pass before a PR can merge.
+All five run in CI and must pass before a PR can merge.
 
 ## Adding a changeset
 
