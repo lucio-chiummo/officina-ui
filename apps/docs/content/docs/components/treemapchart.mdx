@@ -1,11 +1,15 @@
 ---
 title: TreemapChart
-description: 'TreemapChart — live example and API reference.'
+description: Treemap sizing nested rectangles by value to compare parts of a hierarchy.
 ---
 
 import { TreemapChartDemo } from '@/components/demos/charts-demo';
 
-Import `TreemapChart` from `@officina/ui`.
+`TreemapChart` tiles a rectangle into nested boxes whose area is proportional to
+each node's `value`, making it easy to compare the relative weight of items in a
+hierarchy — like storage by folder or revenue by segment. Pass `data` as
+`{ name, value }` nodes, each with optional `children` for deeper levels. It
+renders client-side via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `TreemapChart` from `@officina/ui`.
 
 ```tsx
 import { TreemapChart } from '@officina/ui';
+
+const data = [
+  { name: 'Enterprise', value: 42 },
+  { name: 'Growth', value: 31 },
+  { name: 'Starter', value: 18 },
+  { name: 'Trial', value: 9 },
+];
+
+<TreemapChart data={data} height={280} />;
 ```
 
 ## API

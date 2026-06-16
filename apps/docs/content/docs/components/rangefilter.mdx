@@ -1,11 +1,16 @@
 ---
 title: RangeFilter
-description: 'RangeFilter — live example and API reference.'
+description: Numeric min–max filter with a dual-handle slider and paired number inputs, inside a popover.
 ---
 
 import { RangeFilterDemo } from '@/components/demos/filters-demo';
 
-Import `RangeFilter` from `@officina/ui`.
+`RangeFilter` filters a numeric column by a `[min, max]` span. It pairs a
+dual-handle slider with two number inputs (kept in sync) inside a popover,
+bounded by the `min`/`max` you provide and stepped by `step`. It is controlled
+via the `value` tuple and `onChange`, and shows an active badge whenever the
+range is narrower than the full bounds. Use it for price, age, or score
+filters.
 
 ## Example
 
@@ -15,6 +20,14 @@ Import `RangeFilter` from `@officina/ui`.
 
 ```tsx
 import { RangeFilter } from '@officina/ui';
+import { useState } from 'react';
+
+function PriceFilter() {
+  const [range, setRange] = useState<[number, number]>([0, 1000]);
+  return (
+    <RangeFilter label="Price" value={range} onChange={setRange} min={0} max={1000} step={10} />
+  );
+}
 ```
 
 ## API

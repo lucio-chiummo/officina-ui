@@ -1,11 +1,15 @@
 ---
 title: BorderBeam
-description: 'Surface with a light that travels around its border — a premium accent for'
+description: Card surface with a light that travels around its border as a premium accent.
 ---
 
 import { BorderBeamDemo } from '@/components/demos/misc-demo';
 
-Import `BorderBeam` from `@officina/ui`.
+`BorderBeam` is a bordered surface with a beam of light that continuously orbits
+its edge — an eye-catching accent for upsell cards, active states, and hero
+panels. Wrap your content as children and tune the beam with `size` (thickness
+in px), `duration` (seconds per lap), and `color` (defaults to the accent
+token). The beam is decorative and pauses under `prefers-reduced-motion`.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `BorderBeam` from `@officina/ui`.
 
 ```tsx
 import { BorderBeam } from '@officina/ui';
+
+<BorderBeam duration={6} size={2}>
+  <h3>Pro plan</h3>
+  <p>Everything in Free, plus unlimited projects.</p>
+</BorderBeam>;
 ```
 
 ## API

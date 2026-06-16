@@ -1,11 +1,16 @@
 ---
 title: Stack
-description: 'Stack — live example and API reference.'
+description: Flex layout for arranging children in a row or column with consistent gap spacing.
 ---
 
 import { StackDemo } from '@/components/demos/misc-demo';
 
-Import `Stack` from `@officina/ui`.
+`Stack` lays out its children with flexbox along a single axis. Set `direction`
+to `'row'` or `'column'` (the default), control spacing with the `gap` scale
+(`0`–`8`), and align items with `align` and `justify`. Pass `wrap` to let items
+flow onto multiple lines, or a `divider` node to render a separator between each
+child. It's the go-to primitive for toolbars, form rows, and vertical content
+groups.
 
 ## Example
 
@@ -15,6 +20,11 @@ Import `Stack` from `@officina/ui`.
 
 ```tsx
 import { Stack } from '@officina/ui';
+
+<Stack direction="row" gap={2} align="center" justify="between">
+  <span>Title</span>
+  <button>Action</button>
+</Stack>;
 ```
 
 ## API

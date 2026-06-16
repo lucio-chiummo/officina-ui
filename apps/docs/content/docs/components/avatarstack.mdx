@@ -1,11 +1,15 @@
 ---
 title: AvatarStack
-description: 'Overflow-aware grouped avatars driven by data instead of children.'
+description: Overlapping avatars from a data array that collapse overflow into a +N chip.
 ---
 
 import { AvatarStackDemo } from '@/components/demos/data-display-demo';
 
-Import `AvatarStack` from `@officina/ui`.
+`AvatarStack` is the data-driven sibling of `AvatarGroup`: pass an `avatars`
+array of `{ name, src, alt }` and it renders the overlapping row for you,
+showing the first `max` (default 4) and collapsing the rest into a `+N` chip.
+The `size` and `shape` props apply to every avatar in the stack. Use it for
+collaborator and assignee lists where the data comes from a backend.
 
 ## Example
 
@@ -15,6 +19,16 @@ Import `AvatarStack` from `@officina/ui`.
 
 ```tsx
 import { AvatarStack } from '@officina/ui';
+
+<AvatarStack
+  max={3}
+  avatars={[
+    { name: 'Ada Lovelace' },
+    { name: 'Alan Turing' },
+    { name: 'Grace Hopper' },
+    { name: 'Katherine Johnson' },
+  ]}
+/>;
 ```
 
 ## API

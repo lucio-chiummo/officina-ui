@@ -1,11 +1,14 @@
 ---
 title: FormActions
-description: 'FormActions — live example and API reference.'
+description: Footer row for form buttons with alignment control and an optional sticky bottom bar.
 ---
 
 import { FormActionsDemo } from '@/components/demos/forms-demo';
 
-Import `FormActions` from `@officina/ui`.
+`FormActions` is the button row that closes out a form. It draws a top border,
+flex-wraps its children, and aligns them via `align` (`start`, `center`, `end`,
+or `between`). Set `sticky` to pin the row to the bottom of a scrolling form so
+the submit and cancel buttons stay reachable in long layouts.
 
 ## Example
 
@@ -14,7 +17,12 @@ Import `FormActions` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormActions } from '@officina/ui';
+import { FormActions, Button } from '@officina/ui';
+
+<FormActions align="between">
+  <Button variant="ghost">Cancel</Button>
+  <Button type="submit">Save changes</Button>
+</FormActions>;
 ```
 
 ## API

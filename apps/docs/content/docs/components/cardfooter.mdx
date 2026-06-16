@@ -1,11 +1,13 @@
 ---
 title: CardFooter
-description: 'CardFooter — live example and API reference.'
+description: Bottom action row of a Card, divided by a top border, for buttons.
 ---
 
 import { CardFooterDemo } from '@/components/demos/composed-demo';
 
-Import `CardFooter` from `@officina/ui`.
+`CardFooter` is the bottom section of a `Card`. It draws a top border and lays
+its children out in a row, making it the place for action buttons or summary
+metadata. Place it as the last child of a `Card`, after the content.
 
 ## Example
 
@@ -14,7 +16,16 @@ Import `CardFooter` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CardFooter } from '@officina/ui';
+import { Card, CardContent, CardFooter, Button } from '@officina/ui';
+
+<Card>
+  <CardContent>Growth plan — renews May 11, 2026.</CardContent>
+  <CardFooter>
+    <Button size="sm" variant="soft">
+      Manage
+    </Button>
+  </CardFooter>
+</Card>;
 ```
 
 ## API

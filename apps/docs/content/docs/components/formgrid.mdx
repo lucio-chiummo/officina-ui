@@ -1,11 +1,14 @@
 ---
 title: FormGrid
-description: 'FormGrid — live example and API reference.'
+description: Responsive grid that arranges form fields into 1–4 columns that collapse on small screens.
 ---
 
 import { FormGridDemo } from '@/components/demos/forms-demo';
 
-Import `FormGrid` from `@officina/ui`.
+`FormGrid` lays out fields in a responsive CSS grid. Pick `columns` between 1 and
+4 (defaults to 2); the grid drops to a single column on narrow viewports and
+expands at the configured breakpoints, so fields like first/last name sit side by
+side on desktop and stack on mobile.
 
 ## Example
 
@@ -14,7 +17,19 @@ Import `FormGrid` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormGrid } from '@officina/ui';
+import { FormGrid, Field, Input } from '@officina/ui';
+
+<FormGrid columns={3}>
+  <Field label="City">
+    <Input />
+  </Field>
+  <Field label="State">
+    <Input />
+  </Field>
+  <Field label="ZIP">
+    <Input />
+  </Field>
+</FormGrid>;
 ```
 
 ## API

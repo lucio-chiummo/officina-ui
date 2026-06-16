@@ -1,11 +1,18 @@
 ---
 title: CommandPalette
-description: 'CommandPalette — live example and API reference.'
+description: Cmd/Ctrl+K command menu — register actions from anywhere and search them fuzzy.
 ---
 
 import { CommandPaletteDemo } from '@/components/demos/navigation-demo';
 
-Import `CommandPalette` from `@officina/ui`.
+`CommandPalette` is a single, app-wide modal opened with `Cmd/Ctrl+K`. Render
+it once near the root of your app — it manages its own open state internally.
+Actions come from a shared store rather than props: call `registerCommands`
+from any component (typically in a `useEffect`) to add entries, and it cleans
+them up automatically when that component unmounts.
+
+Each action declares a `section` (`'navigation' | 'actions' | 'recent'`) used
+to group results, and a `perform` callback that runs when selected.
 
 ## Example
 
@@ -14,7 +21,19 @@ Import `CommandPalette` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { CommandPalette } from '@officina/ui';
+import { CommandPalette, registerCommands } from '@officina/ui';
+import { useEffect } from 'react';
+
+function AppShell() {
+  useEffect(() => {
+    return registerCommands([
+      { id: 'new-invoice', label: 'New invoice', section: 'actions', perform: () => {} },
+      { id: 'go-billing', label: 'Go to Billing', section: 'navigation', perform: () => {} },
+    ]);
+  }, []);
+
+  return <CommandPalette placeholder="Search commands" />;
+}
 ```
 
 ## API

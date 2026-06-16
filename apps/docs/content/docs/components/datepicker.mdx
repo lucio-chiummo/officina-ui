@@ -1,11 +1,15 @@
 ---
 title: DatePicker
-description: 'DatePicker — live example and API reference.'
+description: Field that opens a calendar popover to pick a single date or a date range.
 ---
 
 import { DatePickerDemo } from '@/components/demos/inputs-demo';
 
-Import `DatePicker` from `@officina/ui`.
+`DatePicker` is a field that opens a calendar popover (built on
+react-day-picker) for choosing a date. It is controlled, and the `mode` prop
+switches behavior: in the default `'single'` mode `value` is a `Date | undefined`
+and `onChange` returns the selected date; in `'range'` mode `value` is a
+`DateRange` (`{ from, to }`). Add a `label` and `placeholder` for the field.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `DatePicker` from `@officina/ui`.
 
 ```tsx
 import { DatePicker } from '@officina/ui';
+import { useState } from 'react';
+
+function DueDate() {
+  const [date, setDate] = useState<Date | undefined>();
+  return <DatePicker label="Due date" value={date} onChange={setDate} placeholder="Pick a date" />;
+}
 ```
 
 ## API

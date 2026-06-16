@@ -1,11 +1,15 @@
 ---
 title: PageBody
-description: 'PageBody — live example and API reference.'
+description: Vertical layout wrapper for page content with consistent gap and a fade-in.
 ---
 
 import { PageBodyDemo } from '@/components/demos/composed-demo';
 
-Import `PageBody` from `@officina/ui`.
+`PageBody` is the main content region of a page layout. It stacks its children
+vertically with consistent spacing and applies a subtle fade-in on mount. Place
+it below a [`PageHeader`](/docs/components/pageheader) and fill it with
+[`PageSection`](/docs/components/pagesection) blocks to assemble a standard
+page.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `PageBody` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { PageBody } from '@officina/ui';
+import { PageHeader, PageBody, PageSection } from '@officina/ui';
+
+<>
+  <PageHeader title="Settings" />
+  <PageBody>
+    <PageSection title="Profile">{/* … */}</PageSection>
+    <PageSection title="Billing">{/* … */}</PageSection>
+  </PageBody>
+</>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: ClickAwayListener
-description: 'ClickAwayListener — live example and API reference.'
+description: Wrapper that fires a callback when a click or touch lands outside its children.
 ---
 
 import { ClickAwayListenerDemo } from '@/components/demos/overlays-demo';
 
-Import `ClickAwayListener` from `@officina/ui`.
+`ClickAwayListener` wraps an element and calls `onClickAway` when a `mousedown`
+or `touchstart` occurs anywhere outside it. Use it to close custom dropdowns,
+inline editors, or popovers when the user interacts elsewhere. It listens on
+press (not click), so it fires before focus moves, and renders a plain wrapper
+with no portal or positioning of its own.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `ClickAwayListener` from `@officina/ui`.
 
 ```tsx
 import { ClickAwayListener } from '@officina/ui';
+
+{
+  open && (
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
+      <div className="absolute mt-1 rounded border bg-white p-2">{/* menu items */}</div>
+    </ClickAwayListener>
+  );
+}
 ```
 
 ## API

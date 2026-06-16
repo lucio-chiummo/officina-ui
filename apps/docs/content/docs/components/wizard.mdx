@@ -1,11 +1,20 @@
 ---
 title: Wizard
-description: 'Wizard — live example and API reference.'
+description: Multi-step flow with a built-in Stepper, Next/Back buttons, and per-step validation.
 ---
 
 import { WizardDemo } from '@/components/demos/navigation-demo';
 
-Import `Wizard` from `@officina/ui`.
+`Wizard` manages a multi-step flow end to end: it renders a `Stepper` for
+progress, the current step's content, and Back/Next/Finish buttons, advancing
+through `steps` as the user completes each one. Use it for setup flows,
+checkouts, or any task too long for a single form.
+
+Each step's `onNext` can run validation and return `false` (or a `Promise`
+resolving to `false`) to block advancing — the Next button shows a busy state
+while it resolves. A step's `content` can be a render function that receives
+a `WizardStepApi` (`next`, `back`, `goTo`, `isFirst`, `isLast`...) so the step
+itself can trigger navigation, e.g. from a "Skip" link.
 
 ## Example
 
@@ -15,6 +24,23 @@ Import `Wizard` from `@officina/ui`.
 
 ```tsx
 import { Wizard } from '@officina/ui';
+
+<Wizard
+  onComplete={() => console.log('done')}
+  steps={[
+    {
+      id: 'account',
+      label: 'Account',
+      content: <p>Create workspace.</p>,
+      onNext: () => true, // return false to block advancing
+    },
+    {
+      id: 'theme',
+      label: 'Theme',
+      content: <p>Pick tokens.</p>,
+    },
+  ]}
+/>;
 ```
 
 ## API

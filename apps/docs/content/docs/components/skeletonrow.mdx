@@ -1,11 +1,14 @@
 ---
 title: SkeletonRow
-description: 'SkeletonRow — live example and API reference.'
+description: Stack of pulsing placeholder bars with varied widths, for loading list/table rows.
 ---
 
 import { SkeletonRowDemo } from '@/components/demos/composed-demo';
 
-Import `SkeletonRow` from `@officina/ui`.
+`SkeletonRow` renders a configurable number of animated placeholder bars with
+slightly varied widths, so a loading list reads as text rather than a row of
+identical blocks. Use it where a list, table body, or feed is still fetching
+data — swap it in for the real content and swap it out once data arrives.
 
 ## Example
 
@@ -15,6 +18,10 @@ Import `SkeletonRow` from `@officina/ui`.
 
 ```tsx
 import { SkeletonRow } from '@officina/ui';
+
+{
+  isLoading ? <SkeletonRow rows={4} /> : <CustomerList items={customers} />;
+}
 ```
 
 ## API

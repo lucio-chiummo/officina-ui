@@ -1,11 +1,14 @@
 ---
 title: Markdown
-description: 'Markdown — live example and API reference.'
+description: Render a Markdown string as sanitized, prose-styled HTML with GitHub-flavored syntax.
 ---
 
 import { MarkdownDemo } from '@/components/demos/data-display-demo';
 
-Import `Markdown` from `@officina/ui`.
+`Markdown` renders a Markdown string (passed as `children`) into prose-styled
+HTML, supporting GitHub Flavored Markdown such as tables, task lists, and
+strikethrough. Output is sanitized to strip unsafe HTML, so it is safe for
+user-generated content like comments, descriptions, or AI responses.
 
 ## Example
 
@@ -15,6 +18,12 @@ Import `Markdown` from `@officina/ui`.
 
 ```tsx
 import { Markdown } from '@officina/ui';
+
+function Notes() {
+  return (
+    <Markdown>{`# Release notes\n\n- **Fixed** a crash\n- Added \`Markdown\` support`}</Markdown>
+  );
+}
 ```
 
 ## API

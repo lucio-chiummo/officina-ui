@@ -21,7 +21,7 @@ export function Map({ markers = [], height = 320, className }: MapProps) {
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-lg border border-[var(--color-border)] bg-[linear-gradient(135deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(225deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(45deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(315deg,var(--color-bg-muted)_25%,var(--color-bg-base)_25%)] bg-[length:32px_32px] bg-[position:16px_0,16px_0,0_0,0_0]',
+        'relative w-full overflow-hidden rounded-lg border border-[var(--color-border)] bg-[linear-gradient(135deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(225deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(45deg,var(--color-bg-muted)_25%,transparent_25%),linear-gradient(315deg,var(--color-bg-muted)_25%,var(--color-bg-base)_25%)] bg-[length:32px_32px] bg-[position:16px_0,16px_0,0_0,0_0]',
         className,
       )}
       style={{ height }}
@@ -36,7 +36,7 @@ export function Map({ markers = [], height = 320, className }: MapProps) {
         >
           <span
             aria-hidden="true"
-            className="absolute top-full left-1/2 size-5 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[var(--color-accent)]/30"
+            className="bg-[var(--color-accent)]/30 absolute left-1/2 top-full size-5 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full"
           />
           <MapPin className="size-3" aria-hidden />
           {marker.label}

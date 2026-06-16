@@ -1,11 +1,15 @@
 ---
 title: ListItemContent
-description: 'ListItemContent — live example and API reference.'
+description: Title plus muted description block for a list row, with truncation.
 ---
 
 import { ListItemContentDemo } from '@/components/demos/composed-demo';
 
-Import `ListItemContent` from `@officina/ui`.
+`ListItemContent` is the text body of a row. Pass a `title` and optional
+`description` and it renders them as a primary line plus a muted secondary line,
+each truncated to a single line so long values never break the layout. It flexes
+to fill the remaining space, so place it after a `ListItemDecorator` inside a
+`ListItemButton`. You can also pass `children` for fully custom content.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `ListItemContent` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListItemContent } from '@officina/ui';
+import { List, ListItem, ListItemButton, ListItemContent } from '@officina/ui';
+
+<List>
+  <ListItem>
+    <ListItemButton>
+      <ListItemContent title="Dashboard" description="Overview and KPIs" />
+    </ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

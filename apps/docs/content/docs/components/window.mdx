@@ -1,11 +1,16 @@
 ---
 title: Window
-description: 'Draggable, resizable floating window. Non-modal — page behind stays'
+description: Draggable, resizable, non-modal floating window for multi-pane workspaces.
 ---
 
 import { WindowDemo } from '@/components/demos/overlays-demo';
 
-Import `Window` from `@officina/ui`.
+`Window` is a portaled, non-modal floating panel you can drag by its title bar
+and resize from the corner — for tool palettes, pop-out panels, and multi-window
+dashboards. The page behind stays interactive (`aria-modal="false"`).
+Double-click the title bar or use the maximize control to toggle fullscreen, and
+press `Escape` to close. Controlled via `open`/`onClose`; tune `initialPosition`,
+`initialSize`, `resizable`, and `maximizable`.
 
 ## Example
 
@@ -15,6 +20,15 @@ Import `Window` from `@officina/ui`.
 
 ```tsx
 import { Window } from '@officina/ui';
+
+<Window
+  open={open}
+  onClose={() => setOpen(false)}
+  title="Inspector"
+  initialSize={{ width: 480, height: 360 }}
+>
+  {/* panel content */}
+</Window>;
 ```
 
 ## API

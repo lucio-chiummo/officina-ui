@@ -1,11 +1,15 @@
 ---
 title: MasonryItem
-description: 'MasonryItem — live example and API reference.'
+description: Wrapper for a single Masonry child that prevents it from breaking across columns.
 ---
 
 import { MasonryItemDemo } from '@/components/demos/composed-demo';
 
-Import `MasonryItem` from `@officina/ui`.
+`MasonryItem` wraps each child inside a [`Masonry`](/docs/components/masonry)
+container. Because `Masonry` uses CSS columns, an unwrapped element can be split
+across a column break; `MasonryItem` applies `break-inside: avoid` and bottom
+spacing so each item stays whole and evenly separated. Always render your
+masonry children inside it.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `MasonryItem` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { MasonryItem } from '@officina/ui';
+import { Masonry, MasonryItem } from '@officina/ui';
+
+<Masonry columns={3} gap={12}>
+  {items.map((item) => (
+    <MasonryItem key={item.id}>
+      <Card>{item.title}</Card>
+    </MasonryItem>
+  ))}
+</Masonry>;
 ```
 
 ## API

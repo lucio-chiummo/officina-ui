@@ -1,11 +1,17 @@
 ---
 title: FilterPopover
-description: 'FilterPopover — live example and API reference.'
+description: A labelled filter trigger button with an active-count badge that opens a popover of controls.
 ---
 
 import { FilterPopoverDemo } from '@/components/demos/filters-demo';
 
-Import `FilterPopover` from `@officina/ui`.
+`FilterPopover` is the reusable shell behind the individual filter controls. It
+renders a secondary trigger button with a label, leading icon, and an
+`activeCount` badge, and opens a popover holding whatever controls you pass as
+`children`. Optional `onApply`/`onClear` callbacks render Apply and Clear
+buttons in a footer (Apply also closes the popover). `FacetedFilter`,
+`RangeFilter`, and `DateRangeFilter` are all built on it; use it directly for a
+custom filter.
 
 ## Example
 
@@ -14,7 +20,11 @@ Import `FilterPopover` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FilterPopover } from '@officina/ui';
+import { FilterPopover, CheckboxGroup } from '@officina/ui';
+
+<FilterPopover label="Status" activeCount={selected.length} onClear={() => setSelected([])}>
+  <CheckboxGroup value={selected} onChange={setSelected} options={statusOptions} />
+</FilterPopover>;
 ```
 
 ## API

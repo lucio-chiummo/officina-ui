@@ -1,11 +1,15 @@
 ---
 title: BarChart
-description: 'BarChart — live example and API reference.'
+description: Grouped bar chart for comparing numeric series across discrete categories.
 ---
 
 import { BarChartDemo } from '@/components/demos/charts-demo';
 
-Import `BarChart` from `@officina/ui`.
+`BarChart` compares numeric values across discrete categories, drawing one bar
+per series side by side within each category — good for answering "how do these
+groups stack up?" Pass `data` as row objects, set `xKey` to the category field,
+and declare each measure in `series` (mapping a `dataKey` to a `name`). It
+renders client-side via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `BarChart` from `@officina/ui`.
 
 ```tsx
 import { BarChart } from '@officina/ui';
+
+const data = [
+  { month: 'Jan', revenue: 4200, users: 240 },
+  { month: 'Feb', revenue: 5300, users: 310 },
+  { month: 'Mar', revenue: 6100, users: 390 },
+];
+
+<BarChart
+  data={data}
+  xKey="month"
+  series={[
+    { dataKey: 'revenue', name: 'Revenue' },
+    { dataKey: 'users', name: 'Users' },
+  ]}
+  height={280}
+/>;
 ```
 
 ## API

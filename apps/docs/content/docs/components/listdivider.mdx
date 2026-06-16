@@ -1,11 +1,13 @@
 ---
 title: ListDivider
-description: 'ListDivider — live example and API reference.'
+description: A horizontal separator rule between groups of list rows.
 ---
 
 import { ListDividerDemo } from '@/components/demos/composed-demo';
 
-Import `ListDivider` from `@officina/ui`.
+`ListDivider` draws a thin horizontal rule as a `<li role="separator">` between
+rows of a `List`. Drop it between groups of items to visually separate sections
+without a heading. It is purely decorative and takes no content.
 
 ## Example
 
@@ -14,7 +16,17 @@ Import `ListDivider` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListDivider } from '@officina/ui';
+import { List, ListItem, ListItemButton, ListDivider } from '@officina/ui';
+
+<List>
+  <ListItem>
+    <ListItemButton>Dashboard</ListItemButton>
+  </ListItem>
+  <ListDivider />
+  <ListItem>
+    <ListItemButton>Settings</ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

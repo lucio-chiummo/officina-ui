@@ -1,11 +1,14 @@
 ---
 title: Marquee
-description: 'Marquee — live example and API reference.'
+description: Continuously scrolls its children horizontally in a seamless loop.
 ---
 
 import { MarqueeDemo } from '@/components/demos/misc-demo';
 
-Import `Marquee` from `@officina/ui`.
+`Marquee` scrolls its children horizontally in a seamless, infinite loop — it
+duplicates the content so the strip never shows a gap as it wraps. Control the
+pace with `speedSeconds` (seconds for one full pass; higher is slower). Use it
+for logo walls, testimonial tickers, and announcement strips.
 
 ## Example
 
@@ -15,6 +18,12 @@ Import `Marquee` from `@officina/ui`.
 
 ```tsx
 import { Marquee } from '@officina/ui';
+
+<Marquee speedSeconds={20}>
+  {logos.map((logo) => (
+    <img key={logo.name} src={logo.src} alt={logo.name} className="h-8" />
+  ))}
+</Marquee>;
 ```
 
 ## API

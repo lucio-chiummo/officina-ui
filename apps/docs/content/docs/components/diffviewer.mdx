@@ -1,11 +1,14 @@
 ---
 title: DiffViewer
-description: 'DiffViewer — live example and API reference.'
+description: Side-by-side before/after text diff with added and removed lines highlighted.
 ---
 
 import { DiffViewerDemo } from '@/components/demos/data-display-demo';
 
-Import `DiffViewer` from `@officina/ui`.
+`DiffViewer` compares `oldValue` and `newValue` line by line and renders them in
+two columns — "Before" and "After" — highlighting removed lines in red and added
+lines in green. Use it to show config changes, edit history, or revision
+previews.
 
 ## Example
 
@@ -15,6 +18,10 @@ Import `DiffViewer` from `@officina/ui`.
 
 ```tsx
 import { DiffViewer } from '@officina/ui';
+
+function ConfigDiff() {
+  return <DiffViewer oldValue={'status: draft\nprice: 99'} newValue={'status: live\nprice: 129'} />;
+}
 ```
 
 ## API

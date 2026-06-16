@@ -1,11 +1,14 @@
 ---
 title: ListItem
-description: 'ListItem — live example and API reference.'
+description: A single row inside a List — wraps content or a ListItemButton.
 ---
 
 import { ListItemDemo } from '@/components/demos/composed-demo';
 
-Import `ListItem` from `@officina/ui`.
+`ListItem` is one row (`<li>`) inside a `List`. It is a thin, presentational
+wrapper that handles rounding and min-width — put plain content inside for a
+static row, or a `ListItemButton` for an interactive one. Compose it with
+`ListItemDecorator` and `ListItemContent` to build richer rows.
 
 ## Example
 
@@ -14,7 +17,16 @@ Import `ListItem` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListItem } from '@officina/ui';
+import { List, ListItem, ListItemButton } from '@officina/ui';
+
+<List>
+  <ListItem>
+    <ListItemButton>Dashboard</ListItemButton>
+  </ListItem>
+  <ListItem>
+    <ListItemButton>Settings</ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

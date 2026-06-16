@@ -1,11 +1,15 @@
 ---
 title: SortableList
-description: 'SortableList — live example and API reference.'
+description: Vertically reorderable list where each item has a drag handle.
 ---
 
 import { SortableListDemo } from '@/components/demos/data-display-demo';
 
-Import `SortableList` from `@officina/ui`.
+`SortableList` renders a list whose items can be reordered by dragging a grip
+handle (powered by dnd-kit). State is controlled: pass `items` (each needs a
+stable `id`) and an `onChange` callback that receives the reordered array when a
+drag ends. Supply your own item UI via `renderItem`. Use it for ranked lists,
+reorderable form fields, or priority queues.
 
 ## Example
 
@@ -15,6 +19,16 @@ Import `SortableList` from `@officina/ui`.
 
 ```tsx
 import { SortableList } from '@officina/ui';
+import { useState } from 'react';
+
+function Priorities() {
+  const [items, setItems] = useState([
+    { id: 'a', label: 'Inbox' },
+    { id: 'b', label: 'Review' },
+    { id: 'c', label: 'Ship' },
+  ]);
+  return <SortableList items={items} onChange={setItems} renderItem={(item) => item.label} />;
+}
 ```
 
 ## API

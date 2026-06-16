@@ -1,11 +1,17 @@
 ---
 title: Combobox
-description: 'Combobox — live example and API reference.'
+description: Searchable single-select with type-to-filter, keyboard navigation, and custom rendering.
 ---
 
 import { ComboboxDemo } from '@/components/demos/inputs-demo';
 
-Import `Combobox` from `@officina/ui`.
+`Combobox` is a single-select that filters its `options` as the user types and
+is navigable with the arrow keys, `Enter`, and `Escape`. It is controlled:
+`value` holds the chosen option value (or `null`) and `onChange` reports
+changes. Each option is a `ComboboxOption` (`value`, `label`, optional
+`description`/`icon`). Filtering is built in, but pass `onInputChange` to drive
+remote search, and use `renderOption` for custom rows, `clearable` for a clear
+button, and `loading` to show a fetching state.
 
 ## Example
 
@@ -15,6 +21,24 @@ Import `Combobox` from `@officina/ui`.
 
 ```tsx
 import { Combobox } from '@officina/ui';
+import { useState } from 'react';
+
+function FruitPicker() {
+  const [value, setValue] = useState<string | null>(null);
+  return (
+    <Combobox
+      value={value}
+      onChange={setValue}
+      clearable
+      placeholder="Search fruit…"
+      options={[
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana' },
+        { value: 'cherry', label: 'Cherry' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

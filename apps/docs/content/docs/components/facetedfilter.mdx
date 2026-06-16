@@ -1,11 +1,16 @@
 ---
 title: FacetedFilter
-description: 'FacetedFilter — live example and API reference.'
+description: Multi-select filter of toggleable options with optional counts and an inline search box.
 ---
 
 import { FacetedFilterDemo } from '@/components/demos/filters-demo';
 
-Import `FacetedFilter` from `@officina/ui`.
+`FacetedFilter` is a multi-select filter — a labelled popover of toggleable
+option pills, each optionally showing a result `count`. Selecting several
+options builds an array `value`, reported through `onChange`. Turn on
+`showSearch` to filter long option lists, or set `inline` to drop the popover
+shell and render the pills directly. Use it for categorical facets like status,
+tag, or owner.
 
 ## Example
 
@@ -15,6 +20,23 @@ Import `FacetedFilter` from `@officina/ui`.
 
 ```tsx
 import { FacetedFilter } from '@officina/ui';
+import { useState } from 'react';
+
+function StatusFilter() {
+  const [value, setValue] = useState<string[]>([]);
+  return (
+    <FacetedFilter
+      label="Status"
+      value={value}
+      onChange={setValue}
+      showSearch
+      options={[
+        { value: 'open', label: 'Open', count: 12 },
+        { value: 'closed', label: 'Closed', count: 5 },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

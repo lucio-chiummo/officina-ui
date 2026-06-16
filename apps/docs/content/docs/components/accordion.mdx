@@ -1,11 +1,15 @@
 ---
 title: Accordion
-description: 'Accordion — live example and API reference.'
+description: Stacked, collapsible panels driven by an items array, with optional single-open behavior.
 ---
 
 import { AccordionDemo } from '@/components/demos/navigation-demo';
 
-Import `Accordion` from `@officina/ui`.
+`Accordion` renders a vertical stack of collapsible panels from an `items` array,
+each with an `id`, `title`, and `content`. By default `allowMultiple` lets any
+number of panels stay open at once; set it to `false` for exclusive (one-at-a-time)
+behavior. Use `defaultOpenIds` to choose which panels start expanded, and mark
+individual items `disabled`. Built on Headless UI for keyboard and focus support.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `Accordion` from `@officina/ui`.
 
 ```tsx
 import { Accordion } from '@officina/ui';
+
+<Accordion
+  defaultOpenIds={['shipping']}
+  items={[
+    { id: 'shipping', title: 'Shipping', content: <p>Ships in 2–3 days.</p> },
+    { id: 'returns', title: 'Returns', content: <p>30-day returns.</p> },
+  ]}
+/>;
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: AsyncSelect
-description: 'AsyncSelect — live example and API reference.'
+description: Combobox that loads options remotely as you type, powered by a React Query fetcher.
 ---
 
 import { AsyncSelectDemo } from '@/components/demos/composed-demo';
 
-Import `AsyncSelect` from `@officina/ui`.
+`AsyncSelect` is a [`Combobox`](/docs/components/combobox) that fetches its
+options from a server as the user types. You supply `queryFn` (returns a promise
+of `ComboboxOption`s for the query) and `queryKey` (the React Query cache key for
+that query); loading and empty states are handled for you. Use `minChars` to
+avoid firing requests on short input and `minCharsMessage` to prompt the user.
+It is controlled via `value`/`onChange` like a regular Combobox.
 
 ## Example
 
@@ -15,6 +20,25 @@ Import `AsyncSelect` from `@officina/ui`.
 
 ```tsx
 import { AsyncSelect } from '@officina/ui';
+import { useState } from 'react';
+
+function UserSearch() {
+  const [value, setValue] = useState<string | null>(null);
+  return (
+    <AsyncSelect
+      value={value}
+      onChange={setValue}
+      minChars={2}
+      placeholder="Search users…"
+      queryKey={(query) => ['users', query]}
+      queryFn={async (query) => {
+        const res = await fetch(`/api/users?q=${query}`);
+        const users = await res.json();
+        return users.map((u) => ({ value: u.id, label: u.name }));
+      }}
+    />
+  );
+}
 ```
 
 ## API

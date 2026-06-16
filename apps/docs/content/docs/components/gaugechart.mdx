@@ -1,11 +1,15 @@
 ---
 title: GaugeChart
-description: 'GaugeChart — live example and API reference.'
+description: Gauge chart showing a single value as an arc against a min/max range, like a dial.
 ---
 
 import { GaugeChartDemo } from '@/components/demos/charts-demo';
 
-Import `GaugeChart` from `@officina/ui`.
+`GaugeChart` renders a single value as a dial arc against a range — use it for
+one headline number measured against a target, such as quota attainment or
+utilization. Pass the `value`, optionally set `min`/`max` (default `0`–`100`)
+and a `label`. It renders client-side via ECharts, so give it a `height`
+(defaults to `280`). For a lighter SVG dial or progress bar, see `Gauge`.
 
 ## Example
 
@@ -15,6 +19,8 @@ Import `GaugeChart` from `@officina/ui`.
 
 ```tsx
 import { GaugeChart } from '@officina/ui';
+
+<GaugeChart value={72} label="Quota" max={100} height={280} />;
 ```
 
 ## API

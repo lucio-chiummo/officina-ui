@@ -1,11 +1,14 @@
 ---
 title: TableCaption
-description: 'TableCaption — live example and API reference.'
+description: The <caption> for a composed Table; a small muted label rendered below the table for context.
 ---
 
 import { TableCaptionDemo } from '@/components/demos/composed-demo';
 
-Import `TableCaption` from `@officina/ui`.
+`TableCaption` renders the table's `<caption>` — an accessible label describing
+what the table contains. It appears as small, muted text below the table.
+Include it as a direct child of `Table` so screen readers announce the table's
+purpose.
 
 ## Example
 
@@ -14,7 +17,12 @@ Import `TableCaption` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableCaption } from '@officina/ui';
+import { Table, TableCaption } from '@officina/ui';
+
+<Table>
+  <TableCaption>Q3 invoices, sorted by issue date.</TableCaption>
+  {/* …TableHeader, TableBody… */}
+</Table>;
 ```
 
 ## API

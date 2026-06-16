@@ -1,11 +1,15 @@
 ---
 title: Editor
-description: 'Editor — live example and API reference.'
+description: Rich-text editor (TipTap) with bold, italic, lists, and headings, controlled as HTML.
 ---
 
 import { EditorDemo } from '@/components/demos/composed-demo';
 
-Import `Editor` from `@officina/ui`.
+`Editor` is a rich-text editor built on TipTap, with a toolbar for bold,
+italic, lists, and headings. It is controlled by an HTML string: pass `value`
+and `onChange` receives the updated HTML on every edit. Use it for comments,
+descriptions, or any content that needs light formatting; add a `placeholder`
+for the empty state.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `Editor` from `@officina/ui`.
 
 ```tsx
 import { Editor } from '@officina/ui';
+import { useState } from 'react';
+
+function DescriptionEditor() {
+  const [value, setValue] = useState('<p>Write something…</p>');
+  return <Editor value={value} onChange={setValue} placeholder="Write a description…" />;
+}
 ```
 
 ## API

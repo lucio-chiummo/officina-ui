@@ -1,11 +1,15 @@
 ---
 title: Toolbar
-description: 'Toolbar — live example and API reference.'
+description: A horizontal action bar that renders divided control groups with an optional overflow menu.
 ---
 
 import { ToolbarDemo } from '@/components/demos/buttons-demo';
 
-Import `Toolbar` from `@officina/ui`.
+`Toolbar` arranges controls into `groups` — each inner array is a cluster, and a
+vertical separator is drawn between clusters. It scrolls horizontally when space
+is tight and exposes `role="toolbar"`. Pass `overflow` (a list of `Dropdown`
+sections) to fold lower-priority actions behind a trailing overflow menu. Use it
+for editor and view controls where related buttons should read as one bar.
 
 ## Example
 
@@ -14,7 +18,21 @@ Import `Toolbar` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Toolbar } from '@officina/ui';
+import { Toolbar, IconButton } from '@officina/ui';
+import { Bold, Italic, AlignLeft, AlignCenter } from 'lucide-react';
+
+<Toolbar
+  groups={[
+    [
+      <IconButton key="b" icon={<Bold />} aria-label="Bold" variant="ghost" />,
+      <IconButton key="i" icon={<Italic />} aria-label="Italic" variant="ghost" />,
+    ],
+    [
+      <IconButton key="l" icon={<AlignLeft />} aria-label="Align left" variant="ghost" />,
+      <IconButton key="c" icon={<AlignCenter />} aria-label="Align center" variant="ghost" />,
+    ],
+  ]}
+/>;
 ```
 
 ## API

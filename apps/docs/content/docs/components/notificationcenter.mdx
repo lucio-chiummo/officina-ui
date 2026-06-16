@@ -1,11 +1,16 @@
 ---
 title: NotificationCenter
-description: 'NotificationCenter — live example and API reference.'
+description: Bell-trigger dropdown listing notifications with unread count and mark-all actions.
 ---
 
 import { NotificationCenterDemo } from '@/components/demos/feedback-demo';
 
-Import `NotificationCenter` from `@officina/ui`.
+`NotificationCenter` is a bell button that shows an unread-count badge and opens
+a floating panel listing your `notifications` (each needs an `id` and `title`,
+plus optional `description`, `timestamp`, `unread`, and `onClick`). It wires up
+mark-as-read, mark-all, clear, and see-all via the matching callbacks, sorts by
+timestamp, and shows an `emptyState` when there's nothing left. Drive the list
+from your own state and respond to the callbacks.
 
 ## Example
 
@@ -15,6 +20,16 @@ Import `NotificationCenter` from `@officina/ui`.
 
 ```tsx
 import { NotificationCenter } from '@officina/ui';
+
+<NotificationCenter
+  notifications={[
+    { id: '1', title: 'New comment', timestamp: new Date(), unread: true },
+    { id: '2', title: 'Build passed', timestamp: new Date() },
+  ]}
+  onMarkRead={(id) => markRead(id)}
+  onMarkAllRead={markAllRead}
+  onSeeAll={() => navigate('/notifications')}
+/>;
 ```
 
 ## API

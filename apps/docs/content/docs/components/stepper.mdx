@@ -1,11 +1,18 @@
 ---
 title: Stepper
-description: 'Stepper — live example and API reference.'
+description: Numbered step indicator showing progress through a sequence, horizontal or vertical.
 ---
 
 import { StepperDemo } from '@/components/demos/navigation-demo';
 
-Import `Stepper` from `@officina/ui`.
+`Stepper` shows progress through an ordered sequence of named steps — done
+steps get a checkmark, the active step is highlighted, and upcoming steps are
+muted. It's a display/navigation primitive only; it doesn't manage the
+content for each step. For a full step-by-step flow with built-in
+next/back buttons and per-step content, use `Wizard` (which renders a
+`Stepper` internally) instead.
+
+Pass `onStepClick` to let users jump directly to a completed or upcoming step.
 
 ## Example
 
@@ -15,6 +22,22 @@ Import `Stepper` from `@officina/ui`.
 
 ```tsx
 import { Stepper } from '@officina/ui';
+import { useState } from 'react';
+
+function OnboardingProgress() {
+  const [step, setStep] = useState(1);
+  return (
+    <Stepper
+      steps={[
+        { id: 'setup', label: 'Setup', description: 'Project created' },
+        { id: 'brand', label: 'Brand', description: 'Tokens selected' },
+        { id: 'ship', label: 'Ship', description: 'Ready for QA' },
+      ]}
+      current={step}
+      onStepClick={setStep}
+    />
+  );
+}
 ```
 
 ## API

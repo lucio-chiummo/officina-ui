@@ -1,11 +1,15 @@
 ---
 title: TableRow
-description: 'TableRow — live example and API reference.'
+description: A <tr> row in a composed Table, with a hover highlight; wraps TableHead or TableCell cells.
 ---
 
 import { TableRowDemo } from '@/components/demos/composed-demo';
 
-Import `TableRow` from `@officina/ui`.
+`TableRow` renders a `<tr>` inside `Table` and applies a subtle hover
+background. Use it for both the heading row (wrapping `TableHead` cells inside
+`TableHeader`) and each data row (wrapping `TableCell` cells inside
+`TableBody`). It forwards standard `<tr>` props, so attach `onClick` or `key`
+directly.
 
 ## Example
 
@@ -14,7 +18,14 @@ Import `TableRow` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableRow } from '@officina/ui';
+import { TableBody, TableRow, TableCell } from '@officina/ui';
+
+<TableBody>
+  <TableRow onClick={() => openUser(user.id)}>
+    <TableCell>{user.name}</TableCell>
+    <TableCell>{user.email}</TableCell>
+  </TableRow>
+</TableBody>;
 ```
 
 ## API

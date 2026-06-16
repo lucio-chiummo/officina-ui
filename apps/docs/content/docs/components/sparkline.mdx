@@ -1,11 +1,15 @@
 ---
 title: Sparkline
-description: 'Sparkline — live example and API reference.'
+description: Tiny inline line or bar chart for showing a trend at a glance inside text, tables, or cards.
 ---
 
 import { SparklineDemo } from '@/components/demos/charts-demo';
 
-Import `Sparkline` from `@officina/ui`.
+`Sparkline` is a tiny, label-free chart that conveys the shape of a trend inline
+— perfect next to a metric in a stat card or table cell. Pass `data` as a number
+array and choose `variant="line"` (optionally `fill`) or `variant="bars"`. Tune
+`width`, `height`, and `color`, and always set `aria-label` to describe the
+trend. It is pure SVG, so no chart canvas or explicit height is required.
 
 ## Example
 
@@ -15,6 +19,9 @@ Import `Sparkline` from `@officina/ui`.
 
 ```tsx
 import { Sparkline } from '@officina/ui';
+
+<Sparkline data={[4, 7, 5, 9, 6, 11, 14, 12]} aria-label="Revenue trend" fill />
+<Sparkline data={[3, 8, 5, 10, 7, 12, 9, 15]} variant="bars" aria-label="Weekly orders" />;
 ```
 
 ## API

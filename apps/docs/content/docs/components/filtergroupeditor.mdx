@@ -1,11 +1,16 @@
 ---
 title: FilterGroupEditor
-description: 'FilterGroupEditor — live example and API reference.'
+description: Advanced query builder for nested AND/OR groups of filter conditions, read from FiltersProvider.
 ---
 
 import { FilterGroupEditorDemo } from '@/components/demos/composed-demo';
 
-Import `FilterGroupEditor` from `@officina/ui`.
+`FilterGroupEditor` is the advanced query builder for complex filters. It lets
+users nest conditions into AND/OR groups (up to `maxDepth`), combining multiple
+`FilterBuilder` rows into a tree. It reads and updates the shared state from
+`FiltersProvider`, so it takes only the optional `fields` list and a depth
+limit. The panel is lazy-loaded; `FilterBar` reveals it automatically once a
+group exists.
 
 ## Example
 
@@ -14,7 +19,17 @@ Import `FilterGroupEditor` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FilterGroupEditor } from '@officina/ui';
+import { FiltersProvider, FilterGroupEditor, useFilters } from '@officina/ui';
+
+<FiltersProvider value={filters}>
+  <FilterGroupEditor
+    fields={[
+      { id: 'status', label: 'Status', type: 'enum' },
+      { id: 'amount', label: 'Amount', type: 'number' },
+    ]}
+    maxDepth={2}
+  />
+</FiltersProvider>;
 ```
 
 ## API

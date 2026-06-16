@@ -1,11 +1,14 @@
 ---
 title: MaskedInput
-description: 'MaskedInput — live example and API reference.'
+description: Text input that formats entry against a mask of digit, letter, and literal tokens.
 ---
 
 import { MaskedInputDemo } from '@/components/demos/inputs-demo';
 
-Import `MaskedInput` from `@officina/ui`.
+`MaskedInput` formats what the user types against a `mask` pattern. The tokens are
+`9` (digit), `a` (letter), and `*` (alphanumeric); any other character is a
+literal that gets inserted automatically. It is fully controlled — `value` holds
+the already-masked string — and is handy for dates, phone numbers, or codes.
 
 ## Example
 
@@ -15,6 +18,12 @@ Import `MaskedInput` from `@officina/ui`.
 
 ```tsx
 import { MaskedInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState('');
+  return <MaskedInput mask="(999) 999-9999" label="Phone" value={value} onChange={setValue} />;
+}
 ```
 
 ## API

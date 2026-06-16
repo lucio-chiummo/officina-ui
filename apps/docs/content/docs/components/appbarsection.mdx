@@ -1,11 +1,15 @@
 ---
 title: AppBarSection
-description: 'AppBarSection — live example and API reference.'
+description: A non-shrinking, evenly spaced cluster of controls inside an AppBar.
 ---
 
 import { AppBarSectionDemo } from '@/components/demos/composed-demo';
 
-Import `AppBarSection` from `@officina/ui`.
+`AppBarSection` groups related controls — buttons, avatars, menus — inside an
+`AppBar`. It is a `<div>` that lays its children out in a row with consistent
+spacing and does not shrink, so action clusters stay intact while the
+`AppBarTitle` between them absorbs the remaining width. Use one section for
+leading items and another for trailing items.
 
 ## Example
 
@@ -14,7 +18,15 @@ Import `AppBarSection` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { AppBarSection } from '@officina/ui';
+import { AppBar, AppBarTitle, AppBarSection, Button } from '@officina/ui';
+
+<AppBar>
+  <AppBarTitle>Projects</AppBarTitle>
+  <AppBarSection>
+    <Button variant="ghost">Invite</Button>
+    <Button variant="primary">New project</Button>
+  </AppBarSection>
+</AppBar>;
 ```
 
 ## API

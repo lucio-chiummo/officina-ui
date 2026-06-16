@@ -1,11 +1,16 @@
 ---
 title: ResizablePanels
-description: 'ResizablePanels — live example and API reference.'
+description: Drag-to-resize split layout in a horizontal or vertical direction.
 ---
 
 import { ResizablePanelsDemo } from '@/components/demos/misc-demo';
 
-Import `ResizablePanels` from `@officina/ui`.
+`ResizablePanels` is the container for a split layout the user can resize by
+dragging. Set `direction` to `'horizontal'` or `'vertical'`, then nest
+[`Panel`](/docs/components/panel) regions separated by a
+[`PanelHandle`](/docs/components/panelhandle). Pass an `autoSaveId` to persist
+the user's chosen sizes across reloads. Use it for editor split views, sidebars,
+and dashboards. Built on `react-resizable-panels`.
 
 ## Example
 
@@ -14,7 +19,13 @@ Import `ResizablePanels` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ResizablePanels } from '@officina/ui';
+import { ResizablePanels, Panel, PanelHandle } from '@officina/ui';
+
+<ResizablePanels direction="horizontal" autoSaveId="editor">
+  <Panel defaultSize={30}>Sidebar</Panel>
+  <PanelHandle />
+  <Panel>Editor</Panel>
+</ResizablePanels>;
 ```
 
 ## API

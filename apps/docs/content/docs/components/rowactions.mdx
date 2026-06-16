@@ -1,11 +1,15 @@
 ---
 title: RowActions
-description: 'Compact action cluster for table rows and list items. Shows up to `max`'
+description: Row action cluster that shows the first few inline and folds the rest into a menu.
 ---
 
 import { RowActionsDemo } from '@/components/demos/buttons-demo';
 
-Import `RowActions` from `@officina/ui`.
+`RowActions` is a compact action cluster for table rows and list items. It shows
+the first `max` actions (default 3) as inline icon buttons — each with a tooltip
+from its `label` — and collapses any overflow into an `ActionMenu`. Each action
+takes an `icon`, plus `onClick` or `href`, and can be flagged `danger` or
+`disabled`. It is domain-neutral and never imports table primitives.
 
 ## Example
 
@@ -15,6 +19,17 @@ Import `RowActions` from `@officina/ui`.
 
 ```tsx
 import { RowActions } from '@officina/ui';
+import { Eye, Pencil, Copy, Trash } from 'lucide-react';
+
+<RowActions
+  max={2}
+  actions={[
+    { label: 'View', icon: <Eye />, onClick: view },
+    { label: 'Edit', icon: <Pencil />, onClick: edit },
+    { label: 'Duplicate', icon: <Copy />, onClick: duplicate },
+    { label: 'Delete', icon: <Trash />, danger: true, onClick: remove },
+  ]}
+/>;
 ```
 
 ## API

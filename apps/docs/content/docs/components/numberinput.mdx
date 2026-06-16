@@ -1,11 +1,15 @@
 ---
 title: NumberInput
-description: 'NumberInput — live example and API reference.'
+description: Numeric field with stepper buttons, min/max clamping, precision, and keyboard increments.
 ---
 
 import { NumberInputDemo } from '@/components/demos/inputs-demo';
 
-Import `NumberInput` from `@officina/ui`.
+`NumberInput` is a controlled numeric field whose `value` is a `number` or `null`
+when empty. It clamps to `min`/`max`, rounds to `precision` decimals, and shows
+optional +/- stepper buttons. Arrow keys step by `step`, `PageUp`/`PageDown` step
+by ten, and `Home`/`End` jump to the bounds. Add a `prefix` or `suffix` to show a
+unit inside the field.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `NumberInput` from `@officina/ui`.
 
 ```tsx
 import { NumberInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState<number | null>(1);
+  return <NumberInput value={value} onChange={setValue} min={0} max={10} step={1} suffix="qty" />;
+}
 ```
 
 ## API

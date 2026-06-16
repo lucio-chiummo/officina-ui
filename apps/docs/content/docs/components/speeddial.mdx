@@ -1,11 +1,15 @@
 ---
 title: SpeedDial
-description: 'SpeedDial — live example and API reference.'
+description: A floating trigger that expands to reveal a stack of quick actions.
 ---
 
 import { SpeedDialDemo } from '@/components/demos/buttons-demo';
 
-Import `SpeedDial` from `@officina/ui`.
+`SpeedDial` is a round trigger that fans out a short list of `actions` when
+opened, each with an optional `icon` and its own `onClick`. Selecting an action
+runs it and closes the dial. Use it to surface two to four related shortcuts
+from a single floating affordance; set `ariaLabel` to name the trigger and
+optionally override its `icon`.
 
 ## Example
 
@@ -15,6 +19,16 @@ Import `SpeedDial` from `@officina/ui`.
 
 ```tsx
 import { SpeedDial } from '@officina/ui';
+import { FileText, Image, Link } from 'lucide-react';
+
+<SpeedDial
+  ariaLabel="Add content"
+  actions={[
+    { label: 'Document', icon: <FileText />, onClick: addDoc },
+    { label: 'Image', icon: <Image />, onClick: addImage },
+    { label: 'Link', icon: <Link />, onClick: addLink },
+  ]}
+/>;
 ```
 
 ## API

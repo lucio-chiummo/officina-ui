@@ -1,11 +1,15 @@
 ---
 title: Pagination
-description: 'Pagination — live example and API reference.'
+description: Page-number navigation with ellipsis collapsing for paged tables and lists.
 ---
 
 import { PaginationDemo } from '@/components/demos/navigation-demo';
 
-Import `Pagination` from `@officina/ui`.
+`Pagination` renders numbered page buttons with previous/next arrows,
+collapsing distant pages into an ellipsis once `totalPages` gets large. It's
+fully controlled: you own the current `page` and update it in `onPageChange`.
+Use `siblingCount` to control how many page numbers show on each side of the
+current page before they collapse.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `Pagination` from `@officina/ui`.
 
 ```tsx
 import { Pagination } from '@officina/ui';
+import { useState } from 'react';
+
+function InvoiceTablePager() {
+  const [page, setPage] = useState(1);
+  return <Pagination page={page} totalPages={20} onPageChange={setPage} siblingCount={1} />;
+}
 ```
 
 ## API

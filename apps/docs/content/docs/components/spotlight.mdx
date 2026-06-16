@@ -1,11 +1,16 @@
 ---
 title: Spotlight
-description: 'Spotlight — live example and API reference.'
+description: Full-screen command/search overlay with an auto-focused input and results slot.
 ---
 
 import { SpotlightDemo } from '@/components/demos/overlays-demo';
 
-Import `Spotlight` from `@officina/ui`.
+`Spotlight` is a centered, full-screen search overlay (`role="dialog"`,
+`aria-modal`) for command palettes and quick search. It auto-focuses the input
+on open, dismisses on `Escape` or backdrop click, and renders your filtered
+results as children below a scrollable area. It is fully controlled: you own the
+query `value`/`onChange` and the `open`/`onOpenChange` state, and you supply the
+result list.
 
 ## Example
 
@@ -15,6 +20,27 @@ Import `Spotlight` from `@officina/ui`.
 
 ```tsx
 import { Spotlight } from '@officina/ui';
+import { useState } from 'react';
+
+function Search() {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  return (
+    <Spotlight
+      open={open}
+      onOpenChange={setOpen}
+      value={query}
+      onChange={setQuery}
+      placeholder="Search commands…"
+    >
+      {results.map((r) => (
+        <button key={r.id} onClick={r.run}>
+          {r.label}
+        </button>
+      ))}
+    </Spotlight>
+  );
+}
 ```
 
 ## API

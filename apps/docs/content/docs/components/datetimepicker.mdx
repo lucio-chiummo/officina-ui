@@ -1,11 +1,15 @@
 ---
 title: DateTimePicker
-description: 'DateTimePicker — live example and API reference.'
+description: Combined date and time field that selects a single Date with both day and time of day.
 ---
 
 import { DateTimePickerDemo } from '@/components/demos/inputs-demo';
 
-Import `DateTimePicker` from `@officina/ui`.
+`DateTimePicker` pairs a [`DatePicker`](/docs/components/datepicker) with a
+[`TimePicker`](/docs/components/timepicker) to capture a single `Date` that
+carries both the day and the time of day. It is controlled: `value` is a `Date |
+undefined` and `onChange` returns the combined date-time. Use it for scheduling
+events, deadlines, or reminders.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `DateTimePicker` from `@officina/ui`.
 
 ```tsx
 import { DateTimePicker } from '@officina/ui';
+import { useState } from 'react';
+
+function MeetingTime() {
+  const [value, setValue] = useState<Date | undefined>();
+  return <DateTimePicker value={value} onChange={setValue} placeholder="Pick date & time" />;
+}
 ```
 
 ## API

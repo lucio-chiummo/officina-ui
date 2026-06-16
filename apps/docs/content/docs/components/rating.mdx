@@ -5,7 +5,11 @@ description: Star rating input with half-step precision and read-only mode.
 
 import { RatingDemo } from '@/components/demos/rating-demo';
 
-`Rating` captures or displays a star score, with optional half steps.
+`Rating` captures or displays a star score. When `onChange` is provided it is an
+interactive, keyboard-adjustable input (arrow keys step by `precision`); set
+`readOnly` to render it as a static score display. Use `precision` of `1` for
+whole stars or `0.5` for half steps, and size the stars with `size`
+(`'sm' | 'md' | 'lg'`).
 
 ## Example
 
@@ -15,9 +19,17 @@ import { RatingDemo } from '@/components/demos/rating-demo';
 
 ```tsx
 import { Rating } from '@officina/ui';
+import { useState } from 'react';
 
-<Rating value={value} onChange={setValue} precision={0.5} />
-<Rating value={4} readOnly />
+function ReviewStars() {
+  const [value, setValue] = useState(3);
+  return (
+    <>
+      <Rating value={value} onChange={setValue} precision={0.5} />
+      <Rating value={4} readOnly size="sm" />
+    </>
+  );
+}
 ```
 
 ## API

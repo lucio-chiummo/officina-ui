@@ -1,11 +1,15 @@
 ---
 title: FileItem
-description: 'Reusable file row with name, size, progress, status, and remove/retry'
+description: File row showing name, size, progress, and status with remove/retry actions.
 ---
 
 import { FileItemDemo } from '@/components/demos/inputs-demo';
 
-Import `FileItem` from `@officina/ui`.
+`FileItem` renders a single file row with its `name`, `size`, a progress bar,
+and a `status` (`'idle' | 'uploading' | 'success' | 'error'`) that drives the
+icon and styling. It is transport-free — the parent owns the upload state and
+passes `progress`, plus `onRemove` and `onRetry` callbacks. Pair it with
+[`FileUpload`](/docs/components/fileupload) to list files as they upload.
 
 ## Example
 
@@ -15,6 +19,23 @@ Import `FileItem` from `@officina/ui`.
 
 ```tsx
 import { FileItem } from '@officina/ui';
+
+function UploadRow() {
+  return (
+    <>
+      <FileItem name="report.pdf" size={2_400_000} status="success" onRemove={() => {}} />
+      <FileItem name="hero.png" size={840_000} status="uploading" progress={62} />
+      <FileItem
+        name="export.csv"
+        size={12_000}
+        status="error"
+        error="Upload failed — file too large"
+        onRetry={() => {}}
+        onRemove={() => {}}
+      />
+    </>
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: FormControl
-description: 'FormControl — live example and API reference.'
+description: Context provider that wires a label, helper text, and error to one control via ARIA.
 ---
 
 import { FormControlDemo } from '@/components/demos/forms-demo';
 
-Import `FormControl` from `@officina/ui`.
+`FormControl` is the headless alternative to `Field`: instead of taking a single
+child, it provides context that `FormLabel`, `FormHelperText`, and `FormError`
+subscribe to, so they share one id and the right `aria-describedby`/`aria-invalid`
+wiring. Set `invalid`, `required`, or `disabled` on the control and the parts
+react automatically — `FormError` only renders while `invalid` is true. Controls
+inside it can read the same props with the `useFormControl` hook.
 
 ## Example
 
@@ -14,7 +19,14 @@ Import `FormControl` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormControl } from '@officina/ui';
+import { FormControl, FormLabel, FormHelperText, FormError, Input } from '@officina/ui';
+
+<FormControl invalid={!value} required>
+  <FormLabel>Workspace name</FormLabel>
+  <Input value={value} onChange={(e) => setValue(e.target.value)} />
+  <FormHelperText>Shown in the workspace switcher.</FormHelperText>
+  <FormError>Workspace name is required.</FormError>
+</FormControl>;
 ```
 
 ## API

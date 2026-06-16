@@ -1,11 +1,16 @@
 ---
 title: MotionPreset
-description: 'MotionPreset — live example and API reference.'
+description: Wraps content in a named enter/exit animation preset like fadeIn or slideInRight.
 ---
 
 import { MotionPresetDemo } from '@/components/demos/misc-demo';
 
-Import `MotionPreset` from `@officina/ui`.
+`MotionPreset` is a thin Framer Motion wrapper that applies a named
+enter/animate/exit transition so you don't hand-write variants. Choose a
+`preset` (`fadeIn` default, `fadeInUp`, `scaleIn`, or `slideInRight`) and
+optionally set `duration` in seconds. It forwards `motion.div` props, so combine
+it with `AnimatePresence` for mount/unmount transitions. It respects reduced
+motion via the app-level `MotionConfig reducedMotion="user"`.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `MotionPreset` from `@officina/ui`.
 
 ```tsx
 import { MotionPreset } from '@officina/ui';
+
+<MotionPreset preset="fadeInUp" duration={0.3}>
+  <Card>Revealed on mount</Card>
+</MotionPreset>;
 ```
 
 ## API

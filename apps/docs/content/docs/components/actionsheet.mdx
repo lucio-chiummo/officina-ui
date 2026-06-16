@@ -5,7 +5,12 @@ description: 'Mobile-first bottom sheet presenting a vertical list of actions.'
 
 import { ActionSheetDemo } from '@/components/demos/overlays-demo';
 
-Import `ActionSheet` from `@officina/ui`.
+`ActionSheet` presents a vertical list of actions in a sheet that slides up from
+the bottom on mobile and centers at the bottom with a max width on desktop. Pass
+`actions` as a list of entries, each with a `label`, an `onSelect` handler, and
+optional `icon`, `tone` (`'default'` or `'danger'`), and `disabled`. It is a
+portaled modal that dismisses on `Escape`, backdrop click, the cancel button, or
+after an action runs. Controlled via `open`/`onClose`.
 
 ## Example
 
@@ -15,6 +20,16 @@ Import `ActionSheet` from `@officina/ui`.
 
 ```tsx
 import { ActionSheet } from '@officina/ui';
+
+<ActionSheet
+  open={open}
+  onClose={() => setOpen(false)}
+  title="Photo options"
+  actions={[
+    { label: 'Share', onSelect: share },
+    { label: 'Delete', tone: 'danger', onSelect: remove },
+  ]}
+/>;
 ```
 
 ## API

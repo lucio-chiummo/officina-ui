@@ -1,11 +1,15 @@
 ---
 title: HoverCard
-description: 'HoverCard — live example and API reference.'
+description: Hover-revealed rich card for previews, built on the Tooltip primitive.
 ---
 
 import { HoverCardDemo } from '@/components/demos/overlays-demo';
 
-Import `HoverCard` from `@officina/ui`.
+`HoverCard` reveals a wider, padded card on hover or focus — use it for rich
+previews like user profiles, link previews, or definitions, where a plain
+`Tooltip` is too small. It wraps `Tooltip`, so it inherits the same portaling,
+delay, and `Escape`-to-close behavior. Pass the hover target via `trigger` and
+the card body as children; control which edge it opens on with `side`.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `HoverCard` from `@officina/ui`.
 
 ```tsx
 import { HoverCard } from '@officina/ui';
+
+<HoverCard trigger={<a href="/u/lucio">@lucio</a>} side="bottom">
+  <strong>Lucio Chiummo</strong>
+  <p>Maintainer · joined 2024</p>
+</HoverCard>;
 ```
 
 ## API

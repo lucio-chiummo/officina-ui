@@ -1,11 +1,16 @@
 ---
 title: SankeyChart
-description: 'SankeyChart — live example and API reference.'
+description: Sankey diagram showing weighted flows between nodes, with link width set by volume.
 ---
 
 import { SankeyChartDemo } from '@/components/demos/charts-demo';
 
-Import `SankeyChart` from `@officina/ui`.
+`SankeyChart` draws flows between nodes as ribbons whose thickness encodes
+volume, making it easy to trace where quantities move and split — like users
+flowing from visits to signups to paid. Pass named `nodes` and `links`, where
+each link's `source`/`target` reference a node `name` and `value` sets the
+ribbon width. It renders client-side via ECharts, so give it a `height`
+(defaults to `320`).
 
 ## Example
 
@@ -15,6 +20,15 @@ Import `SankeyChart` from `@officina/ui`.
 
 ```tsx
 import { SankeyChart } from '@officina/ui';
+
+<SankeyChart
+  nodes={[{ name: 'Visits' }, { name: 'Signups' }, { name: 'Paid' }]}
+  links={[
+    { source: 'Visits', target: 'Signups', value: 4200 },
+    { source: 'Signups', target: 'Paid', value: 1400 },
+  ]}
+  height={320}
+/>;
 ```
 
 ## API

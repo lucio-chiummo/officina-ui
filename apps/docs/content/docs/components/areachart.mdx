@@ -1,11 +1,16 @@
 ---
 title: AreaChart
-description: 'AreaChart — live example and API reference.'
+description: Filled line chart for emphasising the magnitude of numeric series over an ordered axis.
 ---
 
 import { AreaChartDemo } from '@/components/demos/charts-demo';
 
-Import `AreaChart` from `@officina/ui`.
+`AreaChart` is a line chart with the region below each line filled, emphasising
+volume and cumulative magnitude over an ordered x axis. Reach for it when the
+size of a trend matters as much as its direction. Pass `data` as row objects,
+set `xKey` to the x-axis field, and list each series in `series` (mapping a
+`dataKey` to a `name`). It renders client-side via ECharts, so give it a
+`height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +20,22 @@ Import `AreaChart` from `@officina/ui`.
 
 ```tsx
 import { AreaChart } from '@officina/ui';
+
+const data = [
+  { month: 'Jan', revenue: 4200, costs: 2200 },
+  { month: 'Feb', revenue: 5300, costs: 2600 },
+  { month: 'Mar', revenue: 6100, costs: 2800 },
+];
+
+<AreaChart
+  data={data}
+  xKey="month"
+  series={[
+    { dataKey: 'revenue', name: 'Revenue' },
+    { dataKey: 'costs', name: 'Costs' },
+  ]}
+  height={280}
+/>;
 ```
 
 ## API

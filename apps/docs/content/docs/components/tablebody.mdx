@@ -1,11 +1,14 @@
 ---
 title: TableBody
-description: 'TableBody — live example and API reference.'
+description: The <tbody> section of a composed Table; holds the data TableRows with dividers between them.
 ---
 
 import { TableBodyDemo } from '@/components/demos/composed-demo';
 
-Import `TableBody` from `@officina/ui`.
+`TableBody` renders the `<tbody>` of a hand-composed `Table` and contains the
+data rows. It draws a thin divider between each `TableRow` so rows read clearly.
+Place it after `TableHeader` and map your records to `TableRow`/`TableCell`
+inside it.
 
 ## Example
 
@@ -14,7 +17,19 @@ Import `TableBody` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableBody } from '@officina/ui';
+import { Table, TableBody, TableRow, TableCell } from '@officina/ui';
+
+<Table>
+  {/* …TableHeader… */}
+  <TableBody>
+    {users.map((user) => (
+      <TableRow key={user.id}>
+        <TableCell>{user.name}</TableCell>
+        <TableCell>{user.role}</TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>;
 ```
 
 ## API

@@ -5,7 +5,11 @@ description: User and entity avatars with initials fallback across four sizes.
 
 import { AvatarSizes } from '@/components/demos/avatar-demo';
 
-`Avatar` renders a user image, falling back to initials when no `src` is set.
+`Avatar` renders a user or entity image and falls back to initials on a stable,
+name-derived background colour when `src` is absent or fails to load. Pass `name`
+to derive both the initials and the alt text, or set `initials` explicitly. Tune
+the `size` (`xs` through `xl`) and `shape` (`circle` or `square`) to fit the
+surface.
 
 ## Example
 

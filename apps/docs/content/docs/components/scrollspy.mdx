@@ -1,11 +1,18 @@
 ---
 title: ScrollSpy
-description: 'ScrollSpy — live example and API reference.'
+description: Sticky section nav that highlights the link for whichever section is in view.
 ---
 
 import { ScrollSpyDemo } from '@/components/demos/navigation-demo';
 
-Import `ScrollSpy` from `@officina/ui`.
+`ScrollSpy` renders an anchor-link list and tracks which target section is
+currently visible using an `IntersectionObserver`, highlighting that link.
+Each `item.id` must match the `id` of an element on the page. It's the
+pattern used for in-page docs navigation (like this site's right-hand TOC) —
+pair it with long single-page content split into `id`-tagged sections.
+
+If you need the active id without the prebuilt nav markup (e.g. to drive your
+own UI), use the exported `useScrollSpy(ids)` hook directly instead.
 
 ## Example
 
@@ -15,6 +22,14 @@ Import `ScrollSpy` from `@officina/ui`.
 
 ```tsx
 import { ScrollSpy } from '@officina/ui';
+
+<ScrollSpy
+  items={[
+    { id: 'overview', label: 'Overview' },
+    { id: 'pricing', label: 'Pricing' },
+    { id: 'faq', label: 'FAQ' },
+  ]}
+/>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: CurrencyInput
-description: 'CurrencyInput — live example and API reference.'
+description: NumberInput preset for money — shows the locale currency symbol and fixes 2-decimal precision.
 ---
 
 import { CurrencyInputDemo } from '@/components/demos/inputs-demo';
 
-Import `CurrencyInput` from `@officina/ui`.
+`CurrencyInput` is a `NumberInput` preset for monetary amounts. Give it a
+`currency` (ISO 4217 code like `"USD"`) and it derives the symbol with
+`Intl.NumberFormat`, displays it as a prefix, and locks precision to 2 decimals
+with a `0.01` step. The controlled `value` is the amount in major units (or
+`null` when empty); pass `locale` to format the symbol for a specific region.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `CurrencyInput` from `@officina/ui`.
 
 ```tsx
 import { CurrencyInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [amount, setAmount] = useState<number | null>(19.99);
+  return <CurrencyInput value={amount} onChange={setAmount} currency="USD" />;
+}
 ```
 
 ## API

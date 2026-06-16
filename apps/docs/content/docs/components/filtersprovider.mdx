@@ -1,11 +1,16 @@
 ---
 title: FiltersProvider
-description: 'FiltersProvider — live example and API reference.'
+description: Context provider that shares one useFilters store with FilterBar, FilterChips, and SavedViews.
 ---
 
 import { FiltersProviderDemo } from '@/components/demos/composed-demo';
 
-Import `FiltersProvider` from `@officina/ui`.
+`FiltersProvider` is the context that ties the filter components together. You
+build a filter store with the `useFilters` hook (passing your `fields` and
+`mode`) and hand its return value to the provider's `value` prop; everything
+rendered inside — `FilterBar`, `FilterChips`, `SavedViews` — then reads and
+mutates that same shared state without prop drilling. Wrap your filtering UI in
+it once near the top of the feature.
 
 ## Example
 
@@ -14,7 +19,19 @@ Import `FiltersProvider` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FiltersProvider } from '@officina/ui';
+import { FiltersProvider, FilterBar, useFilters } from '@officina/ui';
+
+function PeopleFilters() {
+  const filters = useFilters({
+    mode: 'client',
+    fields: [{ id: 'role', label: 'Role', type: 'enum' }],
+  });
+  return (
+    <FiltersProvider value={filters}>
+      <FilterBar />
+    </FiltersProvider>
+  );
+}
 ```
 
 ## API

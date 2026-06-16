@@ -1,11 +1,14 @@
 ---
 title: AppBarTitle
-description: 'AppBarTitle — live example and API reference.'
+description: The flexible, truncating title region of an AppBar that absorbs leftover width.
 ---
 
 import { AppBarTitleDemo } from '@/components/demos/composed-demo';
 
-Import `AppBarTitle` from `@officina/ui`.
+`AppBarTitle` is the title region of an `AppBar`. It is a `<div>` that flexes to
+fill the space between sections and truncates with an ellipsis when the label is
+too long, keeping the surrounding `AppBarSection` clusters aligned. Place it once
+per bar, typically right after a leading section.
 
 ## Example
 
@@ -14,7 +17,15 @@ Import `AppBarTitle` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { AppBarTitle } from '@officina/ui';
+import { AppBar, AppBarTitle, AppBarSection, IconButton } from '@officina/ui';
+import { Menu } from 'lucide-react';
+
+<AppBar>
+  <AppBarSection>
+    <IconButton icon={<Menu />} aria-label="Open menu" variant="ghost" />
+  </AppBarSection>
+  <AppBarTitle>Quarterly revenue report</AppBarTitle>
+</AppBar>;
 ```
 
 ## API

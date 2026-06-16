@@ -1,11 +1,15 @@
 ---
 title: DateRangePicker
-description: 'DateRangePicker — live example and API reference.'
+description: Field for picking a start/end date range, with quick presets and min/max bounds.
 ---
 
 import { DateRangePickerDemo } from '@/components/demos/inputs-demo';
 
-Import `DateRangePicker` from `@officina/ui`.
+`DateRangePicker` picks a start and end date as a `DateRange` (`{ from, to }`).
+It is controlled via `value`/`onChange`. Offer one-click ranges with `presets`
+(each `{ label, range }`), constrain selection with `minDate`/`maxDate`,
+localize labels with a date-fns `locale`, and render the calendar `inline`
+instead of in a popover.
 
 ## Example
 
@@ -14,7 +18,20 @@ Import `DateRangePicker` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { DateRangePicker } from '@officina/ui';
+import { DateRangePicker, type DateRange } from '@officina/ui';
+import { useState } from 'react';
+
+function ReportRange() {
+  const [range, setRange] = useState<DateRange>({ from: undefined, to: undefined });
+  return (
+    <DateRangePicker
+      value={range}
+      onChange={setRange}
+      placeholder="Select a range"
+      presets={[{ label: 'Last 7 days', range: { from: new Date(), to: new Date() } }]}
+    />
+  );
+}
 ```
 
 ## API
