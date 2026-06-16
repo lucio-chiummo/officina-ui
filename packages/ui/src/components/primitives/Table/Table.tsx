@@ -75,7 +75,7 @@ export const TableHead = forwardRef<HTMLTableCellElement, ComponentPropsWithoutR
         ref={ref}
         {...props}
         className={cn(
-          'h-10 px-3 text-left align-middle text-xs font-semibold tracking-normal text-[var(--color-fg-muted)] uppercase',
+          'h-10 px-3 text-left align-middle text-xs font-semibold uppercase tracking-normal text-[var(--color-fg-muted)]',
           className,
         )}
       />

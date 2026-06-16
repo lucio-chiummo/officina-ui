@@ -84,7 +84,7 @@ function EditableCell({
       defaultValue={value}
       onBlur={(e) => onCommit(e.currentTarget.value)}
       onKeyDown={handleKeyDown}
-      className="w-full rounded border border-[var(--color-accent)] bg-[var(--color-bg-base)] px-1.5 py-0.5 text-sm ring-2 ring-[var(--color-accent)]/25 outline-none"
+      className="ring-[var(--color-accent)]/25 w-full rounded border border-[var(--color-accent)] bg-[var(--color-bg-base)] px-1.5 py-0.5 text-sm outline-none ring-2"
     />
   );
 }
@@ -150,7 +150,7 @@ function DataGridBase<TData extends object>({
                 <th
                   key={header.id}
                   className={cn(
-                    'text-left text-xs font-semibold tracking-wider whitespace-nowrap text-[var(--color-fg-muted)] uppercase',
+                    'whitespace-nowrap text-left text-xs font-semibold uppercase tracking-wider text-[var(--color-fg-muted)]',
                     tdClass,
                     header.column.getCanSort() && 'cursor-pointer select-none',
                   )}

@@ -86,7 +86,7 @@ export function AIPrompt({
               onClick={() => {
                 setValue(suggestion);
               }}
-              className="inline-flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-2.5 py-1 text-xs text-[var(--color-fg-muted)] transition-colors duration-[var(--motion-fast)] hover:border-[var(--color-accent)]/40 hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none disabled:opacity-50"
+              className="hover:border-[var(--color-accent)]/40 focus-visible:ring-[var(--color-accent)]/40 inline-flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)] px-2.5 py-1 text-xs text-[var(--color-fg-muted)] transition-colors duration-[var(--motion-fast)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
             >
               <Sparkles className="size-3 text-[var(--color-accent)]" aria-hidden="true" />
               {suggestion}
@@ -99,7 +99,7 @@ export function AIPrompt({
         <label htmlFor={id} className="sr-only">
           {label}
         </label>
-        <div className="flex items-end gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-2 transition-[border-color,box-shadow] duration-[var(--motion-fast)] focus-within:border-[var(--color-accent)] focus-within:ring-2 focus-within:ring-[var(--color-accent)]/20">
+        <div className="focus-within:ring-[var(--color-accent)]/20 flex items-end gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-2 transition-[border-color,box-shadow] duration-[var(--motion-fast)] focus-within:border-[var(--color-accent)] focus-within:ring-2">
           <textarea
             id={id}
             rows={2}
@@ -117,7 +117,7 @@ export function AIPrompt({
               type="button"
               onClick={onStop}
               aria-label="Stop generating"
-              className="flex size-8 shrink-0 items-center justify-center rounded-md bg-[var(--color-bg-muted)] text-[var(--color-fg-base)] transition-colors duration-[var(--motion-fast)] hover:bg-[var(--color-danger)]/10 hover:text-[var(--color-danger)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+              className="hover:bg-[var(--color-danger)]/10 focus-visible:ring-[var(--color-accent)]/40 flex size-8 shrink-0 items-center justify-center rounded-md bg-[var(--color-bg-muted)] text-[var(--color-fg-base)] transition-colors duration-[var(--motion-fast)] hover:text-[var(--color-danger)] focus-visible:outline-none focus-visible:ring-2"
             >
               {onStop ? (
                 <Square className="size-3.5" />
@@ -130,7 +130,7 @@ export function AIPrompt({
               type="submit"
               disabled={!value.trim() || disabled}
               aria-label="Send prompt"
-              className="flex size-8 shrink-0 items-center justify-center rounded-md bg-[var(--color-accent)] text-[var(--color-accent-contrast)] transition-opacity duration-[var(--motion-fast)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none disabled:opacity-40"
+              className="focus-visible:ring-[var(--color-accent)]/40 flex size-8 shrink-0 items-center justify-center rounded-md bg-[var(--color-accent)] text-[var(--color-accent-contrast)] transition-opacity duration-[var(--motion-fast)] focus-visible:outline-none focus-visible:ring-2 disabled:opacity-40"
             >
               <Send className="size-3.5" />
             </button>

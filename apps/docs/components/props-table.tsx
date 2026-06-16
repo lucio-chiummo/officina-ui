@@ -58,11 +58,11 @@ export function PropsTable({ name }: { name: string }) {
         <tbody>
           {doc.props.map((prop) => (
             <tr key={prop.name} className="border-fd-border border-t align-top">
-              <td className="px-3 py-2 font-mono whitespace-nowrap">
+              <td className="whitespace-nowrap px-3 py-2 font-mono">
                 {prop.name}
                 {prop.required ? <span className="text-fd-primary">*</span> : null}
               </td>
-              <td className="text-fd-primary max-w-[18rem] px-3 py-2 font-mono break-words">
+              <td className="text-fd-primary max-w-[18rem] break-words px-3 py-2 font-mono">
                 {prop.type}
               </td>
               <td className="text-fd-muted-foreground px-3 py-2 font-mono">

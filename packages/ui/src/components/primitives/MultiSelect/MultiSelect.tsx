@@ -104,7 +104,7 @@ export function MultiSelect<T = string>({
         className={cn(
           'flex min-h-9 w-full items-center gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-2 text-left',
           'transition-[border-color,box-shadow,background-color] duration-[var(--motion-fast)] ease-[var(--ease-standard)]',
-          'focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:outline-none disabled:opacity-50',
+          'focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:border-[var(--color-accent)] focus:outline-none disabled:opacity-50',
           size === 'sm' && 'min-h-8 text-xs',
         )}
       >
@@ -136,7 +136,7 @@ export function MultiSelect<T = string>({
                 setActiveIndex(-1);
               }
             }}
-            className="m-2 mb-1 h-9 w-[calc(100%-1rem)] rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] px-3 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
+            className="focus:ring-[var(--color-accent)]/20 m-2 mb-1 h-9 w-[calc(100%-1rem)] rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] px-3 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-2"
           />
           {showSelectAll ? (
             <button

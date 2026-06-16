@@ -55,18 +55,18 @@ export function RangeSlider({
         max={max}
         step={step}
         minStepsBetweenThumbs={minStepsBetweenThumbs}
-        className="relative flex h-5 w-full touch-none items-center select-none"
+        className="relative flex h-5 w-full touch-none select-none items-center"
       >
         <RadixSlider.Track className="relative h-1 grow rounded-full bg-[var(--color-bg-muted)]">
           <RadixSlider.Range className="absolute h-full rounded-full bg-[var(--color-accent)]" />
         </RadixSlider.Track>
         <RadixSlider.Thumb
           aria-label={label ? `${label} minimum` : 'Range minimum'}
-          className="block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 focus-visible:outline-none"
+          className="focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2"
         />
         <RadixSlider.Thumb
           aria-label={label ? `${label} maximum` : 'Range maximum'}
-          className="block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 focus-visible:outline-none"
+          className="focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2"
         />
       </RadixSlider.Root>
     </div>

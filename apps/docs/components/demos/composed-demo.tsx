@@ -76,7 +76,7 @@ function HighlightTarget({
   if (!active) return children;
   return (
     <div className="relative rounded-[var(--radius-md)] ring-2 ring-[var(--color-accent)] ring-offset-2 ring-offset-[var(--color-bg-base)]">
-      <span className="absolute bottom-full left-2 mb-1 rounded-full bg-[var(--color-accent)] px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap text-[var(--color-accent-contrast)]">
+      <span className="absolute bottom-full left-2 mb-1 whitespace-nowrap rounded-full bg-[var(--color-accent)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--color-accent-contrast)]">
         {label}
       </span>
       {children}

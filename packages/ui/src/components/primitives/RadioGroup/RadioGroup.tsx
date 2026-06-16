@@ -53,9 +53,9 @@ export function RadioGroup<T = string>({
           value={option.value}
           {...(option.disabled !== undefined ? { disabled: option.disabled } : {})}
           className={cn(
-            'group flex min-h-16 cursor-pointer items-start gap-2 rounded-[var(--radius-md)] text-sm transition-[background-color,border-color,box-shadow,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] outline-none disabled:cursor-not-allowed disabled:opacity-45',
+            'group flex min-h-16 cursor-pointer items-start gap-2 rounded-[var(--radius-md)] text-sm outline-none transition-[background-color,border-color,box-shadow,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] disabled:cursor-not-allowed disabled:opacity-45',
             variant === 'card'
-              ? 'min-w-48 border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-3 hover:border-[var(--color-border)] data-[checked]:border-[var(--color-accent)] data-[checked]:bg-[var(--color-accent)]/5 data-[checked]:ring-2 data-[checked]:ring-[var(--color-accent)]/20'
+              ? 'data-[checked]:bg-[var(--color-accent)]/5 data-[checked]:ring-[var(--color-accent)]/20 min-w-48 border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-3 hover:border-[var(--color-border)] data-[checked]:border-[var(--color-accent)] data-[checked]:ring-2'
               : 'p-1',
           )}
         >

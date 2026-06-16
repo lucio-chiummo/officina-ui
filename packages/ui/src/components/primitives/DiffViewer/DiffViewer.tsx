@@ -9,7 +9,7 @@ export function DiffViewer({ oldValue, newValue }: DiffViewerProps) {
   const max = Math.max(oldLines.length, newLines.length);
   return (
     <div className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] font-mono text-xs">
-      <div className="grid grid-cols-2 border-b border-[var(--color-border)] bg-[var(--color-bg-muted)] px-3 py-1 text-[10px] font-semibold tracking-wide text-[var(--color-fg-subtle)] uppercase">
+      <div className="grid grid-cols-2 border-b border-[var(--color-border)] bg-[var(--color-bg-muted)] px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-[var(--color-fg-subtle)]">
         <span>Before</span>
         <span>After</span>
       </div>

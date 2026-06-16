@@ -105,7 +105,7 @@ export function FileItem({
             type="button"
             aria-label="Retry"
             onClick={onRetry}
-            className="inline-flex size-6 items-center justify-center rounded text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+            className="inline-flex size-6 items-center justify-center rounded text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           >
             <RotateCw className="size-3.5" />
           </button>
@@ -115,7 +115,7 @@ export function FileItem({
             type="button"
             aria-label="Remove"
             onClick={onRemove}
-            className="inline-flex size-6 items-center justify-center rounded text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+            className="inline-flex size-6 items-center justify-center rounded text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           >
             <X className="size-3.5" />
           </button>

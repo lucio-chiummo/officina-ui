@@ -91,10 +91,10 @@ export function MaskedInput({
           'block h-9 w-full rounded-md border bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)]',
           'transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)]',
           'placeholder:text-[var(--color-fg-subtle)]',
-          'focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20',
+          'focus-visible:ring-[var(--color-accent)]/20 focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2',
           'disabled:cursor-not-allowed disabled:opacity-50',
           invalid
-            ? 'border-[var(--color-danger)] focus-visible:border-[var(--color-danger)] focus-visible:ring-[var(--color-danger)]/20'
+            ? 'focus-visible:ring-[var(--color-danger)]/20 border-[var(--color-danger)] focus-visible:border-[var(--color-danger)]'
             : 'border-[var(--color-border-strong)]',
         )}
       />

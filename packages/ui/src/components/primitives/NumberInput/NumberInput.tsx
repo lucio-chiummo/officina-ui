@@ -70,7 +70,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
   return (
     <div className={cn('relative', className)}>
       {prefix ? (
-        <span className="absolute top-1/2 left-3 -translate-y-1/2 text-sm text-[var(--color-fg-subtle)]">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[var(--color-fg-subtle)]">
           {prefix}
         </span>
       ) : null}
@@ -94,7 +94,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
         onChange={(event) => commit(event.target.value === '' ? null : Number(event.target.value))}
         className={cn(
           'number-input block w-full appearance-none rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] text-[var(--color-fg-base)] outline-none',
-          'focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15 disabled:opacity-50',
+          'focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:border-[var(--color-accent)] disabled:opacity-50',
           size === 'sm' ? 'h-8 px-2 text-xs' : 'h-9 px-3 text-sm',
           prefix && 'pl-7',
           showSteppers ? 'pr-14' : suffix ? 'pr-10' : undefined,
@@ -111,7 +111,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
         </span>
       ) : null}
       {showSteppers ? (
-        <span className="absolute top-1 right-1 bottom-1 flex w-7 flex-col overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
+        <span className="absolute bottom-1 right-1 top-1 flex w-7 flex-col overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
           <button
             type="button"
             aria-label="Increment"

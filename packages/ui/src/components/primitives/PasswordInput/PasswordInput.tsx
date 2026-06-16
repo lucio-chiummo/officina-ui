@@ -42,14 +42,14 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             ref={ref}
             type={visible ? 'text' : 'password'}
             value={value}
-            className="block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15"
+            className="focus:ring-3 focus:ring-[var(--color-accent)]/15 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)]"
             {...props}
           />
           <button
             type="button"
             aria-label={visible ? hideLabel : revealLabel}
             onClick={() => setVisible((next) => !next)}
-            className="absolute top-1/2 right-2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
           >
             {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
           </button>
