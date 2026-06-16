@@ -1,3 +1,4 @@
+import { clamp } from '@lib/utils/clamp';
 import { cn } from '@lib/utils/cn';
 import { useId } from 'react';
 
@@ -51,7 +52,7 @@ export function Gauge({
   className,
 }: GaugeProps) {
   const titleId = useId();
-  const clamped = Math.min(Math.max(value, min), max);
+  const clamped = clamp(value, min, max);
   const ratio = (clamped - min) / (max - min || 1);
   const fmt = formatValue ?? ((v: number) => String(Math.round(v)));
 

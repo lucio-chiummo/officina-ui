@@ -1,5 +1,5 @@
 import { cn } from '@lib/utils/cn';
-import { useId, type ChangeEvent } from 'react';
+import { forwardRef, useId, type ChangeEvent, type FocusEventHandler } from 'react';
 
 /**
  * Mask tokens:
@@ -22,9 +22,15 @@ export type MaskedInputProps = {
   disabled?: boolean;
   /** Mark the field invalid for validation styling. */
   invalid?: boolean;
+  required?: boolean;
+  /** Overrides the auto-generated id (e.g. to pair with `FormControl`). */
+  id?: string;
+  name?: string;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   className?: string;
   /** Accessible name when no visible label is present. */
   'aria-label'?: string;
+  'aria-describedby'?: string;
 };
 
 const TOKEN_PATTERNS: Record<string, RegExp> = {
@@ -52,18 +58,27 @@ export function applyMask(raw: string, mask: string): string {
   return out;
 }
 
-export function MaskedInput({
-  mask,
-  value,
-  onChange,
-  label,
-  placeholder,
-  disabled,
-  invalid,
-  className,
-  'aria-label': ariaLabel,
-}: MaskedInputProps) {
-  const id = useId();
+export const MaskedInput = forwardRef<HTMLInputElement, MaskedInputProps>(function MaskedInput(
+  {
+    mask,
+    value,
+    onChange,
+    label,
+    placeholder,
+    disabled,
+    invalid,
+    required,
+    id: idProp,
+    name,
+    onBlur,
+    className,
+    'aria-label': ariaLabel,
+    'aria-describedby': ariaDescribedby,
+  },
+  ref,
+) {
+  const generatedId = useId();
+  const id = idProp ?? generatedId;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(applyMask(event.target.value, mask));
@@ -77,15 +92,21 @@ export function MaskedInput({
         </label>
       ) : null}
       <input
+        ref={ref}
         id={id}
+        name={name}
         type="text"
         inputMode={/^[^9]*9/.test(mask) && !/[a*]/.test(mask) ? 'numeric' : 'text'}
         value={value}
         onChange={handleChange}
+        onBlur={onBlur}
         placeholder={placeholder ?? mask.replace(/9/g, '0').replace(/a/g, 'A').replace(/\*/g, '#')}
         disabled={Boolean(disabled)}
+        required={required}
         aria-label={ariaLabel ?? label}
         aria-invalid={invalid ? true : undefined}
+        aria-required={required ? true : undefined}
+        aria-describedby={ariaDescribedby}
         maxLength={mask.length}
         className={cn(
           'block h-9 w-full rounded-md border bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)]',
@@ -100,4 +121,4 @@ export function MaskedInput({
       />
     </div>
   );
-}
+});

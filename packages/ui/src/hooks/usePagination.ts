@@ -1,3 +1,4 @@
+import { clamp } from '@lib/utils/clamp';
 import { useCallback, useState } from 'react';
 
 interface UsePaginationOptions {
@@ -10,7 +11,7 @@ export function usePagination({ total, pageSize = 10, initialPage = 1 }: UsePagi
   const [page, setPage] = useState(initialPage);
 
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
-  const clampPage = useCallback((p: number) => Math.min(totalPages, Math.max(1, p)), [totalPages]);
+  const clampPage = useCallback((p: number) => clamp(p, 1, totalPages), [totalPages]);
 
   const goTo = useCallback((p: number) => setPage(clampPage(p)), [clampPage]);
   const next = useCallback(() => setPage((p) => clampPage(p + 1)), [clampPage]);

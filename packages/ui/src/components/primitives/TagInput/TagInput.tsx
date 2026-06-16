@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 export type TagInputProps = {
   /** Current list of tags. */
@@ -18,16 +18,19 @@ export type TagInputProps = {
   className?: string;
 };
 
-export function TagInput({
-  value,
-  onChange,
-  placeholder,
-  maxTags,
-  delimiter = /[,;\n\t]/,
-  validate,
-  suggestions = [],
-  className,
-}: TagInputProps) {
+export const TagInput = forwardRef<HTMLInputElement, TagInputProps>(function TagInput(
+  {
+    value,
+    onChange,
+    placeholder,
+    maxTags,
+    delimiter = /[,;\n\t]/,
+    validate,
+    suggestions = [],
+    className,
+  },
+  ref,
+) {
   const [input, setInput] = useState('');
   const [error, setError] = useState<string | null>(null);
   const add = (raw: string) => {
@@ -60,6 +63,7 @@ export function TagInput({
           </span>
         ))}
         <input
+          ref={ref}
           value={input}
           placeholder={value.length ? undefined : placeholder}
           onChange={(event) => {
@@ -97,4 +101,4 @@ export function TagInput({
       {error ? <p className="mt-1 text-xs text-[var(--color-danger-fg)]">{error}</p> : null}
     </div>
   );
-}
+});

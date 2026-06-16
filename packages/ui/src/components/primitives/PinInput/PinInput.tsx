@@ -1,3 +1,4 @@
+import { cn } from '@lib/utils/cn';
 import { OTPInput } from 'input-otp';
 
 export type PinInputProps = {
@@ -10,6 +11,11 @@ export type PinInputProps = {
   /** Visible label above the inputs. */
   label?: string;
   disabled?: boolean;
+  /** Mark the field invalid for validation styling. */
+  invalid?: boolean;
+  /** Extra classes for the slot container. */
+  className?: string;
+  'aria-describedby'?: string;
 };
 
 export function PinInput({
@@ -18,6 +24,9 @@ export function PinInput({
   length = 6,
   label = 'Security code',
   disabled,
+  invalid,
+  className,
+  'aria-describedby': ariaDescribedby,
 }: PinInputProps) {
   return (
     <OTPInput
@@ -26,13 +35,18 @@ export function PinInput({
       maxLength={length}
       disabled={disabled}
       aria-label={label}
-      containerClassName="flex gap-2"
+      aria-invalid={invalid ? true : undefined}
+      aria-describedby={ariaDescribedby}
+      containerClassName={cn('flex gap-2', className)}
       render={({ slots }) => (
         <>
           {slots.map((slot, index) => (
             <div
               key={`slot-${String(index + 1)}`}
-              className="flex size-10 items-center justify-center rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] text-sm font-semibold"
+              className={cn(
+                'flex size-10 items-center justify-center rounded-md border bg-[var(--color-bg-base)] text-sm font-semibold',
+                invalid ? 'border-[var(--color-danger)]' : 'border-[var(--color-border-strong)]',
+              )}
             >
               {slot.char}
               {slot.hasFakeCaret ? (

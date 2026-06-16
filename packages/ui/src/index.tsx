@@ -6,3 +6,4 @@
  * deps externalized) so consumers get every component from a single install.
  */
 export * from '@primitives';
+export * from '@hooks';

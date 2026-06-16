@@ -6,7 +6,7 @@ import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@
 import { cn } from '@lib/utils/cn';
 import { Fragment, useCallback, useEffect, useRef, type ReactNode } from 'react';
 
-type DrawerProps = {
+export type DrawerProps = {
   /** Whether the drawer is open (controlled). */
   open: boolean;
   /** Called when the drawer requests to close (backdrop, escape, close button). */

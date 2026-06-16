@@ -1,6 +1,7 @@
+import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { cn } from '@lib/utils/cn';
 import { Check, Copy } from 'lucide-react';
-import { useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { IconButton } from '../Button';
 
@@ -40,14 +41,7 @@ export function CopyField({
   copiedLabel = 'Copied',
   className,
 }: CopyFieldProps) {
-  const [copied, setCopied] = useState(false);
-
-  const copy = () => {
-    void navigator.clipboard.writeText(value).then(() => {
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1500);
-    });
-  };
+  const { copied, copy } = useCopyToClipboard(1500);
 
   return (
     <div className={cn('flex flex-col gap-1', className)}>
@@ -75,7 +69,7 @@ export function CopyField({
           variant="ghost"
           aria-label={copied ? copiedLabel : copyLabel}
           tooltip={copied ? copiedLabel : copyLabel}
-          onClick={copy}
+          onClick={() => void copy(value)}
           icon={copied ? <Check className="text-[var(--color-success-fg)]" /> : <Copy />}
         />
       </div>
