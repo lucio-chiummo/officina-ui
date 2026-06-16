@@ -1,11 +1,16 @@
 ---
 title: MultiSelect
-description: 'MultiSelect — live example and API reference.'
+description: Multi-choice picker that renders selected options as removable chips, with select-all.
 ---
 
 import { MultiSelectDemo } from '@/components/demos/inputs-demo';
 
-Import `MultiSelect` from `@officina/ui`.
+`MultiSelect` lets the user pick several values from an `options` list, showing
+the selections as removable chips in the trigger. It is controlled: `value` is
+an array and `onChange` returns the updated array. Options share the
+[`Combobox`](/docs/components/combobox) `ComboboxOption` shape (`value`,
+`label`, optional `description`/`icon`). Cap the visible chips with
+`maxBadgeCount`, and enable a select-all/clear-all control with `showSelectAll`.
 
 ## Example
 
@@ -15,6 +20,25 @@ Import `MultiSelect` from `@officina/ui`.
 
 ```tsx
 import { MultiSelect } from '@officina/ui';
+import { useState } from 'react';
+
+function TagPicker() {
+  const [value, setValue] = useState<string[]>(['design']);
+  return (
+    <MultiSelect
+      value={value}
+      onChange={setValue}
+      showSelectAll
+      maxBadgeCount={3}
+      placeholder="Select tags…"
+      options={[
+        { value: 'design', label: 'Design' },
+        { value: 'eng', label: 'Engineering' },
+        { value: 'ops', label: 'Operations' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

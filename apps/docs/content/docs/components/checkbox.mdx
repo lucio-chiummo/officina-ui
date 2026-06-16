@@ -1,11 +1,16 @@
 ---
 title: Checkbox
-description: 'Checkbox — live example and API reference.'
+description: Accessible checkbox with optional label, description, and an indeterminate state.
 ---
 
 import { CheckboxDemo } from '@/components/demos/inputs-demo';
 
-Import `Checkbox` from `@officina/ui`.
+`Checkbox` toggles a boolean. Pass `checked` and `onChange` to control it, or
+`defaultChecked` to leave it uncontrolled; `onChange` receives the next boolean
+directly. Provide a `label` (and optional `description`) to render the text
+beside it, fully wired for accessibility. Set `indeterminate` for the mixed
+state used by "select all" parents. Built on Headless UI for keyboard and focus
+handling.
 
 ## Example
 
@@ -15,6 +20,19 @@ Import `Checkbox` from `@officina/ui`.
 
 ```tsx
 import { Checkbox } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={setChecked}
+      label="Subscribe to updates"
+      description="One email a week, no spam."
+    />
+  );
+}
 ```
 
 ## API

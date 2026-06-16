@@ -1,11 +1,15 @@
 ---
 title: DateTimeRangePicker
-description: 'DateTimeRangePicker — live example and API reference.'
+description: Picks a start and end date-time range, each with its own day and time of day.
 ---
 
 import { DateTimeRangePickerDemo } from '@/components/demos/inputs-demo';
 
-Import `DateTimeRangePicker` from `@officina/ui`.
+`DateTimeRangePicker` captures a start and end date-time as a `DateRange`
+(`{ from, to }`), where each end carries both a date and a time of day. It is
+controlled via `value`/`onChange`. Use it for bookings, shifts, or any window
+that needs precise start/end times; label the two ends with `startLabel` and
+`endLabel`.
 
 ## Example
 
@@ -14,7 +18,20 @@ Import `DateTimeRangePicker` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { DateTimeRangePicker } from '@officina/ui';
+import { DateTimeRangePicker, type DateRange } from '@officina/ui';
+import { useState } from 'react';
+
+function BookingWindow() {
+  const [range, setRange] = useState<DateRange>({ from: undefined, to: undefined });
+  return (
+    <DateTimeRangePicker
+      value={range}
+      onChange={setRange}
+      startLabel="Check in"
+      endLabel="Check out"
+    />
+  );
+}
 ```
 
 ## API

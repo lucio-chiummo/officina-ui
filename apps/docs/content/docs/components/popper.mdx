@@ -1,11 +1,16 @@
 ---
 title: Popper
-description: 'Popper — live example and API reference.'
+description: Low-level positioning primitive that anchors a floating panel to a DOM element.
 ---
 
 import { PopperDemo } from '@/components/demos/overlays-demo';
 
-Import `Popper` from `@officina/ui`.
+`Popper` is the bare positioning layer behind the higher-level overlays. Give it
+an `anchor` element and it renders its children in a portal, positioned relative
+to that anchor with floating-ui flip and shift middleware. It does no click,
+focus, or dismiss handling — you own `open` state and any interactions. Reach
+for `Popover` or `Tooltip` first; use `Popper` when you need full control over
+behavior.
 
 ## Example
 
@@ -15,6 +20,22 @@ Import `Popper` from `@officina/ui`.
 
 ```tsx
 import { Popper } from '@officina/ui';
+import { useRef, useState } from 'react';
+
+function Anchored() {
+  const [open, setOpen] = useState(false);
+  const anchor = useRef<HTMLButtonElement>(null);
+  return (
+    <>
+      <button ref={anchor} onClick={() => setOpen((o) => !o)}>
+        Toggle
+      </button>
+      <Popper anchor={anchor.current} open={open} placement="bottom-start">
+        <div className="p-2">Floating content</div>
+      </Popper>
+    </>
+  );
+}
 ```
 
 ## API

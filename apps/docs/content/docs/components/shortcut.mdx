@@ -1,11 +1,15 @@
 ---
 title: Shortcut
-description: 'Platform-aware keyboard shortcut display built on {@link Kbd}. Renders'
+description: Platform-aware keyboard shortcut display that maps mod keys to native symbols.
 ---
 
 import { ShortcutDemo } from '@/components/demos/data-display-demo';
 
-Import `Shortcut` from `@officina/ui`.
+`Shortcut` renders a key combo from a `keys` string like `"mod+k"` (or an array of
+tokens) as a row of `Kbd` badges. It detects the platform and translates keys
+accordingly — `mod` becomes `⌘` on macOS and `Ctrl` elsewhere, with similar
+mapping for `shift`, `alt`, `enter`, and arrows. By default keys sit flush
+together; set `withPlus` to render visible `+` separators.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `Shortcut` from `@officina/ui`.
 
 ```tsx
 import { Shortcut } from '@officina/ui';
+
+function Hints() {
+  return (
+    <div>
+      <Shortcut keys="mod+k" />
+      <Shortcut keys="shift+enter" withPlus />
+    </div>
+  );
+}
 ```
 
 ## API

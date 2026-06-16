@@ -1,11 +1,15 @@
 ---
 title: Menu
-description: 'Menu — live example and API reference.'
+description: A dropdown menu that opens from your own trigger element and renders grouped sections of items.
 ---
 
 import { MenuDemo } from '@/components/demos/navigation-demo';
 
-Import `Menu` from `@officina/ui`.
+`Menu` is a thin wrapper over `Dropdown` that takes its trigger as `children` —
+hand it any element (a `Button`, an avatar) and it becomes the menu opener. The
+menu itself is described by `sections`, each an optional `heading` plus a list of
+items with `label`, `icon`, `shortcut`, and `onClick`/`href`. Control which edge
+it aligns to with `align`.
 
 ## Example
 
@@ -14,7 +18,21 @@ Import `Menu` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Menu } from '@officina/ui';
+import { Menu, Button } from '@officina/ui';
+
+<Menu
+  sections={[
+    {
+      heading: 'Account',
+      items: [
+        { label: 'Profile', href: '/profile' },
+        { label: 'Sign out', onClick: signOut },
+      ],
+    },
+  ]}
+>
+  <Button variant="secondary">Account</Button>
+</Menu>;
 ```
 
 ## API

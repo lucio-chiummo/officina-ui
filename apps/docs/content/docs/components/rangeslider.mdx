@@ -1,11 +1,15 @@
 ---
 title: RangeSlider
-description: 'RangeSlider — live example and API reference.'
+description: Controlled two-thumb slider for selecting a lower and upper bound within a range.
 ---
 
 import { RangeSliderDemo } from '@/components/demos/inputs-demo';
 
-Import `RangeSlider` from `@officina/ui`.
+`RangeSlider` is a two-thumb slider for choosing a span — a min and a max — such
+as a price or date range filter. It is controlled: `value` is a `[number,
+number]` tuple and `onValueChange` returns the updated tuple. Tune the bounds
+with `min`, `max`, and `step`, keep the thumbs apart with
+`minStepsBetweenThumbs`, and format the visible numbers with `formatValue`.
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `RangeSlider` from `@officina/ui`.
 
 ```tsx
 import { RangeSlider } from '@officina/ui';
+import { useState } from 'react';
+
+function PriceFilter() {
+  const [range, setRange] = useState<[number, number]>([20, 80]);
+  return (
+    <RangeSlider
+      label="Price range"
+      value={range}
+      onValueChange={setRange}
+      min={0}
+      max={100}
+      minStepsBetweenThumbs={1}
+      formatValue={(n) => `$${n}`}
+    />
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: ActionMenu
-description: 'Domain-neutral overflow menu for row, toolbar, and contextual actions.'
+description: An overflow menu of actions behind a configurable trigger, for rows and toolbars.
 ---
 
 import { ActionMenuDemo } from '@/components/demos/buttons-demo';
 
-Import `ActionMenu` from `@officina/ui`.
+`ActionMenu` is a domain-neutral overflow menu built on `Dropdown`. By default it
+renders a `MoreHorizontal` icon trigger that opens a list of `items`, each with a
+`label`, optional `icon`, `shortcut`, `danger` flag, and `onClick`/`href`. Use
+`sections` instead of `items` for grouped, headed menus, and pass a custom
+`trigger` to replace the default button. Reach for it whenever a set of actions
+should fold behind one affordance.
 
 ## Example
 
@@ -15,6 +20,14 @@ Import `ActionMenu` from `@officina/ui`.
 
 ```tsx
 import { ActionMenu } from '@officina/ui';
+import { Pencil, Trash } from 'lucide-react';
+
+<ActionMenu
+  items={[
+    { label: 'Edit', icon: <Pencil />, onClick: edit },
+    { label: 'Delete', icon: <Trash />, danger: true, onClick: remove },
+  ]}
+/>;
 ```
 
 ## API

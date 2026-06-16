@@ -1,11 +1,14 @@
 ---
 title: ImageListItem
-description: 'ImageListItem — live example and API reference.'
+description: A single framed image tile, with an optional caption, for use inside ImageList.
 ---
 
 import { ImageListItemDemo } from '@/components/demos/composed-demo';
 
-Import `ImageListItem` from `@officina/ui`.
+`ImageListItem` is a single tile within an `ImageList` — a rounded, bordered
+`figure` that frames its child image and renders an optional `caption` below it.
+Put your `img` (or any media) as the child; pass `caption` for the figcaption.
+It forwards any other `figure` props and merges `className`.
 
 ## Example
 
@@ -15,6 +18,10 @@ Import `ImageListItem` from `@officina/ui`.
 
 ```tsx
 import { ImageListItem } from '@officina/ui';
+
+<ImageListItem caption="Sunrise over the ridge">
+  <img src="/photos/ridge.jpg" alt="Sunrise over the ridge" />
+</ImageListItem>;
 ```
 
 ## API

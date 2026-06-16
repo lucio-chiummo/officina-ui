@@ -1,11 +1,15 @@
 ---
 title: PhoneInput
-description: 'PhoneInput — live example and API reference.'
+description: International phone field with a country selector that formats numbers as you type.
 ---
 
 import { PhoneInputDemo } from '@/components/demos/composed-demo';
 
-Import `PhoneInput` from `@officina/ui`.
+`PhoneInput` is a styled wrapper over `react-international-phone` that pairs a
+country selector with a number field and formats the value for the chosen
+country as you type. It is controlled — pass `value` and `onChange`, where
+`onChange` receives the formatted phone string. Set `defaultCountry` (an ISO
+2-letter code) to pick the starting country.
 
 ## Example
 
@@ -15,6 +19,12 @@ Import `PhoneInput` from `@officina/ui`.
 
 ```tsx
 import { PhoneInput } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [phone, setPhone] = useState('');
+  return <PhoneInput value={phone} onChange={setPhone} defaultCountry="us" />;
+}
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: ButtonGroup
-description: 'ButtonGroup — live example and API reference.'
+description: Clusters related buttons into one attached horizontal or vertical unit with seamless edges.
 ---
 
 import { ButtonGroupDemo } from '@/components/demos/buttons-demo';
 
-Import `ButtonGroup` from `@officina/ui`.
+`ButtonGroup` lays out a set of related `Button`s as a single connected unit. By
+default the children are `attached` — touching corners are squared off so the
+group reads as one control — and `orientation` switches between a horizontal row
+and a vertical stack. It is a presentational wrapper (`role="group"`); each
+button keeps its own handlers.
 
 ## Example
 
@@ -14,7 +18,13 @@ Import `ButtonGroup` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ButtonGroup } from '@officina/ui';
+import { ButtonGroup, Button } from '@officina/ui';
+
+<ButtonGroup>
+  <Button variant="secondary">Day</Button>
+  <Button variant="secondary">Week</Button>
+  <Button variant="secondary">Month</Button>
+</ButtonGroup>;
 ```
 
 ## API

@@ -1,11 +1,16 @@
 ---
 title: FileUpload
-description: 'FileUpload — live example and API reference.'
+description: Click-or-drag dropzone that validates and hands selected files to your upload logic.
 ---
 
 import { FileUploadDemo } from '@/components/demos/inputs-demo';
 
-Import `FileUpload` from `@officina/ui`.
+`FileUpload` is a dropzone (built on react-dropzone) where users click or drag
+files in; the accepted `File[]` is passed to `onFiles` for you to upload. It is
+transport-free — you own the actual upload and progress UI (pair it with
+[`FileItem`](/docs/components/fileitem)). Restrict input with `accept`,
+`maxFiles`, `maxSize`/`minSize`, and surface guidance with `label` and `hint`;
+rejections and errors are reported via `onDropRejected` and `onError`.
 
 ## Example
 
@@ -15,6 +20,19 @@ Import `FileUpload` from `@officina/ui`.
 
 ```tsx
 import { FileUpload } from '@officina/ui';
+
+function AvatarUpload() {
+  return (
+    <FileUpload
+      label="Drop an image or click to browse"
+      hint="PNG or JPG, up to 5 MB"
+      accept={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
+      maxFiles={1}
+      maxSize={5 * 1024 * 1024}
+      onFiles={(files) => console.log('upload', files)}
+    />
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,14 @@
 ---
 title: TimePicker
-description: 'TimePicker — live example and API reference.'
+description: Controlled time-of-day input with 12/24-hour formats and optional seconds.
 ---
 
 import { TimePickerDemo } from '@/components/demos/inputs-demo';
 
-Import `TimePicker` from `@officina/ui`.
+`TimePicker` captures a time of day. It is controlled by a `TimeValue` object
+(`{ hours, minutes, seconds? }`), and `onChange` returns the updated value.
+Toggle 12-hour display with `hour12`, show a seconds field with `showSeconds`,
+and add a `label` above the input.
 
 ## Example
 
@@ -14,7 +17,13 @@ Import `TimePicker` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TimePicker } from '@officina/ui';
+import { TimePicker, type TimeValue } from '@officina/ui';
+import { useState } from 'react';
+
+function ReminderTime() {
+  const [value, setValue] = useState<TimeValue>({ hours: 9, minutes: 30 });
+  return <TimePicker label="Remind me at" value={value} onChange={setValue} hour12 />;
+}
 ```
 
 ## API

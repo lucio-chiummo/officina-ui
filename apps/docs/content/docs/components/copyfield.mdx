@@ -1,11 +1,15 @@
 ---
 title: CopyField
-description: 'Read-only value with an inline copy action, truncation, and a hover tooltip'
+description: Read-only value with a one-click copy button — for API keys, URLs, and ids.
 ---
 
 import { CopyFieldDemo } from '@/components/demos/data-display-demo';
 
-Import `CopyField` from `@officina/ui`.
+`CopyField` displays a value the user is meant to copy, not edit — API keys,
+webhook URLs, invite links, database ids. Clicking the trailing button copies
+`value` to the clipboard and swaps the icon to a checkmark briefly to confirm.
+Pass `displayValue` to show a masked or formatted version while still copying
+the real underlying `value`.
 
 ## Example
 
@@ -15,6 +19,14 @@ Import `CopyField` from `@officina/ui`.
 
 ```tsx
 import { CopyField } from '@officina/ui';
+
+<CopyField label="API key" value="sk_live_8f21c0de4b71" />
+<CopyField
+  label="Webhook URL"
+  value="https://api.officina.dev/hooks/8f21"
+  truncate
+  monospace
+/>
 ```
 
 ## API

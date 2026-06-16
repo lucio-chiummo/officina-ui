@@ -1,11 +1,17 @@
 ---
 title: DataGrid
-description: 'DataGrid — live example and API reference.'
+description: Spreadsheet-style data grid with sortable columns, double-click inline cell editing, and sticky headers.
 ---
 
 import { DataGridDemo } from '@/components/demos/tables-demo';
 
-Import `DataGrid` from `@officina/ui`.
+`DataGrid` is the spreadsheet-style cousin of `DataTable`. It is also built on
+TanStack Table and takes `data` plus `columns`, but its focus is in-place
+editing: mark columns in `editableColumns` and users can double-click a cell to
+edit it, committing with `Enter` (and `Escape` to cancel) through
+`onCellChange`. It adds a sticky header (`stickyHeader`), sortable columns, and
+optional pagination. Choose `DataGrid` when users edit values directly in the
+table; choose `DataTable` for read-heavy lists with selection and export.
 
 ## Example
 
@@ -15,6 +21,26 @@ Import `DataGrid` from `@officina/ui`.
 
 ```tsx
 import { DataGrid } from '@officina/ui';
+import type { ColumnDef } from '@tanstack/react-table';
+
+type Row = { sku: string; price: number };
+
+const columns: ColumnDef<Row>[] = [
+  { accessorKey: 'sku', header: 'SKU' },
+  { accessorKey: 'price', header: 'Price' },
+];
+
+function PriceGrid({ rows }: { rows: Row[] }) {
+  return (
+    <DataGrid
+      data={rows}
+      columns={columns}
+      editableColumns={['price']}
+      stickyHeader
+      onCellChange={(rowIndex, columnId, value) => console.log(rowIndex, columnId, value)}
+    />
+  );
+}
 ```
 
 ## API

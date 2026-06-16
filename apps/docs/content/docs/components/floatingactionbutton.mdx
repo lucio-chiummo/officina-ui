@@ -1,11 +1,15 @@
 ---
 title: FloatingActionButton
-description: 'FloatingActionButton — live example and API reference.'
+description: A round, fixed-position button pinned to a screen corner for the primary action.
 ---
 
 import { FabDemo } from '@/components/demos/buttons-demo';
 
-Import `FloatingActionButton` from `@officina/ui`.
+`FloatingActionButton` is a circular `Button` pinned to a corner of the viewport
+with `position: fixed`, used for the one dominant action on a screen — compose,
+add, new. Choose the corner with `placement` (defaults to `bottom-right`). It
+forwards all `Button` props, so set `variant` and an `aria-label` for the
+icon-only content.
 
 ## Example
 
@@ -15,6 +19,11 @@ Import `FloatingActionButton` from `@officina/ui`.
 
 ```tsx
 import { FloatingActionButton } from '@officina/ui';
+import { Plus } from 'lucide-react';
+
+<FloatingActionButton placement="bottom-right" aria-label="New item" onClick={create}>
+  <Plus />
+</FloatingActionButton>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: Confetti
-description: 'Confetti — live example and API reference.'
+description: Canvas confetti burst you trigger on success moments like checkout or onboarding.
 ---
 
 import { ConfettiDemo } from '@/components/demos/misc-demo';
 
-Import `Confetti` from `@officina/ui`.
+`Confetti` renders a decorative canvas burst of falling pieces to celebrate a
+moment — a completed checkout, a finished onboarding step, a goal hit. Toggle it
+with the `run` prop, and tune the effect with `pieces` (count) and `height` (the
+canvas height in pixels). The canvas is `pointer-events-none` and marked
+`aria-hidden`, so it never interferes with the UI beneath it.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `Confetti` from `@officina/ui`.
 
 ```tsx
 import { Confetti } from '@officina/ui';
+
+function SuccessScreen({ done }: { done: boolean }) {
+  return (
+    <div className="relative">
+      <Confetti run={done} pieces={120} />
+      <h2>Payment complete</h2>
+    </div>
+  );
+}
 ```
 
 ## API

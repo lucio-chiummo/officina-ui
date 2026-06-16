@@ -1,11 +1,19 @@
 ---
 title: Calendar
-description: 'Calendar — live example and API reference.'
+description: Full month/week/day event calendar built on react-big-calendar, for scheduling UIs.
 ---
 
 import { CalendarDemo } from '@/components/demos/inputs-demo';
 
-Import `Calendar` from `@officina/ui`.
+`Calendar` renders events on a month, week, day, or agenda grid. It wraps
+`react-big-calendar`, so most of its props (views, accessors, selection
+handlers) pass straight through. Reach for it when you need a full scheduling
+surface rather than a single date picker — bookings, shift planning, content
+calendars.
+
+Pass `events` as plain objects, plus `startAccessor`/`endAccessor` telling the
+calendar which fields hold the start and end `Date`. Enable `selectable` to let
+users drag across empty slots and create new events via `onSelectSlot`.
 
 ## Example
 
@@ -15,6 +23,25 @@ Import `Calendar` from `@officina/ui`.
 
 ```tsx
 import { Calendar } from '@officina/ui';
+import { useState } from 'react';
+
+function TeamCalendar() {
+  const [events, setEvents] = useState([
+    { title: 'Standup', start: new Date(2026, 5, 16, 9), end: new Date(2026, 5, 16, 10) },
+  ]);
+  return (
+    <Calendar
+      events={events}
+      startAccessor="start"
+      endAccessor="end"
+      selectable
+      onSelectSlot={(slot) => {
+        const title = window.prompt('Event title');
+        if (title) setEvents((prev) => [...prev, { title, start: slot.start, end: slot.end }]);
+      }}
+    />
+  );
+}
 ```
 
 ## API

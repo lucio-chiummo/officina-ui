@@ -1,11 +1,17 @@
 ---
 title: FilterBuilder
-description: 'FilterBuilder — live example and API reference.'
+description: Editor for a single filter condition — picks the field, operator, and value input by field type.
 ---
 
 import { FilterBuilderDemo } from '@/components/demos/composed-demo';
 
-Import `FilterBuilder` from `@officina/ui`.
+`FilterBuilder` is the editor for one filter condition. Given the available
+`fields`, it renders a field picker, an operator picker scoped to that field's
+type (e.g. "contains", "is any of", "between"), and the right value input —
+text, number, tag list, date range, or faceted select — automatically. It is
+controlled: it calls `onChange` with a partial patch as the user edits and
+`onRemove` to delete the condition. `FilterBar` composes this internally; use it
+directly to build a custom filter row.
 
 ## Example
 
@@ -15,6 +21,16 @@ Import `FilterBuilder` from `@officina/ui`.
 
 ```tsx
 import { FilterBuilder } from '@officina/ui';
+
+<FilterBuilder
+  condition={condition}
+  fields={[
+    { id: 'name', label: 'Name', type: 'string' },
+    { id: 'createdAt', label: 'Created', type: 'date' },
+  ]}
+  onChange={(id, patch) => updateCondition(id, patch)}
+  onRemove={(id) => removeCondition(id)}
+/>;
 ```
 
 ## API

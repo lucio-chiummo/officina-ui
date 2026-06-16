@@ -1,11 +1,17 @@
 ---
 title: Field
-description: 'Field — live example and API reference.'
+description: Labeled control wrapper that pulls validation errors from React Hook Form context by name.
 ---
 
 import { FieldDemo } from '@/components/demos/forms-demo';
 
-Import `Field` from `@officina/ui`.
+`Field` wraps a single form control with its label, optional hint, and error
+message, and handles the accessibility wiring (`id`, `aria-invalid`,
+`aria-describedby`) for you. Inside a `Form`, pass `name` and it reads the
+matching validation error straight from React Hook Form context; you can also
+pass an `error` string manually to override it. The child can be a regular
+element (it gets cloned with the resolved ARIA props) or a render function that
+receives those props.
 
 ## Example
 
@@ -14,7 +20,11 @@ Import `Field` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Field } from '@officina/ui';
+import { Field, Input } from '@officina/ui';
+
+<Field name="email" label="Email" hint="We never share it." required>
+  <Input type="email" />
+</Field>;
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: FunnelChart
-description: 'FunnelChart — live example and API reference.'
+description: Funnel chart showing drop-off through ordered stages, from widest to narrowest.
 ---
 
 import { FunnelChartDemo } from '@/components/demos/charts-demo';
 
-Import `FunnelChart` from `@officina/ui`.
+`FunnelChart` visualises how a population narrows as it moves through ordered
+stages — perfect for conversion flows like visitors to trials to paid. Pass
+`data` as an array of `{ name, value }` stages ordered widest to narrowest; each
+band's width reflects its value relative to the top. It renders client-side via
+ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `FunnelChart` from `@officina/ui`.
 
 ```tsx
 import { FunnelChart } from '@officina/ui';
+
+const data = [
+  { name: 'Visitors', value: 48000 },
+  { name: 'Trials', value: 12000 },
+  { name: 'Activated', value: 7800 },
+  { name: 'Paid', value: 2900 },
+];
+
+<FunnelChart data={data} height={280} />;
 ```
 
 ## API

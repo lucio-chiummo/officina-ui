@@ -5,7 +5,12 @@ description: 'Full event scheduler: day/week/month/agenda views, drag to move, d
 
 import { SchedulerDemo } from '@/components/demos/data-display-demo';
 
-Import `Scheduler` from `@officina/ui`.
+`Scheduler` is a full calendar with day, week, month, and agenda views. Users can
+drag events to move them and drag their edges to resize, while clicking an empty
+slot fires `onSlotSelect` for quick creation. State is controlled: pass `events`
+and an `onEventsChange` handler that persists edits. Set `defaultView`, restrict
+the available `views`, supply `resources` for lane-based scheduling, or set
+`readOnly` to disable editing.
 
 ## Example
 
@@ -15,6 +20,23 @@ Import `Scheduler` from `@officina/ui`.
 
 ```tsx
 import { Scheduler } from '@officina/ui';
+import { useState } from 'react';
+
+function Calendar() {
+  const [events, setEvents] = useState([
+    { id: 'evt-1', title: 'Design review', start: new Date(), end: new Date() },
+  ]);
+  return (
+    <Scheduler
+      events={events}
+      onEventsChange={setEvents}
+      defaultView="week"
+      onSlotSelect={({ start, end }) =>
+        setEvents((prev) => [...prev, { id: `evt-${Date.now()}`, title: 'New event', start, end }])
+      }
+    />
+  );
+}
 ```
 
 ## API

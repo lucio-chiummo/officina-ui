@@ -1,11 +1,14 @@
 ---
 title: ListSubheader
-description: 'ListSubheader — live example and API reference.'
+description: Small uppercase caption that labels a group of rows within a List.
 ---
 
 import { ListSubheaderDemo } from '@/components/demos/composed-demo';
 
-Import `ListSubheader` from `@officina/ui`.
+`ListSubheader` is a non-interactive `<li>` that renders a small, uppercase,
+muted caption to title a section of a `List`. Use it to group related rows —
+"Navigation", "Account", "Danger zone" — so longer lists stay scannable. Pass the
+label as children.
 
 ## Example
 
@@ -14,7 +17,17 @@ Import `ListSubheader` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListSubheader } from '@officina/ui';
+import { List, ListItem, ListItemButton, ListSubheader } from '@officina/ui';
+
+<List>
+  <ListSubheader>Navigation</ListSubheader>
+  <ListItem>
+    <ListItemButton>Dashboard</ListItemButton>
+  </ListItem>
+  <ListItem>
+    <ListItemButton>Settings</ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

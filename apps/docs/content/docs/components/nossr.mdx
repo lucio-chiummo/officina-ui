@@ -1,11 +1,16 @@
 ---
 title: NoSsr
-description: 'NoSsr — live example and API reference.'
+description: Defers rendering its children until after mount, skipping them during SSR.
 ---
 
 import { NoSsrDemo } from '@/components/demos/misc-demo';
 
-Import `NoSsr` from `@officina/ui`.
+`NoSsr` renders `fallback` (or nothing) on the server and on first client
+render, then swaps to `children` once the component has mounted in the
+browser. Use it to wrap content that touches the DOM during render — charts
+(ECharts reads `getComputedStyle`), anything depending on `window`, or values
+that would otherwise mismatch between server and client and trigger a
+hydration warning.
 
 ## Example
 
@@ -14,7 +19,11 @@ Import `NoSsr` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { NoSsr } from '@officina/ui';
+import { NoSsr, Skeleton } from '@officina/ui';
+
+<NoSsr fallback={<Skeleton height={28} />}>
+  <ClientOnlyWidget />
+</NoSsr>;
 ```
 
 ## API

@@ -1,11 +1,14 @@
 ---
 title: TableHeader
-description: 'TableHeader — live example and API reference.'
+description: The <thead> section of a composed Table; wraps the header TableRow with a bottom border.
 ---
 
 import { TableHeaderDemo } from '@/components/demos/composed-demo';
 
-Import `TableHeader` from `@officina/ui`.
+`TableHeader` renders the `<thead>` of a hand-composed `Table`. It holds the
+single `TableRow` of column headings (`TableHead` cells) and adds a bottom
+border to separate the head from the body. Use it as the first child of
+`Table`, before `TableBody`.
 
 ## Example
 
@@ -14,7 +17,17 @@ Import `TableHeader` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableHeader } from '@officina/ui';
+import { Table, TableHeader, TableRow, TableHead } from '@officina/ui';
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  {/* …TableBody… */}
+</Table>;
 ```
 
 ## API

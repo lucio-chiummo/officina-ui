@@ -1,11 +1,14 @@
 ---
 title: TableFooter
-description: 'TableFooter — live example and API reference.'
+description: The <tfoot> section of a composed Table; a muted, bold-topped row for totals or summaries.
 ---
 
 import { TableFooterDemo } from '@/components/demos/composed-demo';
 
-Import `TableFooter` from `@officina/ui`.
+`TableFooter` renders the `<tfoot>` of a hand-composed `Table`. It sits below
+`TableBody` with a top border, muted background, and medium-weight text, making
+it the place for totals, subtotals, or summary rows. Put a `TableRow` of
+`TableCell`s inside it.
 
 ## Example
 
@@ -14,7 +17,17 @@ Import `TableFooter` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { TableFooter } from '@officina/ui';
+import { Table, TableFooter, TableRow, TableCell } from '@officina/ui';
+
+<Table>
+  {/* …TableHeader, TableBody… */}
+  <TableFooter>
+    <TableRow>
+      <TableCell>Total</TableCell>
+      <TableCell className="text-right">$1,240.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>;
 ```
 
 ## API

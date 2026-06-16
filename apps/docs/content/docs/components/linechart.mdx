@@ -1,11 +1,15 @@
 ---
 title: LineChart
-description: 'LineChart — live example and API reference.'
+description: Line chart for plotting one or more numeric series over an ordered x axis like time.
 ---
 
 import { LineChartDemo } from '@/components/demos/charts-demo';
 
-Import `LineChart` from `@officina/ui`.
+`LineChart` plots one or more numeric series against a shared, ordered x axis —
+ideal for trends over time, such as revenue or active users per month. Pass
+`data` as an array of row objects, name the x-axis field with `xKey`, and list
+each line in `series` (each maps a `dataKey` to a `name` and optional `color`).
+It renders client-side via ECharts, so give it a `height` (defaults to `280`).
 
 ## Example
 
@@ -15,6 +19,22 @@ Import `LineChart` from `@officina/ui`.
 
 ```tsx
 import { LineChart } from '@officina/ui';
+
+const data = [
+  { month: 'Jan', revenue: 4200, costs: 2200 },
+  { month: 'Feb', revenue: 5300, costs: 2600 },
+  { month: 'Mar', revenue: 6100, costs: 2800 },
+];
+
+<LineChart
+  data={data}
+  xKey="month"
+  series={[
+    { dataKey: 'revenue', name: 'Revenue' },
+    { dataKey: 'costs', name: 'Costs' },
+  ]}
+  height={280}
+/>;
 ```
 
 ## API

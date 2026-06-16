@@ -1,11 +1,15 @@
 ---
 title: InputGroup
-description: 'InputGroup — live example and API reference.'
+description: Wraps an input with leading/trailing addons like icons, units, or fixed prefixes.
 ---
 
 import { InputGroupDemo } from '@/components/demos/inputs-demo';
 
-Import `InputGroup` from `@officina/ui`.
+`InputGroup` attaches a `prefix` and/or `suffix` addon to a control, joining them
+into a single bordered shape that shows a focus ring when the inner input is
+focused. Use it for fixed prefixes like `https://`, currency or unit labels, or
+inline icon buttons. Place an `Input` (or any input) as the child; the group
+strips the child's own border so it blends in.
 
 ## Example
 
@@ -14,7 +18,11 @@ Import `InputGroup` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { InputGroup } from '@officina/ui';
+import { InputGroup, Input } from '@officina/ui';
+
+<InputGroup prefix="https://" suffix=".com">
+  <Input placeholder="your-site" />
+</InputGroup>;
 ```
 
 ## API

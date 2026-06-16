@@ -1,11 +1,16 @@
 ---
 title: BentoGrid
-description: "Asymmetric 'bento' grid for premium dashboard and marketing layouts. Cells"
+description: Asymmetric 'bento' grid for dashboard and marketing layouts; cells set their own span.
 ---
 
 import { BentoGridDemo } from '@/components/demos/misc-demo';
 
-Import `BentoGrid` from `@officina/ui`.
+`BentoGrid` is a responsive grid container for the "bento box" layout style —
+tiles of varying sizes packed into a cohesive grid. Set the base `columns` count
+(`2`, `3`, `4`, or `6`); the grid collapses to a single column on small screens
+and scales up at breakpoints. Each child is a
+[`BentoCard`](/docs/components/bentocard) that declares its own `colSpan` and
+`rowSpan`. Great for dashboards and marketing feature sections.
 
 ## Example
 
@@ -14,7 +19,16 @@ Import `BentoGrid` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { BentoGrid } from '@officina/ui';
+import { BentoGrid, BentoCard } from '@officina/ui';
+
+<BentoGrid columns={4}>
+  <BentoCard colSpan={2} rowSpan={2}>
+    Featured
+  </BentoCard>
+  <BentoCard colSpan={2}>Wide</BentoCard>
+  <BentoCard>Metric</BentoCard>
+  <BentoCard>Metric</BentoCard>
+</BentoGrid>;
 ```
 
 ## API

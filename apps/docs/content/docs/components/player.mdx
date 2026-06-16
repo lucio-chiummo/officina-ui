@@ -1,11 +1,15 @@
 ---
 title: Player
-description: 'Player — live example and API reference.'
+description: Responsive video/audio player wrapping react-player, with poster and native controls.
 ---
 
 import { PlayerDemo } from '@/components/demos/misc-demo';
 
-Import `Player` from `@officina/ui`.
+`Player` embeds video or audio from a URL in a 16:9 frame, wrapping `react-player`
+so it handles file URLs as well as sources like YouTube and Vimeo. Pass the
+media `src`, an optional `poster` image shown before playback, and toggle
+`controls` (on by default). It is loaded lazily, so it only ships its player
+code when rendered.
 
 ## Example
 
@@ -15,6 +19,8 @@ Import `Player` from `@officina/ui`.
 
 ```tsx
 import { Player } from '@officina/ui';
+
+<Player src="https://example.com/demo.mp4" poster="/poster.jpg" controls />;
 ```
 
 ## API

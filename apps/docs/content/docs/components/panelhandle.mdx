@@ -1,11 +1,16 @@
 ---
 title: PanelHandle
-description: 'PanelHandle — live example and API reference.'
+description: Draggable divider placed between Panels to resize a ResizablePanels group.
 ---
 
 import { ResizablePanelsDemo } from '@/components/demos/misc-demo';
 
-Import `PanelHandle` from `@officina/ui`.
+`PanelHandle` is the draggable separator that sits between two
+[`Panel`](/docs/components/panel) regions in a
+[`ResizablePanels`](/docs/components/resizablepanels) group. Dragging it
+reallocates space between the neighboring panels. It comes pre-styled with a
+grip indicator and hover, focus, and active states, and orients itself
+automatically to the group's direction. Place one between every pair of panels.
 
 ## Example
 
@@ -14,7 +19,13 @@ Import `PanelHandle` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { PanelHandle } from '@officina/ui';
+import { ResizablePanels, Panel, PanelHandle } from '@officina/ui';
+
+<ResizablePanels direction="horizontal">
+  <Panel>Left</Panel>
+  <PanelHandle />
+  <Panel>Right</Panel>
+</ResizablePanels>;
 ```
 
 ## API

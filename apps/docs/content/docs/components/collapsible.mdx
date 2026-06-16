@@ -1,11 +1,16 @@
 ---
 title: Collapsible
-description: 'Collapsible — live example and API reference.'
+description: Single disclosure panel with a clickable title header and animated chevron.
 ---
 
 import { CollapsibleDemo } from '@/components/demos/data-display-demo';
 
-Import `Collapsible` from `@officina/ui`.
+`Collapsible` is a self-contained disclosure: clicking the `title` header toggles
+its `children` open or closed, with a chevron that rotates to match. State is
+managed internally (built on Headless UI's Disclosure), so just set `defaultOpen`
+to control the initial state. Use it for "show more" sections, FAQs, or optional
+settings. For grouped sections where opening one closes the others, use
+`Accordion`.
 
 ## Example
 
@@ -15,6 +20,14 @@ Import `Collapsible` from `@officina/ui`.
 
 ```tsx
 import { Collapsible } from '@officina/ui';
+
+function Faq() {
+  return (
+    <Collapsible title="What is included?" defaultOpen>
+      Every primitive ships with TypeScript types and theming support.
+    </Collapsible>
+  );
+}
 ```
 
 ## API

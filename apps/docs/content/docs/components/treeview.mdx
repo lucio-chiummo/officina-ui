@@ -1,11 +1,18 @@
 ---
 title: TreeView
-description: 'TreeView — live example and API reference.'
+description: Expandable/collapsible hierarchical list for nested data like folders or org units.
 ---
 
 import { TreeViewDemo } from '@/components/demos/navigation-demo';
 
-Import `TreeView` from `@officina/ui`.
+`TreeView` renders nested data — file trees, category hierarchies, permission
+groups — as an expandable list. Each node can carry its own `children`,
+recursing to any depth; nodes without children render without a disclosure
+arrow. Use `defaultExpandedIds` to open specific branches on first render, and
+`onSelect` to react to clicks on any node (parent or leaf).
+
+For a tree rendered as a `<select>`-style dropdown rather than an inline
+list, see `DropDownTree` instead.
 
 ## Example
 
@@ -15,6 +22,22 @@ Import `TreeView` from `@officina/ui`.
 
 ```tsx
 import { TreeView } from '@officina/ui';
+
+<TreeView
+  nodes={[
+    {
+      id: 'engineering',
+      label: 'Engineering',
+      children: [
+        { id: 'frontend', label: 'Frontend' },
+        { id: 'backend', label: 'Backend' },
+      ],
+    },
+    { id: 'design', label: 'Design' },
+  ]}
+  defaultExpandedIds={['engineering']}
+  onSelect={(id) => console.log('selected', id)}
+/>;
 ```
 
 ## API

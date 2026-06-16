@@ -1,11 +1,16 @@
 ---
 title: BentoCard
-description: 'BentoCard — live example and API reference.'
+description: A cell in a BentoGrid that declares its own column and row span.
 ---
 
 import { BentoCardDemo } from '@/components/demos/misc-demo';
 
-Import `BentoCard` from `@officina/ui`.
+`BentoCard` is a single tile inside a [`BentoGrid`](/docs/components/bentogrid).
+Each card claims grid space with `colSpan` (1–4) and `rowSpan` (1–3), letting
+you build asymmetric, magazine-style layouts where some tiles are larger than
+others. It ships with a bordered surface and, when `interactive` (the default),
+a subtle hover lift and accent border. Compose cards directly as children of a
+`BentoGrid`.
 
 ## Example
 
@@ -14,7 +19,15 @@ Import `BentoCard` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { BentoCard } from '@officina/ui';
+import { BentoGrid, BentoCard } from '@officina/ui';
+
+<BentoGrid columns={3}>
+  <BentoCard colSpan={2} rowSpan={2}>
+    Featured
+  </BentoCard>
+  <BentoCard>Stat</BentoCard>
+  <BentoCard>Stat</BentoCard>
+</BentoGrid>;
 ```
 
 ## API

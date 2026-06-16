@@ -1,11 +1,16 @@
 ---
 title: GradientText
-description: 'Gradient-filled text for premium headings and accents. Uses background-clip'
+description: Gradient-filled text for premium headings, with an optional animated sweep.
 ---
 
 import { GradientTextDemo } from '@/components/demos/misc-demo';
 
-Import `GradientText` from `@officina/ui`.
+`GradientText` fills text with a gradient using `background-clip: text`, so it
+inherits the font size of whatever element it renders as — set `as` to a heading
+(`h1`, `h2`, …) and size it with your own classes. Pass `animate` to make the
+gradient sweep continuously (automatically disabled under reduced motion), or
+override the default accent → info sweep with a custom CSS `gradient` string. Use
+it sparingly for hero headlines and accent words.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `GradientText` from `@officina/ui`.
 
 ```tsx
 import { GradientText } from '@officina/ui';
+
+<GradientText as="h1" animate className="text-4xl">
+  Build faster
+</GradientText>;
 ```
 
 ## API

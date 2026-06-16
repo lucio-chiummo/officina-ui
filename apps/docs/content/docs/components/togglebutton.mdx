@@ -1,11 +1,14 @@
 ---
 title: ToggleButton
-description: 'ToggleButton — live example and API reference.'
+description: A button with a controlled on/off pressed state, exposed via aria-pressed.
 ---
 
 import { ToggleButtonDemo } from '@/components/demos/buttons-demo';
 
-Import `ToggleButton` from `@officina/ui`.
+`ToggleButton` is a `Button` with a binary pressed state — think bold, mute, or
+pin. It is fully controlled: pass `pressed` and handle `onPressedChange`, which
+fires with the next value. The pressed state is reflected with `aria-pressed`
+and an accent style, and it forwards the rest of the `Button` props.
 
 ## Example
 
@@ -15,6 +18,16 @@ Import `ToggleButton` from `@officina/ui`.
 
 ```tsx
 import { ToggleButton } from '@officina/ui';
+import { useState } from 'react';
+
+function BoldToggle() {
+  const [bold, setBold] = useState(false);
+  return (
+    <ToggleButton pressed={bold} onPressedChange={setBold}>
+      Bold
+    </ToggleButton>
+  );
+}
 ```
 
 ## API

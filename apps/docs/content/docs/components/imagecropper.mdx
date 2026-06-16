@@ -1,11 +1,15 @@
 ---
 title: ImageCropper
-description: 'ImageCropper — live example and API reference.'
+description: Interactive image cropper that returns the selected region as an image Blob.
 ---
 
 import { ImageCropperDemo } from '@/components/demos/composed-demo';
 
-Import `ImageCropper` from `@officina/ui`.
+`ImageCropper` lets users drag a selection over an image and confirm a crop —
+ideal for avatar and cover-photo flows. Pass the `src` to crop and an optional
+`aspect` ratio (width / height) to lock the selection shape; leave it off for a
+free-form crop. On confirm, `onCrop` is called with the cropped region as a
+`Blob` you can upload or preview.
 
 ## Example
 
@@ -15,6 +19,13 @@ Import `ImageCropper` from `@officina/ui`.
 
 ```tsx
 import { ImageCropper } from '@officina/ui';
+
+<ImageCropper
+  src={objectUrl}
+  aspect={1}
+  cropLabel="Save crop"
+  onCrop={(blob) => uploadAvatar(blob)}
+/>;
 ```
 
 ## API

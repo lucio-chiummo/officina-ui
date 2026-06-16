@@ -1,11 +1,16 @@
 ---
 title: ExportToolbar
-description: 'ExportToolbar — live example and API reference.'
+description: A dropdown that exports a dataset to CSV, XLSX, JSON, or PDF using your column definitions.
 ---
 
 import { ExportToolbarDemo } from '@/components/demos/composed-demo';
 
-Import `ExportToolbar` from `@officina/ui`.
+`ExportToolbar` is a download button whose menu offers the export `formats` you
+enable — any of `csv`, `xlsx`, `json`, and `pdf`. Give it the `data` rows, a base
+`filename`, and `columns` describing which fields and headers to include;
+picking a format serializes the data and triggers a file download. The trigger
+disables itself when there is no data or no columns. It pairs naturally with
+`DataTable`.
 
 ## Example
 
@@ -15,6 +20,16 @@ Import `ExportToolbar` from `@officina/ui`.
 
 ```tsx
 import { ExportToolbar } from '@officina/ui';
+
+<ExportToolbar
+  data={customers}
+  filename="customers"
+  formats={['csv', 'json']}
+  columns={[
+    { key: 'name', header: 'Name' },
+    { key: 'plan', header: 'Plan' },
+  ]}
+/>;
 ```
 
 ## API

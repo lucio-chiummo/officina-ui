@@ -1,11 +1,16 @@
 ---
 title: RadioCardGroup
-description: 'Single-choice card selector for plans, roles, layouts, or preferences.'
+description: Single-choice card selector for plans, roles, or layouts, with a fixed-column grid.
 ---
 
 import { RadioCardGroupDemo } from '@/components/demos/inputs-demo';
 
-Import `RadioCardGroup` from `@officina/ui`.
+`RadioCardGroup` is a thin preset over [`RadioGroup`](/docs/components/radiogroup)
+locked to the `card` variant, rendering each option as a selectable tile. Reach
+for it when the choices benefit from more room — plans, roles, layouts, or
+preferences with a label, description, and optional icon. Pass `columns`
+(`1`–`4`) to lay the cards out as a responsive fixed grid instead of wrapping
+rows.
 
 ## Example
 
@@ -15,6 +20,22 @@ Import `RadioCardGroup` from `@officina/ui`.
 
 ```tsx
 import { RadioCardGroup } from '@officina/ui';
+import { useState } from 'react';
+
+function RolePicker() {
+  const [role, setRole] = useState('editor');
+  return (
+    <RadioCardGroup
+      value={role}
+      onChange={setRole}
+      columns={2}
+      options={[
+        { value: 'viewer', label: 'Viewer', description: 'Read-only access' },
+        { value: 'editor', label: 'Editor', description: 'Can edit content' },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

@@ -1,11 +1,15 @@
 ---
 title: IconButton
-description: 'Icon-only button with an enforced accessible label. Optionally wraps itself'
+description: Icon-only button that requires an accessible label and can render its own tooltip.
 ---
 
 import { IconButtonDemo } from '@/components/demos/buttons-demo';
 
-Import `IconButton` from `@officina/ui`.
+`IconButton` is a square, icon-only `Button` for compact actions in toolbars,
+table rows, and tight headers. Because there is no visible text, `aria-label` is
+required. Pass `tooltip` to wrap it in a `Tooltip` so the same intent surfaces on
+hover and focus; it forwards the usual `Button` props like `variant` and
+`disabled`.
 
 ## Example
 
@@ -15,6 +19,15 @@ Import `IconButton` from `@officina/ui`.
 
 ```tsx
 import { IconButton } from '@officina/ui';
+import { Pencil } from 'lucide-react';
+
+<IconButton
+  icon={<Pencil />}
+  aria-label="Edit"
+  tooltip="Edit"
+  variant="ghost"
+  onClick={handleEdit}
+/>;
 ```
 
 ## API

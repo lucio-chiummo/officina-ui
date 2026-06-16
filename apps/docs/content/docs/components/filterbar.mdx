@@ -1,11 +1,16 @@
 ---
 title: FilterBar
-description: 'FilterBar — live example and API reference.'
+description: Add-filter control plus active filter chips, wired to the shared FiltersProvider state.
 ---
 
 import { FilterBarDemo } from '@/components/demos/composed-demo';
 
-Import `FilterBar` from `@officina/ui`.
+`FilterBar` is the turnkey filtering UI: an "Add filter" control that lets users
+pick a field and build a condition, the row of active `FilterChips`, and an
+advanced group editor that appears when nested groups are in play. It reads
+everything from the surrounding `FiltersProvider`, so it takes no data props of
+its own — only optional labels and an optional `savedViews` slot. Render it
+inside `FiltersProvider`.
 
 ## Example
 
@@ -14,7 +19,19 @@ Import `FilterBar` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FilterBar } from '@officina/ui';
+import { FiltersProvider, FilterBar, SavedViews, useFilters } from '@officina/ui';
+
+function Toolbar() {
+  const filters = useFilters({
+    mode: 'client',
+    fields: [{ id: 'status', label: 'Status', type: 'enum' }],
+  });
+  return (
+    <FiltersProvider value={filters}>
+      <FilterBar addLabel="Add filter" savedViews={<SavedViews urlKey="status" />} />
+    </FiltersProvider>
+  );
+}
 ```
 
 ## API

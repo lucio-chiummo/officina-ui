@@ -1,11 +1,15 @@
 ---
 title: TextareaAutosize
-description: 'TextareaAutosize — live example and API reference.'
+description: Textarea that grows and shrinks with its content between configurable min and max rows.
 ---
 
 import { TextareaAutosizeDemo } from '@/components/demos/inputs-demo';
 
-Import `TextareaAutosize` from `@officina/ui`.
+`TextareaAutosize` is a textarea that measures its content and adjusts its height
+on every input, so it expands as the user types and never shows an inner
+scrollbar until it hits `maxRows`. Bound the growth with `minRows` and `maxRows`
+(defaults 2 and 8). It forwards its ref and accepts all native textarea props,
+making it ideal for chat composers and comment boxes.
 
 ## Example
 
@@ -15,6 +19,20 @@ Import `TextareaAutosize` from `@officina/ui`.
 
 ```tsx
 import { TextareaAutosize } from '@officina/ui';
+import { useState } from 'react';
+
+function Example() {
+  const [value, setValue] = useState('');
+  return (
+    <TextareaAutosize
+      minRows={2}
+      maxRows={8}
+      placeholder="Write a message…"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
 ```
 
 ## API

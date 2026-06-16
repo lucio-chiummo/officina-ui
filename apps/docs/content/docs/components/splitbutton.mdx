@@ -1,11 +1,16 @@
 ---
 title: SplitButton
-description: 'SplitButton — live example and API reference.'
+description: A primary button paired with an attached dropdown of secondary actions.
 ---
 
 import { SplitButtonDemo } from '@/components/demos/buttons-demo';
 
-Import `SplitButton` from `@officina/ui`.
+`SplitButton` pairs a primary action with a dropdown of related alternatives.
+Clicking the left button runs the default `onClick`; the attached chevron opens
+a small menu of `actions`, each with its own `onSelect` handler. Use it when one
+action is the obvious default but a few variations (Save and close, Save as
+draft, …) should stay one click away. It forwards `Button` props such as
+`variant` and `size`.
 
 ## Example
 
@@ -15,6 +20,15 @@ Import `SplitButton` from `@officina/ui`.
 
 ```tsx
 import { SplitButton } from '@officina/ui';
+
+<SplitButton
+  label="Save"
+  onClick={save}
+  actions={[
+    { label: 'Save and close', onSelect: saveAndClose },
+    { label: 'Save as draft', onSelect: saveDraft },
+  ]}
+/>;
 ```
 
 ## API

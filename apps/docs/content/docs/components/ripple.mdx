@@ -1,11 +1,15 @@
 ---
 title: Ripple
-description: 'Wraps interactive content with a material-style click ripple. Decorative and'
+description: Wraps a pressable surface with a material-style click ripple from the pointer.
 ---
 
 import { RippleDemo } from '@/components/demos/misc-demo';
 
-Import `Ripple` from `@officina/ui`.
+`Ripple` wraps interactive content and emits a material-style ripple from the
+exact point where the pointer presses down. Drop it around buttons, list rows,
+or any pressable surface for tactile feedback. Customize the ripple `color` or
+turn it off per-instance with `disabled`. The effect is purely decorative and
+skipped under `prefers-reduced-motion`.
 
 ## Example
 
@@ -15,6 +19,10 @@ Import `Ripple` from `@officina/ui`.
 
 ```tsx
 import { Ripple } from '@officina/ui';
+
+<Ripple className="rounded-md">
+  <button className="px-4 py-2">Click me</button>
+</Ripple>;
 ```
 
 ## API

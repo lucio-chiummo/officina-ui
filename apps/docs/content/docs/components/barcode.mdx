@@ -1,11 +1,15 @@
 ---
 title: Barcode
-description: 'Barcode — live example and API reference.'
+description: Renders a string as a vertical-bar barcode SVG for SKUs, tickets, or order ids.
 ---
 
 import { BarcodeDemo } from '@/components/demos/misc-demo';
 
-Import `Barcode` from `@officina/ui`.
+`Barcode` turns a string into a vertical-bar SVG barcode — a decorative,
+scannable-style representation for SKUs, tickets, and order ids. Pass the `value`
+to encode and set `height` for the bar height in pixels (defaults to `72`). Note
+it renders a deterministic bit pattern of the input rather than a specific retail
+symbology like Code 128.
 
 ## Example
 
@@ -15,6 +19,8 @@ Import `Barcode` from `@officina/ui`.
 
 ```tsx
 import { Barcode } from '@officina/ui';
+
+<Barcode value="SKU-48823-A" height={72} />;
 ```
 
 ## API

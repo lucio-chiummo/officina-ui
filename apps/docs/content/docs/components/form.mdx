@@ -1,11 +1,16 @@
 ---
 title: Form
-description: 'Form — live example and API reference.'
+description: React Hook Form wrapper that provides form context and runs validation on submit.
 ---
 
 import { FormDemo } from '@/components/demos/forms-demo';
 
-Import `Form` from `@officina/ui`.
+`Form` is the canonical wrapper for every form in the library. You create a
+React Hook Form instance with `useForm`, pass it as the `form` prop, and `Form`
+spreads it through `FormProvider` so nested `Field` and control components can
+read state and errors from context. It renders a `<form noValidate>` and wires
+`onSubmit` through `form.handleSubmit`, so your handler only runs once
+validation passes.
 
 ## Example
 
@@ -14,7 +19,19 @@ Import `Form` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { Form } from '@officina/ui';
+import { Form, Field, Input } from '@officina/ui';
+import { useForm } from 'react-hook-form';
+
+function ProfileForm() {
+  const form = useForm({ defaultValues: { workspace: '' } });
+  return (
+    <Form form={form} onSubmit={(values) => console.log(values)}>
+      <Field name="workspace" label="Workspace">
+        <Input />
+      </Field>
+    </Form>
+  );
+}
 ```
 
 ## API

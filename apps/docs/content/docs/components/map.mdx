@@ -1,11 +1,14 @@
 ---
 title: Map
-description: 'Map — live example and API reference.'
+description: Lightweight decorative map surface that plots labelled pins at relative coordinates.
 ---
 
 import { MapDemo } from '@/components/demos/misc-demo';
 
-Import `Map` from `@officina/ui`.
+`Map` is a lightweight, dependency-free map surface for dropping labelled pins
+onto a stylised grid — handy for simple location callouts where a full mapping
+library would be overkill. Pass `markers`, each with an `id`, `label`, and `x`/`y`
+as percentages within the container, and set `height` (defaults to `320`).
 
 ## Example
 
@@ -15,6 +18,14 @@ Import `Map` from `@officina/ui`.
 
 ```tsx
 import { Map } from '@officina/ui';
+
+<Map
+  markers={[
+    { id: 'hq', label: 'HQ', x: 40, y: 55 },
+    { id: 'warehouse', label: 'Warehouse', x: 70, y: 30 },
+  ]}
+  height={320}
+/>;
 ```
 
 ## API

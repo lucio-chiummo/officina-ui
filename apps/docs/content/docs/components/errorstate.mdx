@@ -1,11 +1,14 @@
 ---
 title: ErrorState
-description: 'ErrorState — live example and API reference.'
+description: Danger-toned placeholder for failed loads, with a message and retry action.
 ---
 
 import { ErrorStateDemo } from '@/components/demos/feedback-demo';
 
-Import `ErrorState` from `@officina/ui`.
+`ErrorState` fills a region that failed to load with a danger-toned box: a
+`title` (default `'Something went wrong'`), an optional `message`, and an
+optional `retry` action. It carries `role="alert"` so assistive tech announces
+it. Use it as the error branch when a panel, list, or query fails.
 
 ## Example
 
@@ -14,7 +17,13 @@ Import `ErrorState` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ErrorState } from '@officina/ui';
+import { ErrorState, Button } from '@officina/ui';
+
+<ErrorState
+  title="Couldn't load orders"
+  message="Check your connection and try again."
+  retry={<Button onClick={refetch}>Retry</Button>}
+/>;
 ```
 
 ## API

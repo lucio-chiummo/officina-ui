@@ -1,11 +1,15 @@
 ---
 title: Tilt
-description: '3D pointer-tilt surface for premium feature and pricing cards. Tilt follows'
+description: 3D surface that tilts toward the pointer on hover and resets on leave.
 ---
 
 import { TiltDemo } from '@/components/demos/misc-demo';
 
-Import `Tilt` from `@officina/ui`.
+`Tilt` wraps content in a surface that rotates in 3D toward the cursor as it
+moves across, then eases back flat when the pointer leaves. Cap the rotation
+with `max` (degrees) and add a hover lift with `scale`. It's a tactile accent for
+feature and pricing cards. The tilt is disabled entirely under
+`prefers-reduced-motion`.
 
 ## Example
 
@@ -15,6 +19,10 @@ Import `Tilt` from `@officina/ui`.
 
 ```tsx
 import { Tilt } from '@officina/ui';
+
+<Tilt max={12} scale={1.03}>
+  <div className="rounded-lg border p-6">Feature card</div>
+</Tilt>;
 ```
 
 ## API

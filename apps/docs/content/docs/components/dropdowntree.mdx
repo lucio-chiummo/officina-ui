@@ -1,11 +1,16 @@
 ---
 title: DropDownTree
-description: 'Select-style trigger opening a tree picker — for hierarchical taxonomies.'
+description: Select-style trigger that opens a tree picker for choosing from a hierarchical taxonomy.
 ---
 
 import { DropDownTreeDemo } from '@/components/demos/inputs-demo';
 
-Import `DropDownTree` from `@officina/ui`.
+`DropDownTree` is a select-style field whose popover holds an expandable tree,
+for picking a single node out of a hierarchy — categories, org charts, file
+folders, or any nested taxonomy. Pass `nodes` as `TreeNode`s (`id`, `label`,
+optional `icon` and `children`); it is controlled by the selected node `id`.
+Pre-expand branches with `defaultExpandedIds`, and set `leafOnly` to allow
+selecting only leaf nodes.
 
 ## Example
 
@@ -15,6 +20,29 @@ Import `DropDownTree` from `@officina/ui`.
 
 ```tsx
 import { DropDownTree } from '@officina/ui';
+import { useState } from 'react';
+
+function CategoryPicker() {
+  const [value, setValue] = useState<string | undefined>();
+  return (
+    <DropDownTree
+      value={value}
+      onChange={setValue}
+      placeholder="Choose a category"
+      defaultExpandedIds={['electronics']}
+      nodes={[
+        {
+          id: 'electronics',
+          label: 'Electronics',
+          children: [
+            { id: 'phones', label: 'Phones' },
+            { id: 'laptops', label: 'Laptops' },
+          ],
+        },
+      ]}
+    />
+  );
+}
 ```
 
 ## API

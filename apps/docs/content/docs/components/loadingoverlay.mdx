@@ -1,11 +1,16 @@
 ---
 title: LoadingOverlay
-description: 'Contained async overlay for panels, forms, and tables. It traps nothing and'
+description: Scoped loading overlay that dims or blurs a panel, form, or table while busy.
 ---
 
 import { LoadingOverlayDemo } from '@/components/demos/feedback-demo';
 
-Import `LoadingOverlay` from `@officina/ui`.
+`LoadingOverlay` covers a contained region — a panel, form, or table — with a
+centred spinner and optional `label` while an async action runs. Toggle it with
+`visible`; choose to dim or `blur` the content behind it and size the spinner
+with `spinnerSize`. Wrap your content as children to overlay it in place (the
+overlay reports `aria-busy` and `role="status"`), or render it standalone inside
+a positioned parent. It does not trap focus or block the page.
 
 ## Example
 
@@ -15,6 +20,10 @@ Import `LoadingOverlay` from `@officina/ui`.
 
 ```tsx
 import { LoadingOverlay } from '@officina/ui';
+
+<LoadingOverlay visible={isSaving} label="Saving…" blur>
+  <form>{/* fields */}</form>
+</LoadingOverlay>;
 ```
 
 ## API

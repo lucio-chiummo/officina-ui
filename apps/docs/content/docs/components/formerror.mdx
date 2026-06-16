@@ -1,11 +1,14 @@
 ---
 title: FormError
-description: 'FormError — live example and API reference.'
+description: Error message for a FormControl that renders only while the control is marked invalid.
 ---
 
 import { FormErrorDemo } from '@/components/demos/composed-demo';
 
-Import `FormError` from `@officina/ui`.
+`FormError` displays the validation message for a field. Placed inside a
+`FormControl`, it picks up the control's error id and renders nothing until the
+control is marked `invalid`, so you can leave it in the tree unconditionally. It
+carries `role="alert"` so screen readers announce the message when it appears.
 
 ## Example
 
@@ -14,7 +17,13 @@ Import `FormError` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { FormError } from '@officina/ui';
+import { FormControl, FormLabel, FormError, Input } from '@officina/ui';
+
+<FormControl invalid required>
+  <FormLabel>Email</FormLabel>
+  <Input type="email" />
+  <FormError>Enter a valid email address.</FormError>
+</FormControl>;
 ```
 
 ## API

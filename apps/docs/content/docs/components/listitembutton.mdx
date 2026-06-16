@@ -1,11 +1,15 @@
 ---
 title: ListItemButton
-description: 'ListItemButton — live example and API reference.'
+description: Interactive, focusable row button with a selected state for menus and nav.
 ---
 
 import { ListItemButtonDemo } from '@/components/demos/composed-demo';
 
-Import `ListItemButton` from `@officina/ui`.
+`ListItemButton` makes a `ListItem` clickable: it renders a full-width `<button>`
+with hover and keyboard focus styling and a `selected` prop that applies the
+active/accent treatment for the current route or chosen option. Use it inside a
+`ListItem` for navigation menus, option pickers, and any list where rows respond
+to clicks. It forwards all native button props, so wire up `onClick` directly.
 
 ## Example
 
@@ -14,7 +18,18 @@ Import `ListItemButton` from `@officina/ui`.
 </Demo>
 
 ```tsx
-import { ListItemButton } from '@officina/ui';
+import { List, ListItem, ListItemButton } from '@officina/ui';
+
+<List>
+  <ListItem>
+    <ListItemButton selected onClick={() => navigate('/dashboard')}>
+      Dashboard
+    </ListItemButton>
+  </ListItem>
+  <ListItem>
+    <ListItemButton onClick={() => navigate('/settings')}>Settings</ListItemButton>
+  </ListItem>
+</List>;
 ```
 
 ## API

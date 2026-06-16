@@ -1,11 +1,15 @@
 ---
 title: CountdownTimer
-description: 'CountdownTimer — live example and API reference.'
+description: Live countdown to a target date, ticking once a second in days, hours, minutes, and seconds.
 ---
 
 import { CountdownTimerDemo } from '@/components/demos/data-display-demo';
 
-Import `CountdownTimer` from `@officina/ui`.
+`CountdownTimer` counts down to a `target` `Date`, updating every second and
+showing the remaining days, hours, minutes, and seconds. It is SSR-safe — it
+renders a placeholder until mount to avoid hydration mismatches — and shows
+`doneLabel` once time runs out. Use it for sales, launches, or session
+expirations.
 
 ## Example
 
@@ -15,6 +19,10 @@ Import `CountdownTimer` from `@officina/ui`.
 
 ```tsx
 import { CountdownTimer } from '@officina/ui';
+
+function LaunchCountdown() {
+  return <CountdownTimer target={new Date('2026-12-31T23:59:59')} doneLabel="We're live!" />;
+}
 ```
 
 ## API
