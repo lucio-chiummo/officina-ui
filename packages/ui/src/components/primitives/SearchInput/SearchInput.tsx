@@ -48,9 +48,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={invalid ? true : undefined}
         className={cn(
-          'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pl-9 pr-9 text-sm text-[var(--color-fg-base)] outline-none transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20',
+          'focus:ring-[var(--color-accent)]/20 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pl-9 pr-9 text-sm text-[var(--color-fg-base)] outline-none transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2',
           invalid &&
-            'border-[var(--color-danger)] focus:border-[var(--color-danger)] focus:ring-[var(--color-danger)]/20',
+            'focus:ring-[var(--color-danger)]/20 border-[var(--color-danger)] focus:border-[var(--color-danger)]',
         )}
         {...props}
       />

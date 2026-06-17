@@ -27,10 +27,12 @@ Improve form-control prop coverage and expose the full hooks set.
 **ARIA correctness**: `aria-required` and `aria-invalid` are omitted from `role="button"` elements (ColorPicker, DatePicker, MultiSelect triggers) since the button role does not support them per WAI-ARIA. `aria-required` is also omitted from `role="slider"` elements (Slider, RangeSlider, Rating) for the same reason.
 
 **Hooks**:
+
 - Fix `useCopyToClipboard`: clear stale reset timers so an earlier copy's timeout can't clobber a later one, clean up on unmount, and resolve to a `boolean` so callers can react to a failed copy. `CopyButton`, `CopyField`, and `MetadataList`'s inline copy action now share this hook instead of duplicating the logic.
 - Fix `useClickOutside`'s ref type to `RefObject<T | null>`, matching what `useRef<T>(null)` actually returns.
 - Consolidate the two `useMediaQuery` implementations into one SSR-safe hook, with `useIsMobile`/`useIsTablet`/`useIsDesktop`/`usePrefersDark`/`usePrefersReducedMotion` convenience wrappers.
 - Expose the full set of utility hooks from `@officina/ui`'s root export.
 
 **Other**:
+
 - Export `DrawerProps`/`SheetProps`/`ConfirmDialogProps` from the `Dialog` barrel.

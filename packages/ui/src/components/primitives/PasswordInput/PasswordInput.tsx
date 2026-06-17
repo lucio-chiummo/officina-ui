@@ -48,9 +48,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             value={value}
             aria-invalid={invalid ? true : undefined}
             className={cn(
-              'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15',
+              'focus:ring-3 focus:ring-[var(--color-accent)]/15 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)]',
               invalid &&
-                'border-[var(--color-danger)] focus:border-[var(--color-danger)] focus:ring-[var(--color-danger)]/15',
+                'focus:ring-[var(--color-danger)]/15 border-[var(--color-danger)] focus:border-[var(--color-danger)]',
             )}
             {...props}
           />

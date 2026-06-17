@@ -93,7 +93,7 @@ export const Slider = forwardRef<HTMLSpanElement, SliderProps>(function Slider(
             onBlur={onBlur}
             onFocus={onFocus}
             className={cn(
-              'block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20',
+              'focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2',
               'aria-[invalid=true]:border-[var(--color-danger)]',
             )}
           />
