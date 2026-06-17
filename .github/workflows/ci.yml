@@ -22,3 +22,12 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+      - name: Check drift manifest is up to date
+        run: pnpm drift:check
+      - name: Compare against admin-template manifest
+        continue-on-error: true
+        run: |
+          curl -sf "https://raw.githubusercontent.com/lucio-chiummo/admin-template/main/drift-manifest.json" \
+            -o /tmp/admin-template-drift-manifest.json \
+            && pnpm drift:compare /tmp/admin-template-drift-manifest.json \
+            || echo "⚠ Cross-repo drift detected — review the diff above and sync the other repo."

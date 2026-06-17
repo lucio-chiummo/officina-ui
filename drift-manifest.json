@@ -1,0 +1,1456 @@
+{
+  "version": 1,
+  "source": "packages/ui/src/components/primitives",
+  "components": {
+    "Accordion": [
+      "allowMultiple",
+      "className",
+      "defaultOpenIds",
+      "items"
+    ],
+    "ActionMenu": [
+      "align",
+      "icon",
+      "items",
+      "label",
+      "sections",
+      "size",
+      "trigger"
+    ],
+    "ActionSheet": [
+      "actions",
+      "cancelLabel",
+      "description",
+      "onClose",
+      "open"
+    ],
+    "ActivityFeed": [
+      "className",
+      "empty",
+      "items"
+    ],
+    "AIPrompt": [
+      "busy",
+      "disabled",
+      "hint",
+      "label",
+      "onStop",
+      "onSubmit",
+      "output",
+      "placeholder",
+      "suggestions"
+    ],
+    "Alert": [
+      "dismissible",
+      "variant"
+    ],
+    "AnimatedList": [
+      "getKey",
+      "itemClassName",
+      "items",
+      "renderItem",
+      "stagger"
+    ],
+    "AnimatedNumber": [
+      "duration",
+      "format",
+      "value"
+    ],
+    "AppBar": [
+      "position",
+      "tone"
+    ],
+    "AreaChart": [
+      "className",
+      "data",
+      "height",
+      "series",
+      "showLegend",
+      "xKey"
+    ],
+    "AspectRatio": [
+      "asChild"
+    ],
+    "AsyncSelect": [
+      "clearable",
+      "disabled",
+      "emptyMessage",
+      "invalid",
+      "minChars",
+      "minCharsMessage",
+      "name",
+      "onChange",
+      "placeholder",
+      "queryFn",
+      "queryKey",
+      "renderOption",
+      "required",
+      "size",
+      "value"
+    ],
+    "Avatar": [
+      "alt",
+      "initials",
+      "name",
+      "shape",
+      "size",
+      "src"
+    ],
+    "AvatarGroup": [
+      "max",
+      "size"
+    ],
+    "AvatarStack": [
+      "avatars",
+      "max",
+      "shape",
+      "size"
+    ],
+    "Backdrop": [
+      "blur",
+      "open"
+    ],
+    "Badge": [
+      "dot",
+      "size",
+      "tone",
+      "variant"
+    ],
+    "Banner": [
+      "actions",
+      "children",
+      "dismissLabel",
+      "full",
+      "icon",
+      "onDismiss",
+      "tone"
+    ],
+    "BarChart": [
+      "className",
+      "data",
+      "height",
+      "series",
+      "showLegend",
+      "xKey"
+    ],
+    "Barcode": [
+      "className",
+      "height",
+      "value"
+    ],
+    "BentoCard": [
+      "colSpan",
+      "interactive",
+      "rowSpan"
+    ],
+    "BentoGrid": [
+      "columns"
+    ],
+    "BorderBeam": [
+      "duration",
+      "size"
+    ],
+    "BottomNavigation": [
+      "items",
+      "onChange",
+      "value"
+    ],
+    "Box": [
+      "as"
+    ],
+    "Breadcrumb": [
+      "items",
+      "separator"
+    ],
+    "Button": [
+      "isLoading",
+      "size",
+      "variant"
+    ],
+    "ButtonGroup": [
+      "attached",
+      "orientation",
+      "size"
+    ],
+    "CandlestickChart": [
+      "className",
+      "data",
+      "height",
+      "showVolume",
+      "showZoom"
+    ],
+    "Card": [
+      "padding"
+    ],
+    "Carousel": [
+      "children",
+      "options",
+      "showArrows",
+      "showDots"
+    ],
+    "Chat": [
+      "disabled",
+      "emptyState",
+      "loading",
+      "messages",
+      "onSend",
+      "placeholder",
+      "typingIndicator"
+    ],
+    "Checkbox": [
+      "checked",
+      "description",
+      "disabled",
+      "indeterminate",
+      "invalid",
+      "label",
+      "name",
+      "onChange",
+      "required"
+    ],
+    "CheckboxGroup": [
+      "disabled",
+      "invalid",
+      "name",
+      "onChange",
+      "options",
+      "orientation",
+      "value"
+    ],
+    "Chip": [
+      "children",
+      "icon",
+      "interactive",
+      "onRemove",
+      "removeLabel",
+      "size",
+      "tone",
+      "variant"
+    ],
+    "CircularProgress": [
+      "label",
+      "max",
+      "size",
+      "thickness",
+      "value"
+    ],
+    "ClickAwayListener": [
+      "onClickAway"
+    ],
+    "CodeBlock": [
+      "code",
+      "language",
+      "maxHeight",
+      "showCopy",
+      "showLineNumbers"
+    ],
+    "CodeEditor": [
+      "height",
+      "language",
+      "lineNumbers",
+      "minHeight",
+      "onChange",
+      "placeholder",
+      "readOnly",
+      "theme",
+      "value"
+    ],
+    "Collapsible": [
+      "children",
+      "defaultOpen"
+    ],
+    "ColorPicker": [
+      "disabled",
+      "invalid",
+      "label",
+      "name",
+      "onChange",
+      "presets",
+      "value"
+    ],
+    "ColumnsToggle": [
+      "label",
+      "table"
+    ],
+    "Combobox": [
+      "clearable",
+      "disabled",
+      "emptyMessage",
+      "inputRef",
+      "invalid",
+      "loading",
+      "name",
+      "onChange",
+      "onInputChange",
+      "options",
+      "placeholder",
+      "renderOption",
+      "required",
+      "size",
+      "value"
+    ],
+    "CommandPalette": [
+      "label",
+      "placeholder"
+    ],
+    "Confetti": [
+      "height",
+      "pieces",
+      "run"
+    ],
+    "ConfirmDialog": [
+      "cancelLabel",
+      "confirmLabel",
+      "description",
+      "destructive",
+      "onClose",
+      "onConfirm",
+      "open",
+      "typeToConfirm"
+    ],
+    "Container": [
+      "size"
+    ],
+    "ContextMenu": [
+      "children",
+      "items"
+    ],
+    "CopyButton": [
+      "copiedLabel",
+      "copyLabel",
+      "isLoading",
+      "size",
+      "variant"
+    ],
+    "CopyField": [
+      "copiedLabel",
+      "copyLabel",
+      "displayValue",
+      "label",
+      "monospace",
+      "size",
+      "truncate",
+      "value"
+    ],
+    "CountdownTimer": [
+      "doneLabel",
+      "target"
+    ],
+    "CurrencyInput": [
+      "ariaLabel",
+      "currency",
+      "disabled",
+      "invalid",
+      "locale",
+      "max",
+      "min",
+      "name",
+      "onChange",
+      "placeholder",
+      "required",
+      "showSteppers",
+      "size",
+      "suffix",
+      "value"
+    ],
+    "DataGrid": [
+      "columns",
+      "data",
+      "density",
+      "editableColumns",
+      "filters",
+      "globalFilter",
+      "onCellChange",
+      "pageSize",
+      "stickyHeader"
+    ],
+    "DataTable": [
+      "columns",
+      "data",
+      "density",
+      "emptyDescription",
+      "emptyTitle",
+      "enableRowSelection",
+      "exportable",
+      "filters",
+      "globalFilter",
+      "isLoading",
+      "onRowClick",
+      "onRowSelectionChange",
+      "pageSize",
+      "toolbar"
+    ],
+    "DatePicker": [
+      "disabled",
+      "invalid",
+      "label",
+      "mode",
+      "name",
+      "onChange",
+      "placeholder",
+      "value"
+    ],
+    "DateRangeFilter": [
+      "inline",
+      "label",
+      "onChange",
+      "onClear",
+      "placeholder",
+      "value"
+    ],
+    "DateRangeFilterCalendar": [
+      "onChange",
+      "value"
+    ],
+    "DateRangePicker": [
+      "inline",
+      "locale",
+      "maxDate",
+      "minDate",
+      "onChange",
+      "placeholder",
+      "presets",
+      "value"
+    ],
+    "DateTimePicker": [
+      "onChange",
+      "placeholder",
+      "value"
+    ],
+    "DateTimeRangePicker": [
+      "endLabel",
+      "onChange",
+      "placeholder",
+      "startLabel",
+      "value"
+    ],
+    "DescriptionList": [
+      "items",
+      "layout"
+    ],
+    "DiffViewer": [
+      "newValue",
+      "oldValue"
+    ],
+    "DonutChart": [
+      "className",
+      "data",
+      "height",
+      "nameKey",
+      "valueKey"
+    ],
+    "Drawer": [
+      "children",
+      "description",
+      "onClose",
+      "open",
+      "width"
+    ],
+    "Dropdown": [
+      "align",
+      "sections",
+      "trigger"
+    ],
+    "DropDownTree": [
+      "defaultExpandedIds",
+      "label",
+      "leafOnly",
+      "nodes",
+      "onChange",
+      "placeholder",
+      "value"
+    ],
+    "Editor": [
+      "onChange",
+      "placeholder",
+      "value"
+    ],
+    "EmptyState": [
+      "action",
+      "description",
+      "icon",
+      "size"
+    ],
+    "ErrorState": [
+      "message",
+      "retry"
+    ],
+    "ExportToolbar": [
+      "columns",
+      "data",
+      "filename",
+      "formats"
+    ],
+    "FacetedFilter": [
+      "inline",
+      "label",
+      "onChange",
+      "options",
+      "searchPlaceholder",
+      "showSearch",
+      "value"
+    ],
+    "Field": [
+      "error",
+      "hint",
+      "label",
+      "name",
+      "required"
+    ],
+    "Fieldset": [
+      "columns",
+      "description",
+      "legend"
+    ],
+    "FileItem": [
+      "error",
+      "icon",
+      "name",
+      "onRemove",
+      "onRetry",
+      "progress",
+      "size",
+      "status"
+    ],
+    "FileUpload": [
+      "accept",
+      "activeLabel",
+      "ariaLabel",
+      "disabled",
+      "getFilesFromEvent",
+      "hint",
+      "invalid",
+      "label",
+      "maxFiles",
+      "maxSize",
+      "minSize",
+      "name",
+      "noClick",
+      "noDrag",
+      "noDragEventsBubbling",
+      "noKeyboard",
+      "onDropAccepted",
+      "onDropRejected",
+      "onError",
+      "onFileDialogCancel",
+      "onFileDialogOpen",
+      "onFiles",
+      "preventDropOnDocument",
+      "required",
+      "useFsAccessApi",
+      "validator"
+    ],
+    "FilterBar": [
+      "addLabel",
+      "clearLabel",
+      "savedViews"
+    ],
+    "FilterBuilder": [
+      "condition",
+      "fields",
+      "onChange",
+      "onRemove"
+    ],
+    "FilterChips": [
+      "chips",
+      "clearAllLabel",
+      "onClearAll"
+    ],
+    "FilterGroupEditor": [
+      "fields",
+      "maxDepth"
+    ],
+    "FilterGroupEditorPanel": [
+      "fields",
+      "maxDepth"
+    ],
+    "FilterPopover": [
+      "activeCount",
+      "applyLabel",
+      "children",
+      "clearLabel",
+      "icon",
+      "label",
+      "onApply",
+      "onClear"
+    ],
+    "FiltersProvider": [
+      "value"
+    ],
+    "FloatingActionButton": [
+      "isLoading",
+      "placement",
+      "size",
+      "variant"
+    ],
+    "Form": [
+      "form",
+      "onSubmit"
+    ],
+    "FormActions": [
+      "align",
+      "sticky"
+    ],
+    "FormControl": [
+      "children",
+      "disabled",
+      "invalid",
+      "required"
+    ],
+    "FormGrid": [
+      "columns"
+    ],
+    "FormHelperText": [
+      "tone"
+    ],
+    "FormLabel": [
+      "htmlFor",
+      "required"
+    ],
+    "FunnelChart": [
+      "className",
+      "data",
+      "height"
+    ],
+    "GanttChart": [
+      "className",
+      "items"
+    ],
+    "Gauge": [
+      "formatValue",
+      "label",
+      "max",
+      "min",
+      "size",
+      "thresholds",
+      "trackColor",
+      "value",
+      "variant"
+    ],
+    "GaugeChart": [
+      "className",
+      "color",
+      "height",
+      "label",
+      "max",
+      "min",
+      "value"
+    ],
+    "GradientText": [
+      "animate",
+      "as",
+      "gradient"
+    ],
+    "Grid": [
+      "columns",
+      "gap",
+      "minChildWidth"
+    ],
+    "HeatmapChart": [
+      "className",
+      "data",
+      "height",
+      "xLabels",
+      "yLabels"
+    ],
+    "HoverCard": [
+      "children",
+      "side",
+      "trigger"
+    ],
+    "IconButton": [
+      "icon",
+      "isLoading",
+      "size",
+      "tooltip",
+      "tooltipSide",
+      "variant"
+    ],
+    "ImageCropper": [
+      "aspect",
+      "cropLabel",
+      "onCrop",
+      "src"
+    ],
+    "ImageLightbox": [
+      "onClose",
+      "open",
+      "slides",
+      "startIndex"
+    ],
+    "ImageList": [
+      "cols",
+      "gap"
+    ],
+    "ImageListItem": [
+      "caption"
+    ],
+    "ImagePreview": [
+      "alt",
+      "name",
+      "onRemove",
+      "onRetry",
+      "progress",
+      "size",
+      "src",
+      "status"
+    ],
+    "InfiniteScroll": [
+      "children",
+      "className",
+      "end",
+      "hasMore",
+      "isLoading",
+      "loader",
+      "onLoadMore"
+    ],
+    "InlineNotice": [
+      "action",
+      "dismissible",
+      "icon",
+      "onDismiss",
+      "tone"
+    ],
+    "InputGroup": [
+      "suffix"
+    ],
+    "JSONViewer": [
+      "className",
+      "defaultExpanded",
+      "value"
+    ],
+    "KanbanBoard": [
+      "cards",
+      "className",
+      "columns",
+      "onMoveCard"
+    ],
+    "LineChart": [
+      "className",
+      "data",
+      "height",
+      "series",
+      "showLegend",
+      "xKey"
+    ],
+    "List": [
+      "dense",
+      "variant"
+    ],
+    "ListItemButton": [
+      "selected"
+    ],
+    "ListItemContent": [
+      "description"
+    ],
+    "LoadingOverlay": [
+      "blur",
+      "children",
+      "label",
+      "spinnerSize",
+      "visible"
+    ],
+    "LoadingState": [
+      "label"
+    ],
+    "Map": [
+      "className",
+      "height",
+      "markers"
+    ],
+    "Marquee": [
+      "speedSeconds"
+    ],
+    "MaskedInput": [
+      "disabled",
+      "invalid",
+      "label",
+      "mask",
+      "name",
+      "onChange",
+      "placeholder",
+      "required",
+      "value"
+    ],
+    "Masonry": [
+      "columns",
+      "gap"
+    ],
+    "Megamenu": [
+      "columns",
+      "footer",
+      "trigger"
+    ],
+    "MentionInput": [
+      "onChange",
+      "options",
+      "placeholder",
+      "value"
+    ],
+    "Menu": [
+      "align",
+      "sections"
+    ],
+    "MetadataList": [
+      "columns",
+      "items"
+    ],
+    "Meter": [
+      "label",
+      "max",
+      "segments",
+      "showLegend",
+      "size",
+      "tone",
+      "value",
+      "valueLabel"
+    ],
+    "Modal": [
+      "children",
+      "description",
+      "onClose",
+      "open"
+    ],
+    "MotionPreset": [
+      "duration",
+      "preset"
+    ],
+    "MultiColumnCombobox": [
+      "clearable",
+      "columns",
+      "disabled",
+      "displayKey",
+      "emptyMessage",
+      "items",
+      "label",
+      "onChange",
+      "placeholder",
+      "value"
+    ],
+    "MultiSelect": [
+      "chipsClassName",
+      "clearAllLabel",
+      "disabled",
+      "emptyMessage",
+      "invalid",
+      "maxBadgeCount",
+      "name",
+      "onChange",
+      "options",
+      "placeholder",
+      "selectAllLabel",
+      "showSelectAll",
+      "size",
+      "value"
+    ],
+    "MultiViewCalendar": [
+      "mode",
+      "months",
+      "onChange",
+      "value"
+    ],
+    "NavigationMenu": [
+      "className",
+      "items"
+    ],
+    "NoSsr": [
+      "fallback"
+    ],
+    "NotificationCard": [
+      "actions",
+      "description",
+      "icon",
+      "meta",
+      "unread"
+    ],
+    "NotificationCenter": [
+      "emptyState",
+      "label",
+      "maxVisible",
+      "notifications",
+      "onClear",
+      "onMarkAllRead",
+      "onMarkRead",
+      "onSeeAll"
+    ],
+    "NumberInput": [
+      "ariaLabel",
+      "disabled",
+      "invalid",
+      "max",
+      "min",
+      "name",
+      "onChange",
+      "placeholder",
+      "precision",
+      "required",
+      "showSteppers",
+      "size",
+      "step",
+      "suffix",
+      "value"
+    ],
+    "OnboardingTour": [
+      "onClose",
+      "options",
+      "run",
+      "steps"
+    ],
+    "OrgChart": [
+      "className",
+      "node"
+    ],
+    "PageHeader": [
+      "actions",
+      "breadcrumbs",
+      "description"
+    ],
+    "PageSection": [
+      "actions",
+      "description"
+    ],
+    "Pagination": [
+      "onPageChange",
+      "page",
+      "siblingCount",
+      "totalPages"
+    ],
+    "Panel": [
+      "collapsedSize",
+      "collapsible",
+      "defaultSize",
+      "disabled",
+      "elementRef",
+      "groupResizeBehavior",
+      "maxSize",
+      "minSize",
+      "onResize",
+      "panelRef",
+      "scroll"
+    ],
+    "PanelHandle": [
+      "disableDoubleClick",
+      "disabled",
+      "elementRef"
+    ],
+    "Paper": [
+      "elevation",
+      "variant"
+    ],
+    "PasswordInput": [
+      "hideLabel",
+      "invalid",
+      "revealLabel",
+      "showStrength"
+    ],
+    "PhoneInput": [
+      "invalid"
+    ],
+    "PieChart": [
+      "className",
+      "data",
+      "donut",
+      "height",
+      "nameKey",
+      "valueKey"
+    ],
+    "PinInput": [
+      "disabled",
+      "invalid",
+      "label",
+      "length",
+      "name",
+      "onChange",
+      "required",
+      "value"
+    ],
+    "Player": [
+      "controls",
+      "poster",
+      "src"
+    ],
+    "Popover": [
+      "align",
+      "children",
+      "defaultOpen",
+      "modal",
+      "onOpenChange",
+      "open",
+      "side",
+      "sideOffset",
+      "trigger"
+    ],
+    "Popper": [
+      "anchor",
+      "children",
+      "open",
+      "placement"
+    ],
+    "Portal": [
+      "container",
+      "disabled"
+    ],
+    "PrimitiveLink": [
+      "external",
+      "muted"
+    ],
+    "Progress": [
+      "ariaLabel",
+      "label",
+      "max",
+      "showValue",
+      "size",
+      "value",
+      "variant"
+    ],
+    "PropertyItem": [
+      "children",
+      "divided",
+      "label",
+      "labelWidth",
+      "orientation"
+    ],
+    "PropertyList": [
+      "children",
+      "divided",
+      "items",
+      "labelWidth",
+      "orientation"
+    ],
+    "QRCode": [
+      "label",
+      "size",
+      "value"
+    ],
+    "RadarChart": [
+      "categories",
+      "className",
+      "height",
+      "series"
+    ],
+    "RadioCardGroup": [
+      "columns",
+      "invalid",
+      "name",
+      "onChange",
+      "options",
+      "orientation",
+      "required",
+      "value"
+    ],
+    "RadioGroup": [
+      "invalid",
+      "name",
+      "onChange",
+      "options",
+      "orientation",
+      "required",
+      "value",
+      "variant"
+    ],
+    "RangeFilter": [
+      "inline",
+      "label",
+      "max",
+      "min",
+      "onChange",
+      "step",
+      "value"
+    ],
+    "RangeSlider": [
+      "disabled",
+      "formatValue",
+      "invalid",
+      "label",
+      "max",
+      "min",
+      "minStepsBetweenThumbs",
+      "name",
+      "onValueChange",
+      "step",
+      "value"
+    ],
+    "Rating": [
+      "invalid",
+      "label",
+      "max",
+      "onChange",
+      "precision",
+      "readOnly",
+      "size",
+      "value"
+    ],
+    "ResizablePanels": [
+      "autoSaveId",
+      "direction"
+    ],
+    "Ripple": [
+      "disabled"
+    ],
+    "RowActions": [
+      "actions",
+      "max",
+      "menuLabel",
+      "size"
+    ],
+    "SankeyChart": [
+      "className",
+      "height",
+      "links",
+      "nodes"
+    ],
+    "SavedViews": [
+      "currentFilters",
+      "onChange",
+      "onShare",
+      "placeholder",
+      "saveLabel",
+      "shareLabel",
+      "storage",
+      "storageKey",
+      "updateLabel",
+      "urlKey",
+      "value"
+    ],
+    "ScatterChart": [
+      "className",
+      "data",
+      "height",
+      "xLabel",
+      "yLabel"
+    ],
+    "Scheduler": [
+      "defaultDate",
+      "defaultView",
+      "events",
+      "minHeight",
+      "onEventClick",
+      "onEventsChange",
+      "onSlotSelect",
+      "readOnly",
+      "resources",
+      "views"
+    ],
+    "Scrollbar": [
+      "defer",
+      "element",
+      "events",
+      "options"
+    ],
+    "ScrollSpy": [
+      "containerId",
+      "items",
+      "onActiveChange",
+      "rootMargin"
+    ],
+    "SearchFilter": [
+      "debounceMs",
+      "onChange",
+      "onDebouncedChange",
+      "placeholder",
+      "value"
+    ],
+    "SearchInput": [
+      "clearLabel",
+      "debounceMs",
+      "invalid",
+      "onChange",
+      "onDebouncedChange",
+      "showClear",
+      "value"
+    ],
+    "Separator": [
+      "label",
+      "orientation"
+    ],
+    "Sheet": [
+      "onClose",
+      "open"
+    ],
+    "Shortcut": [
+      "keys",
+      "withPlus"
+    ],
+    "SignaturePad": [
+      "clearLabel",
+      "onChange"
+    ],
+    "Skeleton": [
+      "height",
+      "lines",
+      "variant",
+      "width"
+    ],
+    "SkeletonRow": [
+      "rows"
+    ],
+    "Slider": [
+      "disabled",
+      "formatValue",
+      "invalid",
+      "label",
+      "max",
+      "min",
+      "name",
+      "onValueChange",
+      "step",
+      "value"
+    ],
+    "SortableList": [
+      "items",
+      "onChange",
+      "renderItem"
+    ],
+    "Sparkline": [
+      "data",
+      "fill",
+      "height",
+      "variant",
+      "width"
+    ],
+    "SpeedDial": [
+      "actions",
+      "ariaLabel",
+      "icon"
+    ],
+    "Spinner": [
+      "label",
+      "size"
+    ],
+    "SplitButton": [
+      "actions",
+      "isLoading",
+      "label",
+      "size",
+      "variant"
+    ],
+    "Spotlight": [
+      "children",
+      "onChange",
+      "onOpenChange",
+      "open",
+      "placeholder",
+      "value"
+    ],
+    "SpotlightCard": [
+      "glowColor",
+      "intensity",
+      "radius"
+    ],
+    "Stack": [
+      "align",
+      "direction",
+      "divider",
+      "gap",
+      "justify",
+      "wrap"
+    ],
+    "StackedBarChart": [
+      "className",
+      "data",
+      "height",
+      "series",
+      "showLegend",
+      "xKey"
+    ],
+    "StatCard": [
+      "delta",
+      "deltaLabel",
+      "hint",
+      "icon",
+      "label",
+      "sparkline",
+      "value"
+    ],
+    "StatusDot": [
+      "pulse",
+      "tone"
+    ],
+    "StatusLabel": [
+      "dot",
+      "icon",
+      "pulse",
+      "tone",
+      "variant"
+    ],
+    "Stepper": [
+      "current",
+      "onStepClick",
+      "orientation",
+      "steps"
+    ],
+    "SwatchPicker": [
+      "allowCustom",
+      "onChange",
+      "size",
+      "swatches",
+      "value"
+    ],
+    "Switch": [
+      "checked",
+      "description",
+      "disabled",
+      "invalid",
+      "label",
+      "name",
+      "onChange",
+      "required"
+    ],
+    "SwitchGroup": [
+      "bordered",
+      "disabled",
+      "onChange",
+      "options",
+      "value"
+    ],
+    "TableToolbar": [
+      "bulkActions",
+      "columnsToggle",
+      "filters",
+      "rightSlot",
+      "search"
+    ],
+    "Tabs": [
+      "defaultIndex",
+      "items",
+      "onChange",
+      "selectedIndex",
+      "variant"
+    ],
+    "Tag": [
+      "children",
+      "tone"
+    ],
+    "TagInput": [
+      "delimiter",
+      "disabled",
+      "invalid",
+      "maxTags",
+      "name",
+      "onChange",
+      "placeholder",
+      "required",
+      "suggestions",
+      "validate",
+      "value"
+    ],
+    "TextareaAutosize": [
+      "maxRows",
+      "minRows"
+    ],
+    "Tilt": [
+      "max",
+      "scale"
+    ],
+    "Timeline": [
+      "items",
+      "orientation"
+    ],
+    "TimePicker": [
+      "disabled",
+      "hour12",
+      "label",
+      "onChange",
+      "showSeconds",
+      "value"
+    ],
+    "ToggleButton": [
+      "isLoading",
+      "onPressedChange",
+      "pressed",
+      "size",
+      "variant"
+    ],
+    "ToggleGroup": [
+      "ariaLabel",
+      "onChange",
+      "options",
+      "type",
+      "value"
+    ],
+    "Toolbar": [
+      "groups",
+      "overflow"
+    ],
+    "Tooltip": [
+      "align",
+      "children",
+      "delayMs",
+      "disabled",
+      "side",
+      "sideOffset"
+    ],
+    "TransferList": [
+      "availableLabel",
+      "className",
+      "items",
+      "onChange",
+      "selectedLabel",
+      "value"
+    ],
+    "TreeList": [
+      "columns",
+      "defaultExpandAll",
+      "defaultExpandedIds",
+      "emptyMessage",
+      "onRowClick",
+      "rows",
+      "selectedId"
+    ],
+    "TreemapChart": [
+      "className",
+      "data",
+      "height"
+    ],
+    "TreeView": [
+      "defaultExpandedIds",
+      "nodes",
+      "onSelect"
+    ],
+    "Typography": [
+      "align",
+      "as",
+      "gutterBottom",
+      "leading",
+      "lineClamp",
+      "noWrap",
+      "tone",
+      "transform",
+      "variant",
+      "weight"
+    ],
+    "VirtualList": [
+      "className",
+      "estimateSize",
+      "height",
+      "items",
+      "renderItem"
+    ],
+    "WaterfallChart": [
+      "className",
+      "data",
+      "height"
+    ],
+    "Window": [
+      "children",
+      "initialPosition",
+      "initialSize",
+      "maximizable",
+      "minHeight",
+      "minWidth",
+      "onClose",
+      "onFocus",
+      "open",
+      "resizable",
+      "zIndex"
+    ],
+    "Wizard": [
+      "backLabel",
+      "completeLabel",
+      "nextLabel",
+      "onComplete",
+      "orientation",
+      "steps"
+    ]
+  }
+}

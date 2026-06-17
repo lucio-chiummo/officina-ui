@@ -1,6 +1,7 @@
 node_modules
 dist
 out
+drift-manifest.json
 .next
 apps/docs/.source
 pnpm-lock.yaml
