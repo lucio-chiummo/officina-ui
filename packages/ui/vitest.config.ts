@@ -11,6 +11,7 @@ const alias: Record<string, string> = {
   '@stores/theme.store': r('src/shims/theme-store.ts'),
   '@primitives': r('src/components/primitives'),
   '@lib': r('src/lib'),
+  '@hooks': r('src/hooks'),
   '@': r('src'),
 };
 

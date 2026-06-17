@@ -27,14 +27,6 @@ export { useInfiniteScroll } from './useInfiniteScroll';
 export { useEventListener } from './useEventListener';
 
 // Media / Responsive
-export {
-  useMediaQuery,
-  useIsMobile,
-  useIsTablet,
-  useIsDesktop,
-  usePrefersDark,
-  usePrefersReducedMotion,
-} from './useMediaQuery';
 export { useWindowSize } from './useWindowSize';
 
 // Keyboard

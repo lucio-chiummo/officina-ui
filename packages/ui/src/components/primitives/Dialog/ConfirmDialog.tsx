@@ -7,7 +7,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '../Button';
 
-type ConfirmDialogProps = {
+export type ConfirmDialogProps = {
   /** Whether the dialog is visible (controlled). */
   open: boolean;
   /** Called when the dialog is dismissed or cancelled. */

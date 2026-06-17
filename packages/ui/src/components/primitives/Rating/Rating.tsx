@@ -1,5 +1,6 @@
 import { cn } from '@lib/utils/cn';
 import { Star } from 'lucide-react';
+import { forwardRef, type FocusEventHandler } from 'react';
 
 export type RatingProps = {
   /** Current rating value. */
@@ -17,6 +18,14 @@ export type RatingProps = {
   /** Star size. */
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  /** Element id, applied to the rating group. */
+  id?: string;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Id(s) of element(s) describing the field (helper/error text). */
+  'aria-describedby'?: string;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
 };
 
 const starSize = {
@@ -25,27 +34,41 @@ const starSize = {
   lg: 'size-6',
 } as const;
 
-export function Rating({
-  value,
-  onChange,
-  max = 5,
-  precision = 1,
-  label = 'Rating',
-  readOnly,
-  size = 'md',
-  className,
-}: RatingProps) {
+export const Rating = forwardRef<HTMLDivElement, RatingProps>(function Rating(
+  {
+    value,
+    onChange,
+    max = 5,
+    precision = 1,
+    label = 'Rating',
+    readOnly,
+    size = 'md',
+    className,
+    id,
+    invalid,
+    'aria-describedby': ariaDescribedBy,
+    onBlur,
+    onFocus,
+  },
+  ref,
+) {
   const interactive = !readOnly && Boolean(onChange);
 
   return (
     <div
+      ref={ref}
+      id={id}
       role="slider"
       aria-label={label}
       aria-valuemin={0}
       aria-valuemax={max}
       aria-valuenow={value}
       aria-readonly={readOnly || undefined}
+      aria-invalid={invalid ? true : undefined}
+      aria-describedby={ariaDescribedBy}
       tabIndex={interactive ? 0 : -1}
+      onBlur={onBlur}
+      onFocus={onFocus}
       onKeyDown={(event) => {
         if (!interactive || !onChange) return;
         if (event.key === 'ArrowRight') onChange(Math.min(max, value + precision));
@@ -56,6 +79,7 @@ export function Rating({
       }}
       className={cn(
         'inline-flex gap-1 outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]',
+        invalid && 'rounded focus-visible:ring-[var(--color-danger)]',
         className,
       )}
     >
@@ -82,4 +106,4 @@ export function Rating({
       })}
     </div>
   );
-}
+});

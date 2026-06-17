@@ -1,1 +1,8 @@
-export { useMediaQuery } from './useMediaQuery';
+export {
+  useMediaQuery,
+  useIsMobile,
+  useIsTablet,
+  useIsDesktop,
+  usePrefersDark,
+  usePrefersReducedMotion,
+} from './useMediaQuery';

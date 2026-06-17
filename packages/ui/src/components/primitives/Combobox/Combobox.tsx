@@ -1,7 +1,15 @@
 import { cn } from '@lib/utils/cn';
 import { Check, ChevronDown, Loader2, X } from 'lucide-react';
 import { matchSorter } from 'match-sorter';
-import { useEffect, useMemo, useRef, useState, type ReactNode, type Ref } from 'react';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FocusEventHandler,
+  type ReactNode,
+  type Ref,
+} from 'react';
 
 export type ComboboxOption<T = string> = {
   value: T;
@@ -38,6 +46,14 @@ export type ComboboxProps<T = string> = {
   name?: string;
   /** Explicit id for the input. */
   id?: string;
+  /** Marks the field as required for validation styling and `aria-required`. */
+  required?: boolean;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Id(s) of element(s) describing the field (helper/error text). */
+  'aria-describedby'?: string;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
   /** Extra classes for the combobox container. */
   className?: string;
 };
@@ -60,6 +76,11 @@ export function Combobox<T = string>({
   clearable = true,
   name,
   id,
+  required,
+  invalid,
+  'aria-describedby': ariaDescribedBy,
+  onBlur,
+  onFocus,
   className,
   inputRef,
 }: ComboboxProps<T> & {
@@ -100,14 +121,20 @@ export function Combobox<T = string>({
           name={name}
           value={inputValue}
           disabled={disabled}
+          required={required}
+          aria-required={required ? true : undefined}
+          aria-invalid={invalid ? true : undefined}
+          aria-describedby={ariaDescribedBy}
           placeholder={placeholder}
           role="combobox"
           aria-expanded={open}
           aria-controls={listboxId}
           aria-autocomplete="list"
           aria-activedescendant={open && activeIndex >= 0 ? optionId(activeIndex) : undefined}
-          onFocus={() => {
+          onBlur={onBlur}
+          onFocus={(event) => {
             if (!disabled) setOpen(true);
+            onFocus?.(event);
           }}
           onChange={(event) => {
             if (disabled) return;
@@ -143,6 +170,7 @@ export function Combobox<T = string>({
           className={cn(
             'block w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pr-16 text-[var(--color-fg-base)]',
             'focus:ring-3 focus:ring-[var(--color-accent)]/15 placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:outline-none',
+            'aria-[invalid=true]:focus:ring-[var(--color-danger)]/15 aria-[invalid=true]:border-[var(--color-danger)]',
             size === 'sm' ? 'h-8 px-2 text-xs' : 'h-9 px-3 text-sm',
           )}
         />

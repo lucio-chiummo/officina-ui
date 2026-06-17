@@ -1,9 +1,11 @@
 import { act, render, renderHook, screen, waitFor } from '@testing-library/react';
+import { useRef } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useDialogControls } from '@/components/primitives';
 
 import { useAsync } from './useAsync';
+import { useClickOutside } from './useClickOutside';
 import { useCopyToClipboard } from './useCopyToClipboard';
 import { useCountdown } from './useCountdown';
 import { useDisclosure } from './useDisclosure';
@@ -206,6 +208,56 @@ describe('hooks library', () => {
       await vi.advanceTimersByTimeAsync(500);
     });
     expect(result.current.copied).toBe(false);
+  });
+
+  it('useCopyToClipboard does not let a stale timer reset a fresher copy', async () => {
+    vi.useFakeTimers();
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    const { result } = renderHook(() => useCopyToClipboard(500));
+
+    await act(async () => {
+      await result.current.copy('first');
+    });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300);
+    });
+    await act(async () => {
+      await result.current.copy('second');
+    });
+    // The first call's timer would have fired here were it not cleared.
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(300);
+    });
+    expect(result.current.copied).toBe(true);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(200);
+    });
+    expect(result.current.copied).toBe(false);
+  });
+
+  it('useClickOutside fires the handler only for clicks outside the ref', () => {
+    const handler = vi.fn();
+    function Harness() {
+      const ref = useRef<HTMLDivElement>(null);
+      useClickOutside(ref, handler);
+      return (
+        <div>
+          <div data-testid="inside" ref={ref}>
+            inside
+          </div>
+          <div data-testid="outside">outside</div>
+        </div>
+      );
+    }
+    render(<Harness />);
+
+    screen.getByTestId('inside').dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+    expect(handler).not.toHaveBeenCalled();
+
+    screen.getByTestId('outside').dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+    expect(handler).toHaveBeenCalledTimes(1);
   });
 
   it('useIntersection stores observer entries', async () => {

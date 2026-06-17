@@ -1,6 +1,7 @@
+import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { cn } from '@lib/utils/cn';
 import { Check, Copy } from 'lucide-react';
-import { useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 export type MetadataItem = {
   label: ReactNode;
@@ -56,17 +57,12 @@ export function MetadataList({ items, columns = 1, className }: MetadataListProp
 }
 
 function CopyInline({ value }: { value: string }) {
-  const [copied, setCopied] = useState(false);
+  const { copied, copy } = useCopyToClipboard(1500);
   return (
     <button
       type="button"
       aria-label={copied ? 'Copied' : 'Copy'}
-      onClick={() =>
-        void navigator.clipboard.writeText(value).then(() => {
-          setCopied(true);
-          window.setTimeout(() => setCopied(false), 1500);
-        })
-      }
+      onClick={() => void copy(value)}
       className="inline-flex size-5 shrink-0 items-center justify-center rounded text-[var(--color-fg-subtle)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
     >
       {copied ? (

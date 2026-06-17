@@ -1,4 +1,6 @@
+import { cn } from '@lib/utils/cn';
 import { OTPInput } from 'input-otp';
+import { forwardRef, type FocusEventHandler } from 'react';
 
 export type PinInputProps = {
   /** Current code value. */
@@ -10,29 +12,65 @@ export type PinInputProps = {
   /** Visible label above the inputs. */
   label?: string;
   disabled?: boolean;
+  /** Mark the field invalid for validation styling. */
+  invalid?: boolean;
+  /** Extra classes for the slot container. */
+  className?: string;
+  'aria-describedby'?: string;
+  /** Element id, applied to the underlying input. */
+  id?: string;
+  /** Form field name, for native form submission / form libraries. */
+  name?: string;
+  /** Marks the field as required for validation styling and `aria-required`. */
+  required?: boolean;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
 };
 
-export function PinInput({
-  value,
-  onChange,
-  length = 6,
-  label = 'Security code',
-  disabled,
-}: PinInputProps) {
+export const PinInput = forwardRef<HTMLInputElement, PinInputProps>(function PinInput(
+  {
+    value,
+    onChange,
+    length = 6,
+    label = 'Security code',
+    disabled,
+    invalid,
+    className,
+    'aria-describedby': ariaDescribedby,
+    id,
+    name,
+    required,
+    onBlur,
+    onFocus,
+  },
+  ref,
+) {
   return (
     <OTPInput
+      ref={ref}
+      id={id}
+      name={name}
       value={value}
       onChange={onChange}
       maxLength={length}
       disabled={disabled}
+      required={required}
       aria-label={label}
-      containerClassName="flex gap-2"
+      aria-required={required ? true : undefined}
+      aria-invalid={invalid ? true : undefined}
+      aria-describedby={ariaDescribedby}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      containerClassName={cn('flex gap-2', className)}
       render={({ slots }) => (
         <>
           {slots.map((slot, index) => (
             <div
               key={`slot-${String(index + 1)}`}
-              className="flex size-10 items-center justify-center rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] text-sm font-semibold"
+              className={cn(
+                'flex size-10 items-center justify-center rounded-md border bg-[var(--color-bg-base)] text-sm font-semibold',
+                invalid ? 'border-[var(--color-danger)]' : 'border-[var(--color-border-strong)]',
+              )}
             >
               {slot.char}
               {slot.hasFakeCaret ? (
@@ -44,4 +82,4 @@ export function PinInput({
       )}
     />
   );
-}
+});

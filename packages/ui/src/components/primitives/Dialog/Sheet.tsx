@@ -5,7 +5,7 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
 import { Fragment, type ReactNode } from 'react';
 
-type SheetProps = {
+export type SheetProps = {
   open: boolean;
   onClose: () => void;
   title: string;

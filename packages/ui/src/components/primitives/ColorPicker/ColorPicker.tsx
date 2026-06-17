@@ -1,7 +1,8 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { cn } from '@lib/utils/cn';
+import { forwardRef, type FocusEventHandler } from 'react';
 
-type ColorPickerProps = {
+export type ColorPickerProps = {
   /** Selected color as a hex string (controlled). */
   value: string;
   /** Called with the new hex value when the color changes. */
@@ -12,6 +13,17 @@ type ColorPickerProps = {
   label?: string;
   /** Extra classes for the picker container. */
   className?: string;
+  /** Element id, applied to the trigger button. */
+  id?: string;
+  /** Form field name, for native form submission / form libraries. */
+  name?: string;
+  disabled?: boolean;
+  /** Marks the field invalid for validation styling and `aria-invalid`. */
+  invalid?: boolean;
+  /** Id(s) of element(s) describing the field (helper/error text). */
+  'aria-describedby'?: string;
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
+  onFocus?: FocusEventHandler<HTMLButtonElement>;
 };
 
 const DEFAULT_PRESETS = [
@@ -27,13 +39,23 @@ const DEFAULT_PRESETS = [
   '#0f172a', // slate-near-black
 ];
 
-export function ColorPicker({
-  value,
-  onChange,
-  presets = DEFAULT_PRESETS,
-  label,
-  className,
-}: ColorPickerProps) {
+export const ColorPicker = forwardRef<HTMLButtonElement, ColorPickerProps>(function ColorPicker(
+  {
+    value,
+    onChange,
+    presets = DEFAULT_PRESETS,
+    label,
+    className,
+    id,
+    name,
+    disabled,
+    invalid,
+    'aria-describedby': ariaDescribedBy,
+    onBlur,
+    onFocus,
+  },
+  ref,
+) {
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
       {label ? (
@@ -41,7 +63,18 @@ export function ColorPicker({
       ) : null}
       <Popover className="relative">
         <PopoverButton
-          className="inline-flex items-center gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)]"
+          ref={ref}
+          id={id}
+          name={name}
+          {...(disabled !== undefined ? { disabled } : {})}
+          aria-describedby={ariaDescribedBy}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          className={cn(
+            'inline-flex items-center gap-2 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)]',
+            invalid && 'border-[var(--color-danger)]',
+            'disabled:cursor-not-allowed disabled:opacity-50',
+          )}
           aria-label={`Color: ${value}`}
         >
           <span
@@ -90,4 +123,4 @@ export function ColorPicker({
       </Popover>
     </div>
   );
-}
+});

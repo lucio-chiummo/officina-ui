@@ -1,5 +1,5 @@
+import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { Check, Copy } from 'lucide-react';
-import { useState } from 'react';
 
 import { Button, type ButtonProps } from '../Button';
 import { toast } from '../Toast';
@@ -20,20 +20,16 @@ export function CopyButton({
   children,
   ...props
 }: CopyButtonProps) {
-  const [copied, setCopied] = useState(false);
+  const { copied, copy } = useCopyToClipboard(1500);
   return (
     <Button
       variant="secondary"
       size="sm"
       {...props}
       onClick={() => {
-        void navigator.clipboard.writeText(value).then(
-          () => {
-            setCopied(true);
-            window.setTimeout(() => setCopied(false), 1500);
-          },
-          () => toast.error(copyLabel),
-        );
+        void copy(value).then((ok) => {
+          if (!ok) toast.error(copyLabel);
+        });
       }}
     >
       {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
