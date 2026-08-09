@@ -1,9 +1,11 @@
-import { closestCenter, DndContext, type DragEndEvent } from '@dnd-kit/core';
+import { closestCenter, DndContext, type DragEndEvent, useDroppable } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cn } from '@lib/utils/cn';
 import { GripVertical } from 'lucide-react';
 import { type ReactNode } from 'react';
+
+import { columnDroppableId, resolveDropColumn } from './resolveDropColumn';
 
 export interface KanbanCardItem {
   id: string;
@@ -29,8 +31,12 @@ export interface KanbanBoardProps {
 export function KanbanBoard({ columns, cards, onMoveCard, className }: KanbanBoardProps) {
   function handleDragEnd(event: DragEndEvent) {
     const cardId = String(event.active.id);
-    const overId = event.over?.id ? String(event.over.id) : undefined;
-    if (cardId && overId) onMoveCard?.(cardId, overId.replace('column-', ''));
+    const overId = event.over?.id === undefined ? undefined : String(event.over.id);
+    const columnId = resolveDropColumn(overId, cards);
+    if (!columnId) return;
+    const current = cards.find((card) => card.id === cardId);
+    if (current?.columnId === columnId) return;
+    onMoveCard?.(cardId, columnId);
   }
 
   return (
@@ -41,32 +47,42 @@ export function KanbanBoard({ columns, cards, onMoveCard, className }: KanbanBoa
           className,
         )}
       >
-        {columns.map((column) => {
-          const columnCards = cards.filter((card) => card.columnId === column.id);
-          return (
-            <div
-              key={column.id}
-              id={`column-${column.id}`}
-              className="w-72 shrink-0 rounded-lg bg-[var(--color-bg-muted)] p-3"
-            >
-              <h3 className="mb-3 text-sm font-semibold text-[var(--color-fg-base)]">
-                {column.title}
-              </h3>
-              <SortableContext
-                items={columnCards.map((card) => card.id)}
-                strategy={verticalListSortingStrategy}
-              >
-                <div className="space-y-2">
-                  {columnCards.map((card) => (
-                    <KanbanCard key={card.id} card={card} />
-                  ))}
-                </div>
-              </SortableContext>
-            </div>
-          );
-        })}
+        {columns.map((column) => (
+          <KanbanColumn
+            key={column.id}
+            column={column}
+            cards={cards.filter((card) => card.columnId === column.id)}
+          />
+        ))}
       </div>
     </DndContext>
+  );
+}
+
+function KanbanColumn({ column, cards }: { column: KanbanColumnItem; cards: KanbanCardItem[] }) {
+  // Without a registered droppable, dnd-kit only ever reports the cards under
+  // the pointer — so a column with no cards in it could not be dropped into at
+  // all, and the board's own id prefix never appeared in a drag event.
+  const { setNodeRef, isOver } = useDroppable({ id: columnDroppableId(column.id) });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={cn(
+        'w-72 shrink-0 rounded-lg bg-[var(--color-bg-muted)] p-3 transition-colors duration-[var(--duration-fast)]',
+        isOver && 'bg-[var(--color-bg-subtle)] ring-2 ring-[var(--color-accent)]',
+      )}
+    >
+      <h3 className="mb-3 text-sm font-semibold text-[var(--color-fg-base)]">{column.title}</h3>
+      <SortableContext items={cards.map((card) => card.id)} strategy={verticalListSortingStrategy}>
+        {/* Keeps an empty column a large enough drop target to aim at. */}
+        <div className="min-h-16 space-y-2">
+          {cards.map((card) => (
+            <KanbanCard key={card.id} card={card} />
+          ))}
+        </div>
+      </SortableContext>
+    </div>
   );
 }
 
