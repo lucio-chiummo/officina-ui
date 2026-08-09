@@ -1,28 +1,34 @@
 ---
 title: Installation
-description: Add Officina UI to a React project and import the token stylesheet.
+description: Add @officina/ui to a React 19 app, import its two stylesheets in the right order, and render your first component.
 ---
 
-## Install
+## 1. Install
 
 ```bash
-pnpm add @officina/ui
+pnpm add @officina/ui react react-dom
 ```
 
-`@officina/ui` ships ESM with full TypeScript types. React 19 is a peer
-dependency.
+`@officina/ui` ships ESM with bundled TypeScript types. React 19 is a required
+peer dependency; a handful of components need optional peers, covered in
+[Peer dependencies](/docs/peer-dependencies).
 
-## Import the tokens
+## 2. Import the stylesheets
 
-Officina components are styled entirely through CSS custom properties. Import the
-token stylesheet once at your app root:
+Components carry no hardcoded colors or spacing — they read CSS custom
+properties. Import both stylesheets once, at your app entry:
 
 ```ts
 import '@officina/ui/tokens.css';
 import '@officina/ui/styles.css';
 ```
 
-## Use a component
+<Callout type="warn">
+  Order matters. `tokens.css` defines the variables that `styles.css` reads, so importing it second
+  leaves components unstyled or falling back to browser defaults.
+</Callout>
+
+## 3. Render a component
 
 ```tsx
 import { Button } from '@officina/ui';
@@ -32,13 +38,49 @@ export function Example() {
 }
 ```
 
-## Scaffold a full app
+## Framework notes
 
-To start from a complete admin template instead of wiring things yourself:
+### Next.js (App Router)
 
-```bash
-pnpm create officina
+The package is compiled as a single client module — every entry ships a
+`"use client"` directive — so you can import it directly from a Server
+Component without wrapping it yourself.
+
+Add it to `transpilePackages` so Next compiles the shipped JSX:
+
+```js
+// next.config.mjs
+export default {
+  transpilePackages: ['@officina/ui'],
+};
 ```
 
-This scaffolds an app with routing, auth, billing, theming, and the full
-component set already integrated.
+Import the stylesheets in your root layout:
+
+```tsx
+// app/layout.tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+```
+
+### Vite
+
+No configuration needed. Import the stylesheets in `main.tsx` before your own
+CSS so your overrides win:
+
+```tsx
+import '@officina/ui/tokens.css';
+import '@officina/ui/styles.css';
+import './index.css';
+```
+
+### Tailwind CSS
+
+Officina UI does not require Tailwind. If your app uses it, nothing needs
+wiring — the library ships its own compiled CSS and does not depend on your
+Tailwind config.
+
+## Next steps
+
+- [Theming](/docs/theming) — override tokens to match your brand.
+- [Components](/docs/components/button) — live demos and API tables.

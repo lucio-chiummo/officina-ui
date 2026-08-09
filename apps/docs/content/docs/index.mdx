@@ -1,22 +1,35 @@
 ---
 title: Introduction
-description: Officina UI — the most complete open-source React component library, with live demos and full API reference for every primitive.
+description: Officina UI is an Apache-2.0 React component library — 250+ typed, token-driven primitives shipped as a single package.
 ---
 
-Officina UI is a production-grade React component library: **250+ primitives**
-covering forms, data display, overlays, charts, scheduling, and AI surfaces —
-all token-driven, accessible, and typed.
+Officina UI is a React component library. One package, `@officina/ui`, gives you
+**250+ primitives** — forms, data display, overlays, charts, scheduling, and
+editor surfaces — all typed, accessible, and styled entirely through CSS
+custom properties.
 
-## Why Officina
+```bash
+pnpm add @officina/ui react react-dom
+```
 
-- **Complete.** Everything from `Button` to `Scheduler`, `TreeList`, `Gauge`,
-  and `CandlestickChart` — parity with commercial suites, Apache-2.0 licensed.
-- **Token-driven theming.** Every component reads CSS custom properties. Swap a
-  handful of variables to rebrand the whole system.
-- **Typed and documented.** Prop tables on this site are generated directly from
-  the source types — they cannot drift from the code.
+## What you get
+
+- **One install, no add-ons.** Everything from `Button` to `Scheduler`,
+  `TreeList`, `Gauge`, and `CandlestickChart` lives in the same package. There
+  is no pro tier and no separate icon or chart kit to license.
+- **Token-driven theming.** Components read CSS variables rather than hardcoded
+  values, so rebranding is a matter of overriding a handful of tokens. See
+  [Theming](/docs/theming).
+- **Types that match the docs.** The prop tables on this site are generated from
+  the component source, so they cannot drift from what you install.
 - **Accessible by default.** ARIA roles, keyboard navigation, and focus
-  management are built in, not bolted on.
+  management ship with the components rather than being left to the consumer.
+
+## What it is not
+
+Officina UI is a component library, not an application framework. It has no
+router, no data layer, and no opinion about how you fetch or authenticate. It
+renders in any React 19 app — Next.js, Vite, Remix, or your own setup.
 
 ## Quick taste
 
@@ -26,5 +39,20 @@ import { ButtonVariants } from '@/components/demos/button-demo';
   <ButtonVariants />
 </Demo>
 
-Head to [Installation](/docs/installation) to add Officina UI to your app, or
-browse the [components](/docs/components/button).
+```tsx
+import { Button } from '@officina/ui';
+
+export function Example() {
+  return <Button variant="primary">Get started</Button>;
+}
+```
+
+## Where to next
+
+- [Installation](/docs/installation) — add the package and wire up its two
+  stylesheets.
+- [Theming](/docs/theming) — override tokens to match your brand.
+- [Peer dependencies](/docs/peer-dependencies) — the optional libraries a few
+  components need.
+- [Components](/docs/components/button) — live demos and API tables for every
+  primitive.
