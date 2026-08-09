@@ -1,0 +1,39 @@
+---
+title: Peer dependencies
+description: React 19 is required. Three TanStack libraries are optional and only needed by the specific components that build on them.
+---
+
+## Required
+
+| Package               | Range     |
+| --------------------- | --------- |
+| `react` / `react-dom` | `^19.0.0` |
+
+## Optional
+
+These are declared as optional peers: installing `@officina/ui` does not pull
+them in, and your package manager will not warn about them. You only need one
+if you render a component that builds on it.
+
+| Package                  | Range     | Needed by                                        |
+| ------------------------ | --------- | ------------------------------------------------ |
+| `@tanstack/react-table`  | `^8.21.0` | `DataTable`, `DataGrid`, `ColumnsToggle`         |
+| `@tanstack/react-query`  | `^5.62.0` | `AsyncSelect`, the TanStack Query filter adapter |
+| `@tanstack/react-router` | `^1.95.0` | `TopProgressBar`                                 |
+
+Importing one of those components without its peer installed throws at render
+time rather than at build time, so install the peer alongside first use:
+
+```bash
+pnpm add @tanstack/react-table
+```
+
+## Why they are peers
+
+These libraries own state that belongs to your app, not to the component
+library. `DataTable` takes a table instance you construct, so it has to use the
+same copy of `@tanstack/react-table` your code does — bundling a second copy
+would give you two incompatible instances of the same types.
+
+Everything else Officina UI needs is a regular dependency and comes with the
+install.
