@@ -82,7 +82,7 @@ export const DatePicker = forwardRef<HTMLButtonElement, DatePickerProps>(
               onBlur={props.onBlur}
               onFocus={props.onFocus}
               className={cn(
-                'focus-visible:ring-[var(--color-accent)]/20 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-left text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2',
+                'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-left text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20',
                 props.invalid && 'border-[var(--color-danger)]',
                 'disabled:cursor-not-allowed disabled:opacity-50',
               )}

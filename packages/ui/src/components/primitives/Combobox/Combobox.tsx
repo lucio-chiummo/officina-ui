@@ -169,8 +169,8 @@ export function Combobox<T = string>({
           }}
           className={cn(
             'block w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pr-16 text-[var(--color-fg-base)]',
-            'focus:ring-3 focus:ring-[var(--color-accent)]/15 placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:outline-none',
-            'aria-[invalid=true]:focus:ring-[var(--color-danger)]/15 aria-[invalid=true]:border-[var(--color-danger)]',
+            'placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:outline-none',
+            'aria-[invalid=true]:border-[var(--color-danger)] aria-[invalid=true]:focus:ring-[var(--color-danger)]/15',
             size === 'sm' ? 'h-8 px-2 text-xs' : 'h-9 px-3 text-sm',
           )}
         />
