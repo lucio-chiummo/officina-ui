@@ -82,7 +82,7 @@ export function CommandPalette({
                 <Command.Group
                   key={section}
                   heading={section}
-                  className="px-2 pb-2 text-xs uppercase text-[var(--color-fg-subtle)]"
+                  className="px-2 pb-2 text-xs text-[var(--color-fg-subtle)] uppercase"
                 >
                   {items.map((item) => (
                     <Command.Item
