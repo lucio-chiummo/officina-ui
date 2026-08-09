@@ -26,12 +26,20 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - run: npm install -g npm@latest
+      # npm >= 11.5.1 is required for trusted publishing (OIDC), but npm 12
+      # turns unknown CLI flags into hard errors. `changeset publish` shells
+      # out to `pnpm publish --no-git-checks`, and pnpm forwards that flag to
+      # npm, which npm 12 rejects with EUNKNOWNCONFIG. Stay on npm 11 until
+      # changesets/pnpm stop passing that flag through.
+      - run: npm install -g npm@11
       - run: pnpm install --frozen-lockfile
       - name: Create Version PR or publish
         uses: changesets/action@v1
         with:
           version: pnpm version:packages
           publish: pnpm release
+          # Tags each published package and opens a GitHub Release with the
+          # matching CHANGELOG.md section. Only runs when publish succeeds.
+          createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
