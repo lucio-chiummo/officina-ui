@@ -10,6 +10,7 @@ interface UseIdleTimeoutOptions {
 
 export function useIdleTimeout({ timeout, onIdle, onActive }: UseIdleTimeoutOptions) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const idle = useRef(false);
   const onIdleRef = useRef(onIdle);
   const onActiveRef = useRef(onActive);
   onIdleRef.current = onIdle;
@@ -17,8 +18,17 @@ export function useIdleTimeout({ timeout, onIdle, onActive }: UseIdleTimeoutOpti
 
   const reset = useCallback(() => {
     if (timer.current) clearTimeout(timer.current);
-    onActiveRef.current?.();
-    timer.current = setTimeout(() => onIdleRef.current(), timeout);
+    // onActive marks the idle -> active transition. Firing it on every mousemove
+    // (and once on mount, before any idle period) makes it useless for the
+    // "welcome back" work call sites use it for.
+    if (idle.current) {
+      idle.current = false;
+      onActiveRef.current?.();
+    }
+    timer.current = setTimeout(() => {
+      idle.current = true;
+      onIdleRef.current();
+    }, timeout);
   }, [timeout]);
 
   useEffect(() => {

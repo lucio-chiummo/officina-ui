@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 interface UseInfiniteScrollOptions {
   onLoadMore: () => void;
@@ -12,22 +12,43 @@ export function useInfiniteScroll<T extends HTMLElement = HTMLElement>({
   threshold = 0,
 }: UseInfiniteScrollOptions) {
   const observer = useRef<IntersectionObserver | null>(null);
+  const node = useRef<T | null>(null);
 
+  const onLoadMoreRef = useRef(onLoadMore);
+  onLoadMoreRef.current = onLoadMore;
+  const hasMoreRef = useRef(hasMore);
+  hasMoreRef.current = hasMore;
+
+  const attach = useCallback(() => {
+    observer.current?.disconnect();
+    const el = node.current;
+    if (!el || !hasMoreRef.current) return;
+    observer.current = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && hasMoreRef.current) onLoadMoreRef.current();
+      },
+      { threshold },
+    );
+    observer.current.observe(el);
+  }, [threshold]);
+
+  // The ref callback identity must stay stable: React detaches and reattaches a
+  // changing ref callback on every render, and each reattach re-observes the
+  // sentinel — which fires onLoadMore again while it is still on screen.
   const sentinelRef = useCallback(
-    (node: T | null) => {
-      if (observer.current) observer.current.disconnect();
-      if (!node || !hasMore) return;
-      observer.current = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry) return;
-          if (entry.isIntersecting) onLoadMore();
-        },
-        { threshold },
-      );
-      observer.current.observe(node);
+    (el: T | null) => {
+      node.current = el;
+      attach();
     },
-    [hasMore, onLoadMore, threshold],
+    [attach],
   );
+
+  // Reacting to hasMore here rather than inside the ref callback keeps the
+  // callback stable while still resuming or stopping observation.
+  useEffect(() => {
+    attach();
+    return () => observer.current?.disconnect();
+  }, [attach, hasMore]);
 
   return sentinelRef;
 }
