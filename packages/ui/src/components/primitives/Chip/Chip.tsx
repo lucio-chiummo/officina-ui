@@ -78,7 +78,11 @@ export const Chip = forwardRef<HTMLSpanElement | HTMLButtonElement, ChipProps>(f
   );
   const content = (
     <>
-      {icon ? <span className="size-3.5 shrink-0">{icon}</span> : null}
+      {icon ? (
+        <span className="inline-flex size-3.5 shrink-0 items-center justify-center [&>svg]:size-3.5">
+          {icon}
+        </span>
+      ) : null}
       <span className="truncate">{children}</span>
       {onRemove ? (
         <button

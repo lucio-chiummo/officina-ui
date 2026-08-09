@@ -82,7 +82,11 @@ export function Dropdown({ trigger, sections, align = 'end', className }: Dropdo
                   );
                   return item.href ? (
                     <a href={item.href} className={base}>
-                      {item.icon && <span className="size-4 shrink-0">{item.icon}</span>}
+                      {item.icon && (
+                        <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+                          {item.icon}
+                        </span>
+                      )}
                       <span className="flex-1">{item.label}</span>
                       {item.shortcut && (
                         <span className="font-mono text-[10px] opacity-60">{item.shortcut}</span>
@@ -90,7 +94,11 @@ export function Dropdown({ trigger, sections, align = 'end', className }: Dropdo
                     </a>
                   ) : (
                     <button type="button" onClick={item.onClick} className={base}>
-                      {item.icon && <span className="size-4 shrink-0">{item.icon}</span>}
+                      {item.icon && (
+                        <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+                          {item.icon}
+                        </span>
+                      )}
                       <span className="flex-1 text-left">{item.label}</span>
                       {item.shortcut && (
                         <span className="font-mono text-[10px] opacity-60">{item.shortcut}</span>
