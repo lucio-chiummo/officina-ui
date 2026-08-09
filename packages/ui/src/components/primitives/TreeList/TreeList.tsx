@@ -119,7 +119,7 @@ export function TreeList<R extends TreeListRow = TreeListRow>({
                 scope="col"
                 style={column.width ? { width: column.width } : undefined}
                 className={cn(
-                  'border-b border-[var(--color-border)] px-3 py-2 text-[11px] font-semibold tracking-wide text-[var(--color-fg-muted)] uppercase',
+                  'border-b border-[var(--color-border)] px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]',
                   column.align === 'right' ? 'text-right' : 'text-left',
                 )}
               >
@@ -183,7 +183,7 @@ export function TreeList<R extends TreeListRow = TreeListRow>({
                                   event.stopPropagation();
                                   toggle(row.id);
                                 }}
-                                className="rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+                                className="focus-visible:ring-[var(--color-accent)]/40 rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2"
                               >
                                 {isOpen ? (
                                   <ChevronDown className="size-3.5" />

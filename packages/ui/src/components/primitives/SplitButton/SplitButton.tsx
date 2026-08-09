@@ -42,7 +42,7 @@ export function SplitButton({
       {open ? (
         <div
           role="menu"
-          className="absolute top-full right-0 z-20 mt-1 min-w-44 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] p-1 shadow-[var(--shadow-lg)]"
+          className="absolute right-0 top-full z-20 mt-1 min-w-44 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] p-1 shadow-[var(--shadow-lg)]"
         >
           {actions.map((action) => (
             <button

@@ -36,7 +36,7 @@ export function Map({ markers = [], height = 320, className }: MapProps) {
         >
           <span
             aria-hidden="true"
-            className="absolute top-full left-1/2 size-5 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full bg-[var(--color-accent)]/30"
+            className="bg-[var(--color-accent)]/30 absolute left-1/2 top-full size-5 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full"
           />
           <MapPin className="size-3" aria-hidden />
           {marker.label}

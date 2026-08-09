@@ -106,14 +106,14 @@ function HeroGlow() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <div
-        className="absolute top-[-12rem] left-1/2 h-[36rem] w-[56rem] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
+        className="absolute left-1/2 top-[-12rem] h-[36rem] w-[56rem] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
         style={{
           background:
             'radial-gradient(circle, var(--color-accent) 0%, rgb(217 70 239 / 0.55) 45%, transparent 75%)',
         }}
       />
       <div
-        className="absolute top-20 right-[-8rem] h-72 w-72 rounded-full opacity-30 blur-3xl"
+        className="absolute right-[-8rem] top-20 h-72 w-72 rounded-full opacity-30 blur-3xl"
         style={{ background: 'radial-gradient(circle, rgb(34 211 238 / 0.8) 0%, transparent 70%)' }}
       />
       <div
@@ -131,19 +131,19 @@ function HeroGlow() {
 
 function Hero() {
   return (
-    <section className="relative isolate flex flex-col items-center overflow-hidden px-4 pt-24 pb-16 text-center">
+    <section className="relative isolate flex flex-col items-center overflow-hidden px-4 pb-16 pt-24 text-center">
       <HeroGlow />
       <Badge variant="accent" dot>
         Open source · 250+ components
       </Badge>
-      <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+      <h1 className="mt-6 max-w-4xl text-balance text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
         The most complete{' '}
         <GradientText as="span" animate>
           open-source
         </GradientText>{' '}
         React component library
       </h1>
-      <p className="text-fd-muted-foreground mt-5 max-w-xl text-lg text-balance">
+      <p className="text-fd-muted-foreground mt-5 max-w-xl text-balance text-lg">
         Officina UI ships forms, data grids, overlays, charts, scheduling, and AI surfaces —
         token-driven, accessible, and fully typed.
       </p>
@@ -167,7 +167,7 @@ function Hero() {
           variant="success"
           size="sm"
           dot
-          className="absolute -top-4 -right-4 z-10 rotate-3 shadow-[var(--shadow-lg)]"
+          className="absolute -right-4 -top-4 z-10 rotate-3 shadow-[var(--shadow-lg)]"
         >
           +12.4% this week
         </Badge>
@@ -209,7 +209,7 @@ function Hero() {
 
 function StatsRow() {
   return (
-    <section className="border-fd-border border-t border-b">
+    <section className="border-fd-border border-b border-t">
       <div className="mx-auto grid max-w-2xl grid-cols-3 gap-6 px-4 py-10">
         <LiveStat value={250} suffix="+" label="Components" />
         <LiveStat value={34} label="Hooks" />
@@ -233,7 +233,7 @@ function Showcase() {
 
         <BentoGrid columns={3} className="mt-10">
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Forms
             </p>
             <div className="mt-4 flex flex-col gap-3">
@@ -243,7 +243,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Data
             </p>
             <StatCard
@@ -257,7 +257,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Feedback
             </p>
             <div className="mt-4 flex items-center gap-4">
@@ -274,7 +274,7 @@ function Showcase() {
           </BentoCard>
 
           <BentoCard colSpan={2}>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Navigation
             </p>
             <Tabs
@@ -310,14 +310,14 @@ function Showcase() {
           </BentoCard>
 
           <SpotlightCard className="flex flex-col justify-center">
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               Hover me
             </p>
             <p className="mt-2 text-sm font-medium">Cursor-tracking glow, zero JS config.</p>
           </SpotlightCard>
 
           <BentoCard colSpan={3}>
-            <p className="text-fd-muted-foreground text-xs font-semibold tracking-wide uppercase">
+            <p className="text-fd-muted-foreground text-xs font-semibold uppercase tracking-wide">
               AI surfaces
             </p>
             <AIPrompt

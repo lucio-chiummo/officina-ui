@@ -62,7 +62,7 @@ export function SwatchPicker({
             className={cn(
               dot,
               'relative inline-flex items-center justify-center rounded-full transition-transform',
-              'focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-base)] focus-visible:outline-none',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-base)]',
               selected
                 ? 'ring-2 ring-[var(--color-fg-base)] ring-offset-2 ring-offset-[var(--color-bg-base)]'
                 : 'hover:scale-110',

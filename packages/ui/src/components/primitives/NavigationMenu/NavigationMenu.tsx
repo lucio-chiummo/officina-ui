@@ -25,18 +25,18 @@ export function NavigationMenu({ items, className }: NavigationMenuProps) {
           <NavigationMenuPrimitive.Item key={item.label}>
             {item.content ? (
               <>
-                <NavigationMenuPrimitive.Trigger className="inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium text-[var(--color-fg-base)] hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none">
+                <NavigationMenuPrimitive.Trigger className="inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium text-[var(--color-fg-base)] hover:bg-[var(--color-bg-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
                   {item.label}
                   <ChevronDown aria-hidden className="size-3" />
                 </NavigationMenuPrimitive.Trigger>
-                <NavigationMenuPrimitive.Content className="absolute top-full left-0 mt-2 min-w-72 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-base)] p-3 shadow-[var(--shadow-lg)]">
+                <NavigationMenuPrimitive.Content className="absolute left-0 top-full mt-2 min-w-72 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-base)] p-3 shadow-[var(--shadow-lg)]">
                   {item.content}
                 </NavigationMenuPrimitive.Content>
               </>
             ) : (
               <NavigationMenuPrimitive.Link
                 href={item.href}
-                className="inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-[var(--color-fg-base)] hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+                className="inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-[var(--color-fg-base)] hover:bg-[var(--color-bg-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
               >
                 {item.label}
               </NavigationMenuPrimitive.Link>

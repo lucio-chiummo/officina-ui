@@ -458,13 +458,6 @@
         "description": "Message shown when no options match the query."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "minChars",
         "type": "number",
         "required": false,
@@ -498,13 +491,6 @@
         "required": false,
         "defaultValue": null,
         "description": "Custom renderer for an option row."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       },
       {
         "name": "size",
@@ -1181,13 +1167,6 @@
         "description": "Render the mixed/indeterminate visual state."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "label",
         "type": "string",
         "required": false,
@@ -1195,25 +1174,11 @@
         "description": "Visible label beside the checkbox."
       },
       {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
         "name": "onChange",
         "type": "(checked: boolean) => void",
         "required": false,
         "defaultValue": null,
         "description": "Called with the new checked state on toggle."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       }
     ]
   },
@@ -1537,32 +1502,11 @@
         "description": "Selected color as a hex string (controlled)."
       },
       {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "label",
         "type": "string",
         "required": false,
         "defaultValue": null,
         "description": "Field label shown above the picker."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
       },
       {
         "name": "presets",
@@ -1647,13 +1591,6 @@
         "description": "Ref forwarded to the underlying text input."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "loading",
         "type": "boolean",
         "required": false,
@@ -1687,13 +1624,6 @@
         "required": false,
         "defaultValue": null,
         "description": "Custom renderer for an option row."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       },
       {
         "name": "size",
@@ -1985,35 +1915,14 @@
         "type": "(value: number | null) => void",
         "required": true,
         "defaultValue": null,
-        "description": "Called with the parsed value (null when cleared)."
+        "description": "Called with the parsed amount (null when cleared)."
       },
       {
         "name": "value",
         "type": "number | null",
         "required": true,
         "defaultValue": null,
-        "description": "Current value, or null when empty."
-      },
-      {
-        "name": "ariaLabel",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Accessible name when no visible label is present."
-      },
-      {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
+        "description": "Amount in major units, or null when empty."
       },
       {
         "name": "locale",
@@ -2027,56 +1936,14 @@
         "type": "number",
         "required": false,
         "defaultValue": null,
-        "description": "Maximum allowed value."
+        "description": "Maximum allowed amount."
       },
       {
         "name": "min",
         "type": "number",
         "required": false,
         "defaultValue": null,
-        "description": "Minimum allowed value."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
-        "name": "placeholder",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "showSteppers",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Show the stepper +/- buttons."
-      },
-      {
-        "name": "size",
-        "type": "enum",
-        "required": false,
-        "defaultValue": null,
-        "description": "Control size."
-      },
-      {
-        "name": "suffix",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Unit suffix shown inside the field (e.g. \"%\")."
+        "description": "Minimum allowed amount."
       }
     ]
   },
@@ -2272,20 +2139,6 @@
         "description": "Selected date, or `undefined` when empty (controlled).\nSelected start/end range, or `undefined` when empty (controlled)."
       },
       {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "label",
         "type": "string",
         "required": false,
@@ -2298,13 +2151,6 @@
         "required": false,
         "defaultValue": null,
         "description": "Single-date selection mode (default).\nDate-range selection mode."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
       },
       {
         "name": "placeholder",
@@ -3076,13 +2922,6 @@
         "description": ""
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "label",
         "type": "string",
         "required": false,
@@ -3109,13 +2948,6 @@
         "required": false,
         "defaultValue": null,
         "description": ""
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, applied to the underlying file input."
       },
       {
         "name": "noClick",
@@ -3186,13 +3018,6 @@
         "required": false,
         "defaultValue": null,
         "description": ""
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the underlying file input as required for native form validation."
       },
       {
         "name": "useFsAccessApi",
@@ -4895,7 +4720,7 @@
         "name": "clearAllLabel",
         "type": "string",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "Clear all",
         "description": "Label for the clear-all control."
       },
       {
@@ -4909,29 +4734,15 @@
         "name": "emptyMessage",
         "type": "string",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "No results",
         "description": "Message shown when no options match."
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
       },
       {
         "name": "maxBadgeCount",
         "type": "number",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "3",
         "description": "Max chips to render before collapsing into a \"+N\" badge."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
       },
       {
         "name": "placeholder",
@@ -4944,7 +4755,7 @@
         "name": "selectAllLabel",
         "type": "string",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "Select all",
         "description": "Label for the select-all control."
       },
       {
@@ -4958,7 +4769,7 @@
         "name": "size",
         "type": "enum",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "md",
         "description": "Control size."
       }
     ]
@@ -5526,13 +5337,6 @@
         "description": "Accessible label for the reveal toggle (hide state)."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Mark the field invalid for validation styling."
-      },
-      {
         "name": "revealLabel",
         "type": "string",
         "required": false,
@@ -5551,15 +5355,7 @@
   "PhoneInput": {
     "name": "PhoneInput",
     "description": "",
-    "props": [
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      }
-    ]
+    "props": []
   },
   "PieChart": {
     "name": "PieChart",
@@ -5654,20 +5450,6 @@
         "required": false,
         "defaultValue": "6",
         "description": "Number of input cells. Defaults to 6."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       }
     ]
   },
@@ -6072,13 +5854,6 @@
         "description": "Lay cards out as a fixed-column grid instead of wrapping rows."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "name",
         "type": "string",
         "required": false,
@@ -6091,13 +5866,6 @@
         "required": false,
         "defaultValue": null,
         "description": "Layout direction of the options."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       }
     ]
   },
@@ -6127,13 +5895,6 @@
         "description": "Currently selected value."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "name",
         "type": "string",
         "required": false,
@@ -6144,21 +5905,14 @@
         "name": "orientation",
         "type": "enum",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "vertical",
         "description": "Layout direction of the options."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       },
       {
         "name": "variant",
         "type": "enum",
         "required": false,
-        "defaultValue": null,
+        "defaultValue": "plain",
         "description": "Plain radios or selectable cards."
       }
     ]
@@ -6237,25 +5991,11 @@
         "description": "Current [start, end] values."
       },
       {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
         "name": "formatValue",
         "type": "(n: number) => string",
         "required": false,
         "defaultValue": null,
         "description": "Format thumb/value captions (e.g. add a unit or currency)."
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
       },
       {
         "name": "label",
@@ -6286,13 +6026,6 @@
         "description": "Minimum number of steps to keep between the two thumbs."
       },
       {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
         "name": "step",
         "type": "number",
         "required": false,
@@ -6311,13 +6044,6 @@
         "required": true,
         "defaultValue": null,
         "description": "Current rating value."
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
       },
       {
         "name": "label",
@@ -6811,13 +6537,6 @@
         "description": "Debounce window for `onDebouncedChange`, in ms."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Mark the field invalid for validation styling."
-      },
-      {
         "name": "onDebouncedChange",
         "type": "(value: string) => void",
         "required": false,
@@ -6985,25 +6704,11 @@
         "description": "Current thumb value(s). One entry per thumb."
       },
       {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
         "name": "formatValue",
         "type": "(n: number) => string",
         "required": false,
         "defaultValue": null,
         "description": "Format a raw value for display (e.g. add a \"$\")."
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
       },
       {
         "name": "label",
@@ -7025,13 +6730,6 @@
         "required": false,
         "defaultValue": "0",
         "description": "Minimum value. Defaults to 0."
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
       },
       {
         "name": "step",
@@ -7586,13 +7284,6 @@
         "description": "Disable interaction and dim the control."
       },
       {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "label",
         "type": "string",
         "required": false,
@@ -7600,25 +7291,11 @@
         "description": "Visible label rendered beside the switch."
       },
       {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
         "name": "onChange",
         "type": "(checked: boolean) => void",
         "required": false,
         "defaultValue": null,
         "description": "Called with the new boolean state when toggled."
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       }
     ]
   },
@@ -7831,20 +7508,6 @@
         "description": "Pattern that splits typed input into tags (e.g. comma/space)."
       },
       {
-        "name": "disabled",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "invalid",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field invalid for validation styling and `aria-invalid`."
-      },
-      {
         "name": "maxTags",
         "type": "number",
         "required": false,
@@ -7852,25 +7515,11 @@
         "description": "Maximum number of tags allowed."
       },
       {
-        "name": "name",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Form field name, for native form submission / form libraries."
-      },
-      {
         "name": "placeholder",
         "type": "string",
         "required": false,
         "defaultValue": null,
         "description": ""
-      },
-      {
-        "name": "required",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": null,
-        "description": "Marks the field as required for validation styling and `aria-required`."
       },
       {
         "name": "suggestions",

@@ -69,7 +69,7 @@ export function ToggleGroup<T extends string = string>(props: ToggleGroupProps<T
           onClick={() => toggle(option.value)}
           className={cn(
             'inline-flex h-9 items-center gap-2 border-r border-[var(--color-border)] px-3 text-sm font-medium text-[var(--color-fg-muted)] last:border-r-0',
-            'transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-45',
+            'transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] disabled:opacity-45',
             active(option.value) &&
               'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] hover:bg-[var(--color-accent-hover)] hover:text-[var(--color-accent-contrast)]',
           )}

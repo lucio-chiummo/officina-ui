@@ -73,10 +73,10 @@ export function ActionSheet({
                 }}
                 className={cn(
                   'flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors duration-[var(--motion-fast)]',
-                  'focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none',
+                  'focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none focus-visible:ring-2',
                   'disabled:cursor-not-allowed disabled:opacity-40',
                   action.tone === 'danger'
-                    ? 'text-[var(--color-danger)] hover:bg-[var(--color-danger)]/8'
+                    ? 'hover:bg-[var(--color-danger)]/8 text-[var(--color-danger)]'
                     : 'text-[var(--color-fg-base)] hover:bg-[var(--color-bg-subtle)]',
                 )}
               >
@@ -89,7 +89,7 @@ export function ActionSheet({
             <button
               type="button"
               onClick={onClose}
-              className="w-full rounded-lg px-4 py-3 text-sm font-semibold text-[var(--color-fg-muted)] transition-colors duration-[var(--motion-fast)] hover:bg-[var(--color-bg-subtle)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+              className="focus-visible:ring-[var(--color-accent)]/40 w-full rounded-lg px-4 py-3 text-sm font-semibold text-[var(--color-fg-muted)] transition-colors duration-[var(--motion-fast)] hover:bg-[var(--color-bg-subtle)] focus-visible:outline-none focus-visible:ring-2"
             >
               {cancelLabel}
             </button>

@@ -42,8 +42,8 @@ export const PhoneInput = forwardRef<PhoneInputRefType, PhoneInputProps>(functio
       inputClassName="!h-9 !w-full !border-0 !bg-transparent !text-sm !text-[var(--color-fg-base)] !outline-none"
       className={
         invalid
-          ? '!flex !h-9 !rounded-md !border !border-[var(--color-danger)] !bg-[var(--color-bg-base)] focus-within:!ring-3 focus-within:!ring-[var(--color-danger)]/15'
-          : '!flex !h-9 !rounded-md !border !border-[var(--color-border-strong)] !bg-[var(--color-bg-base)] focus-within:!border-[var(--color-accent)] focus-within:!ring-3 focus-within:!ring-[var(--color-accent)]/15'
+          ? 'focus-within:!ring-3 focus-within:!ring-[var(--color-danger)]/15 !flex !h-9 !rounded-md !border !border-[var(--color-danger)] !bg-[var(--color-bg-base)]'
+          : 'focus-within:!ring-3 focus-within:!ring-[var(--color-accent)]/15 !flex !h-9 !rounded-md !border !border-[var(--color-border-strong)] !bg-[var(--color-bg-base)] focus-within:!border-[var(--color-accent)]'
       }
       countrySelectorStyleProps={{
         buttonClassName: '!h-9 !border-0 !bg-transparent hover:!bg-[var(--color-bg-muted)]',

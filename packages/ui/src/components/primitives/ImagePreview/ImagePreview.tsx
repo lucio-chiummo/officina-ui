@@ -55,7 +55,7 @@ export function ImagePreview({
       <img src={src} alt={alt} loading="lazy" decoding="async" className="size-full object-cover" />
 
       {status === 'uploading' ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[var(--color-bg-base)]/65">
+        <div className="bg-[var(--color-bg-base)]/65 absolute inset-0 flex flex-col items-center justify-center gap-1">
           <Spinner size="sm" />
           {progress !== undefined ? (
             <span className="text-[10px] font-medium text-[var(--color-fg-muted)]">
@@ -66,7 +66,7 @@ export function ImagePreview({
       ) : null}
 
       {status === 'error' ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[var(--color-danger-subtle)]/80 text-[var(--color-danger-fg)]">
+        <div className="bg-[var(--color-danger-subtle)]/80 absolute inset-0 flex flex-col items-center justify-center gap-1 text-[var(--color-danger-fg)]">
           <AlertCircle className="size-5" />
           {onRetry ? (
             <button
@@ -86,7 +86,7 @@ export function ImagePreview({
           type="button"
           aria-label={name ? `Remove ${name}` : 'Remove image'}
           onClick={onRemove}
-          className="absolute top-1 right-1 inline-flex size-6 items-center justify-center rounded-full bg-[var(--color-bg-base)]/90 text-[var(--color-fg-muted)] opacity-0 shadow-[var(--shadow-sm)] transition-opacity group-hover:opacity-100 hover:text-[var(--color-fg-base)] focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+          className="bg-[var(--color-bg-base)]/90 absolute right-1 top-1 inline-flex size-6 items-center justify-center rounded-full text-[var(--color-fg-muted)] opacity-0 shadow-[var(--shadow-sm)] transition-opacity hover:text-[var(--color-fg-base)] focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] group-hover:opacity-100"
         >
           <X className="size-3.5" />
         </button>

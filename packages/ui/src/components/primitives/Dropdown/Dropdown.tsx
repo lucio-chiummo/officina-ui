@@ -57,7 +57,7 @@ export function Dropdown({ trigger, sections, align = 'end', className }: Dropdo
             key={section.heading ?? `section-${section.items.map((item) => item.label).join('-')}`}
           >
             {section.heading && (
-              <MenuHeading className="px-2.5 py-1.5 text-[10px] font-semibold tracking-wider text-[var(--color-fg-subtle)] uppercase">
+              <MenuHeading className="px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-fg-subtle)]">
                 {section.heading}
               </MenuHeading>
             )}

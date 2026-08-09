@@ -44,7 +44,7 @@ export function SpeedDial({
               action.onClick();
               setOpen(false);
             }}
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] px-3 py-2 text-xs font-semibold text-[var(--color-fg-base)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] px-3 py-2 text-xs font-semibold text-[var(--color-fg-base)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--color-bg-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           >
             {action.icon ? <span className="size-4">{action.icon}</span> : null}
             {action.label}

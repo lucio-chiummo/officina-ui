@@ -133,7 +133,7 @@ export function MultiColumnCombobox({
               setQuery('');
             }
           }}
-          className="block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 pr-14 text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] placeholder:text-[var(--color-fg-subtle)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 disabled:cursor-not-allowed disabled:opacity-50"
+          className="focus-visible:ring-[var(--color-accent)]/20 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 pr-14 text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] placeholder:text-[var(--color-fg-subtle)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
         />
         <div className="absolute inset-y-0 right-2 flex items-center gap-0.5">
           {clearable && selected && !disabled ? (
@@ -144,7 +144,7 @@ export function MultiColumnCombobox({
                 onChange(null);
                 setQuery('');
               }}
-              className="rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+              className="focus-visible:ring-[var(--color-accent)]/40 rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2"
             >
               <X className="size-3.5" />
             </button>
@@ -158,7 +158,7 @@ export function MultiColumnCombobox({
           id={`${id}-grid`}
           role="grid"
           aria-label={label ?? 'Options'}
-          className="absolute top-full right-0 left-0 z-30 mt-1 max-h-72 overflow-auto rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow-[var(--shadow-md)]"
+          className="absolute left-0 right-0 top-full z-30 mt-1 max-h-72 overflow-auto rounded-md border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow-[var(--shadow-md)]"
         >
           <table className="w-full border-collapse text-sm">
             <thead className="sticky top-0 bg-[var(--color-bg-subtle)]">
@@ -168,7 +168,7 @@ export function MultiColumnCombobox({
                     key={column.key}
                     scope="col"
                     style={column.width ? { width: column.width } : undefined}
-                    className="border-b border-[var(--color-border)] px-3 py-1.5 text-left text-[11px] font-semibold tracking-wide text-[var(--color-fg-muted)] uppercase"
+                    className="border-b border-[var(--color-border)] px-3 py-1.5 text-left text-[11px] font-semibold uppercase tracking-wide text-[var(--color-fg-muted)]"
                   >
                     {column.header}
                   </th>

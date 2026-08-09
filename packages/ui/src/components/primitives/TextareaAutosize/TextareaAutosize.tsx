@@ -55,7 +55,7 @@ export const TextareaAutosize = forwardRef<HTMLTextAreaElement, TextareaAutosize
         }}
         {...props}
         className={cn(
-          'w-full resize-none rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)] shadow-[var(--shadow-xs)] transition-[border-color,box-shadow] outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 disabled:cursor-not-allowed disabled:opacity-50',
+          'focus:ring-[var(--color-accent)]/20 w-full resize-none rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-sm text-[var(--color-fg-base)] shadow-[var(--shadow-xs)] outline-none transition-[border-color,box-shadow] focus:border-[var(--color-accent)] focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50',
           className,
         )}
         style={{ maxHeight: `${String(maxRows * 1.5)}rem`, ...style }}

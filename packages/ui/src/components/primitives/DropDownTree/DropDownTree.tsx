@@ -68,7 +68,7 @@ function Branch({
             onClick={() => {
               toggle(node.id);
             }}
-            className="rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none"
+            className="focus-visible:ring-[var(--color-accent)]/40 rounded p-0.5 text-[var(--color-fg-subtle)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2"
           >
             {isOpen ? <ChevronDown className="size-3.5" /> : <ChevronRight className="size-3.5" />}
           </button>
@@ -83,7 +83,7 @@ function Branch({
           }}
           className={cn(
             'flex grow items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors duration-[var(--motion-fast)]',
-            'focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none',
+            'focus-visible:ring-[var(--color-accent)]/40 focus-visible:outline-none focus-visible:ring-2',
             selectable
               ? 'text-[var(--color-fg-base)] hover:bg-[var(--color-bg-subtle)]'
               : 'cursor-default text-[var(--color-fg-muted)]',
@@ -156,7 +156,7 @@ export function DropDownTree({
           <button
             id={id}
             type="button"
-            className="flex h-9 w-full items-center justify-between rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-left text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20"
+            className="focus-visible:ring-[var(--color-accent)]/20 flex h-9 w-full items-center justify-between rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 py-2 text-left text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] focus:outline-none focus-visible:border-[var(--color-accent)] focus-visible:ring-2"
           >
             <span className={display ? '' : 'text-[var(--color-fg-subtle)]'}>
               {display ?? placeholder}

@@ -89,7 +89,7 @@ export function FormActions({
         'flex flex-wrap items-center gap-2 border-t border-[var(--color-border)] pt-4',
         actionAlign[align],
         sticky
-          ? 'sticky bottom-0 z-10 -mx-4 bg-[var(--color-bg-base)]/95 px-4 pb-4 backdrop-blur'
+          ? 'bg-[var(--color-bg-base)]/95 sticky bottom-0 z-10 -mx-4 px-4 pb-4 backdrop-blur'
           : undefined,
         className,
       )}

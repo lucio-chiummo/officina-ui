@@ -60,13 +60,13 @@ export function StatCard({
       )}
     >
       <div className="flex items-start justify-between gap-2">
-        <p className="text-[10px] font-semibold tracking-wider text-[var(--color-fg-subtle)] uppercase">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-fg-subtle)]">
           {label}
         </p>
         {icon && <span className="shrink-0 text-[var(--color-fg-subtle)]">{icon}</span>}
       </div>
 
-      <p className="mt-1 text-[26px] leading-none font-bold tracking-tight text-[var(--color-fg-base)]">
+      <p className="mt-1 text-[26px] font-bold leading-none tracking-tight text-[var(--color-fg-base)]">
         {value}
       </p>
 

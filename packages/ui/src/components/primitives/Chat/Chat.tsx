@@ -162,7 +162,7 @@ export function Chat({
               submit();
             }
           }}
-          className="max-h-32 flex-1 resize-none rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-bg-muted)] px-3 py-2 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 disabled:opacity-50"
+          className="focus:ring-[var(--color-accent)]/20 max-h-32 flex-1 resize-none rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-bg-muted)] px-3 py-2 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 disabled:opacity-50"
           aria-label="Message input"
         />
         <button

@@ -77,7 +77,7 @@ export function StatusLabel({
     <span
       {...props}
       className={cn(
-        'inline-flex items-center gap-1.5 text-xs font-medium whitespace-nowrap',
+        'inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-medium',
         variant === 'soft'
           ? cn('rounded-full px-2 py-0.5', softTone[tone])
           : 'text-[var(--color-fg-base)]',

@@ -123,7 +123,7 @@ export function SpeedDialDemo() {
   return (
     <div className="border-fd-border relative h-36 w-full rounded-lg border border-dashed p-3">
       <SpeedDial
-        className="absolute right-3 bottom-3"
+        className="absolute bottom-3 right-3"
         actions={[
           { label: 'Create', icon: <Plus className="size-4" />, onClick: () => {} },
           { label: 'Settings', icon: <Settings className="size-4" />, onClick: () => {} },

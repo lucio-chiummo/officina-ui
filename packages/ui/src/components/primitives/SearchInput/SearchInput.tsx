@@ -40,7 +40,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
   }, [debounced, value]);
   return (
     <div className={cn('relative', className)}>
-      <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-[var(--color-fg-subtle)]" />
+      <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[var(--color-fg-subtle)]" />
       <input
         ref={ref}
         data-density-control="input"
@@ -48,9 +48,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={invalid ? true : undefined}
         className={cn(
-          'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pr-9 pl-9 text-sm text-[var(--color-fg-base)] transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] outline-none placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20',
+          'focus:ring-[var(--color-accent)]/20 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] pl-9 pr-9 text-sm text-[var(--color-fg-base)] outline-none transition-[border-color,box-shadow] duration-[var(--motion-fast)] ease-[var(--ease-standard)] placeholder:text-[var(--color-fg-subtle)] focus:border-[var(--color-accent)] focus:ring-2',
           invalid &&
-            'border-[var(--color-danger)] focus:border-[var(--color-danger)] focus:ring-[var(--color-danger)]/20',
+            'focus:ring-[var(--color-danger)]/20 border-[var(--color-danger)] focus:border-[var(--color-danger)]',
         )}
         {...props}
       />
@@ -59,7 +59,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
           type="button"
           aria-label={clearLabel}
           onClick={() => onChange('')}
-          className="absolute top-1/2 right-2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
+          className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
         >
           <X className="size-4" />
         </button>

@@ -73,7 +73,7 @@ export function InlineNotice({
             setDismissed(true);
             onDismiss?.();
           }}
-          className="shrink-0 rounded opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
+          className="shrink-0 rounded opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
         >
           <X className="size-3.5" />
         </button>

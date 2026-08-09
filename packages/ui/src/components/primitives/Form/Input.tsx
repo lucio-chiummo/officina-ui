@@ -17,9 +17,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         'bg-[var(--color-bg-base)] px-3 text-sm text-[var(--color-fg-base)]',
         'placeholder:text-[var(--color-fg-subtle)]',
         'transition-[border-color,box-shadow] duration-[var(--duration-fast)]',
-        'focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:outline-none',
+        'focus:ring-3 focus:ring-[var(--color-accent)]/15 focus:border-[var(--color-accent)] focus:outline-none',
         'disabled:cursor-not-allowed disabled:opacity-50',
-        'aria-[invalid=true]:border-[var(--color-danger)] aria-[invalid=true]:focus:ring-[var(--color-danger)]/15',
+        'aria-[invalid=true]:focus:ring-[var(--color-danger)]/15 aria-[invalid=true]:border-[var(--color-danger)]',
         className,
       )}
     />
