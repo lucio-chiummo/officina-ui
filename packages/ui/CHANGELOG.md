@@ -1,5 +1,46 @@
 # @officina/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- 6ba9a89: Stop icons overflowing their slot in Dropdown, ActionMenu, Chip, RadioGroup,
+  SpeedDial, and BottomNavigation.
+
+  Each of these renders a caller-supplied icon into a fixed-size `span`, but sized
+  only the span — not the SVG inside it. Icon libraries render at their own
+  intrinsic size (lucide defaults to 24px), so an icon handed over without an
+  explicit size class rendered half again too large, overflowed its 16px slot and
+  pushed the row's label out of alignment. The slots now size their SVG child, the
+  same way IconButton, InlineNotice, StatusLabel, FileItem, and MetadataList
+  already did.
+
+- 592bbf7: Add missing keyboard focus indicators, and replace text glyphs used as icons.
+
+  Eighteen components render a raw `<button>` and never opted into the focus ring
+  the rest of the library uses, so keyboard users had no indication of where focus
+  was — a WCAG 2.4.7 failure. `RadioGroup` was worse: it cleared the browser
+  default with `outline-none` and styled only the checked state, leaving nothing
+  at all. Affected: Pagination, Chip, Alert, Banner, Wizard, Stepper, Carousel,
+  NotificationCenter, DataTable, DataGrid, FacetedFilter, SortableList, TreeView,
+  DateRangePicker, and RadioGroup.
+
+  Stepper drew completed steps with a `✓` character and TreeView drew its expander
+  with `▾`/`▸`. Text glyphs render differently per font, ignore the icon size
+  tokens, and are read aloud by screen readers; both now use the bundled lucide
+  icons the rest of the library uses.
+
+- 407b5ad: Fix KanbanBoard reporting card ids as column ids, and make empty columns
+  droppable.
+
+  Columns carried their `column-<id>` only as an HTML `id` attribute and were
+  never registered with dnd-kit, so `event.over.id` could only ever be one of the
+  cards. `onMoveCard` therefore fired with another card's id in the column
+  argument, and a column with no cards in it had no drop target at all. Columns
+  are now real droppables, the drop target resolves through the card underneath
+  when a card is landed on, and a drag that ends outside the board or back on its
+  own column no longer fires the callback.
+
 ## 0.2.1
 
 ### Patch Changes
