@@ -85,7 +85,11 @@ function RadioGroupInner<T = string>(
           <span className="mt-0.5 flex size-4 items-center justify-center rounded-full border border-[var(--color-border-strong)] group-data-[checked]:border-[var(--color-accent)] group-data-[checked]:bg-[var(--color-accent)]">
             <span className="hidden size-1.5 rounded-full bg-[var(--color-bg-base)] group-data-[checked]:block" />
           </span>
-          {option.icon ? <span className="size-4 shrink-0">{option.icon}</span> : null}
+          {option.icon ? (
+            <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+              {option.icon}
+            </span>
+          ) : null}
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-1 font-medium text-[var(--color-fg-base)]">
               {option.label}

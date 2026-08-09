@@ -46,7 +46,11 @@ export function SpeedDial({
             }}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] px-3 py-2 text-xs font-semibold text-[var(--color-fg-base)] shadow-[var(--shadow-sm)] transition-colors hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
           >
-            {action.icon ? <span className="size-4">{action.icon}</span> : null}
+            {action.icon ? (
+              <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+                {action.icon}
+              </span>
+            ) : null}
             {action.label}
           </button>
         ))}
