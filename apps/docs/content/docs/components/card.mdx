@@ -1,14 +1,13 @@
 ---
 title: Card
-description: Bordered, padded surface — the container you compose card sections into.
+description: Bordered, padded surface — and the header, title, description, content, and footer parts you compose inside it.
 ---
 
 import { CardDemo } from '@/components/demos/data-display-demo';
 
 `Card` is the base surface for grouped content — a rounded, bordered box with a
 subtle shadow and an adjustable `padding` scale (`none`, `sm`, `md`, `lg`). Drop
-any content inside, or compose it with `CardHeader`, `CardTitle`,
-`CardDescription`, `CardContent`, and `CardFooter` for a structured layout.
+any content inside it, or compose the parts below for a structured layout.
 
 ## Example
 
@@ -16,17 +15,82 @@ any content inside, or compose it with `CardHeader`, `CardTitle`,
   <CardDemo />
 </Demo>
 
+## Anatomy
+
 ```tsx
-import { Card, CardHeader, CardTitle, CardContent } from '@officina/ui';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  Button,
+} from '@officina/ui';
 
 <Card>
   <CardHeader>
-    <CardTitle>Revenue</CardTitle>
+    <div>
+      <CardTitle>Acme Operations</CardTitle>
+      <CardDescription>Growth plan — renews May 11, 2026.</CardDescription>
+    </div>
+    <Button size="sm" variant="soft">
+      Manage
+    </Button>
   </CardHeader>
-  <CardContent>$24.8k this month</CardContent>
+  <CardContent>
+    <p>Compose header, content, and footer to build a card surface.</p>
+  </CardContent>
+  <CardFooter>
+    <Button size="sm">Save</Button>
+  </CardFooter>
 </Card>;
 ```
 
+Every part is optional. A `Card` with nothing but children is valid; reach for
+the parts when you want the padding, dividers, and heading semantics handled
+for you.
+
 ## API
 
+### Card
+
+The surface itself.
+
 <PropsTable name="Card" />
+
+### CardHeader
+
+The top section. Lays children out in a row with space between them, so a
+title/description block sits on the left and an action sits on the right, with
+padding below separating it from the content. Use it as the first child.
+
+<PropsTable name="CardHeader" />
+
+### CardTitle
+
+The card's heading — a semantic `<h3>` sized and weighted for a card surface.
+Goes inside `CardHeader`, typically above a `CardDescription`.
+
+<PropsTable name="CardTitle" />
+
+### CardDescription
+
+The small, muted supporting line under a `CardTitle` — a styled `<p>` for a
+subtitle, status, or one-line summary.
+
+<PropsTable name="CardDescription" />
+
+### CardContent
+
+The body region: an unstyled wrapper marking the main content between header and
+footer, so a card's sections read in a predictable order.
+
+<PropsTable name="CardContent" />
+
+### CardFooter
+
+The bottom section. Draws a top border and lays children out in a row — the
+place for action buttons or summary metadata. Use it as the last child.
+
+<PropsTable name="CardFooter" />
