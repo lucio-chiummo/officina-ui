@@ -63,7 +63,7 @@ function CopyInline({ value }: { value: string }) {
       type="button"
       aria-label={copied ? 'Copied' : 'Copy'}
       onClick={() => void copy(value)}
-      className="inline-flex size-5 shrink-0 items-center justify-center rounded text-[var(--color-fg-subtle)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+      className="inline-flex size-5 shrink-0 items-center justify-center rounded text-[var(--color-fg-subtle)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
     >
       {copied ? (
         <Check className="size-3 text-[var(--color-success-fg)]" />

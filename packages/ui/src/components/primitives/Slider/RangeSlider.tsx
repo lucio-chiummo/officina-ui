@@ -79,7 +79,7 @@ export const RangeSlider = forwardRef<HTMLSpanElement, RangeSliderProps>(functio
         max={max}
         step={step}
         minStepsBetweenThumbs={minStepsBetweenThumbs}
-        className="relative flex h-5 w-full touch-none select-none items-center"
+        className="relative flex h-5 w-full touch-none items-center select-none"
       >
         <RadixSlider.Track className="relative h-1 grow rounded-full bg-[var(--color-bg-muted)]">
           <RadixSlider.Range className="absolute h-full rounded-full bg-[var(--color-accent)]" />
@@ -92,7 +92,7 @@ export const RangeSlider = forwardRef<HTMLSpanElement, RangeSliderProps>(functio
           onBlur={onBlur}
           onFocus={onFocus}
           className={cn(
-            'focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2',
+            'block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 focus-visible:outline-none',
             'aria-[invalid=true]:border-[var(--color-danger)]',
           )}
         />
@@ -103,7 +103,7 @@ export const RangeSlider = forwardRef<HTMLSpanElement, RangeSliderProps>(functio
           onBlur={onBlur}
           onFocus={onFocus}
           className={cn(
-            'focus-visible:ring-[var(--color-accent)]/20 block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:outline-none focus-visible:ring-2',
+            'block size-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-base)] shadow focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/20 focus-visible:outline-none',
             'aria-[invalid=true]:border-[var(--color-danger)]',
           )}
         />

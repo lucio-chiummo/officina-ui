@@ -199,7 +199,7 @@ function DataTableBase<TData extends object>({
       ) : null}
       <div className="overflow-x-auto">
         <table className="w-full text-left">
-          <thead className="bg-[var(--color-bg-subtle)]/80 sticky top-0">
+          <thead className="sticky top-0 bg-[var(--color-bg-subtle)]/80">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id} className="border-b border-[var(--color-border)]">
                 {hg.headers.map((header) => {
@@ -221,7 +221,7 @@ function DataTableBase<TData extends object>({
                         <button
                           type="button"
                           onClick={header.column.getToggleSortingHandler()}
-                          className="flex cursor-pointer select-none items-center gap-1"
+                          className="flex cursor-pointer items-center gap-1 select-none"
                         >
                           {headerContent}
                         </button>

@@ -1,11 +1,19 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export function useSelection<T>(items: T[], getKey: (item: T) => string) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const isSelected = useCallback((item: T) => selected.has(getKey(item)), [selected, getKey]);
-  const allSelected = items.length > 0 && selected.size === items.length;
-  const someSelected = selected.size > 0 && !allSelected;
+
+  // Selection outlives the list it was made against — filtering, paging or a
+  // refetch can drop rows the user had ticked. Every derived value below counts
+  // only keys still present, so "all selected" cannot be satisfied by ghosts.
+  const selectedItems = useMemo(
+    () => items.filter((item) => selected.has(getKey(item))),
+    [items, selected, getKey],
+  );
+  const allSelected = items.length > 0 && selectedItems.length === items.length;
+  const someSelected = selectedItems.length > 0 && !allSelected;
 
   const select = useCallback(
     (item: T) => {
@@ -44,8 +52,6 @@ export function useSelection<T>(items: T[], getKey: (item: T) => string) {
     () => (allSelected ? deselectAll() : selectAll()),
     [allSelected, selectAll, deselectAll],
   );
-
-  const selectedItems = items.filter((item) => selected.has(getKey(item)));
 
   return {
     selected,

@@ -69,7 +69,7 @@ export const TagInput = forwardRef<HTMLInputElement, TagInputProps>(function Tag
     <div className={className}>
       <div
         className={cn(
-          'focus-within:ring-3 focus-within:ring-[var(--color-accent)]/15 flex min-h-9 w-full flex-wrap items-center gap-1 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-2 py-1 focus-within:border-[var(--color-accent)]',
+          'flex min-h-9 w-full flex-wrap items-center gap-1 rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-2 py-1 focus-within:border-[var(--color-accent)] focus-within:ring-3 focus-within:ring-[var(--color-accent)]/15',
           invalid && 'border-[var(--color-danger)]',
           disabled && 'cursor-not-allowed opacity-50',
         )}

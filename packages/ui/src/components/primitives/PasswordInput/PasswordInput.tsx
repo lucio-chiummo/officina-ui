@@ -48,9 +48,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             value={value}
             aria-invalid={invalid ? true : undefined}
             className={cn(
-              'focus:ring-3 focus:ring-[var(--color-accent)]/15 block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)]',
+              'block h-9 w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] px-3 pr-10 text-sm outline-none focus:border-[var(--color-accent)] focus:ring-3 focus:ring-[var(--color-accent)]/15',
               invalid &&
-                'focus:ring-[var(--color-danger)]/15 border-[var(--color-danger)] focus:border-[var(--color-danger)]',
+                'border-[var(--color-danger)] focus:border-[var(--color-danger)] focus:ring-[var(--color-danger)]/15',
             )}
             {...props}
           />
@@ -58,7 +58,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             type="button"
             aria-label={visible ? hideLabel : revealLabel}
             onClick={() => setVisible((next) => !next)}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
+            className="absolute top-1/2 right-2 -translate-y-1/2 rounded p-1 text-[var(--color-fg-subtle)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
           >
             {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
           </button>

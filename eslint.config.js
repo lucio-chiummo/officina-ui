@@ -20,8 +20,8 @@ export default tseslint.config(
       // Next.js docs app follows its own conventions; not linted here, same
       // as admin-template excludes its docs apps from this config.
       'apps/docs/**',
-      // Single build-time generator script, outside packages/ui's tsconfig.
-      'scripts/**',
+      // Build-time scripts, outside any package's tsconfig.
+      '**/scripts/**',
     ],
   },
   js.configs.recommended,

@@ -1,0 +1,12 @@
+/* Anchor for prettier-plugin-tailwindcss.
+ *
+ * The plugin picks its class sort order from whichever Tailwind it can
+ * resolve. With nothing to anchor on it fell back to the v3 ordering in CI
+ * while resolving v4 on developer machines, so `pnpm format` produced diffs
+ * that `pnpm format:check` then rejected. Pointing tailwindStylesheet at this
+ * file, with tailwindcss installed at the workspace root, makes the ordering
+ * identical everywhere.
+ *
+ * Not used by any build.
+ */
+@import 'tailwindcss';

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { useOptionalTranslation } from '@hooks/useOptionalTranslation';
 import { Download, FileJson, FileSpreadsheet, FileText } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 import type { ExportColumn } from '@/lib/export/types';
 
@@ -41,7 +41,7 @@ export function ExportToolbar<T extends object>({
   formats,
   columns,
 }: ExportToolbarProps<T>) {
-  const { t } = useTranslation();
+  const t = useOptionalTranslation();
   const disabled = !data.length || !columns.length;
 
   const handlers: Record<ExportFormat, () => void> = {

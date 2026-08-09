@@ -22,7 +22,7 @@
     "./tokens.css": "./dist/tokens.css"
   },
   "scripts": {
-    "build": "tsup && cp src/styles.css dist/styles.css && cp src/tokens.css dist/tokens.css",
+    "build": "tsup && node scripts/ensure-use-client.mjs && cp src/styles.css dist/styles.css && cp src/tokens.css dist/tokens.css",
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
     "test": "vitest run --coverage",
     "test:watch": "vitest"

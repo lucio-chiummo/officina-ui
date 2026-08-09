@@ -1,0 +1,62 @@
+---
+title: Page layout
+description: PageHeader, PageBody, and PageSection — the three parts that assemble a standard screen layout.
+---
+
+import { PageHeaderDemo } from '@/components/demos/composed-demo';
+
+Officina's page layout is three composable parts rather than one component:
+`PageHeader` for the top of the screen, `PageBody` for the content region below
+it, and `PageSection` for the bordered blocks inside that region. Using them
+together keeps spacing, heading levels, and responsive wrapping consistent
+across screens.
+
+## Example
+
+<Demo>
+  <PageHeaderDemo />
+</Demo>
+
+## Anatomy
+
+```tsx
+import { PageHeader, PageBody, PageSection, Button } from '@officina/ui';
+
+<>
+  <PageHeader
+    title="Settings"
+    description="Manage your workspace"
+    actions={<Button size="sm">Save</Button>}
+  />
+  <PageBody>
+    <PageSection title="Profile">{/* … */}</PageSection>
+    <PageSection title="Billing" actions={<Button size="sm">Change plan</Button>}>
+      {/* … */}
+    </PageSection>
+  </PageBody>
+</>;
+```
+
+## API
+
+### PageHeader
+
+The top of a page: a required `title` heading, an optional `description`, a
+`breadcrumbs` trail above the title, and an `actions` slot pinned to the right.
+
+<PropsTable name="PageHeader" />
+
+### PageBody
+
+The main content region. Stacks children vertically with consistent spacing and
+applies a subtle fade-in on mount.
+
+<PropsTable name="PageBody" />
+
+### PageSection
+
+Groups related content into a bordered, padded block with an optional header
+built from `title`, `description`, and `actions`. The header is omitted entirely
+when none are given.
+
+<PropsTable name="PageSection" />

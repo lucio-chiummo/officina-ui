@@ -1,0 +1,46 @@
+---
+title: Overview
+description: All 250+ Officina UI components by category — start here to find the right primitive.
+---
+
+Every component below ships in `@officina/ui`. Pages include a live demo and a
+props table generated from the component source.
+
+Compound components are documented on one page, not one page per part: `Card`
+covers `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, and
+`CardFooter`; `Table` covers its seven section and cell parts; `List`, `Form`,
+`AppBar`, and `Page layout` work the same way.
+
+## Categories
+
+| Category                 | What's in it                                                                                  | Start with                                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Inputs & Forms**       | Text, number, date, and selection controls, plus the `Form` composition and validation wiring | [Form](/docs/components/form), [Input](/docs/components/input), [Select](/docs/components/select) |
+| **Buttons & Actions**    | Buttons, toggles, menus, and action toolbars                                                  | [Button](/docs/components/button), [ActionMenu](/docs/components/actionmenu)                      |
+| **Navigation**           | Tabs, menus, breadcrumbs, steppers, and app chrome                                            | [Tabs](/docs/components/tabs), [AppBar](/docs/components/appbar)                                  |
+| **Overlays & Popups**    | Modals, drawers, popovers, tooltips, and context menus                                        | [Modal](/docs/components/modal), [Popover](/docs/components/popover)                              |
+| **Feedback & Status**    | Alerts, banners, loading and empty states, progress, badges                                   | [Alert](/docs/components/alert), [EmptyState](/docs/components/emptystate)                        |
+| **Data Display**         | Lists, cards, avatars, timelines, boards, and code/text viewers                               | [Card](/docs/components/card), [List](/docs/components/list)                                      |
+| **Tables & Data Grids**  | Hand-composed `Table` plus the data-driven `DataTable` and `DataGrid`                         | [Table](/docs/components/table), [DataTable](/docs/components/datatable)                          |
+| **Filters**              | The filter model, builder UI, chips, and per-type filter controls                             | [FilterBar](/docs/components/filterbar)                                                           |
+| **Charts**               | 18 chart types built on ECharts                                                               | [LineChart](/docs/components/linechart), [BarChart](/docs/components/barchart)                    |
+| **Media**                | Images, lightbox, cropper, map, player, QR and barcodes                                       | [ImageList](/docs/components/imagelist)                                                           |
+| **Layout**               | Boxes, grids, stacks, panels, and the page layout parts                                       | [Stack](/docs/components/stack), [Page layout](/docs/components/page)                             |
+| **Content & Typography** | Text styling, links, animated numbers                                                         | [Typography](/docs/components/typography)                                                         |
+| **Motion & Effects**     | Animation presets and decorative effects                                                      | [MotionPreset](/docs/components/motionpreset)                                                     |
+| **Utilities**            | SSR guards, copy fields, top progress bar                                                     | [NoSSR](/docs/components/nossr)                                                                   |
+
+## Choosing a table
+
+Three components render tabular data, and picking the wrong one is the most
+common false start:
+
+- **[Table](/docs/components/table)** — you write the markup by hand. Right for
+  small, static datasets where you want full control.
+- **[DataTable](/docs/components/datatable)** — sorting, filtering, pagination,
+  and selection, driven by a TanStack Table instance you own.
+- **[DataGrid](/docs/components/datagrid)** — virtualized, spreadsheet-style
+  grid for large datasets.
+
+`DataTable` and `DataGrid` need `@tanstack/react-table` installed; see
+[Peer dependencies](/docs/peer-dependencies).
