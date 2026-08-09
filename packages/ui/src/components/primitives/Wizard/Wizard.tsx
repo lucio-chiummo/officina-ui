@@ -130,7 +130,7 @@ export function Wizard({
               type="button"
               onClick={back}
               disabled={isFirst || busy}
-              className="rounded-[var(--radius-md)] border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-fg-base)] transition-colors hover:bg-[var(--color-bg-muted)] disabled:opacity-40"
+              className="rounded-[var(--radius-md)] border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-fg-base)] transition-colors hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-40"
             >
               {backLabel}
             </button>
@@ -145,7 +145,7 @@ export function Wizard({
                 void next();
               }}
               disabled={busy}
-              className="rounded-[var(--radius-md)] bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-contrast)] transition-opacity hover:opacity-90 disabled:opacity-40"
+              className="rounded-[var(--radius-md)] bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-contrast)] transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-40"
             >
               {busy ? 'Please wait…' : isLast ? completeLabel : nextLabel}
             </button>

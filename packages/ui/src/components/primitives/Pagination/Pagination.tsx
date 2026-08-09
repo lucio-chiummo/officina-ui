@@ -33,7 +33,7 @@ function buildPages(page: number, total: number, siblings: number): (number | 'e
 }
 
 const btnBase =
-  'inline-flex size-8 items-center justify-center rounded-md border text-xs font-medium transition-colors duration-[var(--duration-fast)]';
+  'inline-flex size-8 items-center justify-center rounded-md border text-xs font-medium transition-colors duration-[var(--duration-fast)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none';
 const btnDefault =
   'border-[var(--color-border)] bg-[var(--color-bg-base)] text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]';
 const btnActive =

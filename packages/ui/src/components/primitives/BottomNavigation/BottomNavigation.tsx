@@ -41,7 +41,11 @@ export function BottomNavigation({ className, items, onChange, value }: BottomNa
                 : 'text-[var(--color-fg-muted)] hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]',
             )}
           >
-            {item.icon ? <span className="size-4">{item.icon}</span> : null}
+            {item.icon ? (
+              <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+                {item.icon}
+              </span>
+            ) : null}
             <span className="truncate">{item.label}</span>
           </button>
         );

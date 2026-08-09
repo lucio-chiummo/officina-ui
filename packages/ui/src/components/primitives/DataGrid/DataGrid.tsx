@@ -222,7 +222,7 @@ function DataGridBase<TData extends object>({
               type="button"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
-              className="rounded px-2 py-1 hover:bg-[var(--color-bg-base)] disabled:opacity-40"
+              className="rounded px-2 py-1 hover:bg-[var(--color-bg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-40"
             >
               Prev
             </button>
@@ -230,7 +230,7 @@ function DataGridBase<TData extends object>({
               type="button"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
-              className="rounded px-2 py-1 hover:bg-[var(--color-bg-base)] disabled:opacity-40"
+              className="rounded px-2 py-1 hover:bg-[var(--color-bg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-40"
             >
               Next
             </button>

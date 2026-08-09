@@ -67,7 +67,7 @@ export function DateRangePicker({
                 onChange(preset.range);
                 setOpen(false);
               }}
-              className="rounded-md px-2 py-1.5 text-left text-sm transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)]"
+              className="rounded-md px-2 py-1.5 text-left text-sm transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
             >
               {preset.label}
             </button>

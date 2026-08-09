@@ -73,19 +73,23 @@ export const Chip = forwardRef<HTMLSpanElement | HTMLButtonElement, ChipProps>(f
     toneClasses[tone][variant],
     variant === 'outline' && 'bg-transparent',
     (interactive || onRemove) &&
-      'transition-[background-color,color,border-color,box-shadow,transform] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] active:scale-[0.985]',
+      'transition-[background-color,color,border-color,box-shadow,transform] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] active:scale-[0.985] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none',
     className,
   );
   const content = (
     <>
-      {icon ? <span className="size-3.5 shrink-0">{icon}</span> : null}
+      {icon ? (
+        <span className="inline-flex size-3.5 shrink-0 items-center justify-center [&>svg]:size-3.5">
+          {icon}
+        </span>
+      ) : null}
       <span className="truncate">{children}</span>
       {onRemove ? (
         <button
           type="button"
           aria-label={removeLabel}
           onClick={onRemove}
-          className="-mr-1 inline-flex size-4 items-center justify-center rounded-full transition-colors duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-black/10"
+          className="-mr-1 inline-flex size-4 items-center justify-center rounded-full transition-colors duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-black/10 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
         >
           <X className="size-3" />
         </button>

@@ -76,7 +76,7 @@ function RadioGroupInner<T = string>(
           value={option.value}
           {...(option.disabled !== undefined ? { disabled: option.disabled } : {})}
           className={cn(
-            'group flex min-h-16 cursor-pointer items-start gap-2 rounded-[var(--radius-md)] text-sm transition-[background-color,border-color,box-shadow,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] outline-none disabled:cursor-not-allowed disabled:opacity-45',
+            'group flex min-h-16 cursor-pointer items-start gap-2 rounded-[var(--radius-md)] text-sm transition-[background-color,border-color,box-shadow,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] outline-none disabled:cursor-not-allowed disabled:opacity-45 data-[focus]:ring-2 data-[focus]:ring-[var(--color-accent)] data-[focus]:ring-offset-2 data-[focus]:ring-offset-[var(--color-bg-base)]',
             variant === 'card'
               ? 'min-w-48 border border-[var(--color-border-strong)] bg-[var(--color-bg-base)] p-3 hover:border-[var(--color-border)] data-[checked]:border-[var(--color-accent)] data-[checked]:bg-[var(--color-accent)]/5 data-[checked]:ring-2 data-[checked]:ring-[var(--color-accent)]/20'
               : 'p-1',
@@ -85,7 +85,11 @@ function RadioGroupInner<T = string>(
           <span className="mt-0.5 flex size-4 items-center justify-center rounded-full border border-[var(--color-border-strong)] group-data-[checked]:border-[var(--color-accent)] group-data-[checked]:bg-[var(--color-accent)]">
             <span className="hidden size-1.5 rounded-full bg-[var(--color-bg-base)] group-data-[checked]:block" />
           </span>
-          {option.icon ? <span className="size-4 shrink-0">{option.icon}</span> : null}
+          {option.icon ? (
+            <span className="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-4">
+              {option.icon}
+            </span>
+          ) : null}
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-1 font-medium text-[var(--color-fg-base)]">
               {option.label}
