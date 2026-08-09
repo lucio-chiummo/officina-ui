@@ -71,7 +71,7 @@ export function Banner({
           type="button"
           aria-label={dismissLabel}
           onClick={onDismiss}
-          className="rounded p-1 hover:bg-black/10"
+          className="rounded p-1 hover:bg-black/10 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
         >
           <X className="size-4" />
         </button>

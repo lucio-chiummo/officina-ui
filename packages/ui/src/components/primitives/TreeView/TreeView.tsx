@@ -1,4 +1,5 @@
 import { cn } from '@lib/utils/cn';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 
 export type TreeNode = {
@@ -71,11 +72,11 @@ function TreeItem({
           onSelect?.(node.id);
         }}
         style={{ paddingInlineStart: `${String(depth * 16 + 8)}px` }}
-        className="flex w-full items-center gap-2 rounded-md px-2 py-1 text-left hover:bg-[var(--color-bg-muted)]"
+        className="flex w-full items-center gap-2 rounded-md px-2 py-1 text-left hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
       >
         {hasChildren ? (
-          <span aria-hidden="true" className="size-3 text-xs text-[var(--color-fg-muted)]">
-            {isOpen ? '▾' : '▸'}
+          <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
+            {isOpen ? <ChevronDown className="size-3.5" /> : <ChevronRight className="size-3.5" />}
           </span>
         ) : (
           <span aria-hidden="true" className="size-3" />

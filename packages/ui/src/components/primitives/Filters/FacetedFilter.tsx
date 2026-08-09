@@ -93,7 +93,7 @@ export function FacetedFilter<T = string>({
               key={String(option.value)}
               type="button"
               onClick={() => toggle(option)}
-              className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-sm transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)]"
+              className="flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-sm transition-[background-color,color] duration-[var(--motion-fast)] ease-[var(--ease-standard)] hover:bg-[var(--color-bg-muted)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
             >
               <span className="flex size-4 items-center justify-center rounded border border-[var(--color-border)] bg-[var(--color-bg-base)]">
                 {active ? <Check className="size-3 text-[var(--color-accent)]" /> : null}

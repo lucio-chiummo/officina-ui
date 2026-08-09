@@ -41,7 +41,7 @@ function SortableRow<T extends { id: string }>({
         ref={sortable.setActivatorNodeRef}
         {...sortable.attributes}
         {...sortable.listeners}
-        className="cursor-grab text-[var(--color-fg-subtle)]"
+        className="cursor-grab text-[var(--color-fg-subtle)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
       >
         <GripVertical className="size-4" />
       </button>

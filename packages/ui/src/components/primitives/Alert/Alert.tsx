@@ -58,7 +58,7 @@ export function Alert({
           type="button"
           onClick={() => setDismissed(true)}
           aria-label="Dismiss"
-          className="shrink-0 opacity-70 transition-opacity hover:opacity-100"
+          className="shrink-0 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
         >
           <X className="size-3.5" />
         </button>

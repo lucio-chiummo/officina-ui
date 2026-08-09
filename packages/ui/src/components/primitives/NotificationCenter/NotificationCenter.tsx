@@ -102,7 +102,7 @@ export function NotificationCenter({
         ref={refs.setReference}
         type="button"
         aria-label={`${label}${unreadCount > 0 ? `, ${unreadCount} unread` : ''}`}
-        className="relative flex size-9 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)]"
+        className="relative flex size-9 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-fg-muted)] transition-colors hover:bg-[var(--color-bg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
         {...getReferenceProps()}
       >
         <Bell className="size-5" />
@@ -137,7 +137,7 @@ export function NotificationCenter({
                     <button
                       type="button"
                       onClick={onMarkAllRead}
-                      className="flex items-center gap-1 text-xs text-[var(--color-accent)] hover:underline"
+                      className="flex items-center gap-1 text-xs text-[var(--color-accent)] hover:underline focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
                     >
                       <Check className="size-3" />
                       Mark all read
@@ -147,7 +147,7 @@ export function NotificationCenter({
                     <button
                       type="button"
                       onClick={onClear}
-                      className="text-xs text-[var(--color-fg-muted)] hover:text-[var(--color-fg-base)]"
+                      className="text-xs text-[var(--color-fg-muted)] hover:text-[var(--color-fg-base)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
                     >
                       Clear
                     </button>

@@ -55,7 +55,7 @@ export function Carousel({
             type="button"
             aria-label="Previous slide"
             onClick={() => emblaApi?.scrollPrev()}
-            className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-[var(--color-bg-base)]/80 p-2 text-[var(--color-fg-muted)] shadow hover:bg-[var(--color-bg-base)]/80"
+            className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-[var(--color-bg-base)]/80 p-2 text-[var(--color-fg-muted)] shadow hover:bg-[var(--color-bg-base)]/80 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
           >
             ‹
           </button>
@@ -63,7 +63,7 @@ export function Carousel({
             type="button"
             aria-label="Next slide"
             onClick={() => emblaApi?.scrollNext()}
-            className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-[var(--color-bg-base)]/80 p-2 text-[var(--color-fg-muted)] shadow hover:bg-[var(--color-bg-base)]/80"
+            className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-[var(--color-bg-base)]/80 p-2 text-[var(--color-fg-muted)] shadow hover:bg-[var(--color-bg-base)]/80 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none"
           >
             ›
           </button>

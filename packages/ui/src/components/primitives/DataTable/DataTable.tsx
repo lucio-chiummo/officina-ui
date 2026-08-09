@@ -281,7 +281,7 @@ function DataTableBase<TData extends object>({
             type="button"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="rounded border border-[var(--color-border-strong)] px-2 py-1 disabled:opacity-50"
+            className="rounded border border-[var(--color-border-strong)] px-2 py-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-50"
           >
             Previous
           </button>
@@ -289,7 +289,7 @@ function DataTableBase<TData extends object>({
             type="button"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="rounded border border-[var(--color-border-strong)] px-2 py-1 disabled:opacity-50"
+            className="rounded border border-[var(--color-border-strong)] px-2 py-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none disabled:opacity-50"
           >
             Next
           </button>

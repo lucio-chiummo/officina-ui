@@ -1,4 +1,5 @@
 import { cn } from '@lib/utils/cn';
+import { Check } from 'lucide-react';
 
 type Step = { id: string; label: string; description?: string };
 
@@ -42,7 +43,7 @@ export function Stepper({
                 onClick={() => onStepClick?.(i)}
                 aria-current={state === 'active' ? 'step' : undefined}
                 className={cn(
-                  'absolute -start-7 flex size-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium ring-4 ring-[var(--color-bg-base)] transition-colors',
+                  'absolute -start-7 flex size-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium ring-4 ring-[var(--color-bg-base)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none',
                   state === 'done' &&
                     'border-[var(--color-success)] bg-[var(--color-success)] text-[var(--color-success-contrast)]',
                   state === 'active' &&
@@ -52,7 +53,7 @@ export function Stepper({
                   clickable && 'cursor-pointer',
                 )}
               >
-                {state === 'done' ? '✓' : i + 1}
+                {state === 'done' ? <Check className="size-4" aria-hidden="true" /> : i + 1}
               </button>
               <div className="min-h-8 ps-3">
                 <span
@@ -91,7 +92,7 @@ export function Stepper({
               onClick={() => onStepClick?.(i)}
               aria-current={state === 'active' ? 'step' : undefined}
               className={cn(
-                'flex size-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium transition-colors',
+                'flex size-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:outline-none',
                 state === 'done' &&
                   'border-[var(--color-success)] bg-[var(--color-success)] text-[var(--color-success-contrast)]',
                 state === 'active' &&
@@ -101,7 +102,7 @@ export function Stepper({
                 clickable && 'cursor-pointer',
               )}
             >
-              {state === 'done' ? '✓' : i + 1}
+              {state === 'done' ? <Check className="size-4" aria-hidden="true" /> : i + 1}
             </button>
             <div className="flex flex-col">
               <span
